@@ -1,0 +1,205 @@
+import React, { Component } from 'react';
+import Link from 'next/link';
+import User from './User';
+import { Query, Mutation } from 'react-apollo';
+import Error from './ErrorMessage';
+import gql from 'graphql-tag';
+import Form from './styles/Form';
+import Table from './styles/Table';
+import SickButton from './styles/SickButton';
+import PropTypes from 'prop-types';
+import { CURRENT_USER_QUERY } from './User';
+import Router from 'next/router';
+
+const UPDATE_USER_MUTATION = gql`
+  mutation updateUserInfo($name: String, $email: String, $instagramHandle: String, $shop: String, $profileImage: String, $image: String, $price: Int, $bio: String, $userId: ID!) {
+    updateUserInfo(name: $name, email: $email, instagramHandle: $instagramHandle, shop: $shop, profileImage: $profileImage, image: $image, price: $price, bio: $bio, userId: $userId) {
+      id
+      name
+      email
+      instagramHandle
+      shop
+      profileImage
+      image
+      price
+      bio
+    }
+  }
+`;
+
+class UserDetailsUpdate extends Component  {
+  state = {
+  };
+  handleUserChange = e => {
+    const { name, type, value } = e.target;
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val });
+    this.setState({ name: namehello.value, email: email.value });
+  };
+
+  updateUserInfo = async (e, updateUserInfoMutation) => {
+    e.preventDefault();
+    console.log(this.state);
+    const res = await updateUserInfoMutation({
+      variables: {
+        ...this.state,
+      },
+    });
+    console.log("updated");
+  };
+
+  uploadFile = async e => {
+    console.log('uploading file ..... ');
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'sickfits');
+
+    const res = await fetch('https://api.cloudinary.com/v1_1/a1995/image/upload', {
+      method: 'POST',
+      body: data
+    });
+    const file = await res.json();
+    console.log(file);
+    this.setState({
+      profileImage: file.secure_url,
+      image: file.eager[0].secure_url
+    });
+  }
+
+  render() {
+    return (
+      <>
+      <User>
+        {({ data: { me } }) => (
+          <>
+            <h2>Account Details</h2>
+              <Mutation
+                mutation={UPDATE_USER_MUTATION}
+                variables={{
+                  ...this.state,
+                  userId: this.props.id,
+                }}
+                refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+              >
+                {(updateUserInfo, { loading, error }) => (
+                  <Form onSubmit={e => {
+                    this.updateUserInfo(e, updateUserInfo);
+                    Router.push({
+                      pathname: '/me',
+                    });
+                  }}>
+                    <Error error={error} />
+                    <fieldset disabled={loading} aria-busy={loading}>
+                      <label htmlFor="name">
+                        Name
+                        <input
+                          type="text"
+                          id="namehello"
+                          name="namehello"
+                          placeholder="name"
+                          required
+                          defaultValue={me.name}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+
+                      <label htmlFor="email">
+                        Email
+                        <input
+                          type="text"
+                          id="email"
+                          name="email"
+                          placeholder="email"
+                          required
+                          defaultValue={me.email}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+                      <label htmlFor="price">
+                        Price for appointment
+                        <input
+                          type="number"
+                          id="price"
+                          name="price"
+                          placeholder="price"
+                          required
+                          defaultValue={ me.price }
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+                      <label htmlFor="bio">
+                        Bio
+                        <textarea
+                          id="bio"
+                          name="bio"
+                          placeholder="Enter a bio"
+                          required
+                          defaultValue={me.bio}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+
+                      <label htmlFor="instagramHandle">
+                        Instagram Handle
+                        <input
+                          type="text"
+                          id="instagramHandle"
+                          name="instagramHandle"
+                          placeholder="Instagram Handle"
+                          required
+                          defaultValue={me.instagramHandle}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+
+                      <label htmlFor="shop">
+                        Shop
+                        <input
+                        type="text"
+                          id="shop"
+                          name="shop"
+                          placeholder="Shop"
+                          required
+                          defaultValue={me.shop}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+
+                      <label htmlFor="profileImage">
+                        Profile Image
+                        <input
+                          type="file"
+                          id="profileImage"
+                          name="profileImage"
+                          placeholder="Upload a Profile image"
+                          onChange={ this.uploadFile }
+                        />
+                        { this.state.image && <img src={ this.state.image } alt="upload preview" /> }
+                      </label>
+
+                      <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
+                    </fieldset>
+                  </Form>
+                )}
+              </Mutation>
+            { me && (
+              <>
+
+              </>
+            )}
+            { !me && (
+              <>
+                <h2>Sorry this is not your account please move along </h2>
+              </>
+            )}
+          </>
+        )}
+      </User>
+      </>
+    );
+  }
+}
+
+
+export default UserDetailsUpdate;

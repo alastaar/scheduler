@@ -1,0 +1,49 @@
+# import * from './generated/prisma.graphql'
+
+type SuccessMessage {
+  message: String
+}
+
+type Mutation {
+  createItem(title: String, description: String, price: Int, image: String, largeImage: String ): Item!
+  updateItem(id: ID!, title: String, description: String, price: Int): Item!
+  deleteItem(id: ID!): Item!
+  signup(email: String!, password: String!, name: String!, artist: String, permissions: [Permission]): User!
+  signin(email: String!, password: String!): User!
+  signout: SuccessMessage
+  requestReset(email: String!): SuccessMessage
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
+  updatePermissions(permissions: [Permission], userId: ID!): User
+  updateUserInfo(name: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, userId: ID!): User
+  createRequest(name: String, email: String, price: Int, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
+  approveRequests(id: ID!, approved: String): Request!
+  addToCart(id: ID!): CartItem
+  removeFromCart(id: ID!): CartItem
+}
+
+type Query {
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
+  item(where: ItemWhereUniqueInput!): Item
+  itemsConnection(where: ItemWhereInput): ItemConnection!
+  me: User
+  users: [User]!
+  user(where: UserWhereUniqueInput!): User
+  requests(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, first: Int): [Request]!
+  request(where: RequestWhereUniqueInput!): Request
+  requestsConnection(where: RequestWhereInput): RequestConnection!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  instagramHandle: String
+  shop: String
+  price: Int
+  bio: String
+  profileImage: String
+  image: String
+  artist: String
+  permissions: [Permission!]!
+  cart: [CartItem!]!
+}

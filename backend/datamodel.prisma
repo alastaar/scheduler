@@ -1,0 +1,58 @@
+enum Permission {
+  ADMIN
+  USER
+  TATTOOARTIST
+  PERMISSIONUPDATE
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  instagramHandle: String
+  shop: String
+  price: Int
+  bio: String
+  profileImage: String
+  image: String
+  resetToken: String
+  resetTokenExpiry: String
+  artist: String
+  permissions: [Permission]
+  cart: [CartItem!]!
+}
+
+type Item {
+  id: ID! @unique
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  user: User!
+}
+
+type Request {
+  id: ID! @unique
+  name: String!
+  email: String!
+  price: Int!
+  details: String
+  referenceImage: String!
+  dateOne: String!
+  timeOne: String!
+  dateTwo: String
+  timeTwo: String
+  dateThree: String
+  timeThree: String
+  approved: String
+  user: User!
+}
+
+type CartItem {
+  id: ID! @unique
+  quantity: Int! @default(value: 1)
+  request: Request!
+  user: User!
+}
