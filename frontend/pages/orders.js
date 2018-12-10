@@ -1,10 +1,13 @@
+import OrderList from '../components/OrderList';
+import PleaseSignIn from '../components/PleaseSignIn';
 import Link from 'next/link';
-import Requests from '../components/RequestList';
 
-const Home = props => (
+const OrderListPage = props => (
 	<div>
-		<Requests page={ parseFloat(props.query.page) || 1 } />
+		<PleaseSignIn>
+      <OrderList />
+		</PleaseSignIn>
 	</div>
 )
 
-export default Home;
+export default OrderListPage;

@@ -19,7 +19,13 @@ const CartItemStyles = styled.li`
   }
 `;
 
-const CartItem = ({ cartRequest }) => (
+const CartItem = ({ cartRequest }) => {
+  if(!cartRequest.request)
+  <CartItemStyles>
+    <p>This request has been cancelled</p>
+    <RemoveFromCart id={cartRequest.id} />
+  </CartItemStyles>;
+  return (
   <CartItemStyles>
     <img width="100" src={cartRequest.request.referenceImage} alt={ cartRequest.request.name } />
     <div className="cart-item-details">
@@ -34,7 +40,7 @@ const CartItem = ({ cartRequest }) => (
     </div>
     <RemoveFromCart id={cartRequest.id} />
   </CartItemStyles>
-);
+)};
 
 CartItem.propTypes = {
   cartRequest: PropTypes.object.isRequired,

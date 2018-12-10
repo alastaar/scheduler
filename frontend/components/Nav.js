@@ -13,9 +13,12 @@ const Nav = () => (
 					<Link href="/items">
 						<a>Explore</a>
 					</Link>
+					<Link href="/orders">
+						<a>Orders</a>
+					</Link>`
 					{ me && me.artist == 'yes' && (
 						<>
-							<Link href="/orders">
+							<Link href="/appointments">
 								<a>Appointments</a>
 							</Link>
 							<Link href="/me">

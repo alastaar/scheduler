@@ -53,6 +53,27 @@ type Request {
 type CartItem {
   id: ID! @unique
   quantity: Int! @default(value: 1)
-  request: Request!
+  request: Request
   user: User!
+}
+
+type OrderRequest {
+  id: ID! @unique
+  name: String!
+  email: String!
+  price: Int!
+  details: String!
+  referenceImage: String!
+  quantity: Int! @default(value: "1")
+  user: User
+}
+
+type Order {
+  id: ID! @unique
+  requests: [OrderRequest!]!
+  total: Int!
+  user: User!
+  charge: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }

@@ -47,11 +47,11 @@ class SingleUserBlock extends Component{
         {({ error, loading, data }) => {
           if(error) return <Error errror={ error } />;
           if(loading) return <p>loading..</p>;
-          if(!data.user) return <p>No item found </p>
+          if(!data.user) return <p>No User found </p>
           const user = data.user;
           return <SingleItemStyles>
             <Head>
-              <title> Sick Fits | { user.name } </title>
+              <title> Scratcher | { user.name } </title>
             </Head>
             <img src={ user.image } alt= { user.name } />
             <div className="details">
