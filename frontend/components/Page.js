@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import styled, {ThemeProvider, injectGlobal} from 'styled-components';
 import Meta from '../components/Meta';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const theme = {
-	red: '#FF0000',
-	black: '#393939',
+	red: '#47BEE9',
+	black: '#292727',
 	grey: '#3A3A3A',
 	lightgrey: '#E1E1E1',
 	offWhite: '#EDEDED',
@@ -16,6 +17,7 @@ const theme = {
 
 const StyledPage = styled.div`
 	background: white;
+	height: 100%;
 	color: ${ props => props.theme.black };
 `;
 
@@ -23,6 +25,8 @@ const Inner = styled.div`
 	max-width: ${ props => props.theme.maxWidth };
 	margin: 0 auto;
 	padding: 2rem;
+	margin-bottom: 40px;
+	overflow: scroll;
 `;
 
 injectGlobal`
@@ -62,6 +66,7 @@ class Page extends Component {
 					<Inner>
 						{ this.props.children }
 					</Inner>
+					<Footer />
 				</StyledPage>
 			</ThemeProvider>
 		)

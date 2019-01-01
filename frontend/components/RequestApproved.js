@@ -22,7 +22,7 @@ class RequestsApproved extends Component {
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
           <Title>
             <Link href={{
-              pathname: '/request',
+              pathname: '/request-item',
               query: { id: request.id },
            }}>
               <a>

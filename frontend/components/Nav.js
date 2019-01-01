@@ -13,26 +13,24 @@ const Nav = () => (
 					<Link href="/items">
 						<a>Explore</a>
 					</Link>
-					<Link href="/orders">
-						<a>Orders</a>
-					</Link>`
 					{ me && me.artist == 'yes' && (
 						<>
+							<Link href="/calendar">
+								<a>Calendar</a>
+							</Link>
 							<Link href="/appointments">
 								<a>Appointments</a>
 							</Link>
-							<Link href="/me">
-								<a>Account</a>
+							<Link href="/ur-request">
+								<a>Ur Requests</a>
 							</Link>
-							<Signout />
 							<Mutation mutation={TOGGLE_CART_MUTATION}>
-	              {(toggleCart) => (
-	                <button onClick={toggleCart}>
-	                  Pay
-	                </button>
-	              )}
-	            </Mutation>
-
+								{(toggleCart) => (
+									<button onClick={toggleCart}>
+										Pay
+									</button>
+								)}
+							</Mutation>
 						</>
 					)}
 					{ me && me.artist == 'no' && (
@@ -40,17 +38,16 @@ const Nav = () => (
 							<Link href="/orders">
 								<a>Appointments Status</a>
 							</Link>
-							<Link href="/me">
-								<a>Account</a>
+							<Link href="/ur-request">
+								<a>Ur Requests</a>
 							</Link>
-							<Signout />
-						</>
-					)}
-					{ !me && (
-						<>
-							<Link href="/signup">
-								<a>SignIn</a>
-							</Link>`
+							<Mutation mutation={TOGGLE_CART_MUTATION}>
+								{(toggleCart) => (
+									<button onClick={toggleCart}>
+										Pay
+									</button>
+								)}
+							</Mutation>
 						</>
 					)}
 				</NavStyles>

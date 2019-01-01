@@ -18,6 +18,7 @@ const UPDATE_PERMISSIONS_MUTATION = gql`
       id
       permissions
       name
+      lastName
       email
     }
   }
@@ -28,11 +29,14 @@ const ALL_USERS_QUERY = gql`
     users {
       id
       name
+      lastName
       email
       price
+      shop
       instagramHandle
       image
       permissions
+      stripeToken
       artist
     }
   }
@@ -101,7 +105,7 @@ class UserPermissions extends React.Component {
           <>
             {error && <tr><td colspan="8"><Error error={error} /></td></tr>}
             < tr >
-              <td>{user.name}</td>
+              <td>{user.name} { user.lastName }</td>
               <td>{user.email}</td>
               {possiblePermissions.map(permission => (
                 <td key={permission}>

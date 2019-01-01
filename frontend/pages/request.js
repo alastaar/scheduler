@@ -3,7 +3,7 @@ import RequestArtist from '../components/RequestArtist';
 
 const Request = props => (
 	<div>
-		<RequestArtist id={ props.query.id } name={ props.query.name } email={ props.query.email } price={ props.query.price } />
+		<RequestArtist id={ props.query.id } name={ props.query.name } lastName={ props.query.lastName }  email={ props.query.email } price={ props.query.price } />
 	</div>
 )
 

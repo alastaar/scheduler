@@ -10,12 +10,14 @@ import SickButton from './styles/SickButton';
 import PropTypes from 'prop-types';
 import { CURRENT_USER_QUERY } from './User';
 import Router from 'next/router';
+import formatMoney from '../lib/formatMoney';
 
 const UPDATE_USER_MUTATION = gql`
-  mutation updateUserInfo($name: String, $email: String, $instagramHandle: String, $shop: String, $profileImage: String, $image: String, $price: Int, $bio: String, $userId: ID!) {
-    updateUserInfo(name: $name, email: $email, instagramHandle: $instagramHandle, shop: $shop, profileImage: $profileImage, image: $image, price: $price, bio: $bio, userId: $userId) {
+  mutation updateUserInfo($name: String, $lastName: String, $email: String, $instagramHandle: String, $shop: String, $profileImage: String, $image: String, $price: Int, $bio: String, $userId: ID!) {
+    updateUserInfo(name: $name, lastName: $lastName, email: $email, instagramHandle: $instagramHandle, shop: $shop, profileImage: $profileImage, image: $image, price: $price, bio: $bio, userId: $userId) {
       id
       name
+      lastName
       email
       instagramHandle
       shop
@@ -32,10 +34,15 @@ class UserDetailsUpdate extends Component  {
   };
   handleUserChange = e => {
     const { name, type, value } = e.target;
-    const val = type === 'number' ? parseFloat(value) : value;
+    const val = type === 'number' ? (parseFloat(value) * 100) : value;
     this.setState({ [name]: val });
-    this.setState({ name: namehello.value, email: email.value });
+    this.setState({ name: nameVal.value, lastName: lastName.value, email: email.value });
   };
+
+  divideByHundred = value => {
+    const newVal = value/100;
+    return newVal;
+  }
 
   updateUserInfo = async (e, updateUserInfoMutation) => {
     e.preventDefault();
@@ -92,14 +99,26 @@ class UserDetailsUpdate extends Component  {
                     <Error error={error} />
                     <fieldset disabled={loading} aria-busy={loading}>
                       <label htmlFor="name">
-                        Name
+                        First Name
                         <input
                           type="text"
-                          id="namehello"
-                          name="namehello"
+                          id="nameVal"
+                          name="nameVal"
                           placeholder="name"
                           required
                           defaultValue={me.name}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+                      <label htmlFor="lastName">
+                        Last Name
+                        <input
+                          type="text"
+                          id="lastName"
+                          name="lastName"
+                          placeholder="lastName"
+                          required
+                          defaultValue={me.lastName}
                           onChange={this.handleUserChange}
                         />
                       </label>
@@ -117,14 +136,18 @@ class UserDetailsUpdate extends Component  {
                         />
                       </label>
                       <label htmlFor="price">
-                        Price for appointment
+                        Price for appointment $$
                         <input
                           type="number"
+                          min="0"
+                          step="1"
+                          data-number-to-fixed="2"
+                          data-number-stepfactor="100"
                           id="price"
                           name="price"
                           placeholder="price"
                           required
-                          defaultValue={ me.price }
+                          defaultValue={ this.divideByHundred(me.price) }
                           onChange={this.handleUserChange}
                         />
                       </label>
@@ -176,9 +199,8 @@ class UserDetailsUpdate extends Component  {
                           onChange={ this.uploadFile }
                         />
                         { this.state.image && <img src={ this.state.image } alt="upload preview" /> }
+                        <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
                       </label>
-
-                      <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
                     </fieldset>
                   </Form>
                 )}

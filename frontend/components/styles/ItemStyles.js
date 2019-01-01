@@ -12,13 +12,17 @@ const Item = styled.div`
     height: 400px;
     object-fit: cover;
   }
+  h2{
+    margin: 0;
+  }
   p {
+    margin: 0;
     font-size: 12px;
     line-height: 2;
     font-weight: 300;
     flex-grow: 1;
     padding: 0 3rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .buttonList {
     display: grid;
@@ -30,8 +34,9 @@ const Item = styled.div`
     & > * {
       background: white;
       border: 0;
-      font-size: 1rem;
+      font-size: 1.5rem;
       padding: 1rem;
+      font-weight: 700;
     }
   }
 `;

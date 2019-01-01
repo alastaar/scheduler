@@ -7,11 +7,12 @@ import { CURRENT_USER_QUERY } from './User';
 import Router from 'next/router';
 
 const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION($email: String!, $name: String!, $password: String!, $artist: String, $permissions: [Permission]) {
-    signup(email: $email, name: $name, password: $password, artist: $artist, permissions: $permissions) {
+  mutation SIGNUP_MUTATION($email: String!, $name: String!, $lastName: String!, $password: String!, $artist: String, $permissions: [Permission]) {
+    signup(email: $email, name: $name, lastName: $lastName password: $password, artist: $artist, permissions: $permissions) {
       id
       email
       name
+      lastName
       artist
       permissions
     }
@@ -21,6 +22,7 @@ const SIGNUP_MUTATION = gql`
 class Signup extends Component {
   state = {
     name: '',
+    lastName: '',
     email: '',
     password: '',
     artist: '',
@@ -42,7 +44,7 @@ class Signup extends Component {
             onSubmit={async e => {
               e.preventDefault();
               await signup();
-              this.setState({ name: '', email: '', password: '', artist: '' });
+              this.setState({ name: '', lastName: '', email: '', password: '', artist: '' });
               Router.push({
                 pathname: '/',
               });
@@ -62,12 +64,22 @@ class Signup extends Component {
                 />
               </label>
               <label htmlFor="name">
-                Name
+                First Name
                 <input
                   type="text"
                   name="name"
                   placeholder="name"
                   value={this.state.name}
+                  onChange={this.saveToState}
+                />
+              </label>
+              <label htmlFor="lastName">
+                Last Name
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="lastName"
+                  value={this.state.lastName}
                   onChange={this.saveToState}
                 />
               </label>

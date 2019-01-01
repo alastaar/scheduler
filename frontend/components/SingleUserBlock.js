@@ -4,23 +4,40 @@ import { Query } from 'react-apollo';
 import Error from './ErrorMessage';
 import styled from 'styled-components';
 import Head from 'next/head';
+import Link from 'next/link';
+import formatMoney from '../lib/formatMoney';
+
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
   margin: 2rem auto;
-  box-shadow: ${ props => props.theme.bs };
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  min-height: 800px;
+  min-height: auto;
+  padding-bottom: 50px;
   img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    display: block;
+    border-radius: 150px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
   }
   .details{
-    margin: 3rem;
     font-size: 2rem;
+  }
+`;
+
+const Something = styled.div`
+  a {
+    background-color: ${ props => props.theme.red };
+    padding: 15px 20px;
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    margin-left: 30%;
   }
 `;
 
@@ -29,9 +46,12 @@ const SINGLE_USER_QUERY = gql`
     user(where: { id: $id }) {
       id
       name
+      lastName
       email
       price
       image
+      shop
+      instagramHandle
     }
   }
 `;
@@ -49,17 +69,30 @@ class SingleUserBlock extends Component{
           if(loading) return <p>loading..</p>;
           if(!data.user) return <p>No User found </p>
           const user = data.user;
-          return <SingleItemStyles>
+          return <>
+          <SingleItemStyles>
             <Head>
-              <title> Scratcher | { user.name } </title>
+              <title> Palazar | { user.name } </title>
             </Head>
             <img src={ user.image } alt= { user.name } />
             <div className="details">
-              <h2>Viewing { user.name }</h2>
-              <p>{ user.email }</p>
-              <p>{ user.price }</p>
+              <h2>Viewing { user.name } { user.lastName }</h2>
+              <p>Handle: { user.instagramHandle }</p>
+              <p>Shop: { user.shop }</p>
+              <p>{ formatMoney(user.price) } per request</p>
             </div>
-          </SingleItemStyles>;
+          </SingleItemStyles>
+          <Something>
+            <Link href={{
+              pathname: '/request',
+              query: { id: user.id, name: user.name, lastName: user.lastName, email: user.email, price: user.price },
+            }}>
+              <a>
+                Request Artist
+              </a>
+            </Link>
+          </Something>
+          </>
         }}
       </Query>
     )

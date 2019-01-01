@@ -7,6 +7,8 @@ import gql from 'graphql-tag';
 import formatMoney from '../lib/formatMoney';
 import OrderItemStyles from './styles/OrderItemStyles';
 import Error from './ErrorMessage';
+import RequestConfirmed from './RequestConfirmed';
+import User from './User';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY{
@@ -16,9 +18,15 @@ const USER_ORDERS_QUERY = gql`
       createdAt
       requests{
         id
+        requestedId
         name
+        lastName
         price
         details
+        email
+        user{
+          id
+        }
       }
     }
   }
@@ -33,42 +41,62 @@ const OrderUl = styled.ul`
 class OrderList extends React.Component {
   render() {
     return(
-      <Query query={USER_ORDERS_QUERY}>
-        {({ data: { orders }, loading, error }) => {
-          if(loading) return <p>...loading</p>
-          if(error) return <Error error={error} />
-          return(
-            <div>
-              <h2>you have made {orders.length} requests</h2>
-              <OrderUl>
-                {orders.map(order => (
-                  <OrderItemStyles key={order.id}>
-                    <Link
-                      href={{
-                        pathname: '/order',
-                        query: { id: order.id },
-                      }}
-                    >
-                      <a>
-                        <div className="order-meta">
-                          <p>{order.requests.length} Requests</p>
-                          <p>{formatDistance(order.createdAt, new Date())}</p>
-                          <p>{formatMoney(order.total)}</p>
+      <User>
+        {({ data: { me } }) => (
+          <Query query={USER_ORDERS_QUERY}>
+            {({ data: { orders }, loading, error }) => {
+              if(loading) return <p>...loading</p>
+              if(error) return <Error error={error} />
+              return(
+                <div>
+                  <h2>you have {orders.length} confirmed requests</h2>
+                  <OrderUl>
+                    {orders.map(order => (
+                      <OrderItemStyles key={order.id}>
+                        <Link
+                          href={{
+                            pathname: '/order',
+                            query: { id: order.id },
+                          }}
+                        >
+                          <a>
+                            <div className="order-meta">
+                              <p>{order.requests.length} Request</p>
+                              <p>{formatDistance(order.createdAt, new Date())} ago</p>
+                              <p>{formatMoney(order.total)}</p>
+                            </div>
+                            <div className="images">
+                              {order.requests.filter(request => request.email).map(request => (
+                                <RequestConfirmed request={request} key={ request.id }/>
+                              ))}
+                            </div>
+                          </a>
+                        </Link>
+                        <div className="buttonList">
+                           <Link href={{
+                             pathname: '/request',
+                           }}>
+                             <a>
+                               Chat
+                             </a>
+                           </Link>
+                           <Link href={{
+                             pathname: '/request',
+                           }}>
+                             <a>
+                               Cancel Request and Notify
+                             </a>
+                           </Link>
                         </div>
-                        <div className="images">
-                          {order.requests.map(request => (
-                            <img key={request.id} src={request.image} alt={request.title} />
-                          ))}
-                        </div>
-                      </a>
-                    </Link>
-                  </OrderItemStyles>
-                ))}
-              </OrderUl>
-            </div>
-          );
-        }}
-      </Query>
+                      </OrderItemStyles>
+                    ))}
+                  </OrderUl>
+                </div>
+              );
+            }}
+          </Query>
+      )}
+    </User>
     )
   }
 }

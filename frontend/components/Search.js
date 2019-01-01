@@ -11,6 +11,7 @@ const SEARCH_ARTISTS_QUERY = gql`
     users(where:{
       OR: [
         { name_contains: $searchTerm },
+        { lastName_contains: $searchTerm },
         { shop_contains: $searchTerm },
         { instagramHandle_contains: $searchTerm }
       ]
@@ -18,6 +19,9 @@ const SEARCH_ARTISTS_QUERY = gql`
       id
       image
       name
+      lastName
+      shop
+      instagramHandle
     }
   }
 `;
@@ -53,7 +57,7 @@ class AutoComplete extends React.Component {
     resetIdCounter();
     return (
       <SearchStyles>
-        <Downshift onChange={routeToUser} itemToString={ item => (item === null ? '' : item.name)}>
+        <Downshift onChange={routeToUser} itemToString={ item => (item === null ? '' : item.name + ' ' + item.lastName)}>
           {({ getInputProps, getItemProps, isOpen, inputValue, highlightedIndex }) => (
 
             <div>
@@ -79,8 +83,8 @@ class AutoComplete extends React.Component {
                     <DropDownItem
                     {...getItemProps({ item })}
                     key={ item.id } highlighted={ index === highlightedIndex }>
-                      <img width="50" src={ item.image } alt={ item.name } />
-                      { item.name }
+                      <img width="50" src={ item.image } alt='' />
+                      { item.name } { item.lastName } | Shop: { item.shop } | Handle: { item.instagramHandle }
                     </DropDownItem>
                   )}
                   {!this.state.users.length && !this.state.loading && (

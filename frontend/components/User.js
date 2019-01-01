@@ -9,6 +9,7 @@ const CURRENT_USER_QUERY = gql`
       id
       email
       name
+      lastName
       instagramHandle
       shop
       price
@@ -17,12 +18,15 @@ const CURRENT_USER_QUERY = gql`
       image
       artist
       permissions
+      stripeToken
+      bankToken
       cart{
         id
         quantity
         request {
           id
           name
+          lastName
           price
           referenceImage
           details

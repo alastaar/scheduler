@@ -41,7 +41,7 @@ const Cart = () => (
 
                <CartStyles open={ localState.data.cartOpen }>
                 <header>
-                  <CloseButton onClick={toggleCart} title="close">&times; </CloseButton>
+                  <CloseButton onClick={toggleCart} title="close">&times;</CloseButton>
                   <Supreme>{me.name}'s Cart</Supreme>
                   <p>You have {me.cart.length} appointment{me.cart.length === 1 ? '' : 's'} in your cart </p>
                 </header>
@@ -49,7 +49,7 @@ const Cart = () => (
                   { me.cart.map(cartRequest => <CartItem key={cartRequest.id} cartRequest={cartRequest}/> )}
                 </ul>
 
-                <p> + $5.00 Convenience Fee </p>
+                <p> + 5% Convenience Fee </p>
                 <footer>
                   <p>{formatMoney(calcTotalPrice(me.cart))}</p>
                   {me.cart.length && (

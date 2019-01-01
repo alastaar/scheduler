@@ -3,10 +3,12 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
-import Pagination from './Pagination';
 import { perPage } from '../config';
 import { ALL_USERS_QUERY } from './Permissions';
 import UserBlock from './UserBlock';
+import Search from './Search';
+
+
 
 const ItemsList = styled.div`
   display: grid;
@@ -20,11 +22,20 @@ const Center = styled.div`
   text-align: center;
 `;
 
+const SearchField = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border: 1px solid ${props => props.theme.lightgrey};
+  margin-bottom: 50px;
+`;
+
 class Items extends Component {
   render() {
     return (
       <Center>
-        <Pagination page={ this.props.page } />
+        <SearchField>
+          <Search />
+        </SearchField>
         <Query query={ ALL_USERS_QUERY } variables={{
           skip: this.props.page * perPage - perPage,
         }}>
@@ -32,11 +43,10 @@ class Items extends Component {
             if ( loading ) return <p> ... loading </p>;
             if ( error ) return <p> ERROR: { error.message }</p>;
             return <ItemsList>
-              { data.users.map(user => <UserBlock user={user} key={ user.id }/>) }
+              { data.users.filter(user => user.artist == 'yes' && user.stripeToken != null).map(user => <UserBlock user={user} key={ user.id }/>) }
             </ItemsList>;
           } }
         </Query>
-        <Pagination page={ this.props.page } />
       </Center>
     )
   }

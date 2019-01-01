@@ -20,11 +20,14 @@ const SINGLE_ORDER_QUERY = gql`
       }
       requests{
         id
+        requestedId
         name
+        lastName
         details
         price
         referenceImage
         quantity
+        approved
       }
     }
   }
@@ -46,7 +49,7 @@ class Order extends React.Component {
           return (
             <OrderStyles>
               <Head>
-                <title>Scratch | Orderr { order.id } </title>
+                <title>Palazar | Order { order.id } </title>
               </Head>
               <p>
                 <span>Order Id:</span>
@@ -58,7 +61,7 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Created At</span>
-                <span>{ format(order.createdAt, 'MMMM d, YYYY h:mm a') }</span>
+                <span>{ format(order.createdAt, 'MMMM d, YYYY h:mm a',{ awareOfUnicodeTokens: true }) }</span>
               </p>
               <p>
                 <span>Order Total</span>
@@ -73,7 +76,7 @@ class Order extends React.Component {
                   <div className="order-item" key={ request.id }>
                     <img src={ request.referenceImage } alt={ request.name } />
                     <div className="item-details">
-                      <h2>{ request.name } </h2>
+                      <h2>{ request.name } { request.lastName } </h2>
                       <p>Qty: {request.quantity}</p>
                       <p>Each: {formatMoney(request.price)}</p>
                       <p>SubTotal: {formatMoney(request.price * request.quantity)}</p>

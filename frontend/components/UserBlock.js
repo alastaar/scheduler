@@ -13,7 +13,9 @@ class UserBlock extends Component {
   static propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string,
+      lastName: PropTypes.string,
       id: PropTypes.string,
+      shop: PropTypes.string,
       email: PropTypes.string,
       price: PropTypes.integer,
       instagramHandle: PropTypes.string,
@@ -30,7 +32,12 @@ class UserBlock extends Component {
           <ItemStyles>
           { user.artist == 'yes' &&
           <>
-            { user.image && <img src={ user.image } alt={ user.name } />}
+          <Link href={{
+            pathname: '/artist',
+            query: { id: user.id },
+         }}>
+              { user.image && <img src={ user.image } alt={ user.name } />}
+            </Link>
             <Title>
               <Link href={{
                 pathname: '/artist',
@@ -41,13 +48,12 @@ class UserBlock extends Component {
                 </a>
               </Link>
              </Title>
-             <p> { user.email } </p>
-             <p> { user.price } </p>
-             <p> { user.instagramHandle } </p>
+             <h2> { formatMoney(user.price) } per booking </h2>
+             <p> Handle: { user.instagramHandle } </p><p> Shop: { user.shop } </p>
              <div className="buttonList">
                 <Link href={{
                   pathname: '/request',
-                  query: { id: user.id, name: user.name, email: user.email, price: user.price },
+                  query: { id: user.id, name: user.name, lastName: user.lastName, email: user.email, price: user.price },
                 }}>
                   <a>
                     Request Artist

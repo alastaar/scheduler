@@ -29,7 +29,7 @@ const CartItem = ({ cartRequest }) => {
   <CartItemStyles>
     <img width="100" src={cartRequest.request.referenceImage} alt={ cartRequest.request.name } />
     <div className="cart-item-details">
-      <h3>{ cartRequest.request.name }</h3>
+      <h3>{ cartRequest.request.name } { cartRequest.request.lastName }</h3>
       <p>
         { formatMoney(cartRequest.request.price * cartRequest.quantity) }
         {' - '}

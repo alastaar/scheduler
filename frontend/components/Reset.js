@@ -12,6 +12,7 @@ const RESET_MUTATION = gql`
       id
       email
       name
+      lastName
     }
   }
 `;

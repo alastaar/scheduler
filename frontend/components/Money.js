@@ -18,6 +18,8 @@ const CREATE_ORDER_MUTATION = gql`
       requests {
         id
         name
+        lastName
+        approved
       }
     }
   }
@@ -38,6 +40,8 @@ class Money extends React.Component {
     }).catch(err => {
       alert(err.message);
     });
+
+    console.log(order);
     Router.push({
       pathname: '/order',
       query: { id: order.data.createOrder.id }

@@ -12,6 +12,7 @@ const SIGNIN_MUTATION = gql`
       id
       email
       name
+      lastName
     }
   }
 `;
@@ -19,6 +20,7 @@ const SIGNIN_MUTATION = gql`
 class Signin extends Component {
   state = {
     name: '',
+    lastName: '',
     password: '',
     email: '',
   };
@@ -38,7 +40,7 @@ class Signin extends Component {
             onSubmit={async e => {
               e.preventDefault();
               await signup();
-              this.setState({ name: '', email: '', password: '' });
+              this.setState({ name: '', lastName: '', email: '', password: '' });
               Router.push({
                 pathname: '/',
               });

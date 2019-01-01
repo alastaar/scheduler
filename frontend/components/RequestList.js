@@ -6,12 +6,16 @@ import RequestsPending from './RequestPending';
 import RequestsApproved from './RequestApproved';
 import Pagination from './Pagination';
 import { perPage } from '../config';
+import User from './User';
+import OrderList from './OrderList';
+
 
 const ALL_REQUESTS_QUERY = gql`
   query ALL_REQUESTS_QUERY($skip: Int = 0, $first: Int = ${ perPage }) {
     requests(first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
       name
+      lastName
       price
       email
       details
@@ -25,6 +29,7 @@ const ALL_REQUESTS_QUERY = gql`
       approved
       user{
         name
+        lastName
         email
       }
     }
@@ -46,38 +51,41 @@ const Center = styled.div`
 class RequestList extends Component {
   render() {
     return (
-      <Center>
-        <>
-          <h2>Pending Requests</h2>
-          <Pagination page={ this.props.page } />
-          <Query query={ ALL_REQUESTS_QUERY } variables={{
-            skip: this.props.page * perPage - perPage,
-          }}>
-            { ({ data, error, loading }) => {
-              if ( loading ) return <p> ... loading </p>;
-              if ( error ) return <p> ERROR: { error.message }</p>;
-              return <RequestsList>
-                { data.requests.map(request => <RequestsPending request={request} key={ request.id }/>) }
-              </RequestsList>;
-            } }
-          </Query>
-          <Pagination page={ this.props.page } />
-          <h2>Approved Requests</h2>
-          <Pagination page={ this.props.page } />
-          <Query query={ ALL_REQUESTS_QUERY } variables={{
-            skip: this.props.page * perPage - perPage,
-          }}>
-            { ({ data, error, loading }) => {
-              if ( loading ) return <p> ... loading </p>;
-              if ( error ) return <p> ERROR: { error.message }</p>;
-              return <RequestsList>
-                { data.requests.map(request => <RequestsApproved request={request} key={ request.id }/>) }
-              </RequestsList>;
-            } }
-          </Query>
-          <Pagination page={ this.props.page } />
-        </>
-      </Center>
+      <User>
+        {({ data: { me } }) => (
+          <Center>
+            <>
+              <h2>Pending Requests</h2>
+              <Query query={ ALL_REQUESTS_QUERY } variables={{
+                skip: this.props.page * perPage - perPage,
+              }}>
+                { ({ data, error, loading }) => {
+                  if ( loading ) return <p> ... loading </p>;
+                  if ( error ) return <p> ERROR: { error.message }</p>;
+                  return <RequestsList>
+                    { data.requests.filter(request => request.email === me.email && request.approved == 'no').map(request => <RequestsPending request={request} key={ request.id }/>) }
+                  </RequestsList>;
+                } }
+              </Query>
+              <h2>Approved Requests</h2>
+              <Query query={ ALL_REQUESTS_QUERY } variables={{
+                skip: this.props.page * perPage - perPage,
+              }}>
+                { ({ data, error, loading }) => {
+                  if ( loading ) return <p> ... loading </p>;
+                  if ( error ) return <p> ERROR: { error.message }</p>;
+                  return <RequestsList>
+                    { data.requests.filter(request => request.email === me.email && request.approved == 'yes').map(request =>
+                      <RequestsApproved request={request} key={ request.id }/> ) }
+                  </RequestsList>
+                } }
+              </Query>
+              <h2>Confirmed Requests</h2>
+              <OrderList/>
+            </>
+          </Center>
+        )}
+      </User>
     )
   }
 }
