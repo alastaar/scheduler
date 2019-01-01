@@ -11,15 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/me": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/bank": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/": [
+    "/bankupdate": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

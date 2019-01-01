@@ -734,6 +734,7 @@ var Meta = function Meta() {
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
     src: "https://js.stripe.com/v3/",
     __source: {
       fileName: _jsxFileName,

@@ -6,7 +6,7 @@ const Meta = () => (
 	    <meta charSet="utf-8" />
 	    <link rel="shortcut icon" href="/static/favicon.png" />
 	    <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-			<script src="https://js.stripe.com/v3/"></script>
+			<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 	    <title>Palazar</title>
   	</Head>
 
