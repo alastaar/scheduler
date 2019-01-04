@@ -8,18 +8,25 @@ type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String ): Item!
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
   deleteItem(id: ID!): Item!
-  signup(email: String!, password: String!, name: String!, artist: String, permissions: [Permission]): User!
+  signup(email: String!, password: String!, name: String!, lastName: String!, artist: String, permissions: [Permission]): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
   requestReset(email: String!): SuccessMessage
   resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
   updatePermissions(permissions: [Permission], userId: ID!): User
-  updateUserInfo(name: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, userId: ID!): User
-  createRequest(name: String, email: String, price: Int, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
-  approveRequests(id: ID!, approved: String): Request!
+  updatePreferences(emailPreference: [EmailPreference], userId: ID!): User
+  updateUserInfo(name: String, lastName: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, userId: ID!): User
+  createRequest(requestedId: String, name: String, lastName: String, email: String, price: Int, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
+  approveRequests(id: ID!, dateOne: String!, timeOne: String!, approved: String): Request!
+  deleteRequest(id: ID!): Request!
   addToCart(id: ID!): CartItem
   removeFromCart(id: ID!): CartItem
   createOrder(token: String!): Order!
+  createStripeAccount(name: String, lastName: String, country: String, type: String, addressCity: String, addressLineOne: String, addressPostalCode: String, addressState: String, dobDay: String, dobMonth: String, dobYear: String, ssnLastFour: String, stripeToken: String!, userId: ID!): User!
+  updateStripeAccount(name: String, lastName: String, country: String, type: String, addressCity: String, addressLineOne: String, addressPostalCode: String, addressState: String, dobDay: String, dobMonth: String, dobYear: String, ssnLastFour: String, stripeToken: String!, userId: ID!): User!
+  createBankInfo(bankToken: String!): User!
+  updateBankInfo(bankToken: String!): User!
+  deleteUser(id: ID!): User!
 }
 
 type Query {
@@ -38,7 +45,9 @@ type Query {
 
 type User {
   id: ID!
+  accId: String
   name: String!
+  lastName: String!
   email: String!
   instagramHandle: String
   shop: String
@@ -47,6 +56,20 @@ type User {
   profileImage: String
   image: String
   artist: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  timeDetails: String
+  stripeToken: String
+  bankToken: String
   permissions: [Permission!]!
+  emailPreference: [EmailPreference]
   cart: [CartItem!]!
 }

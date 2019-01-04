@@ -5,22 +5,49 @@ enum Permission {
   PERMISSIONUPDATE
 }
 
+enum EmailPreference {
+  REQUESTCREATED
+  REQUESTAPPROVED
+  REQUESTCONFIRMED
+  REQUESTREJECTED
+  REQUESTDELETED
+  APPOINTMENTTOMORROW
+  UPDATEDSTRIPEACCOUNT
+  UPDATEDCARD
+}
+
 type User {
   id: ID! @unique
+  accId: String @unique
   name: String!
+  lastName: String!
   email: String! @unique
   password: String!
   instagramHandle: String
   shop: String
-  price: Int
+  price: Int @default(value: "0")
   bio: String
   profileImage: String
   image: String
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: [Permission]
-  cart: [CartItem!]!
+  emailPreference: [EmailPreference]
+  cart: [CartItem!]! @relation(name: "CartByUser" onDelete: CASCADE)
 }
 
 type Item {
@@ -30,12 +57,14 @@ type Item {
   image: String
   largeImage: String
   price: Int!
-  user: User!
+  user: User
 }
 
 type Request {
   id: ID! @unique
+  requestedId: String!
   name: String!
+  lastName: String!
   email: String!
   price: Int!
   details: String
@@ -47,24 +76,27 @@ type Request {
   dateThree: String
   timeThree: String
   approved: String
-  user: User!
+  user: User
 }
 
 type CartItem {
   id: ID! @unique
   quantity: Int! @default(value: 1)
   request: Request
-  user: User!
+  user: User @relation(name: "CartByUser")
 }
 
 type OrderRequest {
   id: ID! @unique
   name: String!
+  lastName: String!
+  requestedId: String!
   email: String!
   price: Int!
   details: String!
   referenceImage: String!
   quantity: Int! @default(value: "1")
+  approved: String
   user: User
 }
 
@@ -72,7 +104,7 @@ type Order {
   id: ID! @unique
   requests: [OrderRequest!]!
   total: Int!
-  user: User!
+  user: User
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!

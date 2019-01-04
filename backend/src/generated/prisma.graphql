@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/alistair-mccormick/sick/dev
-# timestamp: Mon Dec 10 2018 08:49:37 GMT-0800 (Pacific Standard Time)
+# timestamp: Fri Jan 04 2019 08:43:21 GMT-0800 (Pacific Standard Time)
 
 type AggregateCartItem {
   count: Int!
@@ -34,7 +34,7 @@ type CartItem implements Node {
   id: ID!
   quantity: Int!
   request: Request
-  user: User!
+  user: User
 }
 
 """A connection to a list of items."""
@@ -50,7 +50,7 @@ type CartItemConnection {
 input CartItemCreateInput {
   quantity: Int
   request: RequestCreateOneInput
-  user: UserCreateOneWithoutCartInput!
+  user: UserCreateOneWithoutCartInput
 }
 
 input CartItemCreateManyWithoutUserInput {
@@ -203,7 +203,7 @@ input CartItemSubscriptionWhereInput {
 input CartItemUpdateInput {
   quantity: Int
   request: RequestUpdateOneInput
-  user: UserUpdateOneRequiredWithoutCartInput
+  user: UserUpdateOneWithoutCartInput
 }
 
 input CartItemUpdateManyDataInput {
@@ -327,6 +327,17 @@ input CartItemWhereUniqueInput {
 
 scalar DateTime
 
+enum EmailPreference {
+  REQUESTCREATED
+  REQUESTAPPROVED
+  REQUESTCONFIRMED
+  REQUESTREJECTED
+  REQUESTDELETED
+  APPOINTMENTTOMORROW
+  UPDATEDSTRIPEACCOUNT
+  UPDATEDCARD
+}
+
 type Item implements Node {
   id: ID!
   title: String!
@@ -334,7 +345,7 @@ type Item implements Node {
   image: String
   largeImage: String
   price: Int!
-  user: User!
+  user: User
 }
 
 """A connection to a list of items."""
@@ -353,7 +364,7 @@ input ItemCreateInput {
   image: String
   largeImage: String
   price: Int!
-  user: UserCreateOneInput!
+  user: UserCreateOneInput
 }
 
 """An edge in a connection."""
@@ -438,7 +449,7 @@ input ItemUpdateInput {
   image: String
   largeImage: String
   price: Int
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneInput
 }
 
 input ItemUpdateManyMutationInput {
@@ -748,7 +759,7 @@ type Order implements Node {
   id: ID!
   requests(where: OrderRequestWhereInput, orderBy: OrderRequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderRequest!]
   total: Int!
-  user: User!
+  user: User
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -768,7 +779,7 @@ input OrderCreateInput {
   total: Int!
   charge: String!
   requests: OrderRequestCreateManyInput
-  user: UserCreateOneInput!
+  user: UserCreateOneInput
 }
 
 """An edge in a connection."""
@@ -804,11 +815,14 @@ type OrderPreviousValues {
 type OrderRequest implements Node {
   id: ID!
   name: String!
+  lastName: String!
+  requestedId: String!
   email: String!
   price: Int!
   details: String!
   referenceImage: String!
   quantity: Int!
+  approved: String
   user: User
 }
 
@@ -824,11 +838,14 @@ type OrderRequestConnection {
 
 input OrderRequestCreateInput {
   name: String!
+  lastName: String!
+  requestedId: String!
   email: String!
   price: Int!
   details: String!
   referenceImage: String!
   quantity: Int
+  approved: String
   user: UserCreateOneInput
 }
 
@@ -851,6 +868,10 @@ enum OrderRequestOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  lastName_ASC
+  lastName_DESC
+  requestedId_ASC
+  requestedId_DESC
   email_ASC
   email_DESC
   price_ASC
@@ -861,6 +882,8 @@ enum OrderRequestOrderByInput {
   referenceImage_DESC
   quantity_ASC
   quantity_DESC
+  approved_ASC
+  approved_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -870,11 +893,14 @@ enum OrderRequestOrderByInput {
 type OrderRequestPreviousValues {
   id: ID!
   name: String!
+  lastName: String!
+  requestedId: String!
   email: String!
   price: Int!
   details: String!
   referenceImage: String!
   quantity: Int!
+  approved: String
 }
 
 input OrderRequestScalarWhereInput {
@@ -966,6 +992,86 @@ input OrderRequestScalarWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
+  requestedId: String
+
+  """All values that are not equal to given value."""
+  requestedId_not: String
+
+  """All values that are contained in given list."""
+  requestedId_in: [String!]
+
+  """All values that are not contained in given list."""
+  requestedId_not_in: [String!]
+
+  """All values less than the given value."""
+  requestedId_lt: String
+
+  """All values less than or equal the given value."""
+  requestedId_lte: String
+
+  """All values greater than the given value."""
+  requestedId_gt: String
+
+  """All values greater than or equal the given value."""
+  requestedId_gte: String
+
+  """All values containing the given string."""
+  requestedId_contains: String
+
+  """All values not containing the given string."""
+  requestedId_not_contains: String
+
+  """All values starting with the given string."""
+  requestedId_starts_with: String
+
+  """All values not starting with the given string."""
+  requestedId_not_starts_with: String
+
+  """All values ending with the given string."""
+  requestedId_ends_with: String
+
+  """All values not ending with the given string."""
+  requestedId_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -1130,6 +1236,46 @@ input OrderRequestScalarWhereInput {
 
   """All values greater than or equal the given value."""
   quantity_gte: Int
+  approved: String
+
+  """All values that are not equal to given value."""
+  approved_not: String
+
+  """All values that are contained in given list."""
+  approved_in: [String!]
+
+  """All values that are not contained in given list."""
+  approved_not_in: [String!]
+
+  """All values less than the given value."""
+  approved_lt: String
+
+  """All values less than or equal the given value."""
+  approved_lte: String
+
+  """All values greater than the given value."""
+  approved_gt: String
+
+  """All values greater than or equal the given value."""
+  approved_gte: String
+
+  """All values containing the given string."""
+  approved_contains: String
+
+  """All values not containing the given string."""
+  approved_not_contains: String
+
+  """All values starting with the given string."""
+  approved_starts_with: String
+
+  """All values not starting with the given string."""
+  approved_not_starts_with: String
+
+  """All values ending with the given string."""
+  approved_ends_with: String
+
+  """All values not ending with the given string."""
+  approved_not_ends_with: String
 }
 
 type OrderRequestSubscriptionPayload {
@@ -1173,31 +1319,40 @@ input OrderRequestSubscriptionWhereInput {
 
 input OrderRequestUpdateDataInput {
   name: String
+  lastName: String
+  requestedId: String
   email: String
   price: Int
   details: String
   referenceImage: String
   quantity: Int
+  approved: String
   user: UserUpdateOneInput
 }
 
 input OrderRequestUpdateInput {
   name: String
+  lastName: String
+  requestedId: String
   email: String
   price: Int
   details: String
   referenceImage: String
   quantity: Int
+  approved: String
   user: UserUpdateOneInput
 }
 
 input OrderRequestUpdateManyDataInput {
   name: String
+  lastName: String
+  requestedId: String
   email: String
   price: Int
   details: String
   referenceImage: String
   quantity: Int
+  approved: String
 }
 
 input OrderRequestUpdateManyInput {
@@ -1213,11 +1368,14 @@ input OrderRequestUpdateManyInput {
 
 input OrderRequestUpdateManyMutationInput {
   name: String
+  lastName: String
+  requestedId: String
   email: String
   price: Int
   details: String
   referenceImage: String
   quantity: Int
+  approved: String
 }
 
 input OrderRequestUpdateManyWithWhereNestedInput {
@@ -1325,6 +1483,86 @@ input OrderRequestWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
+  requestedId: String
+
+  """All values that are not equal to given value."""
+  requestedId_not: String
+
+  """All values that are contained in given list."""
+  requestedId_in: [String!]
+
+  """All values that are not contained in given list."""
+  requestedId_not_in: [String!]
+
+  """All values less than the given value."""
+  requestedId_lt: String
+
+  """All values less than or equal the given value."""
+  requestedId_lte: String
+
+  """All values greater than the given value."""
+  requestedId_gt: String
+
+  """All values greater than or equal the given value."""
+  requestedId_gte: String
+
+  """All values containing the given string."""
+  requestedId_contains: String
+
+  """All values not containing the given string."""
+  requestedId_not_contains: String
+
+  """All values starting with the given string."""
+  requestedId_starts_with: String
+
+  """All values not starting with the given string."""
+  requestedId_not_starts_with: String
+
+  """All values ending with the given string."""
+  requestedId_ends_with: String
+
+  """All values not ending with the given string."""
+  requestedId_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -1489,6 +1727,46 @@ input OrderRequestWhereInput {
 
   """All values greater than or equal the given value."""
   quantity_gte: Int
+  approved: String
+
+  """All values that are not equal to given value."""
+  approved_not: String
+
+  """All values that are contained in given list."""
+  approved_in: [String!]
+
+  """All values that are not contained in given list."""
+  approved_not_in: [String!]
+
+  """All values less than the given value."""
+  approved_lt: String
+
+  """All values less than or equal the given value."""
+  approved_lte: String
+
+  """All values greater than the given value."""
+  approved_gt: String
+
+  """All values greater than or equal the given value."""
+  approved_gte: String
+
+  """All values containing the given string."""
+  approved_contains: String
+
+  """All values not containing the given string."""
+  approved_not_contains: String
+
+  """All values starting with the given string."""
+  approved_starts_with: String
+
+  """All values not starting with the given string."""
+  approved_not_starts_with: String
+
+  """All values ending with the given string."""
+  approved_ends_with: String
+
+  """All values not ending with the given string."""
+  approved_not_ends_with: String
   user: UserWhereInput
 }
 
@@ -1539,7 +1817,7 @@ input OrderUpdateInput {
   total: Int
   charge: String
   requests: OrderRequestUpdateManyInput
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneInput
 }
 
 input OrderUpdateManyMutationInput {
@@ -1763,7 +2041,9 @@ type Query {
 
 type Request implements Node {
   id: ID!
+  requestedId: String!
   name: String!
+  lastName: String!
   email: String!
   price: Int!
   details: String
@@ -1775,7 +2055,7 @@ type Request implements Node {
   dateThree: String
   timeThree: String
   approved: String
-  user: User!
+  user: User
 }
 
 """A connection to a list of items."""
@@ -1789,7 +2069,9 @@ type RequestConnection {
 }
 
 input RequestCreateInput {
+  requestedId: String!
   name: String!
+  lastName: String!
   email: String!
   price: Int!
   details: String
@@ -1801,7 +2083,7 @@ input RequestCreateInput {
   dateThree: String
   timeThree: String
   approved: String
-  user: UserCreateOneInput!
+  user: UserCreateOneInput
 }
 
 input RequestCreateOneInput {
@@ -1821,8 +2103,12 @@ type RequestEdge {
 enum RequestOrderByInput {
   id_ASC
   id_DESC
+  requestedId_ASC
+  requestedId_DESC
   name_ASC
   name_DESC
+  lastName_ASC
+  lastName_DESC
   email_ASC
   email_DESC
   price_ASC
@@ -1853,7 +2139,9 @@ enum RequestOrderByInput {
 
 type RequestPreviousValues {
   id: ID!
+  requestedId: String!
   name: String!
+  lastName: String!
   email: String!
   price: Int!
   details: String
@@ -1907,7 +2195,9 @@ input RequestSubscriptionWhereInput {
 }
 
 input RequestUpdateDataInput {
+  requestedId: String
   name: String
+  lastName: String
   email: String
   price: Int
   details: String
@@ -1919,11 +2209,13 @@ input RequestUpdateDataInput {
   dateThree: String
   timeThree: String
   approved: String
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneInput
 }
 
 input RequestUpdateInput {
+  requestedId: String
   name: String
+  lastName: String
   email: String
   price: Int
   details: String
@@ -1935,11 +2227,13 @@ input RequestUpdateInput {
   dateThree: String
   timeThree: String
   approved: String
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneInput
 }
 
 input RequestUpdateManyMutationInput {
+  requestedId: String
   name: String
+  lastName: String
   email: String
   price: Int
   details: String
@@ -2016,6 +2310,46 @@ input RequestWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  requestedId: String
+
+  """All values that are not equal to given value."""
+  requestedId_not: String
+
+  """All values that are contained in given list."""
+  requestedId_in: [String!]
+
+  """All values that are not contained in given list."""
+  requestedId_not_in: [String!]
+
+  """All values less than the given value."""
+  requestedId_lt: String
+
+  """All values less than or equal the given value."""
+  requestedId_lte: String
+
+  """All values greater than the given value."""
+  requestedId_gt: String
+
+  """All values greater than or equal the given value."""
+  requestedId_gte: String
+
+  """All values containing the given string."""
+  requestedId_contains: String
+
+  """All values not containing the given string."""
+  requestedId_not_contains: String
+
+  """All values starting with the given string."""
+  requestedId_starts_with: String
+
+  """All values not starting with the given string."""
+  requestedId_not_starts_with: String
+
+  """All values ending with the given string."""
+  requestedId_ends_with: String
+
+  """All values not ending with the given string."""
+  requestedId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -2056,6 +2390,46 @@ input RequestWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -2496,7 +2870,9 @@ type Subscription {
 
 type User implements Node {
   id: ID!
+  accId: String
   name: String!
+  lastName: String!
   email: String!
   password: String!
   instagramHandle: String
@@ -2508,7 +2884,21 @@ type User implements Node {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: [Permission!]!
+  emailPreference: [EmailPreference!]!
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
 }
 
@@ -2522,8 +2912,14 @@ type UserConnection {
   aggregate: AggregateUser!
 }
 
+input UserCreateemailPreferenceInput {
+  set: [EmailPreference!]
+}
+
 input UserCreateInput {
+  accId: String
   name: String!
+  lastName: String!
   email: String!
   password: String!
   instagramHandle: String
@@ -2535,7 +2931,21 @@ input UserCreateInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserCreatepermissionsInput
+  emailPreference: UserCreateemailPreferenceInput
   cart: CartItemCreateManyWithoutUserInput
 }
 
@@ -2554,7 +2964,9 @@ input UserCreatepermissionsInput {
 }
 
 input UserCreateWithoutCartInput {
+  accId: String
   name: String!
+  lastName: String!
   email: String!
   password: String!
   instagramHandle: String
@@ -2566,7 +2978,21 @@ input UserCreateWithoutCartInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserCreatepermissionsInput
+  emailPreference: UserCreateemailPreferenceInput
 }
 
 """An edge in a connection."""
@@ -2581,8 +3007,12 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  accId_ASC
+  accId_DESC
   name_ASC
   name_DESC
+  lastName_ASC
+  lastName_DESC
   email_ASC
   email_DESC
   password_ASC
@@ -2605,6 +3035,32 @@ enum UserOrderByInput {
   resetTokenExpiry_DESC
   artist_ASC
   artist_DESC
+  timeDetails_ASC
+  timeDetails_DESC
+  country_ASC
+  country_DESC
+  type_ASC
+  type_DESC
+  addressCity_ASC
+  addressCity_DESC
+  addressLineOne_ASC
+  addressLineOne_DESC
+  addressPostalCode_ASC
+  addressPostalCode_DESC
+  addressState_ASC
+  addressState_DESC
+  dobDay_ASC
+  dobDay_DESC
+  dobMonth_ASC
+  dobMonth_DESC
+  dobYear_ASC
+  dobYear_DESC
+  ssnLastFour_ASC
+  ssnLastFour_DESC
+  stripeToken_ASC
+  stripeToken_DESC
+  bankToken_ASC
+  bankToken_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -2613,7 +3069,9 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  accId: String
   name: String!
+  lastName: String!
   email: String!
   password: String!
   instagramHandle: String
@@ -2625,7 +3083,21 @@ type UserPreviousValues {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: [Permission!]!
+  emailPreference: [EmailPreference!]!
 }
 
 type UserSubscriptionPayload {
@@ -2668,7 +3140,9 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  accId: String
   name: String
+  lastName: String
   email: String
   password: String
   instagramHandle: String
@@ -2680,12 +3154,32 @@ input UserUpdateDataInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserUpdatepermissionsInput
+  emailPreference: UserUpdateemailPreferenceInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
+input UserUpdateemailPreferenceInput {
+  set: [EmailPreference!]
+}
+
 input UserUpdateInput {
+  accId: String
   name: String
+  lastName: String
   email: String
   password: String
   instagramHandle: String
@@ -2697,12 +3191,28 @@ input UserUpdateInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserUpdatepermissionsInput
+  emailPreference: UserUpdateemailPreferenceInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
+  accId: String
   name: String
+  lastName: String
   email: String
   password: String
   instagramHandle: String
@@ -2714,7 +3224,21 @@ input UserUpdateManyMutationInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserUpdatepermissionsInput
+  emailPreference: UserUpdateemailPreferenceInput
 }
 
 input UserUpdateOneInput {
@@ -2726,16 +3250,11 @@ input UserUpdateOneInput {
   upsert: UserUpsertNestedInput
 }
 
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
-}
-
-input UserUpdateOneRequiredWithoutCartInput {
+input UserUpdateOneWithoutCartInput {
   create: UserCreateWithoutCartInput
   connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
   update: UserUpdateWithoutCartDataInput
   upsert: UserUpsertWithoutCartInput
 }
@@ -2745,7 +3264,9 @@ input UserUpdatepermissionsInput {
 }
 
 input UserUpdateWithoutCartDataInput {
+  accId: String
   name: String
+  lastName: String
   email: String
   password: String
   instagramHandle: String
@@ -2757,7 +3278,21 @@ input UserUpdateWithoutCartDataInput {
   resetToken: String
   resetTokenExpiry: String
   artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
   permissions: UserUpdatepermissionsInput
+  emailPreference: UserUpdateemailPreferenceInput
 }
 
 input UserUpsertNestedInput {
@@ -2819,6 +3354,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  accId: String
+
+  """All values that are not equal to given value."""
+  accId_not: String
+
+  """All values that are contained in given list."""
+  accId_in: [String!]
+
+  """All values that are not contained in given list."""
+  accId_not_in: [String!]
+
+  """All values less than the given value."""
+  accId_lt: String
+
+  """All values less than or equal the given value."""
+  accId_lte: String
+
+  """All values greater than the given value."""
+  accId_gt: String
+
+  """All values greater than or equal the given value."""
+  accId_gte: String
+
+  """All values containing the given string."""
+  accId_contains: String
+
+  """All values not containing the given string."""
+  accId_not_contains: String
+
+  """All values starting with the given string."""
+  accId_starts_with: String
+
+  """All values not starting with the given string."""
+  accId_not_starts_with: String
+
+  """All values ending with the given string."""
+  accId_ends_with: String
+
+  """All values not ending with the given string."""
+  accId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -2859,6 +3434,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -3281,6 +3896,526 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   artist_not_ends_with: String
+  timeDetails: String
+
+  """All values that are not equal to given value."""
+  timeDetails_not: String
+
+  """All values that are contained in given list."""
+  timeDetails_in: [String!]
+
+  """All values that are not contained in given list."""
+  timeDetails_not_in: [String!]
+
+  """All values less than the given value."""
+  timeDetails_lt: String
+
+  """All values less than or equal the given value."""
+  timeDetails_lte: String
+
+  """All values greater than the given value."""
+  timeDetails_gt: String
+
+  """All values greater than or equal the given value."""
+  timeDetails_gte: String
+
+  """All values containing the given string."""
+  timeDetails_contains: String
+
+  """All values not containing the given string."""
+  timeDetails_not_contains: String
+
+  """All values starting with the given string."""
+  timeDetails_starts_with: String
+
+  """All values not starting with the given string."""
+  timeDetails_not_starts_with: String
+
+  """All values ending with the given string."""
+  timeDetails_ends_with: String
+
+  """All values not ending with the given string."""
+  timeDetails_not_ends_with: String
+  country: String
+
+  """All values that are not equal to given value."""
+  country_not: String
+
+  """All values that are contained in given list."""
+  country_in: [String!]
+
+  """All values that are not contained in given list."""
+  country_not_in: [String!]
+
+  """All values less than the given value."""
+  country_lt: String
+
+  """All values less than or equal the given value."""
+  country_lte: String
+
+  """All values greater than the given value."""
+  country_gt: String
+
+  """All values greater than or equal the given value."""
+  country_gte: String
+
+  """All values containing the given string."""
+  country_contains: String
+
+  """All values not containing the given string."""
+  country_not_contains: String
+
+  """All values starting with the given string."""
+  country_starts_with: String
+
+  """All values not starting with the given string."""
+  country_not_starts_with: String
+
+  """All values ending with the given string."""
+  country_ends_with: String
+
+  """All values not ending with the given string."""
+  country_not_ends_with: String
+  type: String
+
+  """All values that are not equal to given value."""
+  type_not: String
+
+  """All values that are contained in given list."""
+  type_in: [String!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [String!]
+
+  """All values less than the given value."""
+  type_lt: String
+
+  """All values less than or equal the given value."""
+  type_lte: String
+
+  """All values greater than the given value."""
+  type_gt: String
+
+  """All values greater than or equal the given value."""
+  type_gte: String
+
+  """All values containing the given string."""
+  type_contains: String
+
+  """All values not containing the given string."""
+  type_not_contains: String
+
+  """All values starting with the given string."""
+  type_starts_with: String
+
+  """All values not starting with the given string."""
+  type_not_starts_with: String
+
+  """All values ending with the given string."""
+  type_ends_with: String
+
+  """All values not ending with the given string."""
+  type_not_ends_with: String
+  addressCity: String
+
+  """All values that are not equal to given value."""
+  addressCity_not: String
+
+  """All values that are contained in given list."""
+  addressCity_in: [String!]
+
+  """All values that are not contained in given list."""
+  addressCity_not_in: [String!]
+
+  """All values less than the given value."""
+  addressCity_lt: String
+
+  """All values less than or equal the given value."""
+  addressCity_lte: String
+
+  """All values greater than the given value."""
+  addressCity_gt: String
+
+  """All values greater than or equal the given value."""
+  addressCity_gte: String
+
+  """All values containing the given string."""
+  addressCity_contains: String
+
+  """All values not containing the given string."""
+  addressCity_not_contains: String
+
+  """All values starting with the given string."""
+  addressCity_starts_with: String
+
+  """All values not starting with the given string."""
+  addressCity_not_starts_with: String
+
+  """All values ending with the given string."""
+  addressCity_ends_with: String
+
+  """All values not ending with the given string."""
+  addressCity_not_ends_with: String
+  addressLineOne: String
+
+  """All values that are not equal to given value."""
+  addressLineOne_not: String
+
+  """All values that are contained in given list."""
+  addressLineOne_in: [String!]
+
+  """All values that are not contained in given list."""
+  addressLineOne_not_in: [String!]
+
+  """All values less than the given value."""
+  addressLineOne_lt: String
+
+  """All values less than or equal the given value."""
+  addressLineOne_lte: String
+
+  """All values greater than the given value."""
+  addressLineOne_gt: String
+
+  """All values greater than or equal the given value."""
+  addressLineOne_gte: String
+
+  """All values containing the given string."""
+  addressLineOne_contains: String
+
+  """All values not containing the given string."""
+  addressLineOne_not_contains: String
+
+  """All values starting with the given string."""
+  addressLineOne_starts_with: String
+
+  """All values not starting with the given string."""
+  addressLineOne_not_starts_with: String
+
+  """All values ending with the given string."""
+  addressLineOne_ends_with: String
+
+  """All values not ending with the given string."""
+  addressLineOne_not_ends_with: String
+  addressPostalCode: String
+
+  """All values that are not equal to given value."""
+  addressPostalCode_not: String
+
+  """All values that are contained in given list."""
+  addressPostalCode_in: [String!]
+
+  """All values that are not contained in given list."""
+  addressPostalCode_not_in: [String!]
+
+  """All values less than the given value."""
+  addressPostalCode_lt: String
+
+  """All values less than or equal the given value."""
+  addressPostalCode_lte: String
+
+  """All values greater than the given value."""
+  addressPostalCode_gt: String
+
+  """All values greater than or equal the given value."""
+  addressPostalCode_gte: String
+
+  """All values containing the given string."""
+  addressPostalCode_contains: String
+
+  """All values not containing the given string."""
+  addressPostalCode_not_contains: String
+
+  """All values starting with the given string."""
+  addressPostalCode_starts_with: String
+
+  """All values not starting with the given string."""
+  addressPostalCode_not_starts_with: String
+
+  """All values ending with the given string."""
+  addressPostalCode_ends_with: String
+
+  """All values not ending with the given string."""
+  addressPostalCode_not_ends_with: String
+  addressState: String
+
+  """All values that are not equal to given value."""
+  addressState_not: String
+
+  """All values that are contained in given list."""
+  addressState_in: [String!]
+
+  """All values that are not contained in given list."""
+  addressState_not_in: [String!]
+
+  """All values less than the given value."""
+  addressState_lt: String
+
+  """All values less than or equal the given value."""
+  addressState_lte: String
+
+  """All values greater than the given value."""
+  addressState_gt: String
+
+  """All values greater than or equal the given value."""
+  addressState_gte: String
+
+  """All values containing the given string."""
+  addressState_contains: String
+
+  """All values not containing the given string."""
+  addressState_not_contains: String
+
+  """All values starting with the given string."""
+  addressState_starts_with: String
+
+  """All values not starting with the given string."""
+  addressState_not_starts_with: String
+
+  """All values ending with the given string."""
+  addressState_ends_with: String
+
+  """All values not ending with the given string."""
+  addressState_not_ends_with: String
+  dobDay: String
+
+  """All values that are not equal to given value."""
+  dobDay_not: String
+
+  """All values that are contained in given list."""
+  dobDay_in: [String!]
+
+  """All values that are not contained in given list."""
+  dobDay_not_in: [String!]
+
+  """All values less than the given value."""
+  dobDay_lt: String
+
+  """All values less than or equal the given value."""
+  dobDay_lte: String
+
+  """All values greater than the given value."""
+  dobDay_gt: String
+
+  """All values greater than or equal the given value."""
+  dobDay_gte: String
+
+  """All values containing the given string."""
+  dobDay_contains: String
+
+  """All values not containing the given string."""
+  dobDay_not_contains: String
+
+  """All values starting with the given string."""
+  dobDay_starts_with: String
+
+  """All values not starting with the given string."""
+  dobDay_not_starts_with: String
+
+  """All values ending with the given string."""
+  dobDay_ends_with: String
+
+  """All values not ending with the given string."""
+  dobDay_not_ends_with: String
+  dobMonth: String
+
+  """All values that are not equal to given value."""
+  dobMonth_not: String
+
+  """All values that are contained in given list."""
+  dobMonth_in: [String!]
+
+  """All values that are not contained in given list."""
+  dobMonth_not_in: [String!]
+
+  """All values less than the given value."""
+  dobMonth_lt: String
+
+  """All values less than or equal the given value."""
+  dobMonth_lte: String
+
+  """All values greater than the given value."""
+  dobMonth_gt: String
+
+  """All values greater than or equal the given value."""
+  dobMonth_gte: String
+
+  """All values containing the given string."""
+  dobMonth_contains: String
+
+  """All values not containing the given string."""
+  dobMonth_not_contains: String
+
+  """All values starting with the given string."""
+  dobMonth_starts_with: String
+
+  """All values not starting with the given string."""
+  dobMonth_not_starts_with: String
+
+  """All values ending with the given string."""
+  dobMonth_ends_with: String
+
+  """All values not ending with the given string."""
+  dobMonth_not_ends_with: String
+  dobYear: String
+
+  """All values that are not equal to given value."""
+  dobYear_not: String
+
+  """All values that are contained in given list."""
+  dobYear_in: [String!]
+
+  """All values that are not contained in given list."""
+  dobYear_not_in: [String!]
+
+  """All values less than the given value."""
+  dobYear_lt: String
+
+  """All values less than or equal the given value."""
+  dobYear_lte: String
+
+  """All values greater than the given value."""
+  dobYear_gt: String
+
+  """All values greater than or equal the given value."""
+  dobYear_gte: String
+
+  """All values containing the given string."""
+  dobYear_contains: String
+
+  """All values not containing the given string."""
+  dobYear_not_contains: String
+
+  """All values starting with the given string."""
+  dobYear_starts_with: String
+
+  """All values not starting with the given string."""
+  dobYear_not_starts_with: String
+
+  """All values ending with the given string."""
+  dobYear_ends_with: String
+
+  """All values not ending with the given string."""
+  dobYear_not_ends_with: String
+  ssnLastFour: String
+
+  """All values that are not equal to given value."""
+  ssnLastFour_not: String
+
+  """All values that are contained in given list."""
+  ssnLastFour_in: [String!]
+
+  """All values that are not contained in given list."""
+  ssnLastFour_not_in: [String!]
+
+  """All values less than the given value."""
+  ssnLastFour_lt: String
+
+  """All values less than or equal the given value."""
+  ssnLastFour_lte: String
+
+  """All values greater than the given value."""
+  ssnLastFour_gt: String
+
+  """All values greater than or equal the given value."""
+  ssnLastFour_gte: String
+
+  """All values containing the given string."""
+  ssnLastFour_contains: String
+
+  """All values not containing the given string."""
+  ssnLastFour_not_contains: String
+
+  """All values starting with the given string."""
+  ssnLastFour_starts_with: String
+
+  """All values not starting with the given string."""
+  ssnLastFour_not_starts_with: String
+
+  """All values ending with the given string."""
+  ssnLastFour_ends_with: String
+
+  """All values not ending with the given string."""
+  ssnLastFour_not_ends_with: String
+  stripeToken: String
+
+  """All values that are not equal to given value."""
+  stripeToken_not: String
+
+  """All values that are contained in given list."""
+  stripeToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  stripeToken_not_in: [String!]
+
+  """All values less than the given value."""
+  stripeToken_lt: String
+
+  """All values less than or equal the given value."""
+  stripeToken_lte: String
+
+  """All values greater than the given value."""
+  stripeToken_gt: String
+
+  """All values greater than or equal the given value."""
+  stripeToken_gte: String
+
+  """All values containing the given string."""
+  stripeToken_contains: String
+
+  """All values not containing the given string."""
+  stripeToken_not_contains: String
+
+  """All values starting with the given string."""
+  stripeToken_starts_with: String
+
+  """All values not starting with the given string."""
+  stripeToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  stripeToken_ends_with: String
+
+  """All values not ending with the given string."""
+  stripeToken_not_ends_with: String
+  bankToken: String
+
+  """All values that are not equal to given value."""
+  bankToken_not: String
+
+  """All values that are contained in given list."""
+  bankToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  bankToken_not_in: [String!]
+
+  """All values less than the given value."""
+  bankToken_lt: String
+
+  """All values less than or equal the given value."""
+  bankToken_lte: String
+
+  """All values greater than the given value."""
+  bankToken_gt: String
+
+  """All values greater than or equal the given value."""
+  bankToken_gte: String
+
+  """All values containing the given string."""
+  bankToken_contains: String
+
+  """All values not containing the given string."""
+  bankToken_not_contains: String
+
+  """All values starting with the given string."""
+  bankToken_starts_with: String
+
+  """All values not starting with the given string."""
+  bankToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  bankToken_ends_with: String
+
+  """All values not ending with the given string."""
+  bankToken_not_ends_with: String
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput
@@ -3288,5 +4423,6 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  accId: String
   email: String
 }
