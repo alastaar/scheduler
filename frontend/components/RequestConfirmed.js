@@ -22,10 +22,26 @@ class RequestsConfirmed extends Component {
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
             <Title>
 
-              { request.details }
+              { request.name } { request.lastName }
 
              </Title>
+             <p>{ request.email }</p>
+             <p>{ request.details }</p>
              <div className="buttonList">
+               <Link href={{
+                 pathname: '/request',
+               }}>
+                 <a>
+                   Chat
+                 </a>
+               </Link>
+               <Link href={{
+                 pathname: '/request',
+               }}>
+                 <a>
+                   Cancel Request and Notify
+                 </a>
+               </Link>
              </div>
           </>
       </ItemStyles>

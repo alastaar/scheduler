@@ -29,7 +29,9 @@ const StayInline = styled.div`
   button {
     display: block;
     margin: 0 auto;
-    border: none;
+    border: 1px solid black;
+    font-weight: 900;
+
   }
 `;
 
@@ -58,6 +60,27 @@ class ApproveRequest extends Component {
     console.log(this.state);
   };
 
+  convertTime = (time24) => {
+    var tmpArr = time24.split(':'), time12;
+    if(+tmpArr[0] == 12) {
+      time12 = tmpArr[0] + ':' + tmpArr[1] + ' pm';
+    }
+    else {
+      if(+tmpArr[0] == 0) {
+        time12 = '12:' + tmpArr[1] + ' am';
+      }
+      else {
+        if(+tmpArr[0] > 12) {
+          time12 = (+tmpArr[0]-12) + ':' + tmpArr[1] + ' pm';
+        }
+        else {
+          time12 = (+tmpArr[0]) + ':' + tmpArr[1] + ' am';
+        }
+      }
+    }
+    return time12;
+  }
+
   render() {
     return (
         <Mutation
@@ -69,9 +92,9 @@ class ApproveRequest extends Component {
           {(approveRequest, { error }) => (
           <StayInline>
             <label htmlFor="buttonOne">
-              <input type="radio" name="datetime" value="dateOne" id="one" onChange={this.handleChange}/><label htmlFor="one"> { this.props.dateOne } { this.props.timeOne }</label><br></br>
-              <input type="radio" name="datetime" value="dateTwo" id="two" onChange={this.handleChange}/><label htmlFor="two"> { this.props.dateTwo } { this.props.timeTwo }</label><br></br>
-              <input type="radio" name="datetime" value="dateThree" id="three" onChange={this.handleChange}/><label htmlFor="three"> { this.props.dateThree } { this.props.timeThree }</label>
+              <input type="radio" name="datetime" value="dateOne" id="one" onChange={this.handleChange}/><label htmlFor="one"> { this.props.dateOne } { this.convertTime(this.props.timeOne) }</label><br></br>
+              <input type="radio" name="datetime" value="dateTwo" id="two" onChange={this.handleChange}/><label htmlFor="two"> { this.props.dateTwo } { this.convertTime(this.props.timeTwo) }</label><br></br>
+              <input type="radio" name="datetime" value="dateThree" id="three" onChange={this.handleChange}/><label htmlFor="three"> { this.props.dateThree } { this.convertTime(this.props.timeThree) }</label>
             </label>
             <button onClick={async e => {
                   e.preventDefault;

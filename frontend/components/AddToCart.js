@@ -28,8 +28,8 @@ class AddToCart extends React.Component {
         {(addToCart, { error, loading }) => (
           <Mutation mutation={TOGGLE_CART_MUTATION}>
             {(toggleCart) => (
-              <button disabled={loading} onClick={addToCart, toggleCart}>
-                Confirm{loading && 'ing'} Request and pay
+              <button disabled={loading} onClick={addToCart}>
+                Add to Cart
               </button>
             )}
           </Mutation>

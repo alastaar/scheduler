@@ -3,17 +3,51 @@ import User from './User';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 
-const StyledBody = styled.a`
+const StyledBody = styled.div`
 	font-size: 2rem;
-  /* background-color: black; */
+	width: 100%;
   color: black;
   a {
-    font-size: 1rem;
-    background-color: black;
+    font-size: 2.5rem;
+    background-color: #3399ff;
     color: white;
     padding: 10px 20px;
-    margin: 20px;
+		margin-top: 30px;
+		text-align: center;
+		display: inherit;
   }
+`;
+
+const Results = styled.div`
+	font-size: 2rem;
+	margin-top: 25px;
+  color: black;
+	border: 2px solid green;
+	width: 50%;
+	display: inline-grid;
+	p{
+		margin-left: 10%;
+	}
+	a {
+		text-align: center;
+		width: 70%;
+		font-size: 1.5rem;
+		margin: 0 auto;
+		background-color: #3399ff;
+		color: white;
+		padding: 10px 50px;
+		margin-bottom: 20px;
+	}
+`;
+
+const MeData = styled.div`
+	width: 50%;
+	display: inline-block;
+	margin-top: 25px;
+	vertical-align: top;
+	h2{
+		margin: 0;
+	}
 	h2 {
 		color: #3399ff;
 		display: inline-block;
@@ -30,80 +64,61 @@ const UserDetails = () => (
     <User>
       {({ data: { me } }) => (
         <>
-          <h2>Account Details</h2>
           { me && (
             <>
-              <h3>Hello { me.name } { me.lastName }</h3>
-							{ !me.stripeToken && (
-								<p>	&#10060; you are not approved to start taking requests</p>
-							)}
-							{ me.stripeToken && (
-								<p>&#9989; you are approved to start taking requests</p>
-							)}
-							{ !me.bankToken && (
-								<p>	&#10060; you are not approved to start recieving payouts</p>
-							)}
-							{ me.bankToken && (
-								<p>&#9989; you are approved to start receiving payouts</p>
-							)}
-              <h3>Email: { me.email }</h3>
-              <h3>Handle: { me.instagramHandle }</h3>
-              <h3>Shop: { me.shop }</h3>
-              <h3>Price: { formatMoney(me.price) }</h3>
-              <h3>Bio: { me.bio }</h3>
+							<MeData>
+								<h2>Account Details - { me.name } { me.lastName }</h2>
+								<h3>Email: { me.email }</h3>
+								<h3>Handle: { me.instagramHandle }</h3>
+								<h3>Shop: { me.shop }</h3>
+								<h3>Price: { formatMoney(me.price) }</h3>
+								<h3>Bio: { me.bio }</h3>
+							</MeData>
+							<Results>
+								{ !me.stripeToken && (
+									<>
+										<p>	&#10060; you are not approved to start taking requests</p>
+										<Link href={{
+											pathname: '/account',
+											query: { id: me.id },
+										}}>
+												<a className="userLink">
+													Click here to start taking requests.
+												</a>
+										</Link>
+									</>
+								)}
+								{ me.stripeToken && (
+									<>
+										<p>&#9989; you are approved to start taking requests</p>
+									</>
+								)}
+								{ !me.bankToken && (
+									<>
+										<p>	&#10060; you are not approved to start recieving payouts</p>
+										<Link href={{
+											pathname: '/bank',
+											query: { id: me.id },
+										}}>
+												<a className="userLink">
+													Click here to start recieving payouts.
+												</a>
+										</Link>
+									</>
+								)}
+								{ me.bankToken && (
+									<>
+										<p>&#9989; you are approved to start receiving payouts</p>
+									</>
+								)}
+							</Results>
                 <Link href={{
-                  pathname: '/update',
-                  query: { id: me.id },
+                  pathname: '/settings',
                 }}>
-                  <a className="userLink">
-                    Update Account
+                  <a>
+                    Settings
                   </a>
                 </Link>
-                { !me.stripeToken && (
-                  <>
-                    <Link href={{
-                      pathname: '/account',
-                      query: { id: me.id },
-                    }}>
-                        <a className="userLink">
-                          Create Payment Info
-                        </a>
-                    </Link>
-                  </>
-                )}
-								{ !me.bankToken && (
-									<Link href={{
-										pathname: '/bank',
-										query: { id: me.id },
-									}}>
-											<a className="userLink">
-												Create Financial Info
-											</a>
-									</Link>
-								)}
-                { me.stripeToken && (
-                    <>
-                      <Link href={{
-                        pathname: '/accupdate',
-                        query: { id: me.id },
-                      }}>
-                          <a className="userLink">
-                            Update Payment Info
-                          </a>
-                      </Link>
-                    </>
-                )}
-								{ me.bankToken && (
-									<Link href={{
-										pathname: '/bankupdate',
-										query: { id: me.id },
-									}}>
-											<a className="userLink">
-												Update Financial Info
-											</a>
-									</Link>
-								)}
-
             </>
           )}
           { !me && (

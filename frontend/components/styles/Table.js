@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const Table = styled.table`
   border-spacing: 0;
-  width: 100%;
-  border: 1px solid ${props => props.theme.offWhite};
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10%;
   thead {
     font-size: 10px;
   }

@@ -89,18 +89,29 @@ class UpdateBankInfo extends Component {
   state = {
     currency: 'usd',
     token: '',
+    addressLineOne: '',
+    addressLineTwo: '',
+    addressCity: '',
+    addressState: '',
+    addressCountry: '',
+    addressPostalCode: '',
   };
 
   handleUserChange = e => {
     const { name, type, value } = e.target;
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
-    this.setState({ name: nameVal.value, lastName: lastName.value, type: 'individual' });
   };
 
   updateBankInfo = async (e, updateStripeAccountMutation) => {
     e.preventDefault();
     const {token, error} = await this.stripe.createToken(this.card, {
+      address_line1: this.state.addressLineOne,
+      address_line2: this.state.addressLineTwo,
+      address_city: this.state.addressCity,
+      address_state: this.state.addressState,
+      address_zip: this.state.addressPostalCode,
+      address_country: this.state.addressCountry,
       currency: 'usd',
     });
 
@@ -129,7 +140,6 @@ class UpdateBankInfo extends Component {
       <User>
         {({ data: { me } }) => (
           <>
-            <h2>Card Details</h2>
               <Mutation
                 mutation={ BANK_UPDATE_MUTATION }
                 variables={{
@@ -140,14 +150,91 @@ class UpdateBankInfo extends Component {
                   <Form className="accountUpdate" onSubmit={ async e => {
                     console.log(this.state);
                     await this.updateBankInfo(e, updateBankInfo);
+                    Router.push({
+                      pathname: '/me',
+                    });
                   }}>
                     <Error error={error} />
                     <fieldset disabled={loading} aria-busy={loading}>
                       <StripedElement>
                         <div className="form-row">
                             <label htmlFor="card-element">
-                              Debit card
                             </label>
+                            <h2>Billing Info</h2>
+                            <br></br>
+                            <label>
+                              <span>Street Address Line 1</span>
+                              <input
+                                type="text"
+                                id="addressLineOne"
+                                name="addressLineOne"
+                                placeholder="addressLineOne"
+                                required
+                                defaultValue={me.addressLineOne}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <label>
+                              <span>Street Address Line 2</span>
+                              <input
+                                type="text"
+                                id="addressLineTwo"
+                                name="addressLineTwo"
+                                placeholder="addressLineTwo"
+                                required
+                                defaultValue={me.addressLineTwo}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <label>
+                              <span>City</span>
+                              <input
+                                type="text"
+                                id="addressCity"
+                                name="addressCity"
+                                placeholder="addressCity"
+                                required
+                                defaultValue={me.addressCity}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <label>
+                              <span>State</span>
+                              <input
+                                type="text"
+                                id="addressState"
+                                name="addressState"
+                                placeholder="addressState"
+                                required
+                                defaultValue={me.addressState}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <label>
+                              <span>Country</span>
+                              <input
+                                type="text"
+                                id="addressCountry"
+                                name="addressCountry"
+                                placeholder="addressCountry"
+                                required
+                                defaultValue={me.addressCountry}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <label>
+                              <span>Postal Code (Zip)</span>
+                              <input
+                                type="text"
+                                id="addressPostalCode"
+                                name="addressPostalCode"
+                                placeholder="addressPostalCode"
+                                required
+                                defaultValue={me.addressPostalCode}
+                                onChange={this.handleUserChange}
+                              />
+                            </label>
+                            <br></br>
                             <div id="card-element">
                             </div>
 

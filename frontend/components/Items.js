@@ -16,6 +16,9 @@ const ItemsList = styled.div`
   grid-gap: 60px;
   max-width = ${ props => props.theme.maxWidth }
   margin: 0 auto;
+  @media ( max-width: 720px) {
+    display: block;
+  }
 `;
 
 const Center = styled.div`

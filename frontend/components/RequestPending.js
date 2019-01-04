@@ -41,18 +41,30 @@ class RequestsPending extends Component {
       { request.approved == 'no' &&
       <>
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
-          <Title>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.user.name } { request.lastName }
+            </a>
+          </Link>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.user.email }
+            </a>
+          </Link>
             <Link href={{
-              pathname: '/request-item',
+              pathname: '/request',
               query: { id: request.id },
            }}>
               <a>
                 { request.details }
               </a>
             </Link>
-           </Title>
-           <p> { request.details } </p>
-           <p> { request.user.name } </p>
            <div className="buttonList">
               <ApproveRequest id={request.id}
               dateOne={request.dateOne}

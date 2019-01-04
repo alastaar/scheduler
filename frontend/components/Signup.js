@@ -46,7 +46,7 @@ class Signup extends Component {
               await signup();
               this.setState({ name: '', lastName: '', email: '', password: '', artist: '' });
               Router.push({
-                pathname: '/',
+                pathname: '/items',
               });
             }}
           >

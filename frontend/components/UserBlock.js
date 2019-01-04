@@ -32,12 +32,14 @@ class UserBlock extends Component {
           <ItemStyles>
           { user.artist == 'yes' &&
           <>
+          { user.image &&
           <Link href={{
             pathname: '/artist',
             query: { id: user.id },
          }}>
-              { user.image && <img src={ user.image } alt={ user.name } />}
+               <img src={ user.image } alt={ user.name } />
             </Link>
+          }
             <Title>
               <Link href={{
                 pathname: '/artist',

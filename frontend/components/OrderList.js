@@ -72,22 +72,6 @@ class OrderList extends React.Component {
                             </div>
                           </a>
                         </Link>
-                        <div className="buttonList">
-                           <Link href={{
-                             pathname: '/request',
-                           }}>
-                             <a>
-                               Chat
-                             </a>
-                           </Link>
-                           <Link href={{
-                             pathname: '/request',
-                           }}>
-                             <a>
-                               Cancel Request and Notify
-                             </a>
-                           </Link>
-                        </div>
                       </OrderItemStyles>
                     ))}
                   </OrderUl>

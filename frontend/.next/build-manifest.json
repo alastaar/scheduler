@@ -11,11 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/me": [
+    "/ur-request": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/bankupdate": [
+    "/testhome": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

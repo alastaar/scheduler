@@ -6,6 +6,7 @@ import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
 import moment from "moment";
 import styled from 'styled-components';
+import Router from 'next/router';
 import { SINGLE_ITEM_QUERY } from './UpdateItem';
 
 const CREATE_REQUEST_MUTATION = gql`
@@ -86,6 +87,18 @@ class RequestArtist extends Component {
     console.log(this.props);
   };
 
+  createRequest = async (e, createRequestMutation) => {
+    e.preventDefault();
+    console.log(this.state);
+    const res = await createRequestMutation({
+      variables: {
+        ...this.state,
+      },
+    });
+    console.log("going to the backend");
+  };
+
+
   uploadFile = async e => {
     console.log('uploading file ..... ');
     const files = e.target.files;
@@ -104,14 +117,20 @@ class RequestArtist extends Component {
     });
   }
 
+
   render() {
     return(
-            <Mutation mutation={CREATE_REQUEST_MUTATION} variables={this.state}>
+            <Mutation
+              mutation={CREATE_REQUEST_MUTATION}
+              variables={this.state}
+            >
               {(createRequest, { loading, error }) => (
                 <Form onSubmit={ async e => {
                     e.preventDefault;
-                    const res = await createRequest();
-                    console.log(res);
+                    await this.createRequest(e, createRequest);
+                    Router.push({
+                      pathname: '/ur-request',
+                    });
                   }}
                 >
                   <Error error={error} />
@@ -150,59 +169,59 @@ class RequestArtist extends Component {
                     </TimeDate>
                     <p>Second Available</p>
                     <TimeDate>
-                      <label htmlFor="dateOne">
+                      <label htmlFor="dateTwo">
                         Date: &nbsp;
                         <input
                           type="date"
-                          id="dateOne"
-                          name="dateOne"
-                          placeholder="dateOne"
+                          id="dateTwo"
+                          name="dateTwo"
+                          placeholder="dateTwo"
                           style= {{ width: 200 }}
                           required
-                          defaultValue={ this.state.dateOne }
+                          defaultValue={ this.state.dateTwo }
                           onChange={this.handleChange}
                         />
                       </label>
 
-                      <label htmlFor="timeOne">
+                      <label htmlFor="timeTwo">
                         Time: &nbsp;
                         <input
                           type="time"
-                          id="timeOne"
-                          name="timeOne"
-                          placeholder="timeOne"
+                          id="timeTwo"
+                          name="timeTwo"
+                          placeholder="timeTwo"
                           style= {{ width: 200 }}
                           required
-                          defaultValue={ this.state.timeOne }
+                          defaultValue={ this.state.timeTwo }
                           onChange={this.handleChange}
                         />
                       </label>
                     </TimeDate>
                     <p>Third Available</p>
                     <TimeDate>
-                      <label htmlFor="dateOne">
+                      <label htmlFor="dateThree">
                         Date: &nbsp;
                         <input
                           type="date"
-                          id="dateOne"
-                          name="dateOne"
+                          id="dateThree"
+                          name="dateThree"
                           style= {{ width: 200 }}
-                          placeholder="dateOne"
+                          placeholder="dateThree"
                           required
-                          defaultValue={ this.state.dateOne }
+                          defaultValue={ this.state.dateThree }
                           onChange={this.handleChange}
                         />
                       </label>
-                      <label htmlFor="timeOne">
+                      <label htmlFor="timeThree">
                         Time: &nbsp;
                         <input
                           type="time"
-                          id="timeOne"
-                          name="timeOne"
+                          id="timeThree"
+                          name="timeThree"
                           style= {{ width: 200 }}
-                          placeholder="timeOne"
+                          placeholder="timeThree"
                           required
-                          defaultValue={ this.state.timeOne }
+                          defaultValue={ this.state.timeThree }
                           onChange={this.handleChange}
                         />
                       </label>

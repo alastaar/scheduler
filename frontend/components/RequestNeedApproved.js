@@ -7,6 +7,8 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 import AddToCart from './AddToCart';
+import RequestStyles from './styles/RequestStyles';
+import Pay from './Pay';
 
 class RequestNeedApproved extends Component {
   static propTypes = {
@@ -16,11 +18,26 @@ class RequestNeedApproved extends Component {
   render() {
     const { request } = this.props;
     return(
-      <ItemStyles>
+      <RequestStyles>
       { request.approved == 'yes' &&
       <>
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
-          <Title>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.user.name }
+            </a>
+          </Link>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.user.email }
+            </a>
+          </Link>
             <Link href={{
               pathname: '/request',
               query: { id: request.id },
@@ -29,14 +46,13 @@ class RequestNeedApproved extends Component {
                 { request.details }
               </a>
             </Link>
-           </Title>
-           <p> { request.details } </p>
            <div className="buttonList">
               <AddToCart id={request.id} />
+              <Pay id={request.id} />
            </div>
           </>
         }
-      </ItemStyles>
+      </RequestStyles>
     );
   }
 }

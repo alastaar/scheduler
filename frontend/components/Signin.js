@@ -42,7 +42,7 @@ class Signin extends Component {
               await signup();
               this.setState({ name: '', lastName: '', email: '', password: '' });
               Router.push({
-                pathname: '/',
+                pathname: '/items',
               });
             }}
 

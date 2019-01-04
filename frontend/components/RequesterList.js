@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import RequestsPending from './RequestPending';
+import RequesterPending from './RequesterPending';
 import RequestNeedApproved from './RequestNeedApproved';
 import Pagination from './Pagination';
 import { perPage } from '../config';
 import User from './User';
-import OrderList from './OrderList';
+import OrderListUser from './OrderListUser';
 
 
 const ALL_REQUESTS_QUERY = gql`
@@ -63,7 +63,7 @@ class RequestList extends Component {
                   if ( loading ) return <p> ... loading </p>;
                   if ( error ) return <p> ERROR: { error.message }</p>;
                   return <RequestsList>
-                    { data.requests.filter(request => request.user.email === me.email && request.approved == 'no').map(request => <RequestsPending request={request} key={ request.id }/>) }
+                    { data.requests.filter(request => request.user.email === me.email && request.approved == 'no').map(request => <RequesterPending request={request} key={ request.id }/>) }
                   </RequestsList>;
                 } }
               </Query>
@@ -81,7 +81,7 @@ class RequestList extends Component {
                 } }
               </Query>
               <h2>Confirmed Requests</h2>
-              <OrderList/>
+              <OrderListUser/>
             </>
           </Center>
         )}

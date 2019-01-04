@@ -52,6 +52,13 @@ const Logo = styled.h1`
 	@media ( max-width: 2500px) {
 		margin: 0;
 	}
+  @media ( max-width: 720px) {
+    display: inline-block;
+    width: 100%;
+    a {
+      margin: 0 auto;
+    }
+  }
 `;
 
 const LogoSec = styled.div`
@@ -100,6 +107,22 @@ const LogoSec = styled.div`
       &:after {
         width: calc(100% - 60px);
       }
+    }
+  }
+  @media ( max-width: 720px) {
+    margin: 0;
+    font-size: 13px;
+    width: 100%;
+    vertical-align: top;
+    h2{
+      font-size: 13px;
+    }
+    a {
+      font-size: 13px;
+      padding: .5em 2em;
+    }
+    button {
+      font-size: 13px;
     }
   }
 `;

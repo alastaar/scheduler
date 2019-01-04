@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Title from './styles/Title';
-import ItemStyles from './styles/ItemStyles';
+import RequestStyles from './styles/RequestStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
@@ -13,14 +13,50 @@ class RequestsApproved extends Component {
     request: PropTypes.object.isRequired,
   };
 
+  convertTime = (time24) => {
+    var tmpArr = time24.split(':'), time12;
+    if(+tmpArr[0] == 12) {
+      time12 = tmpArr[0] + ':' + tmpArr[1] + ' pm';
+    }
+    else {
+      if(+tmpArr[0] == 0) {
+        time12 = '12:' + tmpArr[1] + ' am';
+      }
+      else {
+        if(+tmpArr[0] > 12) {
+          time12 = (+tmpArr[0]-12) + ':' + tmpArr[1] + ' pm';
+        }
+        else {
+          time12 = (+tmpArr[0]) + ':' + tmpArr[1] + ' am';
+        }
+      }
+    }
+    return time12;
+  }
+
   render() {
     const { request } = this.props;
     return(
-      <ItemStyles>
+      <RequestStyles>
       { request.approved == 'yes' &&
       <>
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
-          <Title>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.name } { request.lastName }
+            </a>
+          </Link>
+          <Link href={{
+            pathname: '/request-item',
+            query: { id: request.id },
+         }}>
+            <a>
+              { request.email }
+            </a>
+          </Link>
             <Link href={{
               pathname: '/request-item',
               query: { id: request.id },
@@ -29,8 +65,6 @@ class RequestsApproved extends Component {
                 { request.details }
               </a>
             </Link>
-           </Title>
-           <p> { request.details } </p>
            <div className="buttonList">
               <Link href={{
                 pathname: '/request',
@@ -48,11 +82,10 @@ class RequestsApproved extends Component {
                   Cancel Request and Notify { request.user.name }
                 </a>
               </Link>
-              <AddToCart id={request.id} />
            </div>
           </>
         }
-      </ItemStyles>
+      </RequestStyles>
     );
   }
 }
