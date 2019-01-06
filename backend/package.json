@@ -24,9 +24,8 @@
     "prisma-binding": "2.1.6",
     "stripe": "^6.12.1"
   },
-  "license": "MIT",
   "repository": {
-    "url": "alistairmccormick.com"
+    "url": "https://www.palazar.com"
   },
   "babel": {
     "presets": [
