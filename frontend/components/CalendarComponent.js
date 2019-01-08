@@ -78,7 +78,7 @@ class CalendarComponent extends Component {
                         <a>
                           <CalendarComponentStyles style={{background: request.approved === "no" ? "red" : request.approved === "yes" ? "black" : "gold"}}>
                             <div request={request} key={ request.id } >
-                            { this.convertTime(request.timeOne) } with { request.name }
+                              { this.convertTime(request.timeOne) } with { request.name }
                             </div>
                           </CalendarComponentStyles>
                         </a>

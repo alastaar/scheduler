@@ -46,7 +46,7 @@ class Signup extends Component {
               await signup();
               this.setState({ name: '', lastName: '', email: '', password: '', artist: '' });
               Router.push({
-                pathname: '/items',
+                pathname: '/me',
               });
             }}
           >
@@ -93,6 +93,7 @@ class Signup extends Component {
                   onChange={this.saveToState}
                 />
               </label>
+              <p>By joining, you agree to Palazar’s <a href="/terms">Terms of Services</a> as well as to receive occasional emails from us.</p>
               <label htmlFor="artist">
                 <button type="submit" name="artist" value="yes" onClick={this.saveToState}>Artist Sign Up!</button>
               </label>

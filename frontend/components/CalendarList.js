@@ -45,7 +45,7 @@ class CalendarList extends Component {
   };
 
   convertDate = (date) => {
-    return moment.utc(date).toDate()
+    return moment(date);
   }
 
   convertTime = (time24) => {
@@ -85,15 +85,15 @@ class CalendarList extends Component {
             <div style={{ height: 500 }}>
               <BigCalendar
                 localizer={localizer}
-                components={{
-                  event: CalendarComponent
-                }}
                 events={data.requests.filter(request => request.email === me.email).map((request, index) => ({
                   title: this.convertTime(request.timeOne) + ' ' + request.user.name + ' ' + request.user.email,
                   start: this.convertDate(request.dateOne),
                   end: request.dateOne,
                   desc: request.user.name,
                 }))}
+                components={{
+                  event: CalendarComponent
+                }}
                 startAccessor="start"
                 endAccessor="end"
               />

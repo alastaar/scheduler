@@ -638,7 +638,40 @@ const Mutations = {
   },
 
   async deleteUser(parent, args, ctx, info) {
+    const requestedId = { id: args.id };
     const where = { id: args.id };
+
+    var i = 0;
+    const date = new Date();
+    console.log(requestedId);
+    // 1. find the item
+    const requests = await ctx.db.query.requests(
+      {
+        requestedId,
+      }, `{ id requestedId name lastName approved dateOne user { id }}`);
+
+    console.log(requests);
+
+    requests.map(request => {
+      if(request.approved == 'yes' || request.approved == 'no' ) {
+        i++;
+      } else if ( request.approved == "confirmed") {
+        if( date <= request.dateOne ) {
+          i++;
+        }
+      }
+
+    });
+
+    console.log(i);
+
+     if(i >= 0) {
+       throw new Error("You still have open requests, that must be finalized first!")
+     }
+
+    //if requests with pending/approved >= 0 return error still open requests
+    //if none but requests confirmed >= 0 check that no dates are in the future else throw new error upcoming request
+
     // 1. find the item
     const user = await ctx.db.query.user({ where }, `{ id }`);
     // 2. Check if they own that item, or have the permissions
