@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { ALL_REQUESTS_QUERY } from './RequestList';
+import { SINGLE_REQUEST_QUERY } from './SingleRequest';
 
 const APPROVE_REQUEST_MUTATION = gql`
   mutation APPROVE_REQUEST_MUTATION(
@@ -39,6 +40,8 @@ const StayInline = styled.div`
 class ApproveRequest extends Component {
   state = {
     approved: 'yes',
+    timeOne: '',
+    dateOne: '',
   };
 
   update = e => {
@@ -48,14 +51,19 @@ class ApproveRequest extends Component {
 
   handleChange = e => {
     const { name, type, value, id } = e.target;
+    console.log(value)
     if(id == 'one'){
-      this.setState({ dateOne: this.props.dateOne, timeOne: this.props.timeOne });
+      const time  = document.querySelector('#timeOne').value;
+      console.log(time);
+      this.setState({ dateOne: value, timeOne: time });
     }
     else if ( id === 'two' ) {
-      this.setState({ dateOne: this.props.dateTwo, timeOne: this.props.timeTwo });
+      const time  = document.querySelector('#timeTwo').value;
+      this.setState({ dateOne: value, timeOne: time });
     }
     else {
-      this.setState({ dateOne: this.props.dateThree, timeOne: this.props.timeThree });
+      const time  = document.querySelector('#timeThree').value;
+      this.setState({ dateOne: value, timeOne: time });
     }
     console.log(this.state);
   };
@@ -90,22 +98,38 @@ class ApproveRequest extends Component {
           refetchQueries={[{ query: ALL_REQUESTS_QUERY }]}
         >
           {(approveRequest, { error }) => (
-          <StayInline>
-            <label htmlFor="buttonOne">
-              <input type="radio" name="datetime" value="dateOne" id="one" onChange={this.handleChange}/><label htmlFor="one"> { this.props.dateOne } { this.convertTime(this.props.timeOne) }</label><br></br>
-              <input type="radio" name="datetime" value="dateTwo" id="two" onChange={this.handleChange}/><label htmlFor="two"> { this.props.dateTwo } { this.convertTime(this.props.timeTwo) }</label><br></br>
-              <input type="radio" name="datetime" value="dateThree" id="three" onChange={this.handleChange}/><label htmlFor="three"> { this.props.dateThree } { this.convertTime(this.props.timeThree) }</label>
-            </label>
-            <button onClick={async e => {
-                  e.preventDefault;
-                  const res = await approveRequest();
-                  console.log(res);
-                }
-              }
+          <>
+            <Query query={ SINGLE_REQUEST_QUERY } variables={{
+              id: this.props.id,
+            }}
             >
-              {this.props.children}
-            </button>
-          </StayInline>
+              {({ error, loading, data }) => {
+                if(error) return <Error errror={ error } />;
+                if(loading) return <p>loading..</p>;
+                if(!data.request) return <p>No request found </p>
+                const request = data.request;
+                return <StayInline>
+                  <label htmlFor="buttonOne">
+                    <label> <input type="radio" name="datetime" value={request.dateOne} id="one" onChange={this.handleChange}/>{ request.dateOne } { this.convertTime(request.timeOne) }</label><br></br>
+                    <input type="hidden" name="datetimeOne" id="timeOne" value={request.timeOne} />
+                    <label><input type="radio" name="datetime" value={request.dateTwo} id="two" onChange={this.handleChange}/> { request.dateTwo } { this.convertTime(request.timeTwo) }</label><br></br>
+                    <input type="hidden" name="datetimeTwo" id="timeTwo" value ={request.timeTwo} />
+                    <label><input type="radio" name="datetime" value={request.dateThree} id="three" onChange={this.handleChange}/> { request.dateThree } { this.convertTime(request.timeThree) }</label>
+                    <input type="hidden" name="datetimeThree" id="timeThree" value={request.timeThree} />
+                  </label>
+                  <button onClick={async e => {
+                        e.preventDefault;
+                        const res = await approveRequest();
+                        console.log(res);
+                      }
+                    }
+                  >
+                    {this.props.children}
+                  </button>
+                </StayInline>
+              }}
+          </Query>
+          </>
           )}
         </Mutation>
     );

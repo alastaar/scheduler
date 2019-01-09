@@ -47,6 +47,10 @@ const SINGLE_REQUEST_QUERY = gql`
       referenceImage
       timeOne
       dateOne
+      timeTwo
+      dateTwo
+      timeThree
+      dateThree
       details
       approved
     }
@@ -145,3 +149,4 @@ class SingleRequest extends Component{
 }
 
 export default SingleRequest;
+export { SINGLE_REQUEST_QUERY };

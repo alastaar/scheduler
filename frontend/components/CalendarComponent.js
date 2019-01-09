@@ -4,9 +4,27 @@ import gql from 'graphql-tag';
 import moment from "moment";
 import { Query } from 'react-apollo';
 import User from './User';
-import { ALL_REQUESTS_CALENDAR_QUERY } from './CalendarList';
 import styled from 'styled-components';
 import Link from 'next/link';
+
+const SINGLE_REQUESTS_CALENDAR_QUERY = gql`
+  query SINGLE_REQUESTS_CALENDAR_QUERY($id: ID!) {
+    request(id: $id) {
+      id
+      name
+      email
+      details
+      dateOne
+      timeOne
+      approved
+      user{
+        name
+        lastName
+        email
+      }
+    }
+  }
+`;
 
 const CalendarComponentStyles = styled.div`
   height: 20px;
@@ -68,16 +86,18 @@ class CalendarComponent extends Component {
         {({ data: { me } }) => (
           <>
           <CalendarStyled>
-            <Query query={ALL_REQUESTS_CALENDAR_QUERY}>
+            <Query query={SINGLE_REQUESTS_CALENDAR_QUERY}>
               { ({ data, error, loading }) => {
                 if ( loading ) return <p> ... loading </p>;
                 if ( error ) return <p> ERROR: { error.message }</p>;
+                const request = data.request;
+                console.log(request);
                 return  <>
-                    { data.requests.filter(request => request.email === me.email).map(request =>
+                  {request.email === me.email && (
                       <Link href={{pathname: '/request-item', query: { id: request.id },}}>
                         <a>
                           <CalendarComponentStyles style={{background: request.approved === "no" ? "red" : request.approved === "yes" ? "black" : "gold"}}>
-                            <div request={request} key={ request.id } >
+                            <div>
                               { this.convertTime(request.timeOne) } with { request.name }
                             </div>
                           </CalendarComponentStyles>
@@ -86,7 +106,7 @@ class CalendarComponent extends Component {
 
                     )}
                   </>
-              } }
+              }}
             </Query>
           </CalendarStyled>
         </>

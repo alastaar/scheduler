@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import gql from 'graphql-tag';
-import events from '../lib/events';
+import dates from '../lib/dates';
 import { perPage } from '../config';
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
@@ -10,6 +10,7 @@ import debounce from 'lodash.debounce';
 import { Query } from 'react-apollo';
 import User from './User';
 import CalendarComponent from './CalendarComponent';
+import Router from 'next/router';
 
 moment.locale("en");
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -17,8 +18,8 @@ const localizer = BigCalendar.momentLocalizer(moment);
 const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
 const ALL_REQUESTS_CALENDAR_QUERY = gql`
-  query ALL_REQUESTS_CALENDAR_QUERY($skip: Int = 0, $first: Int = ${ perPage }) {
-    requests(first: $first, skip: $skip, orderBy: createdAt_DESC) {
+  query ALL_REQUESTS_CALENDAR_QUERY {
+    requests(orderBy: createdAt_DESC) {
       id
       name
       email
@@ -37,6 +38,9 @@ const ALL_REQUESTS_CALENDAR_QUERY = gql`
 
 
 class CalendarList extends Component {
+
+ allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+
   state = {
     view: "day",
     date: new Date(),
@@ -44,8 +48,26 @@ class CalendarList extends Component {
     cal_events: [],
   };
 
-  convertDate = (date) => {
-    return moment(date);
+  convertDate = (date, time) => {
+    var newDate = new Date();
+    var dateParts=date.split('-');
+    var timeParts=time.split(':');
+    var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
+    var newDate = moment.utc(mydate).toDate()
+    console.log(newDate);
+    return newDate;
+  }
+
+  convertDatePlusOne= (date, time) => {
+    var newDate = new Date();
+    var newDatePlusOne = new Date();
+    var dateParts=date.split('-');
+    var timeParts=time.split(':');
+    var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
+    var newDate = moment.utc(mydate).toDate();
+    var newDatePlusOne = moment(newDate).add(1, 'h').toDate();
+    console.log(newDatePlusOne);
+    return newDatePlusOne;
   }
 
   convertTime = (time24) => {
@@ -67,10 +89,53 @@ class CalendarList extends Component {
       }
     }
     return time12;
-  }
+  };
+
+    eventStyleGetter = (event, approved, start, end, isSelected) => {
+      var backgroundColor = '#' + event.hexColor;
+      if(event.approved === "no") {
+        var style = {
+            backgroundColor: 'red',
+            borderRadius: '0px',
+            opacity: 0.8,
+            color: 'white',
+            border: '0px',
+            display: 'block'
+        };
+      } else if ( event.approved == "yes" ) {
+        var style = {
+            backgroundColor: 'black',
+            borderRadius: '0px',
+            opacity: 0.8,
+            color: 'white',
+            border: '0px',
+            display: 'block'
+        };
+      } else {
+        var style = {
+            backgroundColor: 'gold',
+            borderRadius: '0px',
+            opacity: 0.8,
+            color: 'black',
+            border: '0px',
+            display: 'block'
+        };
+      }
+      return {
+          style: style
+      };
+  };
+
+  handleSelectEvent = event => {
+    Router.push({
+      pathname: '/request-item',
+      query: { id: event.id },
+    });
+  };
 
 
   render() {
+    console.log(this.props);
     return (
       <User>
         {({ data: { me } }) => (
@@ -84,18 +149,21 @@ class CalendarList extends Component {
           {({ data, loading, error }) => (
             <div style={{ height: 500 }}>
               <BigCalendar
-                localizer={localizer}
                 events={data.requests.filter(request => request.email === me.email).map((request, index) => ({
                   title: this.convertTime(request.timeOne) + ' ' + request.user.name + ' ' + request.user.email,
-                  start: this.convertDate(request.dateOne),
-                  end: request.dateOne,
-                  desc: request.user.name,
+                  start: this.convertDate(request.dateOne, request.timeOne),
+                  end: this.convertDatePlusOne(request.dateOne, request.timeOne),
+                  approved: request.approved,
+                  id: request.id,
                 }))}
-                components={{
-                  event: CalendarComponent
-                }}
-                startAccessor="start"
-                endAccessor="end"
+                max={dates.add(dates.endOf(new Date(), 'day'), -1, 'hours')}
+                defaultDate={new Date()}
+                step={60}
+                showMultiDayTimes
+                views={['month', 'week', 'day', 'agenda']}
+                onSelectEvent={(event) => this.handleSelectEvent(event)}
+                eventPropGetter={(this.eventStyleGetter)}
+                localizer={localizer}
               />
             </div>
           )}

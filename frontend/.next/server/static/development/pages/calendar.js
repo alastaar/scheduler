@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -113,11 +113,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-apollo */ "react-apollo");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./User */ "./components/User.js");
-/* harmony import */ var _CalendarList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CalendarList */ "./components/CalendarList.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/link */ "next/link");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "next/link");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/CalendarComponent.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -140,6 +139,17 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  query SINGLE_REQUESTS_CALENDAR_QUERY($id: ID!) {\n    request(id: $id) {\n      id\n      name\n      email\n      details\n      dateOne\n      timeOne\n      approved\n      user{\n        name\n        lastName\n        email\n      }\n    }\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -149,11 +159,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var CalendarComponentStyles = styled_components__WEBPACK_IMPORTED_MODULE_7___default.a.div.withConfig({
+var SINGLE_REQUESTS_CALENDAR_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject());
+var CalendarComponentStyles = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
   displayName: "CalendarComponent__CalendarComponentStyles",
   componentId: "sc-13b5io5-0"
 })(["height:20px;padding-left:5px;padding-right:5px;padding-top:2px;padding-bottom:2px;"]);
-var CalendarStyled = styled_components__WEBPACK_IMPORTED_MODULE_7___default.a.div.withConfig({
+var CalendarStyled = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
   displayName: "CalendarComponent__CalendarStyled",
   componentId: "sc-13b5io5-1"
 })(["a{font-size:10px;margin:0;color:white;vertical-align:top;}"]);
@@ -219,7 +230,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_5__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 85
         },
         __self: this
       }, function (_ref) {
@@ -227,14 +238,14 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CalendarStyled, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 88
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["Query"], {
-          query: _CalendarList__WEBPACK_IMPORTED_MODULE_6__["ALL_REQUESTS_CALENDAR_QUERY"],
+          query: SINGLE_REQUESTS_CALENDAR_QUERY,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 71
+            lineNumber: 89
           },
           __self: this
         }, function (_ref2) {
@@ -244,57 +255,53 @@ function (_Component) {
           if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 73
+              lineNumber: 91
             },
             __self: this
           }, " ... loading ");
           if (error) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 74
+              lineNumber: 92
             },
             __self: this
           }, " ERROR: ", error.message);
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, data.requests.filter(function (request) {
-            return request.email === me.email;
-          }).map(function (request) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
-              href: {
-                pathname: '/request-item',
-                query: {
-                  id: request.id
-                }
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 77
-              },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 78
-              },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CalendarComponentStyles, {
-              style: {
-                background: request.approved === "no" ? "red" : request.approved === "yes" ? "black" : "gold"
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 79
-              },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              request: request,
-              key: request.id,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 80
-              },
-              __self: this
-            }, _this2.convertTime(request.timeOne), " with ", request.name))));
-          }));
+          var request = data.request;
+          console.log(request);
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, request.email === me.email && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+            href: {
+              pathname: '/request-item',
+              query: {
+                id: request.id
+              }
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 97
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 98
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CalendarComponentStyles, {
+            style: {
+              background: request.approved === "no" ? "red" : request.approved === "yes" ? "black" : "gold"
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 99
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 100
+            },
+            __self: this
+          }, _this2.convertTime(request.timeOne), " with ", request.name)))));
         })));
       });
     }
@@ -323,7 +330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _lib_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/events */ "./lib/events.js");
+/* harmony import */ var _lib_dates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/dates */ "./lib/dates.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../config */ "./config.js");
 /* harmony import */ var react_big_calendar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-big-calendar */ "react-big-calendar");
 /* harmony import */ var react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_big_calendar__WEBPACK_IMPORTED_MODULE_5__);
@@ -336,6 +343,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./User */ "./components/User.js");
 /* harmony import */ var _CalendarComponent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./CalendarComponent */ "./components/CalendarComponent.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_12__);
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/CalendarList.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -359,7 +368,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  query ALL_REQUESTS_CALENDAR_QUERY($skip: Int = 0, $first: Int = ", ") {\n    requests(first: $first, skip: $skip, orderBy: createdAt_DESC) {\n      id\n      name\n      email\n      details\n      dateOne\n      timeOne\n      approved\n      user{\n        name\n        lastName\n        email\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query ALL_REQUESTS_CALENDAR_QUERY {\n    requests(orderBy: createdAt_DESC) {\n      id\n      name\n      email\n      details\n      dateOne\n      timeOne\n      approved\n      user{\n        name\n        lastName\n        email\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -382,12 +391,13 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 moment__WEBPACK_IMPORTED_MODULE_6___default.a.locale("en");
 var localizer = react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a.momentLocalizer(moment__WEBPACK_IMPORTED_MODULE_6___default.a);
 var allViews = Object.keys(react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a.Views).map(function (k) {
   return react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a.Views[k];
 });
-var ALL_REQUESTS_CALENDAR_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject(), _config__WEBPACK_IMPORTED_MODULE_4__["perPage"]);
+var ALL_REQUESTS_CALENDAR_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject());
 
 var CalendarList =
 /*#__PURE__*/
@@ -407,6 +417,10 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CalendarList)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "allViews", Object.keys(react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a.Views).map(function (k) {
+      return react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a.Views[k];
+    }));
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       view: "day",
       date: new Date(),
@@ -414,8 +428,26 @@ function (_Component) {
       cal_events: []
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "convertDate", function (date) {
-      return moment__WEBPACK_IMPORTED_MODULE_6___default()(date);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "convertDate", function (date, time) {
+      var newDate = new Date();
+      var dateParts = date.split('-');
+      var timeParts = time.split(':');
+      var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
+      var newDate = moment__WEBPACK_IMPORTED_MODULE_6___default.a.utc(mydate).toDate();
+      console.log(newDate);
+      return newDate;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "convertDatePlusOne", function (date, time) {
+      var newDate = new Date();
+      var newDatePlusOne = new Date();
+      var dateParts = date.split('-');
+      var timeParts = time.split(':');
+      var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
+      var newDate = moment__WEBPACK_IMPORTED_MODULE_6___default.a.utc(mydate).toDate();
+      var newDatePlusOne = moment__WEBPACK_IMPORTED_MODULE_6___default()(newDate).add(1, 'h').toDate();
+      console.log(newDatePlusOne);
+      return newDatePlusOne;
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "convertTime", function (time24) {
@@ -439,6 +471,52 @@ function (_Component) {
       return time12;
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "eventStyleGetter", function (event, approved, start, end, isSelected) {
+      var backgroundColor = '#' + event.hexColor;
+
+      if (event.approved === "no") {
+        var style = {
+          backgroundColor: 'red',
+          borderRadius: '0px',
+          opacity: 0.8,
+          color: 'white',
+          border: '0px',
+          display: 'block'
+        };
+      } else if (event.approved == "yes") {
+        var style = {
+          backgroundColor: 'black',
+          borderRadius: '0px',
+          opacity: 0.8,
+          color: 'white',
+          border: '0px',
+          display: 'block'
+        };
+      } else {
+        var style = {
+          backgroundColor: 'gold',
+          borderRadius: '0px',
+          opacity: 0.8,
+          color: 'black',
+          border: '0px',
+          display: 'block'
+        };
+      }
+
+      return {
+        style: style
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSelectEvent", function (event) {
+      next_router__WEBPACK_IMPORTED_MODULE_12___default.a.push({
+        pathname: '/request-item',
+        query: {
+          id: event.id
+        }
+      });
+    });
+
     return _this;
   }
 
@@ -447,10 +525,11 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 140
         },
         __self: this
       }, function (_ref) {
@@ -458,60 +537,60 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_CalendarStyles__WEBPACK_IMPORTED_MODULE_7__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 77
+            lineNumber: 142
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "key",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 143
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "red",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 144
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 144
           },
           __self: this
         }, "Pending"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "black",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 145
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 145
           },
           __self: this
         }, "Approved"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "gold",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 146
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 146
           },
           __self: this
         }, "Confirmed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_9__["Query"], {
           query: ALL_REQUESTS_CALENDAR_QUERY,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 148
           },
           __self: this
         }, function (_ref2) {
@@ -524,29 +603,34 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 85
+              lineNumber: 150
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_big_calendar__WEBPACK_IMPORTED_MODULE_5___default.a, {
-            localizer: localizer,
             events: data.requests.filter(function (request) {
               return request.email === me.email;
             }).map(function (request, index) {
               return {
                 title: _this2.convertTime(request.timeOne) + ' ' + request.user.name + ' ' + request.user.email,
-                start: _this2.convertDate(request.dateOne),
-                end: request.dateOne,
-                desc: request.user.name
+                start: _this2.convertDate(request.dateOne, request.timeOne),
+                end: _this2.convertDatePlusOne(request.dateOne, request.timeOne),
+                approved: request.approved,
+                id: request.id
               };
             }),
-            components: {
-              event: _CalendarComponent__WEBPACK_IMPORTED_MODULE_11__["default"]
+            max: _lib_dates__WEBPACK_IMPORTED_MODULE_3__["default"].add(_lib_dates__WEBPACK_IMPORTED_MODULE_3__["default"].endOf(new Date(), 'day'), -1, 'hours'),
+            defaultDate: new Date(),
+            step: 60,
+            showMultiDayTimes: true,
+            views: ['month', 'week', 'day', 'agenda'],
+            onSelectEvent: function onSelectEvent(event) {
+              return _this2.handleSelectEvent(event);
             },
-            startAccessor: "start",
-            endAccessor: "end",
+            eventPropGetter: _this2.eventStyleGetter,
+            localizer: localizer,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 86
+              lineNumber: 151
             },
             __self: this
           }));
@@ -664,85 +748,142 @@ var perPage = 10;
 
 /***/ }),
 
-/***/ "./lib/events.js":
-/*!***********************!*\
-  !*** ./lib/events.js ***!
-  \***********************/
+/***/ "./lib/dates.js":
+/*!**********************!*\
+  !*** ./lib/dates.js ***!
+  \**********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ([{
-  'title': 'All Day Event very long title',
-  'allDay': true,
-  'start': new Date(2019, 0, 1),
-  'end': new Date(2019, 0, 2)
-}, {
-  'title': 'Long Event',
-  'start': new Date(2018, 11, 25),
-  'end': new Date(2018, 11, 28)
-}, {
-  'title': 'DTS STARTS',
-  'start': new Date(2016, 2, 13, 0, 0, 0),
-  'end': new Date(2016, 2, 20, 0, 0, 0)
-}, {
-  'title': 'DTS ENDS',
-  'start': new Date(2016, 10, 6, 0, 0, 0),
-  'end': new Date(2016, 10, 13, 0, 0, 0)
-}, {
-  'title': 'Some Event',
-  'start': new Date(2015, 3, 9, 0, 0, 0),
-  'end': new Date(2015, 3, 9, 0, 0, 0)
-}, {
-  'title': 'Conference',
-  'start': new Date(2015, 3, 11),
-  'end': new Date(2015, 3, 13),
-  desc: 'Big conference for important people'
-}, {
-  'title': 'Meeting',
-  'start': new Date(2015, 3, 12, 10, 30, 0, 0),
-  'end': new Date(2015, 3, 12, 12, 30, 0, 0),
-  desc: 'Pre-meeting meeting, to prepare for the meeting'
-}, {
-  'title': 'Lunch',
-  'start': new Date(2015, 3, 12, 12, 0, 0, 0),
-  'end': new Date(2015, 3, 12, 13, 0, 0, 0),
-  desc: 'Power lunch'
-}, {
-  'title': 'Meeting',
-  'start': new Date(2015, 3, 12, 14, 0, 0, 0),
-  'end': new Date(2015, 3, 12, 15, 0, 0, 0)
-}, {
-  'title': 'Happy Hour',
-  'start': new Date(2015, 3, 12, 17, 0, 0, 0),
-  'end': new Date(2015, 3, 12, 17, 30, 0, 0),
-  desc: 'Most important meal of the day'
-}, {
-  'title': 'Dinner',
-  'start': new Date(2015, 3, 12, 20, 0, 0, 0),
-  'end': new Date(2015, 3, 12, 21, 0, 0, 0)
-}, {
-  'title': 'Birthday Party',
-  'start': new Date(2015, 3, 13, 7, 0, 0),
-  'end': new Date(2015, 3, 13, 10, 30, 0)
-}, {
-  'title': 'Birthday Party 2',
-  'start': new Date(2015, 3, 13, 7, 0, 0),
-  'end': new Date(2015, 3, 13, 10, 30, 0)
-}, {
-  'title': 'Birthday Party 3',
-  'start': new Date(2015, 3, 13, 7, 0, 0),
-  'end': new Date(2015, 3, 13, 10, 30, 0)
-}, {
-  'title': 'Late Night Event',
-  'start': new Date(2015, 3, 17, 19, 30, 0),
-  'end': new Date(2015, 3, 18, 2, 0, 0)
-}, {
-  'title': 'Multi-day Event',
-  'start': new Date(2015, 3, 20, 19, 30, 0),
-  'end': new Date(2015, 3, 22, 2, 0, 0)
-}]);
+/* harmony import */ var date_arithmetic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-arithmetic */ "date-arithmetic");
+/* harmony import */ var date_arithmetic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_arithmetic__WEBPACK_IMPORTED_MODULE_0__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* eslint no-fallthrough: off */
+
+var MILLI = {
+  seconds: 1000,
+  minutes: 1000 * 60,
+  hours: 1000 * 60 * 60,
+  day: 1000 * 60 * 60 * 24
+};
+var MONTHS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+var dates = _objectSpread({}, date_arithmetic__WEBPACK_IMPORTED_MODULE_0___default.a, {
+  monthsInYear: function monthsInYear(year) {
+    var date = new Date(year, 0, 1);
+    return MONTHS.map(function (i) {
+      return dates.month(date, i);
+    });
+  },
+  firstVisibleDay: function firstVisibleDay(date, localizer) {
+    var firstOfMonth = dates.startOf(date, 'month');
+    return dates.startOf(firstOfMonth, 'week', localizer.startOfWeek());
+  },
+  lastVisibleDay: function lastVisibleDay(date, localizer) {
+    var endOfMonth = dates.endOf(date, 'month');
+    return dates.endOf(endOfMonth, 'week', localizer.startOfWeek());
+  },
+  visibleDays: function visibleDays(date, localizer) {
+    var current = dates.firstVisibleDay(date, localizer),
+        last = dates.lastVisibleDay(date, localizer),
+        days = [];
+
+    while (dates.lte(current, last, 'day')) {
+      days.push(current);
+      current = dates.add(current, 1, 'day');
+    }
+
+    return days;
+  },
+  ceil: function ceil(date, unit) {
+    var floor = dates.startOf(date, unit);
+    return dates.eq(floor, date) ? floor : dates.add(floor, 1, unit);
+  },
+  range: function range(start, end) {
+    var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'day';
+    var current = start,
+        days = [];
+
+    while (dates.lte(current, end, unit)) {
+      days.push(current);
+      current = dates.add(current, 1, unit);
+    }
+
+    return days;
+  },
+  merge: function merge(date, time) {
+    if (time == null && date == null) return null;
+    if (time == null) time = new Date();
+    if (date == null) date = new Date();
+    date = dates.startOf(date, 'day');
+    date = dates.hours(date, dates.hours(time));
+    date = dates.minutes(date, dates.minutes(time));
+    date = dates.seconds(date, dates.seconds(time));
+    return dates.milliseconds(date, dates.milliseconds(time));
+  },
+  eqTime: function eqTime(dateA, dateB) {
+    return dates.hours(dateA) === dates.hours(dateB) && dates.minutes(dateA) === dates.minutes(dateB) && dates.seconds(dateA) === dates.seconds(dateB);
+  },
+  isJustDate: function isJustDate(date) {
+    return dates.hours(date) === 0 && dates.minutes(date) === 0 && dates.seconds(date) === 0 && dates.milliseconds(date) === 0;
+  },
+  duration: function duration(start, end, unit, firstOfWeek) {
+    if (unit === 'day') unit = 'date';
+    return Math.abs(dates[unit](start, undefined, firstOfWeek) - dates[unit](end, undefined, firstOfWeek));
+  },
+  diff: function diff(dateA, dateB, unit) {
+    if (!unit || unit === 'milliseconds') return Math.abs(+dateA - +dateB); // the .round() handles an edge case
+    // with DST where the total won't be exact
+    // since one day in the range may be shorter/longer by an hour
+
+    return Math.round(Math.abs(+dates.startOf(dateA, unit) / MILLI[unit] - +dates.startOf(dateB, unit) / MILLI[unit]));
+  },
+  total: function total(date, unit) {
+    var ms = date.getTime(),
+        div = 1;
+
+    switch (unit) {
+      case 'week':
+        div *= 7;
+
+      case 'day':
+        div *= 24;
+
+      case 'hours':
+        div *= 60;
+
+      case 'minutes':
+        div *= 60;
+
+      case 'seconds':
+        div *= 1000;
+    }
+
+    return ms / div;
+  },
+  week: function week(date) {
+    var d = new Date(date);
+    d.setHours(0, 0, 0);
+    d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+    return Math.ceil(((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7 + 1) / 7);
+  },
+  today: function today() {
+    return dates.startOf(new Date(), 'day');
+  },
+  yesterday: function yesterday() {
+    return dates.add(dates.startOf(new Date(), 'day'), -1, 'day');
+  },
+  tomorrow: function tomorrow() {
+    return dates.add(dates.startOf(new Date(), 'day'), 1, 'day');
+  }
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (dates);
 
 /***/ }),
 
@@ -785,7 +926,7 @@ var Home = function Home(props) {
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /*!*********************************!*\
   !*** multi ./pages/calendar.js ***!
   \*********************************/
@@ -794,6 +935,17 @@ var Home = function Home(props) {
 
 module.exports = __webpack_require__(/*! ./pages/calendar.js */"./pages/calendar.js");
 
+
+/***/ }),
+
+/***/ "date-arithmetic":
+/*!**********************************!*\
+  !*** external "date-arithmetic" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("date-arithmetic");
 
 /***/ }),
 
@@ -838,6 +990,17 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("next/link");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 
