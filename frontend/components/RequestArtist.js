@@ -77,7 +77,27 @@ class RequestArtist extends Component {
     timeThree: '',
     referenceImage: '',
     approved: '',
+    currentDate: new Date(),
   };
+
+  // blockDates = e => {
+  //
+  //   var array = ["2019-01-16","2013-03-15","2013-03-16"]
+  //   var dateUno = document.querySelector('#dateOne').value;
+  //   console.log(dateUno);
+  //
+  //
+  // }
+
+  convertDate = (date) => {
+    const complex = moment.utc(date).toDate()
+    const almostDate = moment(complex).add(1, 'd').toDate();
+    var newDate = new Date(almostDate),
+        month = ("0" + (newDate.getMonth()+1)).slice(-2),
+        day  = ("0" + newDate.getDate()).slice(-2);
+    return [ newDate.getFullYear(), month, day ].join("-");
+
+  }
 
   handleChange = e => {
     const { name, type, value } = e.target;
@@ -119,6 +139,7 @@ class RequestArtist extends Component {
 
 
   render() {
+    console.log(this.state.currentDate);
     return(
             <Mutation
               mutation={CREATE_REQUEST_MUTATION}
@@ -150,6 +171,7 @@ class RequestArtist extends Component {
                           required
                           defaultValue={ this.state.dateOne }
                           onChange={this.handleChange}
+                          min = { this.convertDate(this.state.currentDate) }
                         />
                       </label>
 

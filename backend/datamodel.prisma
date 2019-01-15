@@ -45,9 +45,13 @@ type User {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: [String]
+  blackOutRanges: [BlackOutDates]
   permissions: [Permission]
   emailPreference: [EmailPreference]
   cart: [CartItem!]! @relation(name: "CartByUser" onDelete: CASCADE)
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Item {
@@ -76,6 +80,7 @@ type Request {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
   user: User
 }
 
@@ -108,4 +113,11 @@ type Order {
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type BlackOutDates {
+  id: ID! @unique
+  begin: String
+  end: String
+  weekday: String
 }

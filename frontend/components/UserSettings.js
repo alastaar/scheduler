@@ -118,6 +118,17 @@ const UserDetails = () => (
 											</a>
 									</Link>
 								</>
+								<>
+									<p>Click her to update dates that you will not be taking requests</p>
+									<Link href={{
+										pathname: '/blackout',
+										query: { id: me.id },
+									}}>
+											<a className="userLink">
+												Update Black Out dates
+											</a>
+									</Link>
+								</>
 								<br></br>
 								<DeleteUser id={me.id}>Delete Account</DeleteUser>
 

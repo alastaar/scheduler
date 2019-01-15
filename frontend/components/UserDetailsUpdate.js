@@ -13,8 +13,8 @@ import Router from 'next/router';
 import formatMoney from '../lib/formatMoney';
 
 const UPDATE_USER_MUTATION = gql`
-  mutation updateUserInfo($name: String, $lastName: String, $email: String, $instagramHandle: String, $shop: String, $profileImage: String, $image: String, $price: Int, $bio: String, $userId: ID!) {
-    updateUserInfo(name: $name, lastName: $lastName, email: $email, instagramHandle: $instagramHandle, shop: $shop, profileImage: $profileImage, image: $image, price: $price, bio: $bio, userId: $userId) {
+  mutation updateUserInfo($name: String, $lastName: String, $email: String, $instagramHandle: String, $shop: String, $profileImage: String, $image: String, $price: Int, $bio: String, $timeDetails: String, $userId: ID!) {
+    updateUserInfo(name: $name, lastName: $lastName, email: $email, instagramHandle: $instagramHandle, shop: $shop, profileImage: $profileImage, image: $image, price: $price, bio: $bio, timeDetails: $timeDetails, userId: $userId) {
       id
       name
       lastName
@@ -25,6 +25,7 @@ const UPDATE_USER_MUTATION = gql`
       image
       price
       bio
+      timeDetails
     }
   }
 `;
@@ -136,7 +137,7 @@ class UserDetailsUpdate extends Component  {
                         />
                       </label>
                       <label htmlFor="price">
-                        Price for appointment $$
+                        Price for booking $$
                         <input
                           type="number"
                           min="0"
@@ -159,6 +160,18 @@ class UserDetailsUpdate extends Component  {
                           placeholder="Enter a bio"
                           required
                           defaultValue={me.bio}
+                          onChange={this.handleUserChange}
+                        />
+                      </label>
+
+                      <label htmlFor="bio">
+                        Your time details, this is an overview. It will help with reducing your rejected requests.
+                        <textarea
+                          id="timeDetails"
+                          name="timeDetails"
+                          placeholder="E.g. I work Tuesday - Saturday from 12pm - 9pm and can take appointments during that time."
+                          required
+                          defaultValue={me.timeDetails}
                           onChange={this.handleUserChange}
                         />
                       </label>

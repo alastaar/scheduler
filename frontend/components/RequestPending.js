@@ -6,6 +6,7 @@ import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import ApproveRequest from './ApproveRequest';
+import RejectRequest from './RejectRequest';
 
 
 class RequestsPending extends Component {
@@ -74,14 +75,9 @@ class RequestsPending extends Component {
               timeTwo={request.timeTwo}
               timeThree={request.timeThree}
               >Approve</ApproveRequest>
-              <Link href={{
-                pathname: '/request',
-                query: { id: request.id, title: request.title, description: request.description, price: request.price },
-              }}>
-                <a>
-                  Reject Request
-                </a>
-              </Link>
+              <RejectRequest
+              id={request.id}
+              >Reject Request</RejectRequest>
            </div>
           </>
         }

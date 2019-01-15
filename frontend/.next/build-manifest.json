@@ -11,11 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/request-item": [
+    "/items": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/calendar": [
+    "/request": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

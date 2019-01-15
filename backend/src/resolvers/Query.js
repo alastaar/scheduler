@@ -21,7 +21,7 @@ const Query = {
 
   async users(parent, args, ctx, info){
     if(!ctx.request.userId) {
-      throw new Error('Bruh log in!');
+
     }
 
     // hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE']);

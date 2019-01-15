@@ -53,6 +53,7 @@ const SINGLE_REQUEST_QUERY = gql`
       dateThree
       details
       approved
+      rejectReason
     }
   }
 `;

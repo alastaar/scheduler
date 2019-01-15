@@ -8,6 +8,7 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 import { ALL_USERS_QUERY } from './Permissions';
+import User from './User';
 
 class UserBlock extends Component {
   static propTypes = {
@@ -52,6 +53,10 @@ class UserBlock extends Component {
              </Title>
              <h2> { formatMoney(user.price) } per booking </h2>
              <p> Handle: { user.instagramHandle } </p><p> Shop: { user.shop } </p>
+             <User>
+               {({ data: { me } }) => (
+                 <>
+                   { me && (
              <div className="buttonList">
                 <Link href={{
                   pathname: '/request',
@@ -62,6 +67,10 @@ class UserBlock extends Component {
                   </a>
                 </Link>
                </div>
+               )}
+               </>
+             )}
+           </User>
              </>
            }
         </ItemStyles>

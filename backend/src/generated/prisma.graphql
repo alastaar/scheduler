@@ -1,5 +1,9 @@
 # source: https://us1.prisma.sh/alistair-mccormick/sick/dev
-# timestamp: Fri Jan 04 2019 08:43:21 GMT-0800 (Pacific Standard Time)
+# timestamp: Mon Jan 14 2019 21:22:49 GMT-0800 (Pacific Standard Time)
+
+type AggregateBlackOutDates {
+  count: Int!
+}
 
 type AggregateCartItem {
   count: Int!
@@ -28,6 +32,502 @@ type AggregateUser {
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
+}
+
+type BlackOutDates implements Node {
+  id: ID!
+  begin: String
+  end: String
+  weekday: String
+}
+
+"""A connection to a list of items."""
+type BlackOutDatesConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BlackOutDatesEdge]!
+  aggregate: AggregateBlackOutDates!
+}
+
+input BlackOutDatesCreateInput {
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesCreateManyInput {
+  create: [BlackOutDatesCreateInput!]
+  connect: [BlackOutDatesWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type BlackOutDatesEdge {
+  """The item at the end of the edge."""
+  node: BlackOutDates!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BlackOutDatesOrderByInput {
+  id_ASC
+  id_DESC
+  begin_ASC
+  begin_DESC
+  end_ASC
+  end_DESC
+  weekday_ASC
+  weekday_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BlackOutDatesPreviousValues {
+  id: ID!
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BlackOutDatesScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BlackOutDatesScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BlackOutDatesScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  begin: String
+
+  """All values that are not equal to given value."""
+  begin_not: String
+
+  """All values that are contained in given list."""
+  begin_in: [String!]
+
+  """All values that are not contained in given list."""
+  begin_not_in: [String!]
+
+  """All values less than the given value."""
+  begin_lt: String
+
+  """All values less than or equal the given value."""
+  begin_lte: String
+
+  """All values greater than the given value."""
+  begin_gt: String
+
+  """All values greater than or equal the given value."""
+  begin_gte: String
+
+  """All values containing the given string."""
+  begin_contains: String
+
+  """All values not containing the given string."""
+  begin_not_contains: String
+
+  """All values starting with the given string."""
+  begin_starts_with: String
+
+  """All values not starting with the given string."""
+  begin_not_starts_with: String
+
+  """All values ending with the given string."""
+  begin_ends_with: String
+
+  """All values not ending with the given string."""
+  begin_not_ends_with: String
+  end: String
+
+  """All values that are not equal to given value."""
+  end_not: String
+
+  """All values that are contained in given list."""
+  end_in: [String!]
+
+  """All values that are not contained in given list."""
+  end_not_in: [String!]
+
+  """All values less than the given value."""
+  end_lt: String
+
+  """All values less than or equal the given value."""
+  end_lte: String
+
+  """All values greater than the given value."""
+  end_gt: String
+
+  """All values greater than or equal the given value."""
+  end_gte: String
+
+  """All values containing the given string."""
+  end_contains: String
+
+  """All values not containing the given string."""
+  end_not_contains: String
+
+  """All values starting with the given string."""
+  end_starts_with: String
+
+  """All values not starting with the given string."""
+  end_not_starts_with: String
+
+  """All values ending with the given string."""
+  end_ends_with: String
+
+  """All values not ending with the given string."""
+  end_not_ends_with: String
+  weekday: String
+
+  """All values that are not equal to given value."""
+  weekday_not: String
+
+  """All values that are contained in given list."""
+  weekday_in: [String!]
+
+  """All values that are not contained in given list."""
+  weekday_not_in: [String!]
+
+  """All values less than the given value."""
+  weekday_lt: String
+
+  """All values less than or equal the given value."""
+  weekday_lte: String
+
+  """All values greater than the given value."""
+  weekday_gt: String
+
+  """All values greater than or equal the given value."""
+  weekday_gte: String
+
+  """All values containing the given string."""
+  weekday_contains: String
+
+  """All values not containing the given string."""
+  weekday_not_contains: String
+
+  """All values starting with the given string."""
+  weekday_starts_with: String
+
+  """All values not starting with the given string."""
+  weekday_not_starts_with: String
+
+  """All values ending with the given string."""
+  weekday_ends_with: String
+
+  """All values not ending with the given string."""
+  weekday_not_ends_with: String
+}
+
+type BlackOutDatesSubscriptionPayload {
+  mutation: MutationType!
+  node: BlackOutDates
+  updatedFields: [String!]
+  previousValues: BlackOutDatesPreviousValues
+}
+
+input BlackOutDatesSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BlackOutDatesSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BlackOutDatesSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BlackOutDatesSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BlackOutDatesWhereInput
+}
+
+input BlackOutDatesUpdateDataInput {
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesUpdateInput {
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesUpdateManyDataInput {
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesUpdateManyInput {
+  create: [BlackOutDatesCreateInput!]
+  connect: [BlackOutDatesWhereUniqueInput!]
+  set: [BlackOutDatesWhereUniqueInput!]
+  disconnect: [BlackOutDatesWhereUniqueInput!]
+  delete: [BlackOutDatesWhereUniqueInput!]
+  update: [BlackOutDatesUpdateWithWhereUniqueNestedInput!]
+  updateMany: [BlackOutDatesUpdateManyWithWhereNestedInput!]
+  deleteMany: [BlackOutDatesScalarWhereInput!]
+  upsert: [BlackOutDatesUpsertWithWhereUniqueNestedInput!]
+}
+
+input BlackOutDatesUpdateManyMutationInput {
+  begin: String
+  end: String
+  weekday: String
+}
+
+input BlackOutDatesUpdateManyWithWhereNestedInput {
+  where: BlackOutDatesScalarWhereInput!
+  data: BlackOutDatesUpdateManyDataInput!
+}
+
+input BlackOutDatesUpdateWithWhereUniqueNestedInput {
+  where: BlackOutDatesWhereUniqueInput!
+  data: BlackOutDatesUpdateDataInput!
+}
+
+input BlackOutDatesUpsertWithWhereUniqueNestedInput {
+  where: BlackOutDatesWhereUniqueInput!
+  update: BlackOutDatesUpdateDataInput!
+  create: BlackOutDatesCreateInput!
+}
+
+input BlackOutDatesWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BlackOutDatesWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BlackOutDatesWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BlackOutDatesWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  begin: String
+
+  """All values that are not equal to given value."""
+  begin_not: String
+
+  """All values that are contained in given list."""
+  begin_in: [String!]
+
+  """All values that are not contained in given list."""
+  begin_not_in: [String!]
+
+  """All values less than the given value."""
+  begin_lt: String
+
+  """All values less than or equal the given value."""
+  begin_lte: String
+
+  """All values greater than the given value."""
+  begin_gt: String
+
+  """All values greater than or equal the given value."""
+  begin_gte: String
+
+  """All values containing the given string."""
+  begin_contains: String
+
+  """All values not containing the given string."""
+  begin_not_contains: String
+
+  """All values starting with the given string."""
+  begin_starts_with: String
+
+  """All values not starting with the given string."""
+  begin_not_starts_with: String
+
+  """All values ending with the given string."""
+  begin_ends_with: String
+
+  """All values not ending with the given string."""
+  begin_not_ends_with: String
+  end: String
+
+  """All values that are not equal to given value."""
+  end_not: String
+
+  """All values that are contained in given list."""
+  end_in: [String!]
+
+  """All values that are not contained in given list."""
+  end_not_in: [String!]
+
+  """All values less than the given value."""
+  end_lt: String
+
+  """All values less than or equal the given value."""
+  end_lte: String
+
+  """All values greater than the given value."""
+  end_gt: String
+
+  """All values greater than or equal the given value."""
+  end_gte: String
+
+  """All values containing the given string."""
+  end_contains: String
+
+  """All values not containing the given string."""
+  end_not_contains: String
+
+  """All values starting with the given string."""
+  end_starts_with: String
+
+  """All values not starting with the given string."""
+  end_not_starts_with: String
+
+  """All values ending with the given string."""
+  end_ends_with: String
+
+  """All values not ending with the given string."""
+  end_not_ends_with: String
+  weekday: String
+
+  """All values that are not equal to given value."""
+  weekday_not: String
+
+  """All values that are contained in given list."""
+  weekday_in: [String!]
+
+  """All values that are not contained in given list."""
+  weekday_not_in: [String!]
+
+  """All values less than the given value."""
+  weekday_lt: String
+
+  """All values less than or equal the given value."""
+  weekday_lte: String
+
+  """All values greater than the given value."""
+  weekday_gt: String
+
+  """All values greater than or equal the given value."""
+  weekday_gte: String
+
+  """All values containing the given string."""
+  weekday_contains: String
+
+  """All values not containing the given string."""
+  weekday_not_contains: String
+
+  """All values starting with the given string."""
+  weekday_starts_with: String
+
+  """All values not starting with the given string."""
+  weekday_not_starts_with: String
+
+  """All values ending with the given string."""
+  weekday_ends_with: String
+
+  """All values not ending with the given string."""
+  weekday_not_ends_with: String
+}
+
+input BlackOutDatesWhereUniqueInput {
+  id: ID
 }
 
 type CartItem implements Node {
@@ -217,6 +717,7 @@ input CartItemUpdateManyMutationInput {
 input CartItemUpdateManyWithoutUserInput {
   create: [CartItemCreateWithoutUserInput!]
   connect: [CartItemWhereUniqueInput!]
+  set: [CartItemWhereUniqueInput!]
   disconnect: [CartItemWhereUniqueInput!]
   delete: [CartItemWhereUniqueInput!]
   update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
@@ -708,36 +1209,42 @@ type Mutation {
   createItem(data: ItemCreateInput!): Item!
   createCartItem(data: CartItemCreateInput!): CartItem!
   createOrder(data: OrderCreateInput!): Order!
+  createBlackOutDates(data: BlackOutDatesCreateInput!): BlackOutDates!
   createRequest(data: RequestCreateInput!): Request!
   createOrderRequest(data: OrderRequestCreateInput!): OrderRequest!
   createUser(data: UserCreateInput!): User!
   updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
   updateCartItem(data: CartItemUpdateInput!, where: CartItemWhereUniqueInput!): CartItem
   updateOrder(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order
+  updateBlackOutDates(data: BlackOutDatesUpdateInput!, where: BlackOutDatesWhereUniqueInput!): BlackOutDates
   updateRequest(data: RequestUpdateInput!, where: RequestWhereUniqueInput!): Request
   updateOrderRequest(data: OrderRequestUpdateInput!, where: OrderRequestWhereUniqueInput!): OrderRequest
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   deleteItem(where: ItemWhereUniqueInput!): Item
   deleteCartItem(where: CartItemWhereUniqueInput!): CartItem
   deleteOrder(where: OrderWhereUniqueInput!): Order
+  deleteBlackOutDates(where: BlackOutDatesWhereUniqueInput!): BlackOutDates
   deleteRequest(where: RequestWhereUniqueInput!): Request
   deleteOrderRequest(where: OrderRequestWhereUniqueInput!): OrderRequest
   deleteUser(where: UserWhereUniqueInput!): User
   upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
   upsertCartItem(where: CartItemWhereUniqueInput!, create: CartItemCreateInput!, update: CartItemUpdateInput!): CartItem!
   upsertOrder(where: OrderWhereUniqueInput!, create: OrderCreateInput!, update: OrderUpdateInput!): Order!
+  upsertBlackOutDates(where: BlackOutDatesWhereUniqueInput!, create: BlackOutDatesCreateInput!, update: BlackOutDatesUpdateInput!): BlackOutDates!
   upsertRequest(where: RequestWhereUniqueInput!, create: RequestCreateInput!, update: RequestUpdateInput!): Request!
   upsertOrderRequest(where: OrderRequestWhereUniqueInput!, create: OrderRequestCreateInput!, update: OrderRequestUpdateInput!): OrderRequest!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
   updateManyCartItems(data: CartItemUpdateManyMutationInput!, where: CartItemWhereInput): BatchPayload!
   updateManyOrders(data: OrderUpdateManyMutationInput!, where: OrderWhereInput): BatchPayload!
+  updateManyBlackOutDateses(data: BlackOutDatesUpdateManyMutationInput!, where: BlackOutDatesWhereInput): BatchPayload!
   updateManyRequests(data: RequestUpdateManyMutationInput!, where: RequestWhereInput): BatchPayload!
   updateManyOrderRequests(data: OrderRequestUpdateManyMutationInput!, where: OrderRequestWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   deleteManyItems(where: ItemWhereInput): BatchPayload!
   deleteManyCartItems(where: CartItemWhereInput): BatchPayload!
   deleteManyOrders(where: OrderWhereInput): BatchPayload!
+  deleteManyBlackOutDateses(where: BlackOutDatesWhereInput): BatchPayload!
   deleteManyRequests(where: RequestWhereInput): BatchPayload!
   deleteManyOrderRequests(where: OrderRequestWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
@@ -1358,6 +1865,7 @@ input OrderRequestUpdateManyDataInput {
 input OrderRequestUpdateManyInput {
   create: [OrderRequestCreateInput!]
   connect: [OrderRequestWhereUniqueInput!]
+  set: [OrderRequestWhereUniqueInput!]
   disconnect: [OrderRequestWhereUniqueInput!]
   delete: [OrderRequestWhereUniqueInput!]
   update: [OrderRequestUpdateWithWhereUniqueNestedInput!]
@@ -2016,18 +2524,21 @@ type Query {
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
   cartItems(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem]!
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order]!
+  blackOutDateses(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BlackOutDates]!
   requests(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Request]!
   orderRequests(where: OrderRequestWhereInput, orderBy: OrderRequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderRequest]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   item(where: ItemWhereUniqueInput!): Item
   cartItem(where: CartItemWhereUniqueInput!): CartItem
   order(where: OrderWhereUniqueInput!): Order
+  blackOutDates(where: BlackOutDatesWhereUniqueInput!): BlackOutDates
   request(where: RequestWhereUniqueInput!): Request
   orderRequest(where: OrderRequestWhereUniqueInput!): OrderRequest
   user(where: UserWhereUniqueInput!): User
   itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
   cartItemsConnection(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CartItemConnection!
   ordersConnection(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderConnection!
+  blackOutDatesesConnection(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BlackOutDatesConnection!
   requestsConnection(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RequestConnection!
   orderRequestsConnection(where: OrderRequestWhereInput, orderBy: OrderRequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderRequestConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -2055,6 +2566,7 @@ type Request implements Node {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
   user: User
 }
 
@@ -2083,6 +2595,7 @@ input RequestCreateInput {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
   user: UserCreateOneInput
 }
 
@@ -2131,6 +2644,8 @@ enum RequestOrderByInput {
   timeThree_DESC
   approved_ASC
   approved_DESC
+  rejectReason_ASC
+  rejectReason_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -2153,6 +2668,7 @@ type RequestPreviousValues {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
 }
 
 type RequestSubscriptionPayload {
@@ -2209,6 +2725,7 @@ input RequestUpdateDataInput {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
   user: UserUpdateOneInput
 }
 
@@ -2227,6 +2744,7 @@ input RequestUpdateInput {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
   user: UserUpdateOneInput
 }
 
@@ -2245,6 +2763,7 @@ input RequestUpdateManyMutationInput {
   dateThree: String
   timeThree: String
   approved: String
+  rejectReason: String
 }
 
 input RequestUpdateOneInput {
@@ -2852,6 +3371,46 @@ input RequestWhereInput {
 
   """All values not ending with the given string."""
   approved_not_ends_with: String
+  rejectReason: String
+
+  """All values that are not equal to given value."""
+  rejectReason_not: String
+
+  """All values that are contained in given list."""
+  rejectReason_in: [String!]
+
+  """All values that are not contained in given list."""
+  rejectReason_not_in: [String!]
+
+  """All values less than the given value."""
+  rejectReason_lt: String
+
+  """All values less than or equal the given value."""
+  rejectReason_lte: String
+
+  """All values greater than the given value."""
+  rejectReason_gt: String
+
+  """All values greater than or equal the given value."""
+  rejectReason_gte: String
+
+  """All values containing the given string."""
+  rejectReason_contains: String
+
+  """All values not containing the given string."""
+  rejectReason_not_contains: String
+
+  """All values starting with the given string."""
+  rejectReason_starts_with: String
+
+  """All values not starting with the given string."""
+  rejectReason_not_starts_with: String
+
+  """All values ending with the given string."""
+  rejectReason_ends_with: String
+
+  """All values not ending with the given string."""
+  rejectReason_not_ends_with: String
   user: UserWhereInput
 }
 
@@ -2863,6 +3422,7 @@ type Subscription {
   item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
   cartItem(where: CartItemSubscriptionWhereInput): CartItemSubscriptionPayload
   order(where: OrderSubscriptionWhereInput): OrderSubscriptionPayload
+  blackOutDates(where: BlackOutDatesSubscriptionWhereInput): BlackOutDatesSubscriptionPayload
   request(where: RequestSubscriptionWhereInput): RequestSubscriptionPayload
   orderRequest(where: OrderRequestSubscriptionWhereInput): OrderRequestSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
@@ -2897,9 +3457,13 @@ type User implements Node {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: [String!]!
+  blackOutRanges(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BlackOutDates!]
   permissions: [Permission!]!
   emailPreference: [EmailPreference!]!
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -2910,6 +3474,10 @@ type UserConnection {
   """A list of edges."""
   edges: [UserEdge]!
   aggregate: AggregateUser!
+}
+
+input UserCreateblackOutInput {
+  set: [String!]
 }
 
 input UserCreateemailPreferenceInput {
@@ -2944,8 +3512,10 @@ input UserCreateInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserCreateblackOutInput
   permissions: UserCreatepermissionsInput
   emailPreference: UserCreateemailPreferenceInput
+  blackOutRanges: BlackOutDatesCreateManyInput
   cart: CartItemCreateManyWithoutUserInput
 }
 
@@ -2991,8 +3561,10 @@ input UserCreateWithoutCartInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserCreateblackOutInput
   permissions: UserCreatepermissionsInput
   emailPreference: UserCreateemailPreferenceInput
+  blackOutRanges: BlackOutDatesCreateManyInput
 }
 
 """An edge in a connection."""
@@ -3061,10 +3633,10 @@ enum UserOrderByInput {
   stripeToken_DESC
   bankToken_ASC
   bankToken_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type UserPreviousValues {
@@ -3096,8 +3668,11 @@ type UserPreviousValues {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: [String!]!
   permissions: [Permission!]!
   emailPreference: [EmailPreference!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type UserSubscriptionPayload {
@@ -3139,6 +3714,10 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
+input UserUpdateblackOutInput {
+  set: [String!]
+}
+
 input UserUpdateDataInput {
   accId: String
   name: String
@@ -3167,8 +3746,10 @@ input UserUpdateDataInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
+  blackOutRanges: BlackOutDatesUpdateManyInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -3204,8 +3785,10 @@ input UserUpdateInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
+  blackOutRanges: BlackOutDatesUpdateManyInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -3237,6 +3820,7 @@ input UserUpdateManyMutationInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
 }
@@ -3291,8 +3875,10 @@ input UserUpdateWithoutCartDataInput {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
+  blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
+  blackOutRanges: BlackOutDatesUpdateManyInput
 }
 
 input UserUpsertNestedInput {
@@ -4416,6 +5002,53 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   bankToken_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  blackOutRanges_every: BlackOutDatesWhereInput
+  blackOutRanges_some: BlackOutDatesWhereInput
+  blackOutRanges_none: BlackOutDatesWhereInput
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput

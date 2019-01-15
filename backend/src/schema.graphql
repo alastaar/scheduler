@@ -15,9 +15,12 @@ type Mutation {
   resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
   updatePermissions(permissions: [Permission], userId: ID!): User
   updatePreferences(emailPreference: [EmailPreference], userId: ID!): User
-  updateUserInfo(name: String, lastName: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, userId: ID!): User
+  updateBlackoutDates(blackOut: [String], userId: ID!): User
+  addBlackoutRanges(id: ID!): BlackOutDates
+  updateUserInfo(name: String, lastName: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, timeDetails: String, userId: ID!): User
   createRequest(requestedId: String, name: String, lastName: String, email: String, price: Int, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
   approveRequests(id: ID!, dateOne: String!, timeOne: String!, approved: String): Request!
+  rejectRequests(id: ID!, rejectReason: String, approved: String): Request!
   deleteRequest(id: ID!): Request!
   addToCart(id: ID!): CartItem
   removeFromCart(id: ID!): CartItem
@@ -69,6 +72,8 @@ type User {
   timeDetails: String
   stripeToken: String
   bankToken: String
+  blackOut: [String]
+  blackOutRanges: [BlackOutDates]
   permissions: [Permission!]!
   emailPreference: [EmailPreference]
   cart: [CartItem!]!

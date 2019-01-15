@@ -202,6 +202,7 @@ const Mutations = {
     // 8. return the new user
     return updatedUser;
   },
+
   async updatePermissions(parent, args, ctx, info) {
     // 1. Check if they are logged in
     if (!ctx.request.userId) {
@@ -224,6 +225,37 @@ const Mutations = {
         data: {
           permissions: {
             set: args.permissions,
+          },
+        },
+        where: {
+          id: args.userId,
+        },
+      },
+      info
+    );
+  },
+
+  async updateBlackoutDates(parent, args, ctx, info) {
+    // 1. Check if they are logged in
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in!');
+    }
+    // 2. Query the current user
+    const currentUser = await ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId,
+        },
+      },
+      info
+    );
+    // 3. Check if they have permissions to do this
+    // 4. Update the permissions
+    return ctx.db.mutation.updateUser(
+      {
+        data: {
+          blackOut: {
+            set: args.blackOut,
           },
         },
         where: {
@@ -264,6 +296,25 @@ const Mutations = {
 },
 
   approveRequests(parent, args, ctx, info) {
+    console.log(args);
+
+    const updates = { ...args };
+
+    delete updates.id;
+
+
+    return ctx.db.mutation.updateRequest(
+      {
+        data: updates,
+        where: {
+          id: args.id,
+        },
+      },
+      info
+    );
+  },
+
+  rejectRequests(parent, args, ctx, info) {
     console.log(args);
 
     const updates = { ...args };
