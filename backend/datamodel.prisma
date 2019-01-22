@@ -45,14 +45,14 @@ type User {
   ssnLastFour: String
   stripeToken: String
   bankToken: String
-  blackOut: [String]
+  blackOut: [String!]!
   blackOutRanges: [BlackOutDates] @relation(name: "BlackoutDayByUser")
   permissions: [Permission]
   emailPreference: [EmailPreference]
   chats: [Chat]
   cart: [CartItem!]! @relation(name: "CartByUser" onDelete: CASCADE)
-  createdAt: DateTime
-  updatedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Item {
