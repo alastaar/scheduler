@@ -51,8 +51,8 @@ type User {
   emailPreference: [EmailPreference]
   chats: [Chat]
   cart: [CartItem!]! @relation(name: "CartByUser" onDelete: CASCADE)
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 type Item {
