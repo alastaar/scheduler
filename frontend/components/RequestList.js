@@ -14,6 +14,7 @@ const ALL_REQUESTS_QUERY = gql`
   query ALL_REQUESTS_QUERY($skip: Int = 0, $first: Int = ${ perPage }) {
     requests(first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
+      requestedId
       name
       lastName
       price
@@ -27,7 +28,9 @@ const ALL_REQUESTS_QUERY = gql`
       timeThree
       referenceImage
       approved
+      rejectReason
       user{
+        id
         name
         lastName
         email
@@ -63,7 +66,7 @@ class RequestList extends Component {
                   if ( loading ) return <p> ... loading </p>;
                   if ( error ) return <p> ERROR: { error.message }</p>;
                   return <RequestsList>
-                    { data.requests.filter(request => request.email === me.email && request.approved == 'no').map(request => <RequestsPending request={request} key={ request.id }/>) }
+                    { data.requests.filter(request => request.email === me.email && request.approved == 'no' && request.rejectReason == null).map(request => <RequestsPending request={request} key={ request.id }/>) }
                   </RequestsList>;
                 } }
               </Query>

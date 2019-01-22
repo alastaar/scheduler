@@ -51,8 +51,10 @@ class UserBlock extends Component {
                 </a>
               </Link>
              </Title>
-             <h2> { formatMoney(user.price) } per booking </h2>
-             <p> Handle: { user.instagramHandle } </p><p> Shop: { user.shop } </p>
+             <h2> { formatMoney(user.price) } per deposit </h2>
+             {user.instagramHandle && (
+                <p> Handle: { user.instagramHandle }</p>
+             )}
              <User>
                {({ data: { me } }) => (
                  <>
@@ -60,10 +62,10 @@ class UserBlock extends Component {
              <div className="buttonList">
                 <Link href={{
                   pathname: '/request',
-                  query: { id: user.id, name: user.name, lastName: user.lastName, email: user.email, price: user.price },
+                  query: { id: user.id },
                 }}>
                   <a>
-                    Request Artist
+                    Request Appointment
                   </a>
                 </Link>
                </div>

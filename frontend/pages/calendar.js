@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Calendar from '../components/CalendarList';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const Home = props => (
 	<div>
-		<Calendar />
+		<PleaseSignIn>
+			<Calendar />
+		</PleaseSignIn>
 	</div>
 )
 

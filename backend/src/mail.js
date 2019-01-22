@@ -15,9 +15,10 @@ const makeANiceEmail= text => `
   font-family: sans-serif;
   line-height: 2;
   font-size:20px;">
-    <h2>Hello there fool</h2>
+    <h2>Hello!</h2>
     <p>${text}</p>
-    <p>Bye bb, Alistair AYO</p>
+    <p>Bye, Thanks for tuning in.</p>
+    <p>Palazar</p>
 
   </div>
 `;

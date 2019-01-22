@@ -5,6 +5,7 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 import Router from 'next/router';
 import { CURRENT_USER_QUERY } from './User';
+import Link from 'next/link';
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -70,7 +71,13 @@ class Signin extends Component {
                   onChange={this.saveToState}
                 />
               </label>
-
+              <Link href="/signup">
+                <a className="headerLink">Sign Up</a>
+              </Link>
+              <Link href="/resetform">
+                <a className="headerLink" style={{float: "right"}}>Reset Password</a>
+              </Link>
+              <br></br>
               <button type="submit">Sign In!</button>
             </fieldset>
           </Form>

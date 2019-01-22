@@ -40,13 +40,16 @@ class RequesterPending extends Component {
       <ItemStyles>
       { request.approved == 'no' &&
       <>
+          {request.rejectReason && (
+            <p style={{background: "#ff3333"}}>{ request.rejectReason } </p>
+          )}
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
           <Link href={{
             pathname: '/request-item',
             query: { id: request.id },
          }}>
             <a>
-              { request.user.name } { request.lastName }
+              { request.name }
             </a>
           </Link>
           <Link href={{
@@ -66,15 +69,17 @@ class RequesterPending extends Component {
               </a>
             </Link>
            <div className="buttonList">
-              <Link href={{
-                pathname: '/request',
-                query: { id: request.id, title: request.title, description: request.description, price: request.price },
-              }}>
-                <a>
-                  Update Request
-                </a>
-              </Link>
-              <DeleteRequest id={request.id}>Delete Request</DeleteRequest>
+              <button>
+                <Link href={{
+                  pathname: '/update-request',
+                  query: { id: request.id },
+                }}>
+                  <a>
+                    Update Request
+                  </a>
+                </Link>
+              </button>
+              <DeleteRequest id={request.id}>Remove Request</DeleteRequest>
            </div>
           </>
         }

@@ -8,7 +8,7 @@ import Router from 'next/router';
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION($email: String!, $name: String!, $lastName: String!, $password: String!, $artist: String, $permissions: [Permission]) {
-    signup(email: $email, name: $name, lastName: $lastName password: $password, artist: $artist, permissions: $permissions) {
+    signup(email: $email, name: $name, lastName: $lastName, password: $password, artist: $artist, permissions: $permissions) {
       id
       email
       name
@@ -95,7 +95,7 @@ class Signup extends Component {
               </label>
               <p>By joining, you agree to Palazar’s <a href="/terms">Terms of Services</a> as well as to receive occasional emails from us.</p>
               <label htmlFor="artist">
-                <button type="submit" name="artist" value="yes" onClick={this.saveToState}>Artist Sign Up!</button>
+                <button type="submit" name="artist" value="yes" onClick={this.saveToState}>Service Sign Up!</button>
               </label>
               <label htmlFor="artist">
                 <button type="submit" name="artist" value="no" onClick={this.saveToState}>Customer Sign Up!</button>

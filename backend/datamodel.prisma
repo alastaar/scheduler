@@ -23,7 +23,7 @@ type User {
   lastName: String!
   email: String! @unique
   password: String!
-  instagramHandle: String
+  instagramHandle: String @unique
   shop: String
   price: Int @default(value: "0")
   bio: String
@@ -46,9 +46,10 @@ type User {
   stripeToken: String
   bankToken: String
   blackOut: [String]
-  blackOutRanges: [BlackOutDates]
+  blackOutRanges: [BlackOutDates] @relation(name: "BlackoutDayByUser")
   permissions: [Permission]
   emailPreference: [EmailPreference]
+  chats: [Chat]
   cart: [CartItem!]! @relation(name: "CartByUser" onDelete: CASCADE)
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -120,4 +121,20 @@ type BlackOutDates {
   begin: String
   end: String
   weekday: String
+  user: User @relation(name: "BlackoutDayByUser")
+}
+
+type Chat {
+  id: ID! @unique
+  vendor: String!
+  client: String!
+  clientMessages: [ChatMessage]
+}
+
+type ChatMessage {
+  id: ID! @unique
+  chatId: String
+  message: String
+  createdAt: DateTime!
+  user: User
 }

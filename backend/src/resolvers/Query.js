@@ -9,8 +9,19 @@ const Query = {
   requests: forwardTo('db'),
   request: forwardTo('db'),
   requestsConnection: forwardTo('db'),
+  chat: forwardTo('db'),
+  chats: forwardTo('db'),
 
   me(parent, args, ctx, info) {
+    if(!ctx.request.userId){
+      return null;
+    }
+    return ctx.db.query.user({
+      where: { id: ctx.request.userId },
+    }, info);
+  },
+
+  gettingRequested(parent, args, ctx, info) {
     if(!ctx.request.userId){
       return null;
     }
@@ -24,7 +35,7 @@ const Query = {
 
     }
 
-    // hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE']);
+    hasPermission(ctx.request.user, ['USER']);
 
     return ctx.db.query.users({}, info);
 

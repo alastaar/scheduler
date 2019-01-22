@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Error from './ErrorMessage';
 import formatMoney from '../lib/formatMoney';
 import OrderStyles from './styles/OrderStyles';
+import Chat from './Chat';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!){
@@ -18,6 +19,8 @@ const SINGLE_ORDER_QUERY = gql`
       createdAt
       user{
         id
+        name
+        lastName
       }
       requests{
         id
@@ -29,6 +32,11 @@ const SINGLE_ORDER_QUERY = gql`
         referenceImage
         quantity
         approved
+        user {
+          id
+          name
+          lastName
+        }
       }
     }
   }
@@ -37,6 +45,16 @@ const SINGLE_ORDER_QUERY = gql`
 class Order extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
+  }
+
+  convertFee = val => {
+    let finalMoney = 0;
+    if(val == 0){
+      finalMoney = 2;
+    } else {
+      finalMoney = (val / 100) + ((val / 100) * .05);
+    }
+    return finalMoney;
   }
 
   render(){
@@ -58,7 +76,7 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Charge</span>
-                <span>{ order.charge }</span>
+                <span>{ order.user.name } { order.user.lastName }</span>
               </p>
               <p>
                 <span>Created At</span>
@@ -66,7 +84,12 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Order Total</span>
-                <span>{ formatMoney(order.total) }</span>
+                {order.total == 0 && (
+                  <span>{ formatMoney(order.total + 200) }</span>
+                )}
+                {order.total !== 0 && (
+                  <span>{ formatMoney(order.total + (order.total * .05)) }</span>
+                )}
               </p>
               <p>
                 <span>Request Count</span>
@@ -78,28 +101,20 @@ class Order extends React.Component {
                     <div className="order-item" key={ request.id }>
                       <img src={ request.referenceImage } alt={ request.name } />
                       <div className="item-details">
-                        <h2>{ request.name } { request.lastName } </h2>
+                        <h2>{ request.name }</h2>
                         <p>Qty: {request.quantity}</p>
-                        <p>SubTotal: {formatMoney(request.price * request.quantity)}</p>
+                        <p>SubTotal: ${this.convertFee(request.price * request.quantity)}</p>
                         <p>{request.details}</p>
-                        <p>With a convenience fee of $5.00</p>
+                        {request.price == 0 && (
+                          <p>With a fee of $2</p>
+                        )}
+                        {request.price !== 0 && (
+                          <p>With a fee of %5</p>
+                        )}
                       </div>
                     </div>
                     <div className="buttonList">
-                      <Link href={{
-                        pathname: '/request',
-                      }}>
-                        <a>
-                          Chat
-                        </a>
-                      </Link>
-                      <Link href={{
-                        pathname: '/request',
-                      }}>
-                        <a>
-                          Cancel Request and Notify
-                        </a>
-                      </Link>
+                      <Chat vendor={request.requestedId} client={request.user.id}>Chat</Chat>
                     </div>
                   </>
                 ))}

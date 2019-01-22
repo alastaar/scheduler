@@ -173,7 +173,7 @@ const Header = () => (
                 )}
                 { !me && (
                   <>
-                    <Link href="/signup">
+                    <Link href="/signin">
                       <a className="headerLink">SignIn</a>
                     </Link>`
                   </>

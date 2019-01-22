@@ -36,6 +36,10 @@ const Mutations = {
 
     console.log(args);
 
+    const user = await ctx.db.query.user({ where: { id: args.requestedId } });
+
+    const user2 = await ctx.db.query.user({ where: { id: ctx.request.userId } });
+
     const request = await ctx.db.mutation.createRequest({
       data: {
         user: {
@@ -43,11 +47,65 @@ const Mutations = {
             id: ctx.request.userId,
           },
         },
-        ...args
+        ...args,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        price: user.price,
       }
-    }, info)
+    }, info);
 
     console.log(request);
+
+    if(request) {
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user.email,
+        subject: 'You have a new Appointment Request',
+        html: makeANiceEmail(`Your have new appointment request!
+        \n\n
+        <a href="${process.env
+          .FRONTEND_URL}/request-item?id=${request.id}">Click Here to check it out</a>`),
+      });
+
+      const mailRes1 = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user2.email,
+        subject: 'Appointment Submission',
+        html: makeANiceEmail(`Your have new successfully requested an Appointment!
+        \n\n
+        For ${user.name}
+        \n\n
+        <a href="${process.env
+          .FRONTEND_URL}/request-item?id=${request.id}">Click Here to see the status</a>`),
+      });
+
+    }
+
+    return request;
+  },
+
+  async updateRequest(parent, args, ctx, info) {
+
+    console.log(args);
+
+    const user = await ctx.db.query.user({ where: { id: args.requestedId } });
+
+    const request = await ctx.db.mutation.updateRequest({
+      data: {
+        user: {
+          connect:{
+            id: ctx.request.userId,
+          },
+        },
+        ...args,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        price: user.price,
+        rejectReason: null,
+      }
+    }, info);
 
     return request;
   },
@@ -69,6 +127,7 @@ const Mutations = {
       info
     );
   },
+
   async deleteItem(parent, args, ctx, info) {
     const where = { id: args.id };
     // 1. find the item
@@ -109,6 +168,36 @@ const Mutations = {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
     });
+    if(user && user.artist == "yes") {
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user.email,
+        subject: 'Thanks for Signing Up',
+        html: makeANiceEmail(`To start taking appointment requests and recieving payouts we need some information.
+        \n\n
+        Please fill in information so that people can find you!
+        <a href="${process.env.FRONTEND_URL}/update?id=${user.id}">HERE</a>
+        \n\n
+        Please fill in card information to recieve payouts!
+        <a href="${process.env.FRONTEND_URL}/bank?id=${user.id}">HERE</a>
+        \n\n
+        And Finally information so that we can process your account!
+        <a href="${process.env.FRONTEND_URL}/accupdate?id=${user.id}">HERE</a>
+        \n\n
+        Thanks for signing up for palazar!
+        `),
+      });
+
+    } else if(user && user.artist == "no") {
+
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user.email,
+        subject: 'Thanks for Signing Up!',
+        html: makeANiceEmail(``),
+      });
+    }
+
     // Finalllllly we return the user to the browser
     return user;
   },
@@ -137,6 +226,7 @@ const Mutations = {
     ctx.response.clearCookie('token');
     return { message: 'Goodbye!' };
   },
+
   async requestReset(parent, args, ctx, info) {
     // 1. Check if this is a real user
     const user = await ctx.db.query.user({ where: { email: args.email } });
@@ -153,7 +243,7 @@ const Mutations = {
     });
     // 3. Email them that reset token
     const mailRes = await transport.sendMail({
-      from: 'wes@wesbos.com',
+      from: 'palazar@palazar.com',
       to: user.email,
       subject: 'Your Password Reset Token',
       html: makeANiceEmail(`Your Password Reset Token is here!
@@ -295,12 +385,31 @@ const Mutations = {
   );
 },
 
-  approveRequests(parent, args, ctx, info) {
-    console.log(args);
+async approveRequests(parent, args, ctx, info) {
+
 
     const updates = { ...args };
 
+    const request = await ctx.db.query.request(
+      {
+        where: {
+          id: args.id,
+        },
+      }, `{ id name user { id email }}`);
+
+    console.log(request);
     delete updates.id;
+
+    const mailRes = await transport.sendMail({
+      from: 'palazar@palazar.com',
+      to: request.user.email,
+      subject: 'Your Request has been approved',
+      html: makeANiceEmail(`Your appointment request has been approved!
+      \n\n
+      <a href="${process.env
+        .FRONTEND_URL}/request-item?id=${args.id}">Please go here to pay for the deposit!</a>`),
+    });
+
 
 
     return ctx.db.mutation.updateRequest(
@@ -314,12 +423,21 @@ const Mutations = {
     );
   },
 
-  rejectRequests(parent, args, ctx, info) {
-    console.log(args);
+  async rejectRequests(parent, args, ctx, info) {
 
     const updates = { ...args };
 
     delete updates.id;
+
+    const mailRes = await transport.sendMail({
+      from: 'palazar@palazar.com',
+      to: args.user.email,
+      subject: 'Your Request has been approved',
+      html: makeANiceEmail(`Your appointment request has been approved!
+      \n\n
+      <a href="${process.env
+        .FRONTEND_URL}/request-item?id=${args.id}">Please go here to see why and update your request!</a>`),
+    });
 
 
     return ctx.db.mutation.updateRequest(
@@ -372,6 +490,7 @@ const Mutations = {
       info
     );
   },
+
   async removeFromCart(parent, args, ctx, info) {
     // 1. Find the cart item
     const cartItem = await ctx.db.query.cartItem(
@@ -396,6 +515,54 @@ const Mutations = {
       info
     );
   },
+
+  async addBlackoutRanges(parent, args, ctx, info) {
+    // 1. Make sure they are signed in
+    console.log(args);
+    const { userId } = ctx.request;
+    if (!userId) {
+      throw new Error('You must be signed in soooon');
+    }
+    // 2. Query the users current car
+    // 4. If its not, create a fresh CartItem for that user!
+    return ctx.db.mutation.createBlackOutDates(
+      {
+        data: {
+          ...args,
+          user: {
+            connect: { id: userId },
+          },
+        },
+      },
+      info
+    );
+  },
+
+  async deleteBlackOutRanges(parent, args, ctx, info) {
+    // 1. Find the cart item
+    const blackoutRange = await ctx.db.query.blackOutDates(
+      {
+        where: {
+          id: args.id,
+        },
+      },
+      `{ id, user { id }}`
+    );
+    // 1.5 Make sure we found an item
+    if (!blackoutRange) throw new Error('No CartItem Found!');
+    // 2. Make sure they own that cart item
+    if (blackoutRange.user.id !== ctx.request.userId) {
+      throw new Error('Cheatin huhhhh');
+    }
+    // 3. Delete that cart item
+    return ctx.db.mutation.deleteBlackOutDates(
+      {
+        where: { id: args.id },
+      },
+      info
+    );
+  },
+
   async createOrder(parent, args, ctx, info) {
     // 1. Query the current user and make sure they are signed in
     const { userId } = ctx.request;
@@ -456,25 +623,44 @@ const Mutations = {
     const requested = await ctx.db.query.user(
         { where: { id: requestedId } },
         `{
+          email
           accId
           }`
       );
 
     const fee = amount * .05;
 
-    const charge = await stripe.charges.create({
-      amount: amount,
-      currency: 'USD',
-      source: args.token,
-      destination: requested.accId,
-      application_fee: fee,
-      },function(err, charge) {
-          stripe.accounts.retrieve(
-            requested.accId,
-            function(err, account) {
-            }
-        );
-    });
+    if(amount = 2) {
+      const charge = await stripe.charges.create({
+        amount: amount,
+        currency: 'USD',
+        source: args.token,
+        destination: requested.accId,
+        application_fee: 200,
+        },function(err, charge) {
+            stripe.accounts.retrieve(
+              requested.accId,
+              function(err, account) {
+              }
+          );
+      });
+    } else {
+      const charge = await stripe.charges.create({
+        amount: amount,
+        currency: 'USD',
+        source: args.token,
+        destination: requested.accId,
+        application_fee: fee,
+        },function(err, charge) {
+            stripe.accounts.retrieve(
+              requested.accId,
+              function(err, account) {
+              }
+          );
+      });
+    }
+
+    const finalCharge = amount + fee;
     // 4. Convert the CartItems to OrderItems
     const orderItems = user.cart.map(cartItem => {
       const orderItem = {
@@ -496,6 +682,29 @@ const Mutations = {
         user: { connect: { id: userId } },
       },
     });
+
+    if(order) {
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: requested.email,
+        subject: 'A Requested appointment has been confirmed',
+        html: makeANiceEmail(`An appointment has been confirmed. This means you will be getting paid shortly.
+        \n\n
+        <a href="${process.env
+          .FRONTEND_URL}/order?id=${order.id}">Check here to see the order information!</a>`),
+      });
+
+      const mailRes1 = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: requestedId,
+        subject: 'Your appointment has been confirmed. Thanks for creating it and using Palazar.',
+        html: makeANiceEmail(`Your appointment has been confirmed. Thanks for creating it and using Palazar.
+        \n\n
+        Your total was : ${finalCharge} including the 5% fee to palazar.
+        <a href="${process.env
+          .FRONTEND_URL}/order?id=${order.id}">Check here to see the order information!</a>`),
+      });
+    }
     // 6. Clean up - clear the users cart, delete cartItems
     const cartItemIds = user.cart.map(cartItem => cartItem.id);
     await ctx.db.mutation.deleteManyCartItems({
@@ -768,6 +977,231 @@ const Mutations = {
       },
       info
     );
+  },
+
+  async createChat(parent, args, ctx, info) {
+
+    const { userId } = ctx.request;
+    if (!userId) {
+      throw new Error('You must be logged in to do that!');
+    }
+
+    const [chats] = await ctx.db.query.chats(
+      {
+        where: {
+          vendor: args.vendor,
+          client: args.client,
+        },
+      }, `{ id vendor client}`);
+
+      const user1 = await ctx.db.query.user(
+        {
+          where: {
+            id: args.vendor,
+          },
+        }, `{ email}`);
+
+      const user2 = await ctx.db.query.user(
+        {
+          where: {
+            id: args.client,
+          },
+        }, `{ email}`);
+
+      console.log(chats);
+
+    if(chats) {
+      return ctx.db.mutation.updateChat(
+        {
+          where: { id: chats.id },
+          data: {
+            ...args,
+          },
+        },
+        info
+      );
+    }
+
+    const chat = await ctx.db.mutation.createChat(
+      {
+        data: {
+          ...args,
+        },
+      },
+      info
+    );
+
+    if(chat) {
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user1.email,
+        subject: 'There is a new chat for you!',
+        html: makeANiceEmail(`
+        <a href="${process.env
+          .FRONTEND_URL}/chat?id=${chat.id}">See it here</a>`),
+      });
+
+      const mailRes1 = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: user2.email,
+        subject: 'Your appointment has been confirmed. Thanks for creating it and using Palazar.',
+        html: makeANiceEmail(`
+          <a href="${process.env
+          .FRONTEND_URL}/chat?id=${chat.id}">See it here</a>`),
+      });
+    }
+
+
+    if(args.vendor !== args.client) {
+      const res = await ctx.db.mutation.updateUser(
+        {
+          data: {
+            chats: {
+              set: {
+                id: chat.id,
+                vendor: chat.vendor,
+                client: chat.client,
+              },
+            },
+          },
+          where: {
+            id: args.vendor,
+          },
+        },
+        info
+      );
+
+      const res2 = await ctx.db.mutation.updateUser(
+        {
+          data: {
+            chats: {
+              set: {
+                id: chat.id,
+                vendor: chat.vendor,
+                client: chat.client,
+              },
+            },
+          },
+          where: {
+            id: args.client,
+          },
+        },
+        info
+      );
+
+    } else {
+      const res = await ctx.db.mutation.updateUser(
+        {
+          data: {
+            chats: {
+              set: {
+                id: chat.id,
+              },
+            },
+          },
+          where: {
+            id: args.vendor,
+          },
+        },
+        info
+      );
+
+    }
+    return chat;
+  },
+
+  async createChatMessage(parent, args, ctx, info) {
+
+    const { userId } = ctx.request;
+
+    if (!userId) {
+      throw new Error('You must be logged in to do that!');
+    }
+
+
+    const chatMessage = await ctx.db.mutation.createChatMessage(
+      {
+        data: {
+          user: {
+            connect: {
+              id: ctx.request.userId,
+            },
+          },
+          ...args,
+        },
+      },
+      info
+    );
+
+    const chat1 = await ctx.db.query.chat(
+      {
+        where: {
+          id: args.chatId,
+        },
+      }, `{ client vendor }`);
+
+    const user1 = await ctx.db.query.user(
+      {
+        where: {
+          id: chat1.vendor,
+        },
+      }, `{ email}`);
+
+    const user2 = await ctx.db.query.user(
+      {
+        where: {
+          id: chat1.client,
+        },
+      }, `{ id email}`);
+
+
+    const res1 = await ctx.db.mutation.updateChat(
+      {
+        data: {
+          clientMessages: {
+            connect: { id: chatMessage.id },
+          },
+        },
+        where: {
+          id: args.chatId,
+        },
+      },
+      info
+    );
+
+    if(res1) {
+      if(ctx.request.userId != user1.id) {
+        const mailRes = await transport.sendMail({
+          from: 'palazar@palazar.com',
+          to: user2.email,
+          subject: 'You have a new message!',
+          html: makeANiceEmail(`Below is a new message
+            \n\n
+            ${args.message}
+            \n\n
+            \n\n
+            <a href="${process.env
+            .FRONTEND_URL}/chat?id=${args.chatId}">Click here to respond</a>`),
+        });
+      } else {
+        const mailRes = await transport.sendMail({
+          from: 'palazar@palazar.com',
+          to: user1.email,
+          subject: 'You have a new message!',
+          html: makeANiceEmail(`Below is a new message
+            \n\n
+            ${args.message}
+            \n\n
+            <a href="${process.env
+            .FRONTEND_URL}/chat?id=${args.chatId}">Click here to respond</a>`),
+        });
+      }
+    }
+
+
+
+    return chatMessage;
+
   },
 
 

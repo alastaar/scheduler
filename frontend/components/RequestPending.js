@@ -7,7 +7,7 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import ApproveRequest from './ApproveRequest';
 import RejectRequest from './RejectRequest';
-
+import DeleteRequest from './DeleteRequest';
 
 class RequestsPending extends Component {
   static propTypes = {
@@ -78,6 +78,11 @@ class RequestsPending extends Component {
               <RejectRequest
               id={request.id}
               >Reject Request</RejectRequest>
+              <DeleteRequest
+              id={request.id}
+              >
+              Remove Request
+              </DeleteRequest>
            </div>
           </>
         }

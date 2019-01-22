@@ -7,6 +7,7 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 import AddToCart from './AddToCart';
+import Chat from './Chat';
 
 class RequestsConfirmed extends Component {
   static propTypes = {
@@ -28,20 +29,7 @@ class RequestsConfirmed extends Component {
              <p>{ request.email }</p>
              <p>{ request.details }</p>
              <div className="buttonList">
-               <Link href={{
-                 pathname: '/request',
-               }}>
-                 <a>
-                   Chat
-                 </a>
-               </Link>
-               <Link href={{
-                 pathname: '/request',
-               }}>
-                 <a>
-                   Cancel Request and Notify
-                 </a>
-               </Link>
+               <Chat vendor={request.requestedId} client={request.user.id}>Chat</Chat>
              </div>
           </>
       </ItemStyles>

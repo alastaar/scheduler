@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Title from './styles/Title';
-import RequestStyles from './styles/RequestStyles';
+import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
-import DeleteItem from './DeleteItem';
+import DeleteRequest from './DeleteRequest';
 import AddToCart from './AddToCart';
+import Chat from './Chat';
+import RejectRequest from './RejectRequest';
 
 class RequestsApproved extends Component {
   static propTypes = {
@@ -37,7 +39,7 @@ class RequestsApproved extends Component {
   render() {
     const { request } = this.props;
     return(
-      <RequestStyles>
+      <ItemStyles>
       { request.approved == 'yes' &&
       <>
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
@@ -66,26 +68,21 @@ class RequestsApproved extends Component {
               </a>
             </Link>
            <div className="buttonList">
-              <Link href={{
-                pathname: '/request',
-                query: { id: request.id, title: request.title, description: request.description, price: request.price },
-              }}>
-                <a>
-                  Chat
-                </a>
-              </Link>
-              <Link href={{
-                pathname: '/request',
-                query: { id: request.id, title: request.title, description: request.description, price: request.price },
-              }}>
-                <a>
-                  Cancel Request and Notify { request.user.name }
-                </a>
-              </Link>
+              <Chat vendor={request.requestedId} client={request.user.id}>Chat</Chat>
+              <RejectRequest
+              id={request.id}
+              >
+              Change Request
+              </RejectRequest>
+              <DeleteRequest
+              id={request.id}
+              >
+              Remove Request
+              </DeleteRequest>
            </div>
           </>
         }
-      </RequestStyles>
+      </ItemStyles>
     );
   }
 }

@@ -1,11 +1,19 @@
 # source: https://us1.prisma.sh/alistair-mccormick/sick/dev
-# timestamp: Mon Jan 14 2019 21:22:49 GMT-0800 (Pacific Standard Time)
+# timestamp: Tue Jan 22 2019 12:58:51 GMT-0800 (Pacific Standard Time)
 
 type AggregateBlackOutDates {
   count: Int!
 }
 
 type AggregateCartItem {
+  count: Int!
+}
+
+type AggregateChat {
+  count: Int!
+}
+
+type AggregateChatMessage {
   count: Int!
 }
 
@@ -39,6 +47,7 @@ type BlackOutDates implements Node {
   begin: String
   end: String
   weekday: String
+  user: User
 }
 
 """A connection to a list of items."""
@@ -55,11 +64,18 @@ input BlackOutDatesCreateInput {
   begin: String
   end: String
   weekday: String
+  user: UserCreateOneWithoutBlackOutRangesInput
 }
 
-input BlackOutDatesCreateManyInput {
-  create: [BlackOutDatesCreateInput!]
+input BlackOutDatesCreateManyWithoutUserInput {
+  create: [BlackOutDatesCreateWithoutUserInput!]
   connect: [BlackOutDatesWhereUniqueInput!]
+}
+
+input BlackOutDatesCreateWithoutUserInput {
+  begin: String
+  end: String
+  weekday: String
 }
 
 """An edge in a connection."""
@@ -303,16 +319,11 @@ input BlackOutDatesSubscriptionWhereInput {
   node: BlackOutDatesWhereInput
 }
 
-input BlackOutDatesUpdateDataInput {
-  begin: String
-  end: String
-  weekday: String
-}
-
 input BlackOutDatesUpdateInput {
   begin: String
   end: String
   weekday: String
+  user: UserUpdateOneWithoutBlackOutRangesInput
 }
 
 input BlackOutDatesUpdateManyDataInput {
@@ -321,22 +332,22 @@ input BlackOutDatesUpdateManyDataInput {
   weekday: String
 }
 
-input BlackOutDatesUpdateManyInput {
-  create: [BlackOutDatesCreateInput!]
-  connect: [BlackOutDatesWhereUniqueInput!]
-  set: [BlackOutDatesWhereUniqueInput!]
-  disconnect: [BlackOutDatesWhereUniqueInput!]
-  delete: [BlackOutDatesWhereUniqueInput!]
-  update: [BlackOutDatesUpdateWithWhereUniqueNestedInput!]
-  updateMany: [BlackOutDatesUpdateManyWithWhereNestedInput!]
-  deleteMany: [BlackOutDatesScalarWhereInput!]
-  upsert: [BlackOutDatesUpsertWithWhereUniqueNestedInput!]
-}
-
 input BlackOutDatesUpdateManyMutationInput {
   begin: String
   end: String
   weekday: String
+}
+
+input BlackOutDatesUpdateManyWithoutUserInput {
+  create: [BlackOutDatesCreateWithoutUserInput!]
+  connect: [BlackOutDatesWhereUniqueInput!]
+  set: [BlackOutDatesWhereUniqueInput!]
+  disconnect: [BlackOutDatesWhereUniqueInput!]
+  delete: [BlackOutDatesWhereUniqueInput!]
+  update: [BlackOutDatesUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [BlackOutDatesUpdateManyWithWhereNestedInput!]
+  deleteMany: [BlackOutDatesScalarWhereInput!]
+  upsert: [BlackOutDatesUpsertWithWhereUniqueWithoutUserInput!]
 }
 
 input BlackOutDatesUpdateManyWithWhereNestedInput {
@@ -344,15 +355,21 @@ input BlackOutDatesUpdateManyWithWhereNestedInput {
   data: BlackOutDatesUpdateManyDataInput!
 }
 
-input BlackOutDatesUpdateWithWhereUniqueNestedInput {
-  where: BlackOutDatesWhereUniqueInput!
-  data: BlackOutDatesUpdateDataInput!
+input BlackOutDatesUpdateWithoutUserDataInput {
+  begin: String
+  end: String
+  weekday: String
 }
 
-input BlackOutDatesUpsertWithWhereUniqueNestedInput {
+input BlackOutDatesUpdateWithWhereUniqueWithoutUserInput {
   where: BlackOutDatesWhereUniqueInput!
-  update: BlackOutDatesUpdateDataInput!
-  create: BlackOutDatesCreateInput!
+  data: BlackOutDatesUpdateWithoutUserDataInput!
+}
+
+input BlackOutDatesUpsertWithWhereUniqueWithoutUserInput {
+  where: BlackOutDatesWhereUniqueInput!
+  update: BlackOutDatesUpdateWithoutUserDataInput!
+  create: BlackOutDatesCreateWithoutUserInput!
 }
 
 input BlackOutDatesWhereInput {
@@ -524,6 +541,7 @@ input BlackOutDatesWhereInput {
 
   """All values not ending with the given string."""
   weekday_not_ends_with: String
+  user: UserWhereInput
 }
 
 input BlackOutDatesWhereUniqueInput {
@@ -823,6 +841,878 @@ input CartItemWhereInput {
 }
 
 input CartItemWhereUniqueInput {
+  id: ID
+}
+
+type Chat implements Node {
+  id: ID!
+  vendor: String!
+  client: String!
+  clientMessages(where: ChatMessageWhereInput, orderBy: ChatMessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ChatMessage!]
+}
+
+"""A connection to a list of items."""
+type ChatConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ChatEdge]!
+  aggregate: AggregateChat!
+}
+
+input ChatCreateInput {
+  vendor: String!
+  client: String!
+  clientMessages: ChatMessageCreateManyInput
+}
+
+input ChatCreateManyInput {
+  create: [ChatCreateInput!]
+  connect: [ChatWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type ChatEdge {
+  """The item at the end of the edge."""
+  node: Chat!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type ChatMessage implements Node {
+  id: ID!
+  chatId: String
+  message: String
+  createdAt: DateTime!
+  user: User
+}
+
+"""A connection to a list of items."""
+type ChatMessageConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ChatMessageEdge]!
+  aggregate: AggregateChatMessage!
+}
+
+input ChatMessageCreateInput {
+  chatId: String
+  message: String
+  user: UserCreateOneInput
+}
+
+input ChatMessageCreateManyInput {
+  create: [ChatMessageCreateInput!]
+  connect: [ChatMessageWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type ChatMessageEdge {
+  """The item at the end of the edge."""
+  node: ChatMessage!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ChatMessageOrderByInput {
+  id_ASC
+  id_DESC
+  chatId_ASC
+  chatId_DESC
+  message_ASC
+  message_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ChatMessagePreviousValues {
+  id: ID!
+  chatId: String
+  message: String
+  createdAt: DateTime!
+}
+
+input ChatMessageScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatMessageScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatMessageScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatMessageScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  chatId: String
+
+  """All values that are not equal to given value."""
+  chatId_not: String
+
+  """All values that are contained in given list."""
+  chatId_in: [String!]
+
+  """All values that are not contained in given list."""
+  chatId_not_in: [String!]
+
+  """All values less than the given value."""
+  chatId_lt: String
+
+  """All values less than or equal the given value."""
+  chatId_lte: String
+
+  """All values greater than the given value."""
+  chatId_gt: String
+
+  """All values greater than or equal the given value."""
+  chatId_gte: String
+
+  """All values containing the given string."""
+  chatId_contains: String
+
+  """All values not containing the given string."""
+  chatId_not_contains: String
+
+  """All values starting with the given string."""
+  chatId_starts_with: String
+
+  """All values not starting with the given string."""
+  chatId_not_starts_with: String
+
+  """All values ending with the given string."""
+  chatId_ends_with: String
+
+  """All values not ending with the given string."""
+  chatId_not_ends_with: String
+  message: String
+
+  """All values that are not equal to given value."""
+  message_not: String
+
+  """All values that are contained in given list."""
+  message_in: [String!]
+
+  """All values that are not contained in given list."""
+  message_not_in: [String!]
+
+  """All values less than the given value."""
+  message_lt: String
+
+  """All values less than or equal the given value."""
+  message_lte: String
+
+  """All values greater than the given value."""
+  message_gt: String
+
+  """All values greater than or equal the given value."""
+  message_gte: String
+
+  """All values containing the given string."""
+  message_contains: String
+
+  """All values not containing the given string."""
+  message_not_contains: String
+
+  """All values starting with the given string."""
+  message_starts_with: String
+
+  """All values not starting with the given string."""
+  message_not_starts_with: String
+
+  """All values ending with the given string."""
+  message_ends_with: String
+
+  """All values not ending with the given string."""
+  message_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+}
+
+type ChatMessageSubscriptionPayload {
+  mutation: MutationType!
+  node: ChatMessage
+  updatedFields: [String!]
+  previousValues: ChatMessagePreviousValues
+}
+
+input ChatMessageSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatMessageSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatMessageSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatMessageSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ChatMessageWhereInput
+}
+
+input ChatMessageUpdateDataInput {
+  chatId: String
+  message: String
+  user: UserUpdateOneInput
+}
+
+input ChatMessageUpdateInput {
+  chatId: String
+  message: String
+  user: UserUpdateOneInput
+}
+
+input ChatMessageUpdateManyDataInput {
+  chatId: String
+  message: String
+}
+
+input ChatMessageUpdateManyInput {
+  create: [ChatMessageCreateInput!]
+  connect: [ChatMessageWhereUniqueInput!]
+  set: [ChatMessageWhereUniqueInput!]
+  disconnect: [ChatMessageWhereUniqueInput!]
+  delete: [ChatMessageWhereUniqueInput!]
+  update: [ChatMessageUpdateWithWhereUniqueNestedInput!]
+  updateMany: [ChatMessageUpdateManyWithWhereNestedInput!]
+  deleteMany: [ChatMessageScalarWhereInput!]
+  upsert: [ChatMessageUpsertWithWhereUniqueNestedInput!]
+}
+
+input ChatMessageUpdateManyMutationInput {
+  chatId: String
+  message: String
+}
+
+input ChatMessageUpdateManyWithWhereNestedInput {
+  where: ChatMessageScalarWhereInput!
+  data: ChatMessageUpdateManyDataInput!
+}
+
+input ChatMessageUpdateWithWhereUniqueNestedInput {
+  where: ChatMessageWhereUniqueInput!
+  data: ChatMessageUpdateDataInput!
+}
+
+input ChatMessageUpsertWithWhereUniqueNestedInput {
+  where: ChatMessageWhereUniqueInput!
+  update: ChatMessageUpdateDataInput!
+  create: ChatMessageCreateInput!
+}
+
+input ChatMessageWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatMessageWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatMessageWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatMessageWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  chatId: String
+
+  """All values that are not equal to given value."""
+  chatId_not: String
+
+  """All values that are contained in given list."""
+  chatId_in: [String!]
+
+  """All values that are not contained in given list."""
+  chatId_not_in: [String!]
+
+  """All values less than the given value."""
+  chatId_lt: String
+
+  """All values less than or equal the given value."""
+  chatId_lte: String
+
+  """All values greater than the given value."""
+  chatId_gt: String
+
+  """All values greater than or equal the given value."""
+  chatId_gte: String
+
+  """All values containing the given string."""
+  chatId_contains: String
+
+  """All values not containing the given string."""
+  chatId_not_contains: String
+
+  """All values starting with the given string."""
+  chatId_starts_with: String
+
+  """All values not starting with the given string."""
+  chatId_not_starts_with: String
+
+  """All values ending with the given string."""
+  chatId_ends_with: String
+
+  """All values not ending with the given string."""
+  chatId_not_ends_with: String
+  message: String
+
+  """All values that are not equal to given value."""
+  message_not: String
+
+  """All values that are contained in given list."""
+  message_in: [String!]
+
+  """All values that are not contained in given list."""
+  message_not_in: [String!]
+
+  """All values less than the given value."""
+  message_lt: String
+
+  """All values less than or equal the given value."""
+  message_lte: String
+
+  """All values greater than the given value."""
+  message_gt: String
+
+  """All values greater than or equal the given value."""
+  message_gte: String
+
+  """All values containing the given string."""
+  message_contains: String
+
+  """All values not containing the given string."""
+  message_not_contains: String
+
+  """All values starting with the given string."""
+  message_starts_with: String
+
+  """All values not starting with the given string."""
+  message_not_starts_with: String
+
+  """All values ending with the given string."""
+  message_ends_with: String
+
+  """All values not ending with the given string."""
+  message_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  user: UserWhereInput
+}
+
+input ChatMessageWhereUniqueInput {
+  id: ID
+}
+
+enum ChatOrderByInput {
+  id_ASC
+  id_DESC
+  vendor_ASC
+  vendor_DESC
+  client_ASC
+  client_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ChatPreviousValues {
+  id: ID!
+  vendor: String!
+  client: String!
+}
+
+input ChatScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  vendor: String
+
+  """All values that are not equal to given value."""
+  vendor_not: String
+
+  """All values that are contained in given list."""
+  vendor_in: [String!]
+
+  """All values that are not contained in given list."""
+  vendor_not_in: [String!]
+
+  """All values less than the given value."""
+  vendor_lt: String
+
+  """All values less than or equal the given value."""
+  vendor_lte: String
+
+  """All values greater than the given value."""
+  vendor_gt: String
+
+  """All values greater than or equal the given value."""
+  vendor_gte: String
+
+  """All values containing the given string."""
+  vendor_contains: String
+
+  """All values not containing the given string."""
+  vendor_not_contains: String
+
+  """All values starting with the given string."""
+  vendor_starts_with: String
+
+  """All values not starting with the given string."""
+  vendor_not_starts_with: String
+
+  """All values ending with the given string."""
+  vendor_ends_with: String
+
+  """All values not ending with the given string."""
+  vendor_not_ends_with: String
+  client: String
+
+  """All values that are not equal to given value."""
+  client_not: String
+
+  """All values that are contained in given list."""
+  client_in: [String!]
+
+  """All values that are not contained in given list."""
+  client_not_in: [String!]
+
+  """All values less than the given value."""
+  client_lt: String
+
+  """All values less than or equal the given value."""
+  client_lte: String
+
+  """All values greater than the given value."""
+  client_gt: String
+
+  """All values greater than or equal the given value."""
+  client_gte: String
+
+  """All values containing the given string."""
+  client_contains: String
+
+  """All values not containing the given string."""
+  client_not_contains: String
+
+  """All values starting with the given string."""
+  client_starts_with: String
+
+  """All values not starting with the given string."""
+  client_not_starts_with: String
+
+  """All values ending with the given string."""
+  client_ends_with: String
+
+  """All values not ending with the given string."""
+  client_not_ends_with: String
+}
+
+type ChatSubscriptionPayload {
+  mutation: MutationType!
+  node: Chat
+  updatedFields: [String!]
+  previousValues: ChatPreviousValues
+}
+
+input ChatSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ChatWhereInput
+}
+
+input ChatUpdateDataInput {
+  vendor: String
+  client: String
+  clientMessages: ChatMessageUpdateManyInput
+}
+
+input ChatUpdateInput {
+  vendor: String
+  client: String
+  clientMessages: ChatMessageUpdateManyInput
+}
+
+input ChatUpdateManyDataInput {
+  vendor: String
+  client: String
+}
+
+input ChatUpdateManyInput {
+  create: [ChatCreateInput!]
+  connect: [ChatWhereUniqueInput!]
+  set: [ChatWhereUniqueInput!]
+  disconnect: [ChatWhereUniqueInput!]
+  delete: [ChatWhereUniqueInput!]
+  update: [ChatUpdateWithWhereUniqueNestedInput!]
+  updateMany: [ChatUpdateManyWithWhereNestedInput!]
+  deleteMany: [ChatScalarWhereInput!]
+  upsert: [ChatUpsertWithWhereUniqueNestedInput!]
+}
+
+input ChatUpdateManyMutationInput {
+  vendor: String
+  client: String
+}
+
+input ChatUpdateManyWithWhereNestedInput {
+  where: ChatScalarWhereInput!
+  data: ChatUpdateManyDataInput!
+}
+
+input ChatUpdateWithWhereUniqueNestedInput {
+  where: ChatWhereUniqueInput!
+  data: ChatUpdateDataInput!
+}
+
+input ChatUpsertWithWhereUniqueNestedInput {
+  where: ChatWhereUniqueInput!
+  update: ChatUpdateDataInput!
+  create: ChatCreateInput!
+}
+
+input ChatWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChatWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChatWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChatWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  vendor: String
+
+  """All values that are not equal to given value."""
+  vendor_not: String
+
+  """All values that are contained in given list."""
+  vendor_in: [String!]
+
+  """All values that are not contained in given list."""
+  vendor_not_in: [String!]
+
+  """All values less than the given value."""
+  vendor_lt: String
+
+  """All values less than or equal the given value."""
+  vendor_lte: String
+
+  """All values greater than the given value."""
+  vendor_gt: String
+
+  """All values greater than or equal the given value."""
+  vendor_gte: String
+
+  """All values containing the given string."""
+  vendor_contains: String
+
+  """All values not containing the given string."""
+  vendor_not_contains: String
+
+  """All values starting with the given string."""
+  vendor_starts_with: String
+
+  """All values not starting with the given string."""
+  vendor_not_starts_with: String
+
+  """All values ending with the given string."""
+  vendor_ends_with: String
+
+  """All values not ending with the given string."""
+  vendor_not_ends_with: String
+  client: String
+
+  """All values that are not equal to given value."""
+  client_not: String
+
+  """All values that are contained in given list."""
+  client_in: [String!]
+
+  """All values that are not contained in given list."""
+  client_not_in: [String!]
+
+  """All values less than the given value."""
+  client_lt: String
+
+  """All values less than or equal the given value."""
+  client_lte: String
+
+  """All values greater than the given value."""
+  client_gt: String
+
+  """All values greater than or equal the given value."""
+  client_gte: String
+
+  """All values containing the given string."""
+  client_contains: String
+
+  """All values not containing the given string."""
+  client_not_contains: String
+
+  """All values starting with the given string."""
+  client_starts_with: String
+
+  """All values not starting with the given string."""
+  client_not_starts_with: String
+
+  """All values ending with the given string."""
+  client_ends_with: String
+
+  """All values not ending with the given string."""
+  client_not_ends_with: String
+  clientMessages_every: ChatMessageWhereInput
+  clientMessages_some: ChatMessageWhereInput
+  clientMessages_none: ChatMessageWhereInput
+}
+
+input ChatWhereUniqueInput {
   id: ID
 }
 
@@ -1210,6 +2100,8 @@ type Mutation {
   createCartItem(data: CartItemCreateInput!): CartItem!
   createOrder(data: OrderCreateInput!): Order!
   createBlackOutDates(data: BlackOutDatesCreateInput!): BlackOutDates!
+  createChatMessage(data: ChatMessageCreateInput!): ChatMessage!
+  createChat(data: ChatCreateInput!): Chat!
   createRequest(data: RequestCreateInput!): Request!
   createOrderRequest(data: OrderRequestCreateInput!): OrderRequest!
   createUser(data: UserCreateInput!): User!
@@ -1217,6 +2109,8 @@ type Mutation {
   updateCartItem(data: CartItemUpdateInput!, where: CartItemWhereUniqueInput!): CartItem
   updateOrder(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order
   updateBlackOutDates(data: BlackOutDatesUpdateInput!, where: BlackOutDatesWhereUniqueInput!): BlackOutDates
+  updateChatMessage(data: ChatMessageUpdateInput!, where: ChatMessageWhereUniqueInput!): ChatMessage
+  updateChat(data: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat
   updateRequest(data: RequestUpdateInput!, where: RequestWhereUniqueInput!): Request
   updateOrderRequest(data: OrderRequestUpdateInput!, where: OrderRequestWhereUniqueInput!): OrderRequest
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
@@ -1224,6 +2118,8 @@ type Mutation {
   deleteCartItem(where: CartItemWhereUniqueInput!): CartItem
   deleteOrder(where: OrderWhereUniqueInput!): Order
   deleteBlackOutDates(where: BlackOutDatesWhereUniqueInput!): BlackOutDates
+  deleteChatMessage(where: ChatMessageWhereUniqueInput!): ChatMessage
+  deleteChat(where: ChatWhereUniqueInput!): Chat
   deleteRequest(where: RequestWhereUniqueInput!): Request
   deleteOrderRequest(where: OrderRequestWhereUniqueInput!): OrderRequest
   deleteUser(where: UserWhereUniqueInput!): User
@@ -1231,6 +2127,8 @@ type Mutation {
   upsertCartItem(where: CartItemWhereUniqueInput!, create: CartItemCreateInput!, update: CartItemUpdateInput!): CartItem!
   upsertOrder(where: OrderWhereUniqueInput!, create: OrderCreateInput!, update: OrderUpdateInput!): Order!
   upsertBlackOutDates(where: BlackOutDatesWhereUniqueInput!, create: BlackOutDatesCreateInput!, update: BlackOutDatesUpdateInput!): BlackOutDates!
+  upsertChatMessage(where: ChatMessageWhereUniqueInput!, create: ChatMessageCreateInput!, update: ChatMessageUpdateInput!): ChatMessage!
+  upsertChat(where: ChatWhereUniqueInput!, create: ChatCreateInput!, update: ChatUpdateInput!): Chat!
   upsertRequest(where: RequestWhereUniqueInput!, create: RequestCreateInput!, update: RequestUpdateInput!): Request!
   upsertOrderRequest(where: OrderRequestWhereUniqueInput!, create: OrderRequestCreateInput!, update: OrderRequestUpdateInput!): OrderRequest!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
@@ -1238,6 +2136,8 @@ type Mutation {
   updateManyCartItems(data: CartItemUpdateManyMutationInput!, where: CartItemWhereInput): BatchPayload!
   updateManyOrders(data: OrderUpdateManyMutationInput!, where: OrderWhereInput): BatchPayload!
   updateManyBlackOutDateses(data: BlackOutDatesUpdateManyMutationInput!, where: BlackOutDatesWhereInput): BatchPayload!
+  updateManyChatMessages(data: ChatMessageUpdateManyMutationInput!, where: ChatMessageWhereInput): BatchPayload!
+  updateManyChats(data: ChatUpdateManyMutationInput!, where: ChatWhereInput): BatchPayload!
   updateManyRequests(data: RequestUpdateManyMutationInput!, where: RequestWhereInput): BatchPayload!
   updateManyOrderRequests(data: OrderRequestUpdateManyMutationInput!, where: OrderRequestWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -1245,6 +2145,8 @@ type Mutation {
   deleteManyCartItems(where: CartItemWhereInput): BatchPayload!
   deleteManyOrders(where: OrderWhereInput): BatchPayload!
   deleteManyBlackOutDateses(where: BlackOutDatesWhereInput): BatchPayload!
+  deleteManyChatMessages(where: ChatMessageWhereInput): BatchPayload!
+  deleteManyChats(where: ChatWhereInput): BatchPayload!
   deleteManyRequests(where: RequestWhereInput): BatchPayload!
   deleteManyOrderRequests(where: OrderRequestWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
@@ -2525,6 +3427,8 @@ type Query {
   cartItems(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem]!
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order]!
   blackOutDateses(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BlackOutDates]!
+  chatMessages(where: ChatMessageWhereInput, orderBy: ChatMessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ChatMessage]!
+  chats(where: ChatWhereInput, orderBy: ChatOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Chat]!
   requests(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Request]!
   orderRequests(where: OrderRequestWhereInput, orderBy: OrderRequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderRequest]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
@@ -2532,6 +3436,8 @@ type Query {
   cartItem(where: CartItemWhereUniqueInput!): CartItem
   order(where: OrderWhereUniqueInput!): Order
   blackOutDates(where: BlackOutDatesWhereUniqueInput!): BlackOutDates
+  chatMessage(where: ChatMessageWhereUniqueInput!): ChatMessage
+  chat(where: ChatWhereUniqueInput!): Chat
   request(where: RequestWhereUniqueInput!): Request
   orderRequest(where: OrderRequestWhereUniqueInput!): OrderRequest
   user(where: UserWhereUniqueInput!): User
@@ -2539,6 +3445,8 @@ type Query {
   cartItemsConnection(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CartItemConnection!
   ordersConnection(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderConnection!
   blackOutDatesesConnection(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BlackOutDatesConnection!
+  chatMessagesConnection(where: ChatMessageWhereInput, orderBy: ChatMessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ChatMessageConnection!
+  chatsConnection(where: ChatWhereInput, orderBy: ChatOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ChatConnection!
   requestsConnection(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RequestConnection!
   orderRequestsConnection(where: OrderRequestWhereInput, orderBy: OrderRequestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderRequestConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -3423,6 +4331,8 @@ type Subscription {
   cartItem(where: CartItemSubscriptionWhereInput): CartItemSubscriptionPayload
   order(where: OrderSubscriptionWhereInput): OrderSubscriptionPayload
   blackOutDates(where: BlackOutDatesSubscriptionWhereInput): BlackOutDatesSubscriptionPayload
+  chatMessage(where: ChatMessageSubscriptionWhereInput): ChatMessageSubscriptionPayload
+  chat(where: ChatSubscriptionWhereInput): ChatSubscriptionPayload
   request(where: RequestSubscriptionWhereInput): RequestSubscriptionPayload
   orderRequest(where: OrderRequestSubscriptionWhereInput): OrderRequestSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
@@ -3461,6 +4371,7 @@ type User implements Node {
   blackOutRanges(where: BlackOutDatesWhereInput, orderBy: BlackOutDatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BlackOutDates!]
   permissions: [Permission!]!
   emailPreference: [EmailPreference!]!
+  chats(where: ChatWhereInput, orderBy: ChatOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Chat!]
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -3515,12 +4426,18 @@ input UserCreateInput {
   blackOut: UserCreateblackOutInput
   permissions: UserCreatepermissionsInput
   emailPreference: UserCreateemailPreferenceInput
-  blackOutRanges: BlackOutDatesCreateManyInput
+  blackOutRanges: BlackOutDatesCreateManyWithoutUserInput
+  chats: ChatCreateManyInput
   cart: CartItemCreateManyWithoutUserInput
 }
 
 input UserCreateOneInput {
   create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutBlackOutRangesInput {
+  create: UserCreateWithoutBlackOutRangesInput
   connect: UserWhereUniqueInput
 }
 
@@ -3531,6 +4448,41 @@ input UserCreateOneWithoutCartInput {
 
 input UserCreatepermissionsInput {
   set: [Permission!]
+}
+
+input UserCreateWithoutBlackOutRangesInput {
+  accId: String
+  name: String!
+  lastName: String!
+  email: String!
+  password: String!
+  instagramHandle: String
+  shop: String
+  price: Int
+  bio: String
+  profileImage: String
+  image: String
+  resetToken: String
+  resetTokenExpiry: String
+  artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
+  blackOut: UserCreateblackOutInput
+  permissions: UserCreatepermissionsInput
+  emailPreference: UserCreateemailPreferenceInput
+  chats: ChatCreateManyInput
+  cart: CartItemCreateManyWithoutUserInput
 }
 
 input UserCreateWithoutCartInput {
@@ -3564,7 +4516,8 @@ input UserCreateWithoutCartInput {
   blackOut: UserCreateblackOutInput
   permissions: UserCreatepermissionsInput
   emailPreference: UserCreateemailPreferenceInput
-  blackOutRanges: BlackOutDatesCreateManyInput
+  blackOutRanges: BlackOutDatesCreateManyWithoutUserInput
+  chats: ChatCreateManyInput
 }
 
 """An edge in a connection."""
@@ -3749,7 +4702,8 @@ input UserUpdateDataInput {
   blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
-  blackOutRanges: BlackOutDatesUpdateManyInput
+  blackOutRanges: BlackOutDatesUpdateManyWithoutUserInput
+  chats: ChatUpdateManyInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -3788,7 +4742,8 @@ input UserUpdateInput {
   blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
-  blackOutRanges: BlackOutDatesUpdateManyInput
+  blackOutRanges: BlackOutDatesUpdateManyWithoutUserInput
+  chats: ChatUpdateManyInput
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -3834,6 +4789,15 @@ input UserUpdateOneInput {
   upsert: UserUpsertNestedInput
 }
 
+input UserUpdateOneWithoutBlackOutRangesInput {
+  create: UserCreateWithoutBlackOutRangesInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutBlackOutRangesDataInput
+  upsert: UserUpsertWithoutBlackOutRangesInput
+}
+
 input UserUpdateOneWithoutCartInput {
   create: UserCreateWithoutCartInput
   connect: UserWhereUniqueInput
@@ -3845,6 +4809,41 @@ input UserUpdateOneWithoutCartInput {
 
 input UserUpdatepermissionsInput {
   set: [Permission!]
+}
+
+input UserUpdateWithoutBlackOutRangesDataInput {
+  accId: String
+  name: String
+  lastName: String
+  email: String
+  password: String
+  instagramHandle: String
+  shop: String
+  price: Int
+  bio: String
+  profileImage: String
+  image: String
+  resetToken: String
+  resetTokenExpiry: String
+  artist: String
+  timeDetails: String
+  country: String
+  type: String
+  addressCity: String
+  addressLineOne: String
+  addressPostalCode: String
+  addressState: String
+  dobDay: String
+  dobMonth: String
+  dobYear: String
+  ssnLastFour: String
+  stripeToken: String
+  bankToken: String
+  blackOut: UserUpdateblackOutInput
+  permissions: UserUpdatepermissionsInput
+  emailPreference: UserUpdateemailPreferenceInput
+  chats: ChatUpdateManyInput
+  cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateWithoutCartDataInput {
@@ -3878,12 +4877,18 @@ input UserUpdateWithoutCartDataInput {
   blackOut: UserUpdateblackOutInput
   permissions: UserUpdatepermissionsInput
   emailPreference: UserUpdateemailPreferenceInput
-  blackOutRanges: BlackOutDatesUpdateManyInput
+  blackOutRanges: BlackOutDatesUpdateManyWithoutUserInput
+  chats: ChatUpdateManyInput
 }
 
 input UserUpsertNestedInput {
   update: UserUpdateDataInput!
   create: UserCreateInput!
+}
+
+input UserUpsertWithoutBlackOutRangesInput {
+  update: UserUpdateWithoutBlackOutRangesDataInput!
+  create: UserCreateWithoutBlackOutRangesInput!
 }
 
 input UserUpsertWithoutCartInput {
@@ -5049,6 +6054,9 @@ input UserWhereInput {
   blackOutRanges_every: BlackOutDatesWhereInput
   blackOutRanges_some: BlackOutDatesWhereInput
   blackOutRanges_none: BlackOutDatesWhereInput
+  chats_every: ChatWhereInput
+  chats_some: ChatWhereInput
+  chats_none: ChatWhereInput
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput
@@ -5058,4 +6066,5 @@ input UserWhereUniqueInput {
   id: ID
   accId: String
   email: String
+  instagramHandle: String
 }

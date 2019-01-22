@@ -32,7 +32,11 @@ const StayInline = styled.div`
     margin: 0 auto;
     border: 1px solid black;
     font-weight: 900;
-
+  }
+  label {
+    float: left;
+  }
+  input{
   }
 `;
 
@@ -110,11 +114,11 @@ class ApproveRequest extends Component {
                 const request = data.request;
                 return <StayInline>
                   <label htmlFor="buttonOne">
-                    <label> <input type="radio" name="datetime" value={request.dateOne} id="one" onChange={this.handleChange}/>{ request.dateOne } { this.convertTime(request.timeOne) }</label><br></br>
+                    <label> <input type="radio" name="datetime" value={request.dateOne} id="one" onChange={this.handleChange}/>{ request.dateOne }<br></br>  @ { this.convertTime(request.timeOne) }</label><br></br>
                     <input type="hidden" name="datetimeOne" id="timeOne" value={request.timeOne} />
-                    <label><input type="radio" name="datetime" value={request.dateTwo} id="two" onChange={this.handleChange}/> { request.dateTwo } { this.convertTime(request.timeTwo) }</label><br></br>
+                    <label><input type="radio" name="datetime" value={request.dateTwo} id="two" onChange={this.handleChange}/> { request.dateTwo }<br></br> @ { this.convertTime(request.timeTwo) }</label><br></br>
                     <input type="hidden" name="datetimeTwo" id="timeTwo" value ={request.timeTwo} />
-                    <label><input type="radio" name="datetime" value={request.dateThree} id="three" onChange={this.handleChange}/> { request.dateThree } { this.convertTime(request.timeThree) }</label>
+                    <label><input type="radio" name="datetime" value={request.dateThree} id="three" onChange={this.handleChange}/> { request.dateThree }<br></br> @ { this.convertTime(request.timeThree) }</label>
                     <input type="hidden" name="datetimeThree" id="timeThree" value={request.timeThree} />
                   </label>
                   <button onClick={async e => {

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Form from './styles/Form';
 import User, { CURRENT_USER_QUERY } from './User';
+import BlackOutRangeItem from './BlackOutRangeItem';
 
 const UPDATE_BLACKOUT_MUTATION = gql`
   mutation updateBlackoutDates($blackOut: [String], $userId: ID!) {
@@ -16,6 +17,17 @@ const UPDATE_BLACKOUT_MUTATION = gql`
       name
       lastName
       email
+    }
+  }
+`;
+
+const ADD_TO_BLACKOUTS_MUTATION = gql`
+  mutation addBlackoutRanges($weekday: String, $begin: String, $end: String) {
+    addBlackoutRanges(weekday: $weekday, begin: $begin, end: $end) {
+      id
+      begin
+      end
+      weekday
     }
   }
 `;
@@ -38,6 +50,16 @@ const SickNastyButton = styled.button`
     &[disabled] {
       opacity: 0.5;
     }
+`;
+
+const NastyButton = styled.button`
+  font-size: 3rem;
+  background: none;
+  border: 0;
+  &:hover {
+    color: ${props => props.theme.red };
+    cursor: pointer;
+  }
 `;
 
 const TimeDate = styled.div`
@@ -67,8 +89,7 @@ const BlackOutDates = props => (
               <div>
                 <h2>Add Dates that you will not be booking appointsments</h2>
                 <UserBlackOutDates user={me} key={me.id} />
-                <UserBlackOutRepeatingDates user={me} key={me.id} />
-                <UserBlackOutRangeDates user={me} key={me.id} />
+                <UserBlackOutRepeatingDates user={me} key={me.blackOutRanges} />
               </div>
             </div>
           )}
@@ -101,11 +122,15 @@ class UserBlackOutDates extends React.Component {
 
 
   convertDate = (date) => {
+    if(date == "") {
+      return "";
+    }
     const complex = moment.utc(date).toDate()
     const almostDate = moment(complex).add(1, 'd').toDate();
     var newDate = new Date(almostDate),
         month = ("0" + (newDate.getMonth()+1)).slice(-2),
         day  = ("0" + newDate.getDate()).slice(-2);
+
     return [ newDate.getFullYear(), month, day ].join("-");
 
   }
@@ -137,6 +162,18 @@ class UserBlackOutDates extends React.Component {
     }));
   }
 
+  removeBlackOutDate = (e) => {
+    const remove = e.target;
+    const index = e.target.id;
+    const arrayTemp = this.state.blackOutDates;
+    arrayTemp.splice(index, 1);
+    for (var i = 0; i < arrayTemp.length; i++) {
+        arrayTemp[i] = this.convertDate(arrayTemp[i]);
+    }
+    this.setState({blackOutDates: [...arrayTemp]});
+  }
+
+
   handleBlackOutChange = (e) => {
     const addDate = e.target;
 
@@ -162,6 +199,7 @@ class UserBlackOutDates extends React.Component {
 
   render() {
     const user = this.props.user;
+    console.log(this.state.blackOutDates);
     return (
       <Mutation
         mutation={UPDATE_BLACKOUT_MUTATION}
@@ -182,11 +220,12 @@ class UserBlackOutDates extends React.Component {
                       id={`${index}`}
                       name={`${blackOut}-${index}`}
                       style= {{ width: 200 }}
-                      defaultValue={blackOut}
+                      value={`${blackOut}`}
                       onChange={this.handleBlackOutChange}
-                      min = { this.convertDate(this.state.currentDate) }
+                      min={ this.convertDate(this.state.currentDate) }
                     />
                   </label>
+                  <NastyButton key={index} id={`${index}`} type="button" onClick={this.removeBlackOutDate}>&times;</NastyButton>
                 </TimeDate>
             ))}
             <SickNastyButton type="button" onClick={this.addBlackOutDate}>Add new Blackout Date</SickNastyButton>
@@ -201,31 +240,29 @@ class UserBlackOutDates extends React.Component {
   }
 }
 
+
+
+
+
+
+
+
 class UserBlackOutRepeatingDates extends React.Component {
 
   static propTypes = {
     user: PropTypes.shape({
-      id: PropTypes.string,
-      blackOut: PropTypes.array,
     }).isRequired,
   };
 
   state = {
-      blackOutDates: this.props.user.blackOut,
+      weekday: '',
+      end: '',
+      begin:'',
+      currentDate: new Date(),
   };
 
-  componentWillMount() {
-    if(this.props.user.blackOut.length == 0) {
-      this.setState({blackOutDates: [""]})
-    } else {
-      this.setState({blackOutDates: this.props.user.blackOut})
-    }
-  }
 
-
-  convertDate = (date) => {
-    const complex = moment.utc(date).toDate()
-    const almostDate = moment(complex).add(1, 'd').toDate();
+  convertDate = (almostDate) => {
     var newDate = new Date(almostDate),
         month = ("0" + (newDate.getMonth()+1)).slice(-2),
         day  = ("0" + newDate.getDate()).slice(-2);
@@ -254,196 +291,102 @@ class UserBlackOutRepeatingDates extends React.Component {
     return time12;
   }
 
-  addBlackOutDate = (e) => {
-    this.setState((prevState) => ({
-      blackOutDates: [...prevState.blackOutDates, ""],
-    }));
-  }
-
-  handleBlackOutChange = (e) => {
+  handleBlackOutRepeat = (e) => {
     const addDate = e.target;
 
-    console.log(addDate);
+    var date = new Date();
+    var dayofweek = '';
 
-    const index = addDate.id;
+    const addDateRepeating = addDate.name.split("-");
 
-    const date = this.convertDate(addDate.value);
-
-    console.log(date);
-    // take a copy of the current permissions
-    let updatedDates = [...this.state.blackOutDates];
-    // figure out if we need to remove or add this permission
-    // add it in!
-    if(updatedDates.length >= index){
-      updatedDates[index] = date;
+    if(addDateRepeating[0] == "weekday") {
+      this.setState({weekday: addDate.value, end: '', begin: ''});
+    } else if (addDateRepeating[0] == "begin") {
+      var date = this.convertDate(addDate.value);
+      this.setState({begin: date});
     } else {
-      updatedDates.push(date);
+      var date = this.convertDate(addDate.value);
+      this.setState({end: date});
     }
 
-    this.setState({ blackOutDates: updatedDates });
   };
 
   render() {
-    const user = this.props.user;
+
     return (
       <Mutation
-        mutation={UPDATE_BLACKOUT_MUTATION}
+        mutation={ADD_TO_BLACKOUTS_MUTATION}
         variables={{
-          blackOut: this.state.blackOutDates,
-          userId: this.props.user.id,
+          ...this.state,
         }}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(updateBlackoutDates, { loading, error }) => (
-          <Form>
-            {error && <Error error={error} />}
-            {this.state.blackOutDates.map((blackOut, index) => (
-                <TimeDate key={index}>
-                  <label htmlFor={`${blackOut}-${index}`}>
-                    Date: &nbsp;
-                    <input
-                      type="date"
-                      id={`${index}`}
-                      name={`${blackOut}-${index}`}
-                      style= {{ width: 200 }}
-                      defaultValue={blackOut}
-                      onChange={this.handleBlackOutChange}
-                    />
-                  </label>
-                </TimeDate>
-            ))}
-            <SickNastyButton type="button" onClick={this.addBlackOutDate}>Add new Repeating Blackout Date</SickNastyButton>
-            <br></br>
-            <SickNastyButton type="button" disabled={loading} onClick={updateBlackoutDates}>
-              Updat{loading ? 'ing' : 'e'}
-            </SickNastyButton>
-          </Form>
+        {(addBlackoutRanges, { loading, error }) => (
+          <User>
+            {({ data: { me } }) => (
+              <>
+              { me.blackOutRanges.map(blackOutItem => <BlackOutRangeItem key={blackOutItem.id} blackOutItem={blackOutItem}/> )}
+              <Form>
+                {error && <Error error={error} />}
+                    <TimeDate>
+                      <label htmlFor={`weekday`}>
+                       Day of the week that should be repeatedly closed
+                        <select
+                          id={`weekday`}
+                          name={`weekday`}
+                          onChange={this.handleBlackOutRepeat}
+                        >
+                          <option value="Monday">Monday</option>
+                          <option value="Tuesday">Tuesday</option>
+                          <option value="Wednesday">Wednesday</option>
+                          <option value="Thursday">Thursday</option>
+                          <option value="Friday">Friday</option>
+                          <option value="Saturday">Saturday</option>
+                          <option value="Sunday">Sunday</option>
+                      </select>
+                      </label>
+                      <br></br>
+                      OR set up a range of dates
+                      <br></br>
+                      <br></br>
+                      <label htmlFor={`begin`}>
+                        Begin Date: &nbsp;
+                        <input
+                          type="date"
+                          id={`begin`}
+                          name={`begin`}
+                          style= {{ width: 200 }}
+                          onChange={this.handleBlackOutRepeat}
+                          min = { this.convertDate(this.state.currentDate) }
+                        />
+                      </label>
+                      <label htmlFor={`end`}>
+                        End Date: &nbsp;
+                        <input
+                          type="date"
+                          id={`end`}
+                          name={`end}`}
+                          style= {{ width: 200 }}
+                          onChange={this.handleBlackOutRepeat}
+                          min = { this.convertDate(this.state.currentDate) }
+                        />
+                      </label>
+                    </TimeDate>
+                <br></br>
+                <SickNastyButton type="button" disabled={loading} onClick={addBlackoutRanges}>
+                  Add{loading ? 'ing': ''}
+                </SickNastyButton>
+              </Form>
+            </>
+            )}
+          </User>
         )}
       </Mutation>
     );
   }
 }
 
-class UserBlackOutRangeDates extends React.Component {
 
-  static propTypes = {
-    user: PropTypes.shape({
-      id: PropTypes.string,
-      blackOut: PropTypes.array,
-    }).isRequired,
-  };
-
-  state = {
-      blackOutDates: this.props.user.blackOut,
-  };
-
-  componentWillMount() {
-    if(this.props.user.blackOut.length == 0) {
-      this.setState({blackOutDates: [""]})
-    } else {
-      this.setState({blackOutDates: this.props.user.blackOut})
-    }
-  }
-
-
-  convertDate = (date) => {
-    const complex = moment.utc(date).toDate()
-    const almostDate = moment(complex).add(1, 'd').toDate();
-    var newDate = new Date(almostDate),
-        month = ("0" + (newDate.getMonth()+1)).slice(-2),
-        day  = ("0" + newDate.getDate()).slice(-2);
-    return [ newDate.getFullYear(), month, day ].join("-");
-
-  }
-
-  convertTime = (time24) => {
-    var tmpArr = time24.split(':'), time12;
-    if(+tmpArr[0] == 12) {
-      time12 = tmpArr[0] + ':' + tmpArr[1] + ' pm';
-    }
-    else {
-      if(+tmpArr[0] == 0) {
-        time12 = '12:' + tmpArr[1] + ' am';
-      }
-      else {
-        if(+tmpArr[0] > 12) {
-          time12 = (+tmpArr[0]-12) + ':' + tmpArr[1] + ' pm';
-        }
-        else {
-          time12 = (+tmpArr[0]) + ':' + tmpArr[1] + ' am';
-        }
-      }
-    }
-    return time12;
-  }
-
-  addBlackOutDate = (e) => {
-    this.setState((prevState) => ({
-      blackOutDates: [...prevState.blackOutDates, ""],
-    }));
-  }
-
-  handleBlackOutChange = (e) => {
-    const addDate = e.target;
-
-    console.log(addDate);
-
-    const index = addDate.id;
-
-    const date = this.convertDate(addDate.value);
-
-    console.log(date);
-    // take a copy of the current permissions
-    let updatedDates = [...this.state.blackOutDates];
-    // figure out if we need to remove or add this permission
-    // add it in!
-    if(updatedDates.length >= index){
-      updatedDates[index] = date;
-    } else {
-      updatedDates.push(date);
-    }
-
-    this.setState({ blackOutDates: updatedDates });
-  };
-
-  render() {
-    const user = this.props.user;
-    return (
-      <Mutation
-        mutation={UPDATE_BLACKOUT_MUTATION}
-        variables={{
-          blackOut: this.state.blackOutDates,
-          userId: this.props.user.id,
-        }}
-      >
-        {(updateBlackoutDates, { loading, error }) => (
-          <Form>
-            {error && <Error error={error} />}
-            {this.state.blackOutDates.map((blackOut, index) => (
-                <TimeDate key={index}>
-                  <label htmlFor={`${blackOut}-${index}`}>
-                    Date: &nbsp;
-                    <input
-                      type="date"
-                      id={`${index}`}
-                      name={`${blackOut}-${index}`}
-                      style= {{ width: 200 }}
-                      defaultValue={blackOut}
-                      onChange={this.handleBlackOutChange}
-                    />
-                  </label>
-                </TimeDate>
-            ))}
-            <SickNastyButton type="button" onClick={this.addBlackOutDate}>Add new Range of Blackout Dates</SickNastyButton>
-            <br></br>
-            <SickNastyButton type="button" disabled={loading} onClick={updateBlackoutDates}>
-              Updat{loading ? 'ing' : 'e'}
-            </SickNastyButton>
-          </Form>
-        )}
-      </Mutation>
-    );
-  }
-}
 
 export { UPDATE_BLACKOUT_MUTATION };
 export default BlackOutDates;

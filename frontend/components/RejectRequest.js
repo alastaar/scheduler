@@ -29,7 +29,12 @@ const StayInline = styled.div`
     margin: 0 auto;
     border: 1px solid black;
     font-weight: 900;
-
+  }
+  label {
+    float: left;
+    text-align: left;
+  }
+  input{
   }
 `;
 
@@ -81,7 +86,7 @@ class RejectRequest extends Component {
           update={this.update}
           refetchQueries={[{ query: ALL_REQUESTS_QUERY }]}
         >
-          {(approveRequest, { error }) => (
+          {(rejectRequests, { error }) => (
           <>
             <Query query={ SINGLE_REQUEST_QUERY } variables={{
               id: this.props.id,
@@ -101,7 +106,7 @@ class RejectRequest extends Component {
                   </label>
                   <button onClick={async e => {
                         e.preventDefault;
-                        const res = await rejectRequest();
+                        const res = await rejectRequests();
                         console.log(res);
                       }
                     }

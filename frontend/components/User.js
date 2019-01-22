@@ -19,6 +19,12 @@ const CURRENT_USER_QUERY = gql`
       artist
       permissions
       blackOut
+      blackOutRanges{
+        id
+        begin
+        end
+        weekday
+      }
       emailPreference
       stripeToken
       bankToken

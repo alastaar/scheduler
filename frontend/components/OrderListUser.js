@@ -49,7 +49,6 @@ class OrderListUser extends React.Component {
               if(error) return <Error error={error} />
               return(
                 <div>
-                  <h2>you have {orders.length} confirmed requests</h2>
                   <OrderUl>
                     {orders.map(order => (
                       <OrderItemStyles key={order.id}>

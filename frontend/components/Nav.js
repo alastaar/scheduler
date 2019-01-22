@@ -24,6 +24,9 @@ const Nav = () => (
 							<Link href="/ur-request">
 								<a>Ur Requests</a>
 							</Link>
+							<Link href="/chats">
+								<a>Chats</a>
+							</Link>
 							<Mutation mutation={TOGGLE_CART_MUTATION}>
 								{(toggleCart) => (
 									<button onClick={toggleCart}>

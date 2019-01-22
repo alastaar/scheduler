@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Requests from '../components/RequesterList';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const Home = props => (
 	<div>
-		<Requests page={ parseFloat(props.query.page) || 1 } />
+		<PleaseSignIn>
+			<Requests page={ parseFloat(props.query.page) || 1 } />
+		</PleaseSignIn>
 	</div>
 )
 

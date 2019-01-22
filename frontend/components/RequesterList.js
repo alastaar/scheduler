@@ -14,6 +14,7 @@ const ALL_REQUESTS_QUERY = gql`
   query ALL_REQUESTS_QUERY($skip: Int = 0, $first: Int = ${ perPage }) {
     requests(first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
+      requestedId
       name
       lastName
       price
@@ -27,7 +28,9 @@ const ALL_REQUESTS_QUERY = gql`
       timeThree
       referenceImage
       approved
+      rejectReason
       user{
+        id
         name
         lastName
         email

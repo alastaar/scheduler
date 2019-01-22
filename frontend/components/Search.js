@@ -84,7 +84,7 @@ class AutoComplete extends React.Component {
                     {...getItemProps({ item })}
                     key={ item.id } highlighted={ index === highlightedIndex }>
                       <img width="50" src={ item.image } alt='' />
-                      { item.name } { item.lastName } | Shop: { item.shop } | Handle: { item.instagramHandle }
+                      { item.name } { item.lastName } | Handle: { item.instagramHandle }
                     </DropDownItem>
                   )}
                   {!this.state.users.length && !this.state.loading && (

@@ -1,9 +1,12 @@
 import RequestArtist from '../components/RequestArtist';
 // import Link from 'next/link';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const Request = props => (
 	<div>
-		<RequestArtist id={ props.query.id } name={ props.query.name } lastName={ props.query.lastName }  email={ props.query.email } price={ props.query.price } />
+		<PleaseSignIn>
+			<RequestArtist id={ props.query.id } />
+		</PleaseSignIn>
 	</div>
 )
 

@@ -16,9 +16,11 @@ type Mutation {
   updatePermissions(permissions: [Permission], userId: ID!): User
   updatePreferences(emailPreference: [EmailPreference], userId: ID!): User
   updateBlackoutDates(blackOut: [String], userId: ID!): User
-  addBlackoutRanges(id: ID!): BlackOutDates
+  addBlackoutRanges(weekday: String, begin: String, end: String): BlackOutDates
+  deleteBlackOutRanges(id: ID!): BlackOutDates
   updateUserInfo(name: String, lastName: String, email: String, instagramHandle: String, shop: String, profileImage: String, image: String, price: Int, bio: String, timeDetails: String, userId: ID!): User
-  createRequest(requestedId: String, name: String, lastName: String, email: String, price: Int, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
+  createRequest(requestedId: String, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
+  updateRequest(requestedId: String, dateOne: String!, timeOne: String!, dateTwo: String, timeTwo: String, dateThree: String, timeThree: String, details: String, referenceImage: String, approved: String): Request!
   approveRequests(id: ID!, dateOne: String!, timeOne: String!, approved: String): Request!
   rejectRequests(id: ID!, rejectReason: String, approved: String): Request!
   deleteRequest(id: ID!): Request!
@@ -30,6 +32,9 @@ type Mutation {
   createBankInfo(bankToken: String!): User!
   updateBankInfo(bankToken: String!): User!
   deleteUser(id: ID!): User!
+  createChat(vendor: String!, client: String!): Chat!
+  updateChat(id: ID!, vendor: String!, client: String!): Chat!
+  createChatMessage(message: String!, chatId: String): ChatMessage!
 }
 
 type Query {
@@ -37,6 +42,7 @@ type Query {
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereInput): ItemConnection!
   me: User
+  gettingRequested: User
   users(where: UserWhereInput): [User]!
   user(where: UserWhereUniqueInput!): User
   requests(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, first: Int): [Request]!
@@ -44,6 +50,8 @@ type Query {
   requestsConnection(where: RequestWhereInput): RequestConnection!
   order(id: ID!): Order
   orders(orderBy: OrderOrderByInput): [Order]!
+  chat(where: ChatWhereUniqueInput!): Chat
+  chats(orderBy: ChatOrderByInput): [Chat]!
 }
 
 type User {
@@ -77,4 +85,5 @@ type User {
   permissions: [Permission!]!
   emailPreference: [EmailPreference]
   cart: [CartItem!]!
+  chats: [Chat]
 }

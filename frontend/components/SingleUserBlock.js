@@ -77,9 +77,13 @@ class SingleUserBlock extends Component{
             <img src={ user.image } alt= { user.name } />
             <div className="details">
               <h2>Viewing { user.name } { user.lastName }</h2>
-              <p>Handle: { user.instagramHandle }</p>
-              <p>Shop: { user.shop }</p>
-              <p>{ formatMoney(user.price) } per request</p>
+              {user.instagramHandle && (
+                 <p> Handle: { user.instagramHandle }</p>
+              )}
+              {user.shop && (
+                 <p> Shop: { user.shop } </p>
+              )}
+              <p>{ formatMoney(user.price) } per deposit</p>
             </div>
           </SingleItemStyles>
           <Something>
@@ -88,7 +92,7 @@ class SingleUserBlock extends Component{
               query: { id: user.id, name: user.name, lastName: user.lastName, email: user.email, price: user.price },
             }}>
               <a>
-                Request Artist
+                Request Appointment
               </a>
             </Link>
           </Something>
@@ -100,3 +104,4 @@ class SingleUserBlock extends Component{
 }
 
 export default SingleUserBlock;
+export { SINGLE_USER_QUERY};

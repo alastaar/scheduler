@@ -48,8 +48,12 @@ const Cart = () => (
                 <ul>
                   { me.cart.map(cartRequest => <CartItem key={cartRequest.id} cartRequest={cartRequest}/> )}
                 </ul>
-
-                <p> + 5% Convenience Fee </p>
+                {formatMoney(calcTotalPrice(me.cart)) == "$2" && (
+                  <p> + $2 Fee </p>
+                )}
+                {formatMoney(calcTotalPrice(me.cart)) !== "$2" && (
+                  <p> + 5% Fee </p>
+                )}
                 <footer>
                   <p>{formatMoney(calcTotalPrice(me.cart))}</p>
                   {me.cart.length && (

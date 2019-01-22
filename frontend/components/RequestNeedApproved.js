@@ -6,9 +6,11 @@ import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
-import AddToCart from './AddToCart';
 import RequestStyles from './styles/RequestStyles';
+import AddToCart from './AddToCart';
 import Pay from './Pay';
+import DeleteRequest from './DeleteRequest';
+import Chat from './Chat';
 
 class RequestNeedApproved extends Component {
   static propTypes = {
@@ -18,7 +20,7 @@ class RequestNeedApproved extends Component {
   render() {
     const { request } = this.props;
     return(
-      <RequestStyles>
+      <ItemStyles>
       { request.approved == 'yes' &&
       <>
           { request.referenceImage && <img src={ request.referenceImage } alt={ request.title } />}
@@ -49,10 +51,12 @@ class RequestNeedApproved extends Component {
            <div className="buttonList">
               <AddToCart id={request.id} />
               <Pay id={request.id} />
+              <DeleteRequest id={request.id}>Remove Request</DeleteRequest>
+              <Chat vendor={request.requestedId} client={request.user.id}>Chat</Chat>
            </div>
           </>
         }
-      </RequestStyles>
+      </ItemStyles>
     );
   }
 }

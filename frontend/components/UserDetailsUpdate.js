@@ -158,20 +158,7 @@ class UserDetailsUpdate extends Component  {
                           id="bio"
                           name="bio"
                           placeholder="Enter a bio"
-                          required
                           defaultValue={me.bio}
-                          onChange={this.handleUserChange}
-                        />
-                      </label>
-
-                      <label htmlFor="bio">
-                        Your time details, this is an overview. It will help with reducing your rejected requests.
-                        <textarea
-                          id="timeDetails"
-                          name="timeDetails"
-                          placeholder="E.g. I work Tuesday - Saturday from 12pm - 9pm and can take appointments during that time."
-                          required
-                          defaultValue={me.timeDetails}
                           onChange={this.handleUserChange}
                         />
                       </label>
@@ -183,7 +170,7 @@ class UserDetailsUpdate extends Component  {
                           id="instagramHandle"
                           name="instagramHandle"
                           placeholder="Instagram Handle"
-                          required
+
                           defaultValue={me.instagramHandle}
                           onChange={this.handleUserChange}
                         />
@@ -196,7 +183,6 @@ class UserDetailsUpdate extends Component  {
                           id="shop"
                           name="shop"
                           placeholder="Shop"
-                          required
                           defaultValue={me.shop}
                           onChange={this.handleUserChange}
                         />
