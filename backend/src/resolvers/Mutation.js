@@ -203,7 +203,15 @@ const Mutations = {
   },
   async signin(parent, { email, password }, ctx, info) {
     // 1. check if there is a user with that email
-    const user = await ctx.db.query.user({ where: { email } });
+    const user = await ctx.db.query.user({ where: { email } },
+      `{
+        id
+        name
+        lastName
+        email
+      }`
+    );
+
     if (!user) {
       throw new Error(`No such user found for email ${email}`);
     }
@@ -229,7 +237,15 @@ const Mutations = {
 
   async requestReset(parent, args, ctx, info) {
     // 1. Check if this is a real user
-    const user = await ctx.db.query.user({ where: { email: args.email } });
+    const user = await ctx.db.query.user({ where: { email: args.email } },
+      `{
+          id
+          name
+          lastName
+          email
+        }`
+      );
+      
     if (!user) {
       throw new Error(`No such user found for email ${args.email}`);
     }
