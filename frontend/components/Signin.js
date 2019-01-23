@@ -35,12 +35,12 @@ class Signin extends Component {
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(signup, { error, loading }) => (
+        {(signin, { error, loading }) => (
           <Form
             method="post"
             onSubmit={async e => {
               e.preventDefault();
-              await signup();
+              await signin();
               this.setState({ name: '', lastName: '', email: '', password: '' });
               Router.push({
                 pathname: '/items',

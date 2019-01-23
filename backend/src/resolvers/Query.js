@@ -35,7 +35,6 @@ const Query = {
 
     }
 
-    hasPermission(ctx.request.user, ['USER']);
 
     return ctx.db.query.users({}, info);
 

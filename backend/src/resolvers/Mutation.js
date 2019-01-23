@@ -209,6 +209,7 @@ const Mutations = {
         name
         lastName
         email
+        password
       }`
     );
 
@@ -230,6 +231,7 @@ const Mutations = {
     // 5. Return the user
     return user;
   },
+
   signout(parent, args, ctx, info) {
     ctx.response.clearCookie('token');
     return { message: 'Goodbye!' };
@@ -245,7 +247,7 @@ const Mutations = {
           email
         }`
       );
-      
+
     if (!user) {
       throw new Error(`No such user found for email ${args.email}`);
     }
