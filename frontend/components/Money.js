@@ -58,7 +58,7 @@ class Money extends React.Component {
                 name="Scratcher"
                 description={`${totalItems(me.cart)} appointment confirmation`}
                 image={me.cart.length && me.cart[0].request && me.cart[0].request.referenceImage}
-                stripeKey="pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ"
+                stripeKey="pk_test_K3j8JU1o7WrtlpA5zY8bavrR"
                 currency="USD"
                 email={me.email}
                 token={res => this.onToken(res, createOrder) }
