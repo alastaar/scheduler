@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1742,9 +1742,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/items.js":
 /*!************************!*\
-  !*** ./pages/index.js ***!
+  !*** ./pages/items.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1756,12 +1756,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Items */ "./components/Items.js");
-var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/pages/index.js";
+var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/pages/items.js";
 
 
 
 
-var Home = function Home(props) {
+var ItemPage = function ItemPage(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
@@ -1778,18 +1778,18 @@ var Home = function Home(props) {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+/* harmony default export */ __webpack_exports__["default"] = (ItemPage);
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!******************************!*\
-  !*** multi ./pages/index.js ***!
+  !*** multi ./pages/items.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! ./pages/items.js */"./pages/items.js");
 
 
 /***/ }),
@@ -1905,4 +1905,4 @@ module.exports = require("styled-components");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=items.js.map

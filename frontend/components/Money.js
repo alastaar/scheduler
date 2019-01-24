@@ -58,7 +58,7 @@ class Money extends React.Component {
             { createOrder => (
               <StripeCheckout
                 amount={calcTotalPrice(me.cart)}
-                name="Scratcher"
+                name="Palazar"
                 description={`${totalItems(me.cart)} appointment confirmation`}
                 image={me.cart.length && me.cart[0].request && me.cart[0].request.referenceImage}
                 stripeKey={token}

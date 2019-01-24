@@ -11,7 +11,7 @@ import SickButton from './styles/SickButton';
 import PropTypes from 'prop-types';
 import { CURRENT_USER_QUERY } from './User';
 import Router from 'next/router';
-
+import { prodStripe, devStripe } from '../config';
 
 
 const BANK_UPDATE_MUTATION = gql`
@@ -53,7 +53,8 @@ const StripedElement = styled.div`
 class UpdateBankInfo extends Component {
 
   componentDidMount(){
-    this.stripe = Stripe('pk_test_K3j8JU1o7WrtlpA5zY8bavrR');
+    const token = process.env.NODE_ENV === 'development' ? devStripe : prodStripe;
+    this.stripe = Stripe(token);
 
     // Create an instance of Elements.
     this.elements = this.stripe.elements();

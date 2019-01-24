@@ -10,6 +10,7 @@ import SickButton from './styles/SickButton';
 import PropTypes from 'prop-types';
 import { CURRENT_USER_QUERY } from './User';
 import Router from 'next/router';
+import { prodStripe, devStripe } from '../config';
 
 
 const ACCOUNT_UPDATE_MUTATION = gql`
@@ -61,7 +62,8 @@ class StripeAccountUpdate extends Component {
 
   handleForm = async e => {
     e.preventDefault();
-    const stripe = Stripe('pk_test_K3j8JU1o7WrtlpA5zY8bavrR');
+    const token = process.env.NODE_ENV === 'development' ? devStripe : prodStripe;
+    const stripe = Stripe(token);
     const myForm = document.querySelector('.my-form')
 
     const res = await stripe.createToken('account', {
@@ -191,7 +193,6 @@ class StripeAccountUpdate extends Component {
                         />
                       </label>
 
-                      <legend>Address</legend>
                       <label>
                         <span>Street Address Line 1</span>
                         <input

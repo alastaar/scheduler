@@ -1,5 +1,5 @@
-# source: https://palazar-production-af1536f2c7.herokuapp.com/palazar-prod/prod
-# timestamp: Thu Jan 24 2019 13:41:24 GMT-0800 (Pacific Standard Time)
+# source: https://us1.prisma.sh/alistair-mccormick/sick/dev
+# timestamp: Thu Jan 24 2019 14:35:19 GMT-0800 (Pacific Standard Time)
 
 type AggregateBlackOutDates {
   count: Int!
@@ -341,6 +341,7 @@ input BlackOutDatesUpdateManyMutationInput {
 input BlackOutDatesUpdateManyWithoutUserInput {
   create: [BlackOutDatesCreateWithoutUserInput!]
   connect: [BlackOutDatesWhereUniqueInput!]
+  set: [BlackOutDatesWhereUniqueInput!]
   disconnect: [BlackOutDatesWhereUniqueInput!]
   delete: [BlackOutDatesWhereUniqueInput!]
   update: [BlackOutDatesUpdateWithWhereUniqueWithoutUserInput!]
@@ -734,6 +735,7 @@ input CartItemUpdateManyMutationInput {
 input CartItemUpdateManyWithoutUserInput {
   create: [CartItemCreateWithoutUserInput!]
   connect: [CartItemWhereUniqueInput!]
+  set: [CartItemWhereUniqueInput!]
   disconnect: [CartItemWhereUniqueInput!]
   delete: [CartItemWhereUniqueInput!]
   update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
@@ -1149,6 +1151,7 @@ input ChatMessageUpdateManyDataInput {
 input ChatMessageUpdateManyInput {
   create: [ChatMessageCreateInput!]
   connect: [ChatMessageWhereUniqueInput!]
+  set: [ChatMessageWhereUniqueInput!]
   disconnect: [ChatMessageWhereUniqueInput!]
   delete: [ChatMessageWhereUniqueInput!]
   update: [ChatMessageUpdateWithWhereUniqueNestedInput!]
@@ -1545,6 +1548,7 @@ input ChatUpdateManyDataInput {
 input ChatUpdateManyInput {
   create: [ChatCreateInput!]
   connect: [ChatWhereUniqueInput!]
+  set: [ChatWhereUniqueInput!]
   disconnect: [ChatWhereUniqueInput!]
   delete: [ChatWhereUniqueInput!]
   update: [ChatUpdateWithWhereUniqueNestedInput!]
@@ -2763,6 +2767,7 @@ input OrderRequestUpdateManyDataInput {
 input OrderRequestUpdateManyInput {
   create: [OrderRequestCreateInput!]
   connect: [OrderRequestWhereUniqueInput!]
+  set: [OrderRequestWhereUniqueInput!]
   disconnect: [OrderRequestWhereUniqueInput!]
   delete: [OrderRequestWhereUniqueInput!]
   update: [OrderRequestUpdateWithWhereUniqueNestedInput!]

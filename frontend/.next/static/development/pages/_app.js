@@ -948,7 +948,7 @@ function (_React$Component) {
         }, function (createOrder) {
           return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_stripe_checkout__WEBPACK_IMPORTED_MODULE_2___default.a, {
             amount: Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_8__["default"])(me.cart),
-            name: "Scratcher",
+            name: "Palazar",
             description: "".concat(totalItems(me.cart), " appointment confirmation"),
             image: me.cart.length && me.cart[0].request && me.cart[0].request.referenceImage,
             stripeKey: token,
