@@ -2,12 +2,6 @@ import App, { Container } from 'next/app';
 import Page from '../components/Page';
 import { ApolloProvider } from 'react-apollo';
 import withData from '../lib/withData';
-import ReactGA from 'react-ga';
-
-function initializeReactGA() {
-    ReactGA.initialize('UA-133185295-1');
-    ReactGA.pageview('/');
-}
 
 
 class MyApp extends App {

@@ -1,5 +1,5 @@
 # source: https://palazar-production-af1536f2c7.herokuapp.com/palazar-prod/prod
-# timestamp: Tue Jan 22 2019 13:51:12 GMT-0800 (Pacific Standard Time)
+# timestamp: Thu Jan 24 2019 12:27:12 GMT-0800 (Pacific Standard Time)
 
 type AggregateBlackOutDates {
   count: Int!
