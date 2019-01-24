@@ -2222,6 +2222,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-apollo */ "react-apollo");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _lib_withData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/withData */ "./lib/withData.js");
+/* harmony import */ var react_ga__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-ga */ "react-ga");
+/* harmony import */ var react_ga__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_ga__WEBPACK_IMPORTED_MODULE_6__);
 
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/pages/_app.js";
 
@@ -2255,6 +2257,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+function initializeReactGA() {
+  react_ga__WEBPACK_IMPORTED_MODULE_6___default.a.initialize('UA-133185295-1');
+  react_ga__WEBPACK_IMPORTED_MODULE_6___default.a.pageview('/');
+}
+
 var MyApp =
 /*#__PURE__*/
 function (_App) {
@@ -2276,26 +2284,26 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 27
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["ApolloProvider"], {
         client: apollo,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 28
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Page__WEBPACK_IMPORTED_MODULE_3__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 29
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 30
         },
         __self: this
       })))));
@@ -2527,6 +2535,17 @@ module.exports = require("react-adopt");
 /***/ (function(module, exports) {
 
 module.exports = require("react-apollo");
+
+/***/ }),
+
+/***/ "react-ga":
+/*!***************************!*\
+  !*** external "react-ga" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-ga");
 
 /***/ }),
 

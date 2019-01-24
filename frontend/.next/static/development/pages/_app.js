@@ -17286,7 +17286,7 @@ module.exports = gql;
   !*** ./node_modules/graphql/error/GraphQLError.mjs ***!
   \*****************************************************/
 /*! exports provided: GraphQLError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17437,7 +17437,7 @@ GraphQLError.prototype = Object.create(Error.prototype, {
   !*** ./node_modules/graphql/error/formatError.mjs ***!
   \****************************************************/
 /*! exports provided: formatError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17482,7 +17482,7 @@ function formatError(error) {
   !*** ./node_modules/graphql/error/index.mjs ***!
   \**********************************************/
 /*! exports provided: GraphQLError, syntaxError, locatedError, printError, formatError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17522,7 +17522,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/error/locatedError.mjs ***!
   \*****************************************************/
 /*! exports provided: locatedError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17560,7 +17560,7 @@ function locatedError(originalError, nodes, path) {
   !*** ./node_modules/graphql/error/printError.mjs ***!
   \***************************************************/
 /*! exports provided: printError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17711,7 +17711,7 @@ function lpad(len, str) {
   !*** ./node_modules/graphql/error/syntaxError.mjs ***!
   \****************************************************/
 /*! exports provided: syntaxError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -17742,7 +17742,7 @@ function syntaxError(source, position, description) {
   !*** ./node_modules/graphql/execution/execute.mjs ***!
   \****************************************************/
 /*! exports provided: execute, responsePathAsArray, addPath, assertValidExecutionArguments, buildExecutionContext, collectFields, buildResolveInfo, resolveFieldValueOrError, defaultFieldResolver, getFieldDef */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -18575,7 +18575,7 @@ function getFieldDef(schema, parentType, fieldName) {
   !*** ./node_modules/graphql/execution/index.mjs ***!
   \**************************************************/
 /*! exports provided: execute, defaultFieldResolver, responsePathAsArray, getDirectiveValues */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -18607,7 +18607,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/execution/values.mjs ***!
   \***************************************************/
 /*! exports provided: getVariableValues, getArgumentValues, getDirectiveValues */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -18849,7 +18849,7 @@ function hasOwnProperty(obj, prop) {
   !*** ./node_modules/graphql/graphql.mjs ***!
   \******************************************/
 /*! exports provided: graphql, graphqlSync */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -18941,7 +18941,7 @@ function graphqlImpl(schema, source, rootValue, contextValue, variableValues, op
   !*** ./node_modules/graphql/index.mjs ***!
   \****************************************/
 /*! exports provided: graphql, graphqlSync, GraphQLSchema, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, GraphQLDirective, TypeKind, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, isSchema, isDirective, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, isSpecifiedScalarType, isIntrospectionType, isSpecifiedDirective, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, validateSchema, assertValidSchema, Source, getLocation, parse, parseValue, parseType, print, visit, visitInParallel, visitWithTypeInfo, getVisitFn, Kind, TokenKind, DirectiveLocation, BREAK, isDefinitionNode, isExecutableDefinitionNode, isSelectionNode, isValueNode, isTypeNode, isTypeSystemDefinitionNode, isTypeDefinitionNode, isTypeSystemExtensionNode, isTypeExtensionNode, execute, defaultFieldResolver, responsePathAsArray, getDirectiveValues, subscribe, createSourceEventStream, validate, ValidationContext, specifiedRules, FieldsOnCorrectTypeRule, FragmentsOnCompositeTypesRule, KnownArgumentNamesRule, KnownDirectivesRule, KnownFragmentNamesRule, KnownTypeNamesRule, LoneAnonymousOperationRule, NoFragmentCyclesRule, NoUndefinedVariablesRule, NoUnusedFragmentsRule, NoUnusedVariablesRule, OverlappingFieldsCanBeMergedRule, PossibleFragmentSpreadsRule, ProvidedRequiredArgumentsRule, ScalarLeafsRule, SingleFieldSubscriptionsRule, UniqueArgumentNamesRule, UniqueDirectivesPerLocationRule, UniqueFragmentNamesRule, UniqueInputFieldNamesRule, UniqueOperationNamesRule, UniqueVariableNamesRule, ValuesOfCorrectTypeRule, VariablesAreInputTypesRule, VariablesInAllowedPositionRule, GraphQLError, formatError, printError, getIntrospectionQuery, introspectionQuery, getOperationAST, getOperationRootType, introspectionFromSchema, buildClientSchema, buildASTSchema, buildSchema, getDescription, extendSchema, lexicographicSortSchema, printSchema, printIntrospectionSchema, printType, typeFromAST, valueFromAST, valueFromASTUntyped, astFromValue, TypeInfo, coerceValue, isValidJSValue, isValidLiteralValue, concatAST, separateOperations, isEqualType, isTypeSubTypeOf, doTypesOverlap, assertValidName, isValidNameError, findBreakingChanges, findDangerousChanges, BreakingChangeType, DangerousChangeType, findDeprecatedUsages */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19358,7 +19358,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/jsutils/defineToJSON.mjs ***!
   \*******************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19387,7 +19387,7 @@ function applyToJSON(classObject) {
   !*** ./node_modules/graphql/jsutils/defineToStringTag.mjs ***!
   \************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19431,7 +19431,7 @@ function applyToStringTag(classObject) {
   !*** ./node_modules/graphql/jsutils/find.mjs ***!
   \***********************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19459,7 +19459,7 @@ function find(list, predicate) {
   !*** ./node_modules/graphql/jsutils/inspect.mjs ***!
   \**************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19514,7 +19514,7 @@ function inspect(value) {
   !*** ./node_modules/graphql/jsutils/instanceOf.mjs ***!
   \*****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19559,7 +19559,7 @@ function instanceOf(value, constructor) {
   !*** ./node_modules/graphql/jsutils/invariant.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19586,7 +19586,7 @@ function invariant(condition, message) {
   !*** ./node_modules/graphql/jsutils/isFinite.mjs ***!
   \***************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19614,7 +19614,7 @@ var isFinite = Number.isFinite || function (value) {
   !*** ./node_modules/graphql/jsutils/isInteger.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19642,7 +19642,7 @@ var isInteger = Number.isInteger || function (value) {
   !*** ./node_modules/graphql/jsutils/isInvalid.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19670,7 +19670,7 @@ function isInvalid(value) {
   !*** ./node_modules/graphql/jsutils/isNullish.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19698,7 +19698,7 @@ function isNullish(value) {
   !*** ./node_modules/graphql/jsutils/isPromise.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19728,7 +19728,7 @@ function isPromise(value) {
   !*** ./node_modules/graphql/jsutils/keyMap.mjs ***!
   \*************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19778,7 +19778,7 @@ function keyMap(list, keyFn) {
   !*** ./node_modules/graphql/jsutils/keyValMap.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19822,7 +19822,7 @@ function keyValMap(list, keyFn, valFn) {
   !*** ./node_modules/graphql/jsutils/memoize3.mjs ***!
   \***************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19885,7 +19885,7 @@ function memoize3(fn) {
   !*** ./node_modules/graphql/jsutils/objectValues.mjs ***!
   \*******************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19915,7 +19915,7 @@ var objectValues = Object.values || function (obj) {
   !*** ./node_modules/graphql/jsutils/orList.mjs ***!
   \*************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19947,7 +19947,7 @@ function orList(items) {
   !*** ./node_modules/graphql/jsutils/promiseForObject.mjs ***!
   \***********************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -19988,7 +19988,7 @@ function promiseForObject(object) {
   !*** ./node_modules/graphql/jsutils/promiseReduce.mjs ***!
   \********************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20026,7 +20026,7 @@ function promiseReduce(values, callback, initialValue) {
   !*** ./node_modules/graphql/jsutils/quotedOrList.mjs ***!
   \*******************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20058,7 +20058,7 @@ function quotedOrList(items) {
   !*** ./node_modules/graphql/jsutils/suggestionList.mjs ***!
   \*********************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20159,7 +20159,7 @@ function lexicalDistance(aStr, bStr) {
   !*** ./node_modules/graphql/language/blockStringValue.mjs ***!
   \************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20238,7 +20238,7 @@ function isBlank(str) {
   !*** ./node_modules/graphql/language/directiveLocation.mjs ***!
   \*************************************************************/
 /*! exports provided: DirectiveLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20289,7 +20289,7 @@ var DirectiveLocation = Object.freeze({
   !*** ./node_modules/graphql/language/index.mjs ***!
   \*************************************************/
 /*! exports provided: getLocation, Kind, createLexer, TokenKind, parse, parseValue, parseType, print, Source, visit, visitInParallel, visitWithTypeInfo, getVisitFn, BREAK, isDefinitionNode, isExecutableDefinitionNode, isSelectionNode, isValueNode, isTypeNode, isTypeSystemDefinitionNode, isTypeDefinitionNode, isTypeSystemExtensionNode, isTypeExtensionNode, DirectiveLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20375,7 +20375,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/language/kinds.mjs ***!
   \*************************************************/
 /*! exports provided: Kind */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -20459,7 +20459,7 @@ var Kind = Object.freeze({
   !*** ./node_modules/graphql/language/lexer.mjs ***!
   \*************************************************/
 /*! exports provided: createLexer, TokenKind, getTokenDesc */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -21108,7 +21108,7 @@ function readName(source, start, line, col, prev) {
   !*** ./node_modules/graphql/language/location.mjs ***!
   \****************************************************/
 /*! exports provided: getLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -21154,7 +21154,7 @@ function getLocation(source, position) {
   !*** ./node_modules/graphql/language/parser.mjs ***!
   \**************************************************/
 /*! exports provided: parse, parseValue, parseType, parseConstValue, parseTypeReference, parseNamedType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -22683,7 +22683,7 @@ function many(lexer, openKind, parseFn, closeKind) {
   !*** ./node_modules/graphql/language/predicates.mjs ***!
   \******************************************************/
 /*! exports provided: isDefinitionNode, isExecutableDefinitionNode, isSelectionNode, isValueNode, isTypeNode, isTypeSystemDefinitionNode, isTypeDefinitionNode, isTypeSystemExtensionNode, isTypeExtensionNode */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -22741,7 +22741,7 @@ function isTypeExtensionNode(node) {
   !*** ./node_modules/graphql/language/printer.mjs ***!
   \***************************************************/
 /*! exports provided: print */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23065,7 +23065,7 @@ function printBlockString(value, isDescription) {
   !*** ./node_modules/graphql/language/source.mjs ***!
   \**************************************************/
 /*! exports provided: Source */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23119,7 +23119,7 @@ Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(Sourc
   !*** ./node_modules/graphql/language/visitor.mjs ***!
   \***************************************************/
 /*! exports provided: QueryDocumentKeys, BREAK, visit, visitInParallel, visitWithTypeInfo, getVisitFn */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23569,7 +23569,7 @@ function getVisitFn(visitor, kind, isLeaving) {
   !*** ./node_modules/graphql/subscription/index.mjs ***!
   \*****************************************************/
 /*! exports provided: subscribe, createSourceEventStream */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23595,7 +23595,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/subscription/mapAsyncIterator.mjs ***!
   \****************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23695,7 +23695,7 @@ function iteratorResult(value) {
   !*** ./node_modules/graphql/subscription/subscribe.mjs ***!
   \*********************************************************/
 /*! exports provided: subscribe, createSourceEventStream */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -23870,7 +23870,7 @@ function createSourceEventStream(schema, document, rootValue, contextValue, vari
   !*** ./node_modules/graphql/type/definition.mjs ***!
   \**************************************************/
 /*! exports provided: isType, assertType, isScalarType, assertScalarType, isObjectType, assertObjectType, isInterfaceType, assertInterfaceType, isUnionType, assertUnionType, isEnumType, assertEnumType, isInputObjectType, assertInputObjectType, isListType, assertListType, isNonNullType, assertNonNullType, isInputType, assertInputType, isOutputType, assertOutputType, isLeafType, assertLeafType, isCompositeType, assertCompositeType, isAbstractType, assertAbstractType, GraphQLList, GraphQLNonNull, isWrappingType, assertWrappingType, isNullableType, assertNullableType, getNullableType, isNamedType, assertNamedType, getNamedType, GraphQLScalarType, GraphQLObjectType, isRequiredArgument, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, isRequiredInputField */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24805,7 +24805,7 @@ function isRequiredInputField(field) {
   !*** ./node_modules/graphql/type/directives.mjs ***!
   \**************************************************/
 /*! exports provided: isDirective, GraphQLDirective, GraphQLIncludeDirective, GraphQLSkipDirective, DEFAULT_DEPRECATION_REASON, GraphQLDeprecatedDirective, specifiedDirectives, isSpecifiedDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24973,7 +24973,7 @@ function isSpecifiedDirective(directive) {
   !*** ./node_modules/graphql/type/index.mjs ***!
   \*********************************************/
 /*! exports provided: isSchema, GraphQLSchema, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, isDirective, GraphQLDirective, isSpecifiedDirective, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, isSpecifiedScalarType, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, TypeKind, isIntrospectionType, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, validateSchema, assertValidSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25164,7 +25164,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/type/introspection.mjs ***!
   \*****************************************************/
 /*! exports provided: __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, TypeKind, __TypeKind, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, introspectionTypes, isIntrospectionType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25697,7 +25697,7 @@ function isIntrospectionType(type) {
   !*** ./node_modules/graphql/type/scalars.mjs ***!
   \***********************************************/
 /*! exports provided: GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, specifiedScalarTypes, isSpecifiedScalarType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25943,7 +25943,7 @@ function isSpecifiedScalarType(type) {
   !*** ./node_modules/graphql/type/schema.mjs ***!
   \**********************************************/
 /*! exports provided: isSchema, GraphQLSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -26291,7 +26291,7 @@ function typeMapDirectiveReducer(map, directive) {
   !*** ./node_modules/graphql/type/validate.mjs ***!
   \************************************************/
 /*! exports provided: validateSchema, assertValidSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27111,7 +27111,7 @@ function getEnumValueNodes(enumType, valueName) {
   !*** ./node_modules/graphql/utilities/TypeInfo.mjs ***!
   \*****************************************************/
 /*! exports provided: TypeInfo */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27466,7 +27466,7 @@ function getFieldDef(schema, parentType, fieldNode) {
   !*** ./node_modules/graphql/utilities/assertValidName.mjs ***!
   \************************************************************/
 /*! exports provided: assertValidName, isValidNameError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27521,7 +27521,7 @@ function isValidNameError(name, node) {
   !*** ./node_modules/graphql/utilities/astFromValue.mjs ***!
   \*********************************************************/
 /*! exports provided: astFromValue */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27740,7 +27740,7 @@ var integerStringRegExp = /^-?(0|[1-9][0-9]*)$/;
   !*** ./node_modules/graphql/utilities/buildASTSchema.mjs ***!
   \***********************************************************/
 /*! exports provided: buildASTSchema, ASTDefinitionBuilder, getDescription, buildSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -28236,7 +28236,7 @@ function buildSchema(source, options) {
   !*** ./node_modules/graphql/utilities/buildClientSchema.mjs ***!
   \**************************************************************/
 /*! exports provided: buildClientSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -28563,7 +28563,7 @@ function buildClientSchema(introspection, options) {
   !*** ./node_modules/graphql/utilities/coerceValue.mjs ***!
   \********************************************************/
 /*! exports provided: coerceValue */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -28778,7 +28778,7 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
   !*** ./node_modules/graphql/utilities/concatAST.mjs ***!
   \******************************************************/
 /*! exports provided: concatAST */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -28821,7 +28821,7 @@ function concatAST(asts) {
   !*** ./node_modules/graphql/utilities/extendSchema.mjs ***!
   \*********************************************************/
 /*! exports provided: extendSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -29628,7 +29628,7 @@ function checkExtensionNode(type, node) {
   !*** ./node_modules/graphql/utilities/findBreakingChanges.mjs ***!
   \****************************************************************/
 /*! exports provided: BreakingChangeType, DangerousChangeType, findBreakingChanges, findDangerousChanges, findRemovedTypes, findTypesThatChangedKind, findArgChanges, findFieldsThatChangedTypeOnObjectOrInterfaceTypes, findFieldsThatChangedTypeOnInputObjectTypes, findTypesRemovedFromUnions, findTypesAddedToUnions, findValuesRemovedFromEnums, findValuesAddedToEnums, findInterfacesRemovedFromObjectTypes, findInterfacesAddedToObjectTypes, findRemovedDirectives, findRemovedDirectiveArgs, findAddedNonNullDirectiveArgs, findRemovedLocationsForDirective, findRemovedDirectiveLocations */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -30863,7 +30863,7 @@ function getArgumentMapForDirective(directive) {
   !*** ./node_modules/graphql/utilities/findDeprecatedUsages.mjs ***!
   \*****************************************************************/
 /*! exports provided: findDeprecatedUsages */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -30929,7 +30929,7 @@ function findDeprecatedUsages(schema, ast) {
   !*** ./node_modules/graphql/utilities/getOperationAST.mjs ***!
   \************************************************************/
 /*! exports provided: getOperationAST */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -30982,7 +30982,7 @@ function getOperationAST(documentAST, operationName) {
   !*** ./node_modules/graphql/utilities/getOperationRootType.mjs ***!
   \*****************************************************************/
 /*! exports provided: getOperationRootType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31042,7 +31042,7 @@ function getOperationRootType(schema, operation) {
   !*** ./node_modules/graphql/utilities/index.mjs ***!
   \**************************************************/
 /*! exports provided: getIntrospectionQuery, introspectionQuery, getOperationAST, getOperationRootType, introspectionFromSchema, buildClientSchema, buildASTSchema, buildSchema, getDescription, extendSchema, lexicographicSortSchema, printSchema, printType, printIntrospectionSchema, typeFromAST, valueFromAST, valueFromASTUntyped, astFromValue, TypeInfo, coerceValue, isValidJSValue, isValidLiteralValue, concatAST, separateOperations, isEqualType, isTypeSubTypeOf, doTypesOverlap, assertValidName, isValidNameError, BreakingChangeType, DangerousChangeType, findBreakingChanges, findDangerousChanges, findDeprecatedUsages */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31200,7 +31200,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/utilities/introspectionFromSchema.mjs ***!
   \********************************************************************/
 /*! exports provided: introspectionFromSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31245,7 +31245,7 @@ function introspectionFromSchema(schema, options) {
   !*** ./node_modules/graphql/utilities/introspectionQuery.mjs ***!
   \***************************************************************/
 /*! exports provided: getIntrospectionQuery, introspectionQuery */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31278,7 +31278,7 @@ var introspectionQuery = getIntrospectionQuery();
   !*** ./node_modules/graphql/utilities/isValidJSValue.mjs ***!
   \***********************************************************/
 /*! exports provided: isValidJSValue */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31313,7 +31313,7 @@ function isValidJSValue(value, type) {
   !*** ./node_modules/graphql/utilities/isValidLiteralValue.mjs ***!
   \****************************************************************/
 /*! exports provided: isValidLiteralValue */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31366,7 +31366,7 @@ function isValidLiteralValue(type, valueNode) {
   !*** ./node_modules/graphql/utilities/lexicographicSortSchema.mjs ***!
   \********************************************************************/
 /*! exports provided: lexicographicSortSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31598,7 +31598,7 @@ function sortBy(array, mapToKey) {
   !*** ./node_modules/graphql/utilities/schemaPrinter.mjs ***!
   \**********************************************************/
 /*! exports provided: printSchema, printIntrospectionSchema, printType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -31943,7 +31943,7 @@ function breakLine(line, maxLen) {
   !*** ./node_modules/graphql/utilities/separateOperations.mjs ***!
   \***************************************************************/
 /*! exports provided: separateOperations */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32052,7 +32052,7 @@ function collectTransitiveDependencies(collected, depGraph, fromName) {
   !*** ./node_modules/graphql/utilities/typeComparators.mjs ***!
   \************************************************************/
 /*! exports provided: isEqualType, isTypeSubTypeOf, doTypesOverlap */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32185,7 +32185,7 @@ function doTypesOverlap(schema, typeA, typeB) {
   !*** ./node_modules/graphql/utilities/typeFromAST.mjs ***!
   \********************************************************/
 /*! exports provided: typeFromAST */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32232,7 +32232,7 @@ function typeFromAST(schema, typeNode) {
   !*** ./node_modules/graphql/utilities/valueFromAST.mjs ***!
   \*********************************************************/
 /*! exports provided: valueFromAST */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32442,7 +32442,7 @@ function isMissingVariable(valueNode, variables) {
   !*** ./node_modules/graphql/utilities/valueFromASTUntyped.mjs ***!
   \****************************************************************/
 /*! exports provided: valueFromASTUntyped */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32523,7 +32523,7 @@ function valueFromASTUntyped(valueNode, variables) {
   !*** ./node_modules/graphql/validation/ValidationContext.mjs ***!
   \***************************************************************/
 /*! exports provided: ASTValidationContext, SDLValidationContext, ValidationContext */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32804,7 +32804,7 @@ function (_ASTValidationContext2) {
   !*** ./node_modules/graphql/validation/index.mjs ***!
   \***************************************************/
 /*! exports provided: validate, ValidationContext, specifiedRules, FieldsOnCorrectTypeRule, FragmentsOnCompositeTypesRule, KnownArgumentNamesRule, KnownDirectivesRule, KnownFragmentNamesRule, KnownTypeNamesRule, LoneAnonymousOperationRule, NoFragmentCyclesRule, NoUndefinedVariablesRule, NoUnusedFragmentsRule, NoUnusedVariablesRule, OverlappingFieldsCanBeMergedRule, PossibleFragmentSpreadsRule, ProvidedRequiredArgumentsRule, ScalarLeafsRule, SingleFieldSubscriptionsRule, UniqueArgumentNamesRule, UniqueDirectivesPerLocationRule, UniqueFragmentNamesRule, UniqueInputFieldNamesRule, UniqueOperationNamesRule, UniqueVariableNamesRule, ValuesOfCorrectTypeRule, VariablesAreInputTypesRule, VariablesInAllowedPositionRule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -32961,7 +32961,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/validation/rules/ExecutableDefinitions.mjs ***!
   \*************************************************************************/
 /*! exports provided: nonExecutableDefinitionMessage, ExecutableDefinitions */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33033,7 +33033,7 @@ function ExecutableDefinitions(context) {
   !*** ./node_modules/graphql/validation/rules/FieldsOnCorrectType.mjs ***!
   \***********************************************************************/
 /*! exports provided: undefinedFieldMessage, FieldsOnCorrectType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33200,7 +33200,7 @@ function getSuggestedFieldNames(schema, type, fieldName) {
   !*** ./node_modules/graphql/validation/rules/FragmentsOnCompositeTypes.mjs ***!
   \*****************************************************************************/
 /*! exports provided: inlineFragmentOnNonCompositeErrorMessage, fragmentOnNonCompositeErrorMessage, FragmentsOnCompositeTypes */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33267,7 +33267,7 @@ function FragmentsOnCompositeTypes(context) {
   !*** ./node_modules/graphql/validation/rules/KnownArgumentNames.mjs ***!
   \**********************************************************************/
 /*! exports provided: unknownArgMessage, unknownDirectiveArgMessage, KnownArgumentNames, KnownArgumentNamesOnDirectives */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33448,7 +33448,7 @@ function KnownArgumentNamesOnDirectives(context) {
   !*** ./node_modules/graphql/validation/rules/KnownDirectives.mjs ***!
   \*******************************************************************/
 /*! exports provided: unknownDirectiveMessage, misplacedDirectiveMessage, KnownDirectives */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33643,7 +33643,7 @@ function getDirectiveLocationForASTPath(ancestors) {
   !*** ./node_modules/graphql/validation/rules/KnownFragmentNames.mjs ***!
   \**********************************************************************/
 /*! exports provided: unknownFragmentMessage, KnownFragmentNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33689,7 +33689,7 @@ function KnownFragmentNames(context) {
   !*** ./node_modules/graphql/validation/rules/KnownTypeNames.mjs ***!
   \******************************************************************/
 /*! exports provided: unknownTypeMessage, KnownTypeNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33761,7 +33761,7 @@ function KnownTypeNames(context) {
   !*** ./node_modules/graphql/validation/rules/LoneAnonymousOperation.mjs ***!
   \**************************************************************************/
 /*! exports provided: anonOperationNotAloneMessage, LoneAnonymousOperation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33812,7 +33812,7 @@ function LoneAnonymousOperation(context) {
   !*** ./node_modules/graphql/validation/rules/LoneSchemaDefinition.mjs ***!
   \************************************************************************/
 /*! exports provided: schemaDefinitionNotAloneMessage, canNotDefineSchemaWithinExtensionMessage, LoneSchemaDefinition */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33868,7 +33868,7 @@ function LoneSchemaDefinition(context) {
   !*** ./node_modules/graphql/validation/rules/NoFragmentCycles.mjs ***!
   \********************************************************************/
 /*! exports provided: cycleErrorMessage, NoFragmentCycles */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -33957,7 +33957,7 @@ function NoFragmentCycles(context) {
   !*** ./node_modules/graphql/validation/rules/NoUndefinedVariables.mjs ***!
   \************************************************************************/
 /*! exports provided: undefinedVarMessage, NoUndefinedVariables */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -34035,7 +34035,7 @@ function NoUndefinedVariables(context) {
   !*** ./node_modules/graphql/validation/rules/NoUnusedFragments.mjs ***!
   \*********************************************************************/
 /*! exports provided: unusedFragMessage, NoUnusedFragments */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -34124,7 +34124,7 @@ function NoUnusedFragments(context) {
   !*** ./node_modules/graphql/validation/rules/NoUnusedVariables.mjs ***!
   \*********************************************************************/
 /*! exports provided: unusedVariableMessage, NoUnusedVariables */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -34209,7 +34209,7 @@ function NoUnusedVariables(context) {
   !*** ./node_modules/graphql/validation/rules/OverlappingFieldsCanBeMerged.mjs ***!
   \********************************************************************************/
 /*! exports provided: fieldsConflictMessage, OverlappingFieldsCanBeMerged */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -34816,7 +34816,7 @@ function _pairSetAdd(data, a, b, areMutuallyExclusive) {
   !*** ./node_modules/graphql/validation/rules/PossibleFragmentSpreads.mjs ***!
   \***************************************************************************/
 /*! exports provided: typeIncompatibleSpreadMessage, typeIncompatibleAnonSpreadMessage, PossibleFragmentSpreads */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -34896,7 +34896,7 @@ function getFragmentType(context, name) {
   !*** ./node_modules/graphql/validation/rules/ProvidedRequiredArguments.mjs ***!
   \*****************************************************************************/
 /*! exports provided: missingFieldArgMessage, missingDirectiveArgMessage, ProvidedRequiredArguments, ProvidedRequiredArgumentsOnDirectives */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35090,7 +35090,7 @@ function isRequiredArgumentNode(arg) {
   !*** ./node_modules/graphql/validation/rules/ScalarLeafs.mjs ***!
   \***************************************************************/
 /*! exports provided: noSubselectionAllowedMessage, requiredSubselectionMessage, ScalarLeafs */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35150,7 +35150,7 @@ function ScalarLeafs(context) {
   !*** ./node_modules/graphql/validation/rules/SingleFieldSubscriptions.mjs ***!
   \****************************************************************************/
 /*! exports provided: singleFieldOnlyMessage, SingleFieldSubscriptions */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35194,7 +35194,7 @@ function SingleFieldSubscriptions(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueArgumentNames.mjs ***!
   \***********************************************************************/
 /*! exports provided: duplicateArgMessage, UniqueArgumentNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35250,7 +35250,7 @@ function UniqueArgumentNames(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueDirectivesPerLocation.mjs ***!
   \*******************************************************************************/
 /*! exports provided: duplicateDirectiveMessage, UniqueDirectivesPerLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35328,7 +35328,7 @@ function UniqueDirectivesPerLocation(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueFragmentNames.mjs ***!
   \***********************************************************************/
 /*! exports provided: duplicateFragmentNameMessage, UniqueFragmentNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35380,7 +35380,7 @@ function UniqueFragmentNames(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueInputFieldNames.mjs ***!
   \*************************************************************************/
 /*! exports provided: duplicateInputFieldMessage, UniqueInputFieldNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35440,7 +35440,7 @@ function UniqueInputFieldNames(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueOperationNames.mjs ***!
   \************************************************************************/
 /*! exports provided: duplicateOperationNameMessage, UniqueOperationNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35494,7 +35494,7 @@ function UniqueOperationNames(context) {
   !*** ./node_modules/graphql/validation/rules/UniqueVariableNames.mjs ***!
   \***********************************************************************/
 /*! exports provided: duplicateVariableMessage, UniqueVariableNames */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35544,7 +35544,7 @@ function UniqueVariableNames(context) {
   !*** ./node_modules/graphql/validation/rules/ValuesOfCorrectType.mjs ***!
   \***********************************************************************/
 /*! exports provided: badValueMessage, requiredFieldMessage, unknownFieldMessage, ValuesOfCorrectType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35726,7 +35726,7 @@ function enumTypeSuggestion(type, node) {
   !*** ./node_modules/graphql/validation/rules/VariablesAreInputTypes.mjs ***!
   \**************************************************************************/
 /*! exports provided: nonInputTypeOnVarMessage, VariablesAreInputTypes */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35778,7 +35778,7 @@ function VariablesAreInputTypes(context) {
   !*** ./node_modules/graphql/validation/rules/VariablesInAllowedPosition.mjs ***!
   \******************************************************************************/
 /*! exports provided: badVarPosMessage, VariablesInAllowedPosition */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -35897,7 +35897,7 @@ function allowedVariableUsage(schema, varType, varDefaultValue, locationType, lo
   !*** ./node_modules/graphql/validation/specifiedRules.mjs ***!
   \************************************************************/
 /*! exports provided: specifiedRules, specifiedSDLRules */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -36011,7 +36011,7 @@ var specifiedSDLRules = [_rules_LoneSchemaDefinition__WEBPACK_IMPORTED_MODULE_26
   !*** ./node_modules/graphql/validation/validate.mjs ***!
   \******************************************************/
 /*! exports provided: validate, validateSDL, assertValidSDL, assertValidSDLExtension */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -36526,7 +36526,7 @@ var index = typeof fetch=='function' ? fetch.bind() : function(url, options) {
   !*** ./node_modules/iterall/index.mjs ***!
   \****************************************/
 /*! exports provided: $$iterator, isIterable, isArrayLike, isCollection, getIterator, getIteratorMethod, createIterator, forEach, $$asyncIterator, isAsyncIterable, getAsyncIterator, getAsyncIteratorMethod, createAsyncIterator, forAwaitEach */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -46072,6 +46072,1006 @@ module.exports = hoistNonReactStatics;
 
 /***/ }),
 
+/***/ "./node_modules/react-ga/dist/esm/components/OutboundLink.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/components/OutboundLink.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OutboundLink; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_console_warn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/console/warn */ "./node_modules/react-ga/dist/esm/utils/console/warn.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var NEWTAB = '_blank';
+var MIDDLECLICK = 1;
+
+var OutboundLink =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(OutboundLink, _Component);
+
+  function OutboundLink() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, OutboundLink);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(OutboundLink)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (event) {
+      var _this$props = _this.props,
+          target = _this$props.target,
+          eventLabel = _this$props.eventLabel,
+          to = _this$props.to,
+          onClick = _this$props.onClick;
+      var eventMeta = {
+        label: eventLabel
+      };
+      var sameTarget = target !== NEWTAB;
+      var normalClick = !(event.ctrlKey || event.shiftKey || event.metaKey || event.button === MIDDLECLICK);
+
+      if (sameTarget && normalClick) {
+        event.preventDefault();
+        OutboundLink.trackLink(eventMeta, function () {
+          window.location.href = to;
+        });
+      } else {
+        OutboundLink.trackLink(eventMeta, function () {});
+      }
+
+      if (onClick) {
+        onClick(event);
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(OutboundLink, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          href = _this$props2.to,
+          oldProps = _objectWithoutProperties(_this$props2, ["to"]);
+
+      var props = _objectSpread({}, oldProps, {
+        href: href,
+        onClick: this.handleClick
+      });
+
+      if (this.props.target === NEWTAB) {
+        props.rel = 'noopener noreferrer';
+      }
+
+      delete props.eventLabel;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('a', props);
+    }
+  }]);
+
+  return OutboundLink;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+_defineProperty(OutboundLink, "trackLink", function () {
+  Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_2__["default"])('ga tracking not enabled');
+});
+
+_defineProperty(OutboundLink, "propTypes", {
+  eventLabel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  target: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  to: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
+});
+
+_defineProperty(OutboundLink, "defaultProps", {
+  target: null,
+  to: null,
+  onClick: null
+});
+
+
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/index.js ***!
+  \*************************************************/
+/*! exports provided: initialize, ga, set, send, pageview, modalview, timing, event, exception, plugin, outboundLink, OutboundLink, testModeAPI, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialize", function() { return initialize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ga", function() { return ga; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set", function() { return set; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "send", function() { return send; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pageview", function() { return pageview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modalview", function() { return modalview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "timing", function() { return timing; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "event", function() { return event; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exception", function() { return exception; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "plugin", function() { return plugin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "outboundLink", function() { return outboundLink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OutboundLink", function() { return OutboundLink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testModeAPI", function() { return testModeAPI; });
+/* harmony import */ var _utils_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/format */ "./node_modules/react-ga/dist/esm/utils/format.js");
+/* harmony import */ var _utils_removeLeadingSlash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/removeLeadingSlash */ "./node_modules/react-ga/dist/esm/utils/removeLeadingSlash.js");
+/* harmony import */ var _utils_trim__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/trim */ "./node_modules/react-ga/dist/esm/utils/trim.js");
+/* harmony import */ var _utils_loadGA__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/loadGA */ "./node_modules/react-ga/dist/esm/utils/loadGA.js");
+/* harmony import */ var _utils_console_warn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/console/warn */ "./node_modules/react-ga/dist/esm/utils/console/warn.js");
+/* harmony import */ var _utils_console_log__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/console/log */ "./node_modules/react-ga/dist/esm/utils/console/log.js");
+/* harmony import */ var _utils_testModeAPI__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/testModeAPI */ "./node_modules/react-ga/dist/esm/utils/testModeAPI.js");
+/* harmony import */ var _components_OutboundLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/OutboundLink */ "./node_modules/react-ga/dist/esm/components/OutboundLink.js");
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+/**
+ * React Google Analytics Module
+ *
+ * @package react-ga
+ * @author  Adam Lofting <adam@mozillafoundation.org>
+ *          Atul Varma <atul@mozillafoundation.org>
+ */
+
+/**
+ * Utilities
+ */
+
+
+
+
+
+
+
+
+var _debug = false;
+var _titleCase = true;
+var _testMode = false;
+var _alwaysSendToDefaultTracker = true;
+
+var internalGa = function internalGa() {
+  var _window;
+
+  if (_testMode) return _utils_testModeAPI__WEBPACK_IMPORTED_MODULE_6__["default"].ga.apply(_utils_testModeAPI__WEBPACK_IMPORTED_MODULE_6__["default"], arguments);
+  if (typeof window === 'undefined') return false;
+  if (!window.ga) return Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('ReactGA.initialize must be called first or GoogleAnalytics should be loaded manually');
+  return (_window = window).ga.apply(_window, arguments);
+};
+
+function _format(s) {
+  return Object(_utils_format__WEBPACK_IMPORTED_MODULE_0__["default"])(s, _titleCase);
+}
+
+function _gaCommand(trackerNames) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  var command = args[0];
+
+  if (typeof internalGa === 'function') {
+    if (typeof command !== 'string') {
+      Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('ga command must be a string');
+      return;
+    }
+
+    if (_alwaysSendToDefaultTracker || !Array.isArray(trackerNames)) internalGa.apply(void 0, args);
+
+    if (Array.isArray(trackerNames)) {
+      trackerNames.forEach(function (name) {
+        internalGa.apply(void 0, _toConsumableArray(["".concat(name, ".").concat(command)].concat(args.slice(1))));
+      });
+    }
+  }
+}
+
+function _initialize(gaTrackingID, options) {
+  if (!gaTrackingID) {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('gaTrackingID is required in initialize()');
+    return;
+  }
+
+  if (options) {
+    if (options.debug && options.debug === true) {
+      _debug = true;
+    }
+
+    if (options.titleCase === false) {
+      _titleCase = false;
+    }
+  }
+
+  if (options && options.gaOptions) {
+    internalGa('create', gaTrackingID, options.gaOptions);
+  } else {
+    internalGa('create', gaTrackingID, 'auto');
+  }
+}
+
+function initialize(configsOrTrackingId, options) {
+  if (options && options.testMode === true) {
+    _testMode = true;
+  } else {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    Object(_utils_loadGA__WEBPACK_IMPORTED_MODULE_3__["default"])(options);
+  }
+
+  _alwaysSendToDefaultTracker = options && typeof options.alwaysSendToDefaultTracker === 'boolean' ? options.alwaysSendToDefaultTracker : true;
+
+  if (Array.isArray(configsOrTrackingId)) {
+    configsOrTrackingId.forEach(function (config) {
+      if (_typeof(config) !== 'object') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('All configs must be an object');
+        return;
+      }
+
+      _initialize(config.trackingId, config);
+    });
+  } else {
+    _initialize(configsOrTrackingId, options);
+  }
+
+  return true;
+}
+/**
+ * ga:
+ * Returns the original GA object.
+ */
+
+function ga() {
+  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    args[_key2] = arguments[_key2];
+  }
+
+  if (args.length > 0) {
+    internalGa.apply(void 0, args);
+
+    if (_debug) {
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])('called ga(\'arguments\');');
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with arguments: ".concat(JSON.stringify(args)));
+    }
+  }
+
+  return window.ga;
+}
+/**
+ * set:
+ * GA tracker set method
+ * @param {Object} fieldsObject - a field/value pair or a group of field/value pairs on the tracker
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function set(fieldsObject, trackerNames) {
+  if (!fieldsObject) {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`fieldsObject` is required in .set()');
+    return;
+  }
+
+  if (_typeof(fieldsObject) !== 'object') {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Expected `fieldsObject` arg to be an Object');
+    return;
+  }
+
+  if (Object.keys(fieldsObject).length === 0) {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('empty `fieldsObject` given to .set()');
+  }
+
+  _gaCommand(trackerNames, 'set', fieldsObject);
+
+  if (_debug) {
+    Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])('called ga(\'set\', fieldsObject);');
+    Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with fieldsObject: ".concat(JSON.stringify(fieldsObject)));
+  }
+}
+/**
+ * send:
+ * Clone of the low level `ga.send` method
+ * WARNING: No validations will be applied to this
+ * @param  {Object} fieldObject - field object for tracking different analytics
+ * @param  {Array} trackerNames - trackers to send the command to
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function send(fieldObject, trackerNames) {
+  _gaCommand(trackerNames, 'send', fieldObject);
+
+  if (_debug) {
+    Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])('called ga(\'send\', fieldObject);');
+    Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with fieldObject: ".concat(JSON.stringify(fieldObject)));
+    Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with trackers: ".concat(JSON.stringify(trackerNames)));
+  }
+}
+/**
+ * pageview:
+ * Basic GA pageview tracking
+ * @param  {String} path - the current page page e.g. '/about'
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ * @param {String} title - (optional) the page title e. g. 'My Website'
+ */
+
+function pageview(rawPath, trackerNames, title) {
+  if (!rawPath) {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('path is required in .pageview()');
+    return;
+  }
+
+  var path = Object(_utils_trim__WEBPACK_IMPORTED_MODULE_2__["default"])(rawPath);
+
+  if (path === '') {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('path cannot be an empty string in .pageview()');
+    return;
+  }
+
+  var extraFields = {};
+
+  if (title) {
+    extraFields.title = title;
+  }
+
+  if (typeof ga === 'function') {
+    _gaCommand(trackerNames, 'send', _objectSpread({
+      hitType: 'pageview',
+      page: path
+    }, extraFields));
+
+    if (_debug) {
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])('called ga(\'send\', \'pageview\', path);');
+      var extraLog = '';
+
+      if (title) {
+        extraLog = " and title: ".concat(title);
+      }
+
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with path: ".concat(path).concat(extraLog));
+    }
+  }
+}
+/**
+ * modalview:
+ * a proxy to basic GA pageview tracking to consistently track
+ * modal views that are an equivalent UX to a traditional pageview
+ * @param  {String} modalName e.g. 'add-or-edit-club'
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function modalview(rawModalName, trackerNames) {
+  if (!rawModalName) {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('modalName is required in .modalview(modalName)');
+    return;
+  }
+
+  var modalName = Object(_utils_removeLeadingSlash__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_utils_trim__WEBPACK_IMPORTED_MODULE_2__["default"])(rawModalName));
+
+  if (modalName === '') {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('modalName cannot be an empty string or a single / in .modalview()');
+    return;
+  }
+
+  if (typeof ga === 'function') {
+    var path = "/modal/".concat(modalName);
+
+    _gaCommand(trackerNames, 'send', 'pageview', path);
+
+    if (_debug) {
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])('called ga(\'send\', \'pageview\', path);');
+      Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with path: ".concat(path));
+    }
+  }
+}
+/**
+ * timing:
+ * GA timing
+ * @param args.category {String} required
+ * @param args.variable {String} required
+ * @param args.value  {Int}  required
+ * @param args.label  {String} required
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function timing() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      category = _ref.category,
+      variable = _ref.variable,
+      value = _ref.value,
+      label = _ref.label;
+
+  var trackerNames = arguments.length > 1 ? arguments[1] : undefined;
+
+  if (typeof ga === 'function') {
+    if (!category || !variable || !value || typeof value !== 'number') {
+      Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('args.category, args.variable ' + 'AND args.value are required in timing() ' + 'AND args.value has to be a number');
+      return;
+    } // Required Fields
+
+
+    var fieldObject = {
+      hitType: 'timing',
+      timingCategory: _format(category),
+      timingVar: _format(variable),
+      timingValue: value
+    };
+
+    if (label) {
+      fieldObject.timingLabel = _format(label);
+    }
+
+    send(fieldObject, trackerNames);
+  }
+}
+/**
+ * event:
+ * GA event tracking
+ * @param args.category {String} required
+ * @param args.action {String} required
+ * @param args.label {String} optional
+ * @param args.value {Int} optional
+ * @param args.nonInteraction {boolean} optional
+ * @param args.transport {string} optional
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function event() {
+  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      category = _ref2.category,
+      action = _ref2.action,
+      label = _ref2.label,
+      value = _ref2.value,
+      nonInteraction = _ref2.nonInteraction,
+      transport = _ref2.transport,
+      args = _objectWithoutProperties(_ref2, ["category", "action", "label", "value", "nonInteraction", "transport"]);
+
+  var trackerNames = arguments.length > 1 ? arguments[1] : undefined;
+
+  if (typeof ga === 'function') {
+    // Simple Validation
+    if (!category || !action) {
+      Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('args.category AND args.action are required in event()');
+      return;
+    } // Required Fields
+
+
+    var fieldObject = {
+      hitType: 'event',
+      eventCategory: _format(category),
+      eventAction: _format(action)
+    }; // Optional Fields
+
+    if (label) {
+      fieldObject.eventLabel = _format(label);
+    }
+
+    if (typeof value !== 'undefined') {
+      if (typeof value !== 'number') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Expected `args.value` arg to be a Number.');
+      } else {
+        fieldObject.eventValue = value;
+      }
+    }
+
+    if (typeof nonInteraction !== 'undefined') {
+      if (typeof nonInteraction !== 'boolean') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`args.nonInteraction` must be a boolean.');
+      } else {
+        fieldObject.nonInteraction = nonInteraction;
+      }
+    }
+
+    if (typeof transport !== 'undefined') {
+      if (typeof transport !== 'string') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`args.transport` must be a string.');
+      } else {
+        if (['beacon', 'xhr', 'image'].indexOf(transport) === -1) {
+          Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`args.transport` must be either one of these values: `beacon`, `xhr` or `image`');
+        }
+
+        fieldObject.transport = transport;
+      }
+    }
+
+    Object.keys(args).filter(function (key) {
+      return key.substr(0, 'dimension'.length) === 'dimension';
+    }).forEach(function (key) {
+      fieldObject[key] = args[key];
+    });
+    Object.keys(args).filter(function (key) {
+      return key.substr(0, 'metric'.length) === 'metric';
+    }).forEach(function (key) {
+      fieldObject[key] = args[key];
+    }); // Send to GA
+
+    send(fieldObject, trackerNames);
+  }
+}
+/**
+ * exception:
+ * GA exception tracking
+ * @param args.description {String} optional
+ * @param args.fatal {boolean} optional
+ * @param {Array} trackerNames - (optional) a list of extra trackers to run the command on
+ */
+
+function exception(_ref3, trackerNames) {
+  var description = _ref3.description,
+      fatal = _ref3.fatal;
+
+  if (typeof ga === 'function') {
+    // Required Fields
+    var fieldObject = {
+      hitType: 'exception'
+    }; // Optional Fields
+
+    if (description) {
+      fieldObject.exDescription = _format(description);
+    }
+
+    if (typeof fatal !== 'undefined') {
+      if (typeof fatal !== 'boolean') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`args.fatal` must be a boolean.');
+      } else {
+        fieldObject.exFatal = fatal;
+      }
+    } // Send to GA
+
+
+    send(fieldObject, trackerNames);
+  }
+}
+var plugin = {
+  /**
+   * require:
+   * GA requires a plugin
+   * @param name {String} e.g. 'ecommerce' or 'myplugin'
+   * @param options {Object} optional e.g {path: '/log', debug: true}
+   */
+  require: function require(rawName, options) {
+    if (typeof ga === 'function') {
+      // Required Fields
+      if (!rawName) {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`name` is required in .require()');
+        return;
+      }
+
+      var name = Object(_utils_trim__WEBPACK_IMPORTED_MODULE_2__["default"])(rawName);
+
+      if (name === '') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('`name` cannot be an empty string in .require()');
+        return;
+      } // Optional Fields
+
+
+      if (options) {
+        if (_typeof(options) !== 'object') {
+          Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Expected `options` arg to be an Object');
+          return;
+        }
+
+        if (Object.keys(options).length === 0) {
+          Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Empty `options` given to .require()');
+        }
+
+        ga('require', name, options);
+
+        if (_debug) {
+          Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("called ga('require', '".concat(name, "', ").concat(JSON.stringify(options)));
+        }
+      } else {
+        ga('require', name);
+
+        if (_debug) {
+          Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("called ga('require', '".concat(name, "');"));
+        }
+      }
+    }
+  },
+
+  /**
+   * execute:
+   * GA execute action for plugin
+   * Takes variable number of arguments
+   * @param pluginName {String} e.g. 'ecommerce' or 'myplugin'
+   * @param action {String} e.g. 'addItem' or 'myCustomAction'
+   * @param actionType {String} optional e.g. 'detail'
+   * @param payload {Object} optional e.g { id: '1x5e', name : 'My product to track' }
+   */
+  execute: function execute(pluginName, action) {
+    var payload;
+    var actionType;
+
+    if ((arguments.length <= 2 ? 0 : arguments.length - 2) === 1) {
+      payload = arguments.length <= 2 ? undefined : arguments[2];
+    } else {
+      actionType = arguments.length <= 2 ? undefined : arguments[2];
+      payload = arguments.length <= 3 ? undefined : arguments[3];
+    }
+
+    if (typeof ga === 'function') {
+      if (typeof pluginName !== 'string') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Expected `pluginName` arg to be a String.');
+      } else if (typeof action !== 'string') {
+        Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('Expected `action` arg to be a String.');
+      } else {
+        var command = "".concat(pluginName, ":").concat(action);
+        payload = payload || null;
+
+        if (actionType && payload) {
+          ga(command, actionType, payload);
+
+          if (_debug) {
+            Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("called ga('".concat(command, "');"));
+            Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("actionType: \"".concat(actionType, "\" with payload: ").concat(JSON.stringify(payload)));
+          }
+        } else if (payload) {
+          ga(command, payload);
+
+          if (_debug) {
+            Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("called ga('".concat(command, "');"));
+            Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("with payload: ".concat(JSON.stringify(payload)));
+          }
+        } else {
+          ga(command);
+
+          if (_debug) {
+            Object(_utils_console_log__WEBPACK_IMPORTED_MODULE_5__["default"])("called ga('".concat(command, "');"));
+          }
+        }
+      }
+    }
+  }
+};
+/**
+ * outboundLink:
+ * GA outboundLink tracking
+ * @param args.label {String} e.g. url, or 'Create an Account'
+ * @param {function} hitCallback - Called after processing a hit.
+ */
+
+function outboundLink(args, hitCallback, trackerNames) {
+  if (typeof hitCallback !== 'function') {
+    Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('hitCallback function is required');
+    return;
+  }
+
+  if (typeof ga === 'function') {
+    // Simple Validation
+    if (!args || !args.label) {
+      Object(_utils_console_warn__WEBPACK_IMPORTED_MODULE_4__["default"])('args.label is required in outboundLink()');
+      return;
+    } // Required Fields
+
+
+    var fieldObject = {
+      hitType: 'event',
+      eventCategory: 'Outbound',
+      eventAction: 'Click',
+      eventLabel: _format(args.label)
+    };
+    var safetyCallbackCalled = false;
+
+    var safetyCallback = function safetyCallback() {
+      // This prevents a delayed response from GA
+      // causing hitCallback from being fired twice
+      safetyCallbackCalled = true;
+      hitCallback();
+    }; // Using a timeout to ensure the execution of critical application code
+    // in the case when the GA server might be down
+    // or an ad blocker prevents sending the data
+    // register safety net timeout:
+
+
+    var t = setTimeout(safetyCallback, 250);
+
+    var clearableCallbackForGA = function clearableCallbackForGA() {
+      clearTimeout(t);
+
+      if (!safetyCallbackCalled) {
+        hitCallback();
+      }
+    };
+
+    fieldObject.hitCallback = clearableCallbackForGA; // Send to GA
+
+    send(fieldObject, trackerNames);
+  } else {
+    // if ga is not defined, return the callback so the application
+    // continues to work as expected
+    setTimeout(hitCallback, 0);
+  }
+}
+_components_OutboundLink__WEBPACK_IMPORTED_MODULE_7__["default"].origTrackLink = _components_OutboundLink__WEBPACK_IMPORTED_MODULE_7__["default"].trackLink;
+_components_OutboundLink__WEBPACK_IMPORTED_MODULE_7__["default"].trackLink = outboundLink;
+var OutboundLink = _components_OutboundLink__WEBPACK_IMPORTED_MODULE_7__["default"];
+var testModeAPI = _utils_testModeAPI__WEBPACK_IMPORTED_MODULE_6__["default"];
+/* harmony default export */ __webpack_exports__["default"] = ({
+  initialize: initialize,
+  ga: ga,
+  set: set,
+  send: send,
+  pageview: pageview,
+  modalview: modalview,
+  timing: timing,
+  event: event,
+  exception: exception,
+  plugin: plugin,
+  outboundLink: outboundLink,
+  OutboundLink: OutboundLink,
+  testModeAPI: _utils_testModeAPI__WEBPACK_IMPORTED_MODULE_6__["default"]
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/console/log.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/console/log.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return log; });
+function log(s) {
+  console.info('[react-ga]', s);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/console/warn.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/console/warn.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return warn; });
+function warn(s) {
+  console.warn('[react-ga]', s);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/format.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/format.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return format; });
+/* harmony import */ var _mightBeEmail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mightBeEmail */ "./node_modules/react-ga/dist/esm/utils/mightBeEmail.js");
+/* harmony import */ var _toTitleCase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toTitleCase */ "./node_modules/react-ga/dist/esm/utils/toTitleCase.js");
+/* harmony import */ var _console_warn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./console/warn */ "./node_modules/react-ga/dist/esm/utils/console/warn.js");
+
+
+
+var redacted = 'REDACTED (Potential Email Address)';
+function format(s, titleCase) {
+  if (Object(_mightBeEmail__WEBPACK_IMPORTED_MODULE_0__["default"])(s)) {
+    Object(_console_warn__WEBPACK_IMPORTED_MODULE_2__["default"])('This arg looks like an email address, redacting.');
+    return redacted;
+  }
+
+  if (titleCase) {
+    return Object(_toTitleCase__WEBPACK_IMPORTED_MODULE_1__["default"])(s);
+  }
+
+  return s;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/loadGA.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/loadGA.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function (options) {
+  var gaAddress = 'https://www.google-analytics.com/analytics.js';
+
+  if (options && options.gaAddress) {
+    gaAddress = options.gaAddress;
+  } else if (options && options.debug) {
+    gaAddress = 'https://www.google-analytics.com/analytics_debug.js';
+  } // https://developers.google.com/analytics/devguides/collection/analyticsjs/
+
+  /* eslint-disable */
+
+
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments);
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(window, document, 'script', gaAddress, 'ga');
+  /* eslint-enable */
+
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/mightBeEmail.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/mightBeEmail.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return mightBeEmail; });
+// See if s could be an email address. We don't want to send personal data like email.
+// https://support.google.com/analytics/answer/2795983?hl=en
+function mightBeEmail(s) {
+  // There's no point trying to validate rfc822 fully, just look for ...@...
+  return /[^@]+@[^@]+/.test(s);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/removeLeadingSlash.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/removeLeadingSlash.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return removeLeadingSlash; });
+function removeLeadingSlash(string) {
+  if (string.substring(0, 1) === '/') {
+    return string.substring(1);
+  }
+
+  return string;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/testModeAPI.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/testModeAPI.js ***!
+  \*************************************************************/
+/*! exports provided: gaCalls, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gaCalls", function() { return gaCalls; });
+var gaCalls = [];
+/* harmony default export */ __webpack_exports__["default"] = ({
+  calls: gaCalls,
+  ga: function ga() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    gaCalls.push(args.concat());
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/toTitleCase.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/toTitleCase.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return toTitleCase; });
+/* harmony import */ var _trim__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./trim */ "./node_modules/react-ga/dist/esm/utils/trim.js");
+/**
+ * To Title Case 2.1 - http://individed.com/code/to-title-case/
+ * Copyright 2008-2013 David Gouch. Licensed under the MIT License.
+ * https://github.com/gouch/to-title-case
+ */
+
+var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
+function toTitleCase(string) {
+  return Object(_trim__WEBPACK_IMPORTED_MODULE_0__["default"])(string).replace(/[A-Za-z0-9\u00C0-\u00FF]+[^\s-]*/g, function (match, index, title) {
+    if (index > 0 && index + match.length !== title.length && match.search(smallWords) > -1 && title.charAt(index - 2) !== ':' && (title.charAt(index + match.length) !== '-' || title.charAt(index - 1) === '-') && title.charAt(index - 1).search(/[^\s-]/) < 0) {
+      return match.toLowerCase();
+    }
+
+    if (match.substr(1).search(/[A-Z]|\../) > -1) {
+      return match;
+    }
+
+    return match.charAt(0).toUpperCase() + match.substr(1);
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-ga/dist/esm/utils/trim.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-ga/dist/esm/utils/trim.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return trim; });
+// GA strings need to have leading/trailing whitespace trimmed, and not all
+// browsers have String.prototoype.trim().
+function trim(s) {
+  return s.replace(/^\s+|\s+$/g, '');
+}
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -53342,6 +54342,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _lib_withData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/withData */ "./lib/withData.js");
+/* harmony import */ var react_ga__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-ga */ "./node_modules/react-ga/dist/esm/index.js");
 
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/pages/_app.js";
 
@@ -53375,6 +54376,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+function initializeReactGA() {
+  react_ga__WEBPACK_IMPORTED_MODULE_6__["default"].initialize('UA-133185295-1');
+  react_ga__WEBPACK_IMPORTED_MODULE_6__["default"].pageview('/');
+}
+
 var MyApp =
 /*#__PURE__*/
 function (_App) {
@@ -53396,26 +54403,26 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 27
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["ApolloProvider"], {
         client: apollo,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 28
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Page__WEBPACK_IMPORTED_MODULE_3__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 29
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 30
         },
         __self: this
       })))));
