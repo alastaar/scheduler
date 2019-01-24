@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const OrderItemStyles = styled.li`
+font-family: 'Slabo 27px', serif;
   /* box-shadow: ${props => props.theme.bs}; */
   list-style: none;
   padding: 2rem;

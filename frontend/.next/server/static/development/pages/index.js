@@ -578,24 +578,22 @@ function (_Component) {
   _createClass(Items, [{
     key: "render",
     value: function render() {
-      var token =  true ? _config__WEBPACK_IMPORTED_MODULE_5__["devStripe"] : undefined;
-      console.log(token);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Center, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 39
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SearchField, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 40
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 41
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Query"], {
@@ -605,7 +603,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 43
         },
         __self: this
       }, function (_ref) {
@@ -615,21 +613,21 @@ function (_Component) {
         if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 47
           },
           __self: this
         }, " ... loading ");
         if (error) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 50
+            lineNumber: 48
           },
           __self: this
         }, " ERROR: ", error.message);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemsList, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 49
           },
           __self: this
         }, data.users.filter(function (user) {
@@ -640,7 +638,7 @@ function (_Component) {
             key: user.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 52
+              lineNumber: 50
             },
             __self: this
           });
@@ -1211,7 +1209,7 @@ function (_React$Component) {
         }, function (client) {
           return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", _extends({}, getInputProps({
             type: 'search',
-            placeholder: "Search by Artist, Shop, InstagramHandle",
+            placeholder: "Search",
             id: "search",
             className: _this2.state.loading ? 'loading' : '',
             onChange: function onChange(e) {
@@ -1556,13 +1554,13 @@ __webpack_require__.r(__webpack_exports__);
 var DropDown = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown",
   componentId: "n5d97g-0"
-})(["position:absolute;width:100%;z-index:2;border:1px solid ", ";"], function (props) {
+})(["font-family:'Slabo 27px',serif;position:absolute;width:100%;z-index:2;border:1px solid ", ";"], function (props) {
   return props.theme.lightgrey;
 });
 var DropDownItem = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown__DropDownItem",
   componentId: "n5d97g-1"
-})(["border-bottom:1px solid ", ";background:", ";padding:1rem;transition:all 0.2s;", ";display:flex;align-items:center;border-left:10px solid ", ";img{margin-right:10px;}"], function (props) {
+})(["font-family:'Slabo 27px',serif;border-bottom:1px solid ", ";background:", ";padding:1rem;transition:all 0.2s;", ";display:flex;align-items:center;border-left:10px solid ", ";img{margin-right:10px;}"], function (props) {
   return props.theme.lightgrey;
 }, function (props) {
   return props.highlighted ? '#f7f7f7' : 'white';
@@ -1575,7 +1573,7 @@ var glow = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"])([
 var SearchStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown__SearchStyles",
   componentId: "n5d97g-2"
-})(["position:relative;input{width:100%;padding:10px;border:0;font-size:2rem;&.loading{animation:", " 0.5s ease-in-out infinite alternate;}}"], glow);
+})(["font-family:'Slabo 27px',serif;position:relative;input{width:100%;padding:10px;border:0;font-size:2rem;&.loading{animation:", " 0.5s ease-in-out infinite alternate;}}"], glow);
 
 
 /***/ }),
@@ -1595,7 +1593,7 @@ __webpack_require__.r(__webpack_exports__);
 var Item = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "ItemStyles__Item",
   componentId: "sc-16pk14u-0"
-})(["background:white;border:1px solid ", ";box-shadow:", ";position:relative;display:flex;flex-direction:column;img{width:100%;height:400px;object-fit:cover;}h2{margin:0;}p{margin:0;font-size:12px;line-height:2;font-weight:300;flex-grow:1;padding:0 3rem;font-size:2rem;}.buttonList{display:grid;width:100%;border-top:1px solid ", ";grid-template-columns:repeat(auto-fit,minmax(100px,1fr));grid-gap:1px;background:", ";& > *{background:white;border:0;font-size:1.5rem;padding:1rem;font-weight:700;}}"], function (props) {
+})(["background:white;font-family:'Slabo 27px',serif;border:1px solid ", ";box-shadow:", ";position:relative;display:flex;flex-direction:column;img{width:100%;height:400px;object-fit:cover;}h2{margin:0;}p{margin:0;font-size:12px;line-height:2;font-weight:300;flex-grow:1;padding:0 3rem;font-size:2rem;}.buttonList{display:grid;width:100%;border-top:1px solid ", ";grid-template-columns:repeat(auto-fit,minmax(100px,1fr));grid-gap:1px;background:", ";& > *{background:white;border:0;font-size:1.5rem;padding:1rem;font-weight:700;}}"], function (props) {
   return props.theme.offWhite;
 }, function (props) {
   return props.theme.bs;
@@ -1623,7 +1621,7 @@ __webpack_require__.r(__webpack_exports__);
 var PriceTag = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.span.withConfig({
   displayName: "PriceTag",
   componentId: "nwbk6t-0"
-})(["background:", ";transform:rotate(3deg);color:white;font-weight:600;padding:5px;line-height:1;font-size:3rem;display:inline-block;position:absolute;top:-3px;right:-3px;"], function (props) {
+})(["font-family:'Slabo 27px',serif;background:", ";transform:rotate(3deg);color:white;font-weight:600;padding:5px;line-height:1;font-size:3rem;display:inline-block;position:absolute;top:-3px;right:-3px;"], function (props) {
   return props.theme.red;
 });
 /* harmony default export */ __webpack_exports__["default"] = (PriceTag);
@@ -1645,7 +1643,7 @@ __webpack_require__.r(__webpack_exports__);
 var SickButton = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button.withConfig({
   displayName: "SickButton",
   componentId: "l04z44-0"
-})(["background:red;color:white;font-weight:500;border:0;border-radius:0;text-transform:uppercase;font-size:2rem;padding:0.8rem 1.5rem;transform:skew(-2deg);display:inline-block;transition:all 0.5s;&[disabled]{opacity:0.5;}"]);
+})(["font-family:'Slabo 27px',serif;background:red;color:white;font-weight:500;border:0;border-radius:0;text-transform:uppercase;font-size:2rem;padding:0.8rem 1.5rem;transform:skew(-2deg);display:inline-block;transition:all 0.5s;&[disabled]{opacity:0.5;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (SickButton);
 
 /***/ }),
@@ -1665,7 +1663,7 @@ __webpack_require__.r(__webpack_exports__);
 var Table = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.table.withConfig({
   displayName: "Table",
   componentId: "sc-1jvbtk5-0"
-})(["border-spacing:0;width:auto;display:inline-block;vertical-align:top;margin-left:10%;thead{font-size:10px;}td,th{border-bottom:1px solid ", ";border-right:1px solid ", ";position:relative;padding:3px;&:last-child{border-right:none;width:150px;button{width:100%;}}label{display:block;padding:10px 5px;}}tr{&:hover{background:", ";}}"], function (props) {
+})(["font-family:'Slabo 27px',serif;border-spacing:0;width:auto;display:inline-block;vertical-align:top;margin-left:10%;thead{font-size:10px;}td,th{border-bottom:1px solid ", ";border-right:1px solid ", ";position:relative;padding:3px;&:last-child{border-right:none;width:150px;button{width:100%;}}label{display:block;padding:10px 5px;}}tr{&:hover{background:", ";}}"], function (props) {
   return props.theme.offWhite;
 }, function (props) {
   return props.theme.offWhite;
@@ -1691,7 +1689,7 @@ __webpack_require__.r(__webpack_exports__);
 var Title = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.h3.withConfig({
   displayName: "Title",
   componentId: "sc-16nq74k-0"
-})(["margin:0 1rem;text-align:center;a{background:white;display:inline;line-height:1.3;font-size:3rem;text-align:center;color:", ";padding:0 1rem;}"], function (props) {
+})(["font-family:'Slabo 27px',serif;margin:0 1rem;text-align:center;a{background:white;display:inline;line-height:1.3;font-size:3rem;text-align:center;color:", ";padding:0 1rem;}"], function (props) {
   return props.theme.black;
 });
 /* harmony default export */ __webpack_exports__["default"] = (Title);

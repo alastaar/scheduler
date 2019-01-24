@@ -9,6 +9,7 @@ import User from './User';
 
 
 const FooterThing = styled.div`
+  font-family: 'Slabo 27px', serif;
   display: inline-block;
   position: fixed;
   left: 0;

@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 const DropDown = styled.div`
+font-family: 'Slabo 27px', serif;
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -8,6 +9,7 @@ const DropDown = styled.div`
 `;
 
 const DropDownItem = styled.div`
+font-family: 'Slabo 27px', serif;
   border-bottom: 1px solid ${props => props.theme.lightgrey};
   background: ${props => (props.highlighted ? '#f7f7f7' : 'white')};
   padding: 1rem;
@@ -32,6 +34,7 @@ const glow = keyframes`
 `;
 
 const SearchStyles = styled.div`
+font-family: 'Slabo 27px', serif;
   position: relative;
   input {
     width: 100%;

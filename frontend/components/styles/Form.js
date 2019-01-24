@@ -13,6 +13,7 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
+  font-family: 'Slabo 27px', serif;
   padding: 20px;
   font-size: 15px;
   line-height: 1.5;

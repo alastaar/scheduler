@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const PaginationStyles = styled.div`
+font-family: 'Slabo 27px', serif;
   text-align: center;
   display: inline-grid;
   grid-template-columns: repeat(4, auto);

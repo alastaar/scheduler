@@ -70,6 +70,14 @@ class CalendarList extends Component {
     return newDatePlusOne;
   }
 
+  convertName = (name) => {
+    if(name === null) {
+      return '';
+    } else {
+      return name;
+    }
+  }
+
   convertTime = (time24) => {
     var tmpArr = time24.split(':'), time12;
     if(+tmpArr[0] == 12) {
@@ -135,7 +143,6 @@ class CalendarList extends Component {
 
 
   render() {
-    console.log(this.props);
     return (
       <User>
         {({ data: { me } }) => (
@@ -149,8 +156,8 @@ class CalendarList extends Component {
           {({ data, loading, error }) => (
             <div style={{ height: 500 }}>
               <BigCalendar
-                events={data.requests.filter(request => request.email === me.email).map((request, index) => ({
-                  title: this.convertTime(request.timeOne) + ' ' + request.user.name + ' ' + request.user.email,
+                events={data.requests.filter(request => request.email === me.email && request.user !== null).map((request, index) => ({
+                  title: this.convertTime(request.timeOne) + ' ' + this.convertName(request.user.name) + ' ' + this.convertName(request.user.email),
                   start: this.convertDate(request.dateOne, request.timeOne),
                   end: this.convertDatePlusOne(request.dateOne, request.timeOne),
                   approved: request.approved,

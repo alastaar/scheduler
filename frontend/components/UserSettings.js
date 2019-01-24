@@ -4,8 +4,9 @@ import DeleteUser from './DeleteUser';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 
-const StyledBody = styled.a`
-	font-size: 2rem;
+const StyledBody = styled.div`
+	width: 200px;
+	margin: 0 auto;
   /* background-color: black; */
   color: black;
   p {
@@ -14,10 +15,13 @@ const StyledBody = styled.a`
   a {
     display: inline-block;
     font-size: 1rem;
+		font-weight: 700;
     background-color: black;
     color: white;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 10px;
+		width: 200px;
+		text-align: center;
   }
 	button {
 		display: inline-block;
@@ -25,10 +29,15 @@ const StyledBody = styled.a`
 		background-color: red;
 		color: white;
 		padding: 10px 30px;
+		margin: 10px;
+		width: 200px;
+		text-align: center;
 	}
 	h2 {
 		color: #3399ff;
 		display: inline-block;
+		width: 200px;
+		text-align: center;
 	}
 	h3 {
 		margin-bottom: 0;
@@ -46,18 +55,17 @@ const UserDetails = () => (
           <br></br>
           { me && (
             <>
-                <p>Click here to update your profile information</p>
                 <Link href={{
                   pathname: '/update',
                   query: { id: me.id },
                 }}>
                   <a className="userLink">
-                    Update Account
+                    Update Account Info
                   </a>
                 </Link>
                 { !me.stripeToken && (
                   <>
-                  <p>Click here to start recieving requests</p>
+									<br></br>
                     <Link href={{
                       pathname: '/account',
                       query: { id: me.id },
@@ -70,7 +78,7 @@ const UserDetails = () => (
                 )}
 								{ !me.bankToken && (
                   <>
-                  <p>Click here to attach a card so that you can start recieving payouts</p>
+									<br></br>
 									<Link href={{
 										pathname: '/bank',
 										query: { id: me.id },
@@ -83,7 +91,7 @@ const UserDetails = () => (
 								)}
                 { me.stripeToken && (
                     <>
-                      <p>Click her to update your fincancial profile for recieving requests</p>
+                      <br></br>
                       <Link href={{
                         pathname: '/accupdate',
                         query: { id: me.id },
@@ -96,7 +104,7 @@ const UserDetails = () => (
                 )}
 								{ me.bankToken && (
                   <>
-                  <p>Click her to attach a new card so that you can continue recieving payouts</p>
+                  <br></br>
 									<Link href={{
 										pathname: '/bank',
 										query: { id: me.id },
@@ -109,7 +117,6 @@ const UserDetails = () => (
 								)}
 								<br></br>
 								<>
-									<p>Click here to change your email preferences</p>
 									<Link href={{
 										pathname: '/preferences',
 									}}>
@@ -119,7 +126,7 @@ const UserDetails = () => (
 									</Link>
 								</>
 								<>
-									<p>Click her to update dates that you will not be taking requests</p>
+								<br></br>
 									<Link href={{
 										pathname: '/blackout',
 										query: { id: me.id },

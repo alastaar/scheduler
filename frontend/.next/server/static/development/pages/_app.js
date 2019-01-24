@@ -536,7 +536,7 @@ var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/fron
 var FooterThing = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "Footer__FooterThing",
   componentId: "sc-7kxx45-0"
-})(["display:inline-block;position:fixed;left:0;bottom:0;height:30px;width:100%;overflow:hidden;font-size:1.5rem;font-weight:200;border-top:1px solid ", ";background:", ";a{margin-right:20px;margin-left:20px;height:100%;color:white;vertical-align:middle;}"], function (props) {
+})(["font-family:'Slabo 27px',serif;display:inline-block;position:fixed;left:0;bottom:0;height:30px;width:100%;overflow:hidden;font-size:1.5rem;font-weight:200;border-top:1px solid ", ";background:", ";a{margin-right:20px;margin-left:20px;height:100%;color:white;vertical-align:middle;}"], function (props) {
   return props.theme.black;
 }, function (props) {
   return props.theme.black;
@@ -546,33 +546,33 @@ var Footer = function Footer() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FooterThing, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/terms",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: this
   }, "Terms & Conditions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 38
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 39
     },
     __self: this
   }, "About Palazar")));
@@ -633,11 +633,11 @@ next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeError = function
 var Person = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h2.withConfig({
   displayName: "Header__Person",
   componentId: "sc-2cpreo-0"
-})(["display:inline-block;font-size:15px;margin-left:15px;margin-right:15px;position:relative;z-index:2;margin-top:0;margin-bottom:0;font-weight:900;text-transform:uppercase;text-decoration:none;color:white;"]);
+})(["font-family:'Slabo 27px',serif;display:inline-block;font-size:15px;margin-left:15px;margin-right:15px;position:relative;z-index:2;margin-top:0;margin-bottom:0;font-weight:900;text-transform:uppercase;text-decoration:none;color:white;letter-spacing:1px;"]);
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h1.withConfig({
   displayName: "Header__Logo",
   componentId: "sc-2cpreo-1"
-})(["font-size:4rem;background:", ";margin-left:2rem;position:relative;z-index:2;display:inline-flex;a{padding:0.5rem 1rem;background:", ";color:white;text-transform:uppercase;text-decoration:none;}@media ( max-width:2500px){margin:0;}@media ( max-width:720px){display:inline-block;width:100%;a{margin:0 auto;}}"], function (props) {
+})(["font-family:'Slabo 27px',serif;font-size:4rem;background:", ";margin-left:2rem;position:relative;z-index:2;display:inline-flex;a{padding:0.5rem 1rem;background:", ";color:white;text-transform:uppercase;text-decoration:none;}@media ( max-width:2500px){margin:0;}@media ( max-width:720px){display:inline-block;width:100%;height:130px;width:95%;margin:0 auto;a{margin:0 auto;}}"], function (props) {
   return props.theme.black;
 }, function (props) {
   return props.theme.black;
@@ -645,11 +645,11 @@ var Logo = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h1.withConfi
 var LogoSec = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "Header__LogoSec",
   componentId: "sc-2cpreo-2"
-})(["display:inline-block;margin-left:auto;a,button{padding:1rem 3rem;display:inline-flex;align-items:center;position:relative;text-transform:uppercase;font-size:15px;background:none;border:0;cursor:pointer;color:white;font-weight:800;@media (max-width:700px){}&:before{content:'';width:2px;height:100%;left:0;position:absolute;transform:skew(-20deg);top:0;bottom:0;}&:after{height:2px;background:#47BEE9;content:'';width:0;position:absolute;transform:translateX(-50%);transition:width 0.4s;transition-timing-function:cubic-bezier(1,-0.65,0,2.31);left:50%;margin-top:2rem;}&:hover,&:focus{outline:none;&:after{width:calc(100% - 60px);}}}@media ( max-width:720px){margin:0;font-size:13px;width:100%;vertical-align:top;h2{font-size:13px;}a{font-size:13px;padding:.5em 2em;}button{font-size:13px;}}"]);
+})(["font-family:'Slabo 27px',serif;display:inline-block;margin-left:auto;a,button{padding:1rem 3rem;display:inline-flex;align-items:center;position:relative;text-transform:uppercase;font-size:15px;background:none;border:0;cursor:pointer;color:white;font-weight:800;@media (max-width:700px){}&:before{content:'';width:2px;height:100%;left:0;position:absolute;transform:skew(-20deg);top:0;bottom:0;}&:after{height:2px;background:#47BEE9;content:'';width:0;position:absolute;transform:translateX(-50%);transition:width 0.4s;transition-timing-function:cubic-bezier(1,-0.65,0,2.31);left:50%;margin-top:2rem;}&:hover,&:focus{outline:none;&:after{width:calc(100% - 60px);}}}@media ( max-width:720px){margin:0;font-size:13px;width:100%;vertical-align:top;h2{font-size:13px;}a{font-size:13px;padding:.5em 2em;}button{font-size:13px;}}"]);
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "sc-2cpreo-3"
-})([".bar{border-bottom:2px solid ", ";background:", ";display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:2500px){grid-template-columns:1fr;justify-content:center;}}"], function (props) {
+})(["font-family:'Slabo 27px',serif;.bar{border-bottom:2px solid ", ";background:", ";display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:2500px){grid-template-columns:1fr;justify-content:center;}}"], function (props) {
   return props.theme.black;
 }, function (props) {
   return props.theme.black;
@@ -659,7 +659,7 @@ var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_8__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146
+      lineNumber: 154
     },
     __self: this
   }, function (_ref) {
@@ -667,88 +667,68 @@ var Header = function Header() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 148
+        lineNumber: 156
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "bar",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 149
+        lineNumber: 157
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logo, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 150
+        lineNumber: 158
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: "/",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 151
+        lineNumber: 159
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 152
+        lineNumber: 160
       },
       __self: this
     }, "Palazar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LogoSec, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 154
+        lineNumber: 162
       },
       __self: this
     }, me && me.artist == 'yes' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Person, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 157
+        lineNumber: 165
       },
       __self: this
-    }, " Hello,  ", me.name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    }, " Hello, ", me.name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: "/me",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 158
+        lineNumber: 166
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 159
+        lineNumber: 167
       },
       __self: this
     }, "Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 162
+        lineNumber: 170
       },
       __self: this
     })), me && me.artist == 'no' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: "/me",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 168
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "headerLink",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 169
-      },
-      __self: this
-    }, "Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 171
-      },
-      __self: this
-    })), !me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/signin",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 176
@@ -761,16 +741,36 @@ var Header = function Header() {
         lineNumber: 177
       },
       __self: this
+    }, "Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 179
+      },
+      __self: this
+    })), !me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "/signin",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 184
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "headerLink",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 185
+      },
+      __self: this
     }, "SignIn")), "`"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 183
+        lineNumber: 191
       },
       __self: this
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 185
+        lineNumber: 193
       },
       __self: this
     }));
@@ -837,18 +837,26 @@ var Meta = function Meta() {
       lineNumber: 8
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    type: "text/javascript",
-    src: "https://js.stripe.com/v3/",
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+    href: "https://fonts.googleapis.com/css?family=Slabo+27px",
+    rel: "stylesheet",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "https://js.stripe.com/v3/",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
     },
     __self: this
   }, "Palazar"));
@@ -1017,11 +1025,10 @@ function (_React$Component) {
       var _this2 = this;
 
       var token =  true ? _config__WEBPACK_IMPORTED_MODULE_11__["devStripe"] : undefined;
-      console.log(this.token);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 55
         },
         __self: this
       }, function (_ref2) {
@@ -1033,7 +1040,7 @@ function (_React$Component) {
           }],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 57
           },
           __self: this
         }, function (createOrder) {
@@ -1050,7 +1057,7 @@ function (_React$Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 59
             },
             __self: this
           }, _this2.props.children);
@@ -1161,7 +1168,7 @@ var Nav = function Nav() {
         lineNumber: 25
       },
       __self: this
-    }, "Ur Requests")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    }, "Requests")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
       href: "/chats",
       __source: {
         fileName: _jsxFileName,
@@ -1732,7 +1739,7 @@ function (_React$Component) {
         }, function (client) {
           return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", _extends({}, getInputProps({
             type: 'search',
-            placeholder: "Search by Artist, Shop, InstagramHandle",
+            placeholder: "Search",
             id: "search",
             className: _this2.state.loading ? 'loading' : '',
             onChange: function onChange(e) {
@@ -1939,7 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
 var CartStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "CartStyles",
   componentId: "sc-1tvog53-0"
-})(["padding:20px;position:relative;background:white;position:fixed;height:100%;top:0;right:0;width:40%;min-width:500px;bottom:0;transform:translateX(100%);transition:all 0.3s;box-shadow:0 0 10px 3px rgba(0,0,0,0.2);z-index:5;display:grid;grid-template-rows:auto 1fr auto;", ";header{border-bottom:5px solid ", ";margin-bottom:2rem;padding-bottom:2rem;}footer{border-top:10px double ", ";margin-top:2rem;padding-top:2rem;display:grid;grid-template-columns:auto auto;align-items:center;font-size:3rem;font-weight:900;p{margin:0;}}ul{margin:0;padding:0;list-style:none;overflow:scroll;}"], function (props) {
+})(["padding:20px;font-family:'Slabo 27px',serif;position:relative;background:white;position:fixed;height:100%;top:0;right:0;width:40%;min-width:500px;bottom:0;transform:translateX(100%);transition:all 0.3s;box-shadow:0 0 10px 3px rgba(0,0,0,0.2);z-index:5;display:grid;grid-template-rows:auto 1fr auto;", ";header{border-bottom:5px solid ", ";margin-bottom:2rem;padding-bottom:2rem;}footer{border-top:10px double ", ";margin-top:2rem;padding-top:2rem;display:grid;grid-template-columns:auto auto;align-items:center;font-size:3rem;font-weight:900;p{margin:0;}}ul{margin:0;padding:0;list-style:none;overflow:scroll;}@media (max-width:700px){width:75%;min-width:0;}p{font-weight:700;}"], function (props) {
   return props.open && "transform: translateX(0);";
 }, function (props) {
   return props.theme.black;
@@ -1965,7 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
 var CloseButton = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button.withConfig({
   displayName: "CloseButton",
   componentId: "sc-1seb878-0"
-})(["background:white;color:black;font-size:4rem;border:0;position:absolute;z-index:2;right:0;"]);
+})(["background:white;font-family:'Slabo 27px',serif;color:black;font-size:6rem;border:0;position:absolute;z-index:2;right:0;@media (max-width:700px){right:20;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (CloseButton);
 
 /***/ }),
@@ -1988,13 +1995,13 @@ __webpack_require__.r(__webpack_exports__);
 var DropDown = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown",
   componentId: "n5d97g-0"
-})(["position:absolute;width:100%;z-index:2;border:1px solid ", ";"], function (props) {
+})(["font-family:'Slabo 27px',serif;position:absolute;width:100%;z-index:2;border:1px solid ", ";"], function (props) {
   return props.theme.lightgrey;
 });
 var DropDownItem = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown__DropDownItem",
   componentId: "n5d97g-1"
-})(["border-bottom:1px solid ", ";background:", ";padding:1rem;transition:all 0.2s;", ";display:flex;align-items:center;border-left:10px solid ", ";img{margin-right:10px;}"], function (props) {
+})(["font-family:'Slabo 27px',serif;border-bottom:1px solid ", ";background:", ";padding:1rem;transition:all 0.2s;", ";display:flex;align-items:center;border-left:10px solid ", ";img{margin-right:10px;}"], function (props) {
   return props.theme.lightgrey;
 }, function (props) {
   return props.highlighted ? '#f7f7f7' : 'white';
@@ -2007,7 +2014,7 @@ var glow = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"])([
 var SearchStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "DropDown__SearchStyles",
   componentId: "n5d97g-2"
-})(["position:relative;input{width:100%;padding:10px;border:0;font-size:2rem;&.loading{animation:", " 0.5s ease-in-out infinite alternate;}}"], glow);
+})(["font-family:'Slabo 27px',serif;position:relative;input{width:100%;padding:10px;border:0;font-size:2rem;&.loading{animation:", " 0.5s ease-in-out infinite alternate;}}"], glow);
 
 
 /***/ }),
@@ -2027,7 +2034,7 @@ __webpack_require__.r(__webpack_exports__);
 var NavStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.ul.withConfig({
   displayName: "NavStyles",
   componentId: "sc-11c0d2g-0"
-})(["margin:0;padding:0;display:flex;justify-self:end;font-size:2rem;color:white;a,button{padding:1rem 3rem;display:flex;align-items:center;position:relative;text-transform:uppercase;font-weight:900;font-size:1em;background:none;border:0;cursor:pointer;color:white;font-weight:800;@media (max-width:700px){font-size:10px;padding:0 10px;}&:before{content:'';width:2px;height:100%;left:0;position:absolute;transform:skew(-20deg);top:0;bottom:0;}&:after{height:2px;background:#47BEE9;content:'';width:0;position:absolute;transform:translateX(-50%);transition:width 0.4s;transition-timing-function:cubic-bezier(1,-0.65,0,2.31);left:50%;margin-top:2rem;}&:hover,&:focus{outline:none;&:after{width:calc(100% - 60px);}}}@media (max-width:2500px){width:100%;justify-content:center;font-size:1.5rem;}"]);
+})(["margin:0;font-family:'Slabo 27px',serif;padding:0;display:flex;justify-self:end;font-size:2rem;color:white;a,button{padding:1rem 3rem;display:flex;align-items:center;position:relative;text-transform:uppercase;font-weight:900;font-size:1em;background:none;border:0;cursor:pointer;color:white;font-weight:800;@media (max-width:700px){font-size:10px;padding:0 10px;}&:before{content:'';width:2px;height:100%;left:0;position:absolute;transform:skew(-20deg);top:0;bottom:0;}&:after{height:2px;background:#47BEE9;content:'';width:0;position:absolute;transform:translateX(-50%);transition:width 0.4s;transition-timing-function:cubic-bezier(1,-0.65,0,2.31);left:50%;margin-top:2rem;}&:hover,&:focus{outline:none;&:after{width:calc(100% - 60px);}}}@media (max-width:2500px){width:100%;justify-content:center;font-size:1.5rem;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (NavStyles);
 
 /***/ }),
@@ -2047,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
 var SickButton = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button.withConfig({
   displayName: "SickButton",
   componentId: "l04z44-0"
-})(["background:red;color:white;font-weight:500;border:0;border-radius:0;text-transform:uppercase;font-size:2rem;padding:0.8rem 1.5rem;transform:skew(-2deg);display:inline-block;transition:all 0.5s;&[disabled]{opacity:0.5;}"]);
+})(["font-family:'Slabo 27px',serif;background:red;color:white;font-weight:500;border:0;border-radius:0;text-transform:uppercase;font-size:2rem;padding:0.8rem 1.5rem;transform:skew(-2deg);display:inline-block;transition:all 0.5s;&[disabled]{opacity:0.5;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (SickButton);
 
 /***/ }),
@@ -2067,8 +2074,8 @@ __webpack_require__.r(__webpack_exports__);
 var Supreme = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.h3.withConfig({
   displayName: "Supreme",
   componentId: "xv30qb-0"
-})(["background:", ";color:white;display:inline-block;padding:4px 5px;margin:0;font-size:4rem;"], function (props) {
-  return props.theme.red;
+})(["background:white;color:", ";display:inline-block;padding:4px 5px;margin:0;font-size:4rem;@media (max-width:700px){font-size:25px;}"], function (props) {
+  return props.theme.black;
 });
 /* harmony default export */ __webpack_exports__["default"] = (Supreme);
 

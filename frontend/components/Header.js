@@ -20,6 +20,7 @@ Router.onRouteChangeError = () => {
 };
 
 const Person = styled.h2`
+font-family: 'Slabo 27px', serif;
   display: inline-block;
   font-size: 15px;
   margin-left: 15px;
@@ -32,9 +33,11 @@ const Person = styled.h2`
   text-transform: uppercase;
   text-decoration: none;
   color: white;
+  letter-spacing: 1px;
 `;
 
 const Logo = styled.h1`
+font-family: 'Slabo 27px', serif;
 	font-size: 4rem;
   background: ${ props => props.theme.black };
 	margin-left: 2rem;
@@ -55,6 +58,9 @@ const Logo = styled.h1`
   @media ( max-width: 720px) {
     display: inline-block;
     width: 100%;
+    height: 130px;
+    width: 95%;
+    margin: 0 auto;
     a {
       margin: 0 auto;
     }
@@ -62,6 +68,7 @@ const Logo = styled.h1`
 `;
 
 const LogoSec = styled.div`
+font-family: 'Slabo 27px', serif;
   display: inline-block;
   margin-left: auto;
   a,
@@ -128,6 +135,7 @@ const LogoSec = styled.div`
 `;
 
 const StyledHeader = styled.header`
+font-family: 'Slabo 27px', serif;
   .bar {
     border-bottom: 2px solid ${props => props.theme.black};
     background: ${ props => props.theme.black };
@@ -154,7 +162,7 @@ const Header = () => (
             <LogoSec>
                 { me && me.artist == 'yes' && (
                   <>
-                    <Person> Hello,  { me.name } </Person>
+                    <Person> Hello, { me.name } </Person>
                     <Link href="/me">
                       <a>Account</a>
                     </Link>

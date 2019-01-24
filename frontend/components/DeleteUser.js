@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ALL_USERS_QUERY } from './Permissions';
+import SickButton from './styles/SickButton';
 
 const DELETE_USER_MUTATION = gql`
   mutation DELETE_USER_MUTATION($id: ID!) {
@@ -31,7 +32,7 @@ class DeleteUser extends Component {
         refetchQueries={[{ query: ALL_USERS_QUERY }]}
       >
         {(deleteUser, { error }) => (
-          <button
+          <SickButton
             onClick={() => {
               if (confirm('Are you sure you want to delete this user?')) {
                 deleteUser().catch(err => {
@@ -41,7 +42,7 @@ class DeleteUser extends Component {
             }}
           >
             {this.props.children}
-          </button>
+          </SickButton>
         )}
       </Mutation>
     );

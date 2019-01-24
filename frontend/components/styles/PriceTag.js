@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const PriceTag = styled.span`
+font-family: 'Slabo 27px', serif;
   background: ${props => props.theme.red};
   transform: rotate(3deg);
   color: white;

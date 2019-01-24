@@ -7,9 +7,11 @@ const StyledBody = styled.div`
 	font-size: 2rem;
 	width: 100%;
   color: black;
+	font-family: 'Slabo 27px', serif;
   a {
+		border-radius: 25px;
     font-size: 2.5rem;
-    background-color: #3399ff;
+    background-color: black;
     color: white;
     padding: 10px 20px;
 		margin-top: 30px;
@@ -22,22 +24,28 @@ const Results = styled.div`
 	font-size: 2rem;
 	margin-top: 25px;
   color: black;
-	border: 2px solid green;
+	border: 2px solid black;
 	width: 50%;
 	display: inline-grid;
 	p{
 		margin-left: 10%;
 	}
 	a {
+		border-radius: 25px;
 		text-align: center;
 		width: 70%;
 		font-size: 1.5rem;
 		margin: 0 auto;
-		background-color: #3399ff;
+		background-color: black;
 		color: white;
 		padding: 10px 50px;
 		margin-bottom: 20px;
 	}
+	@media only screen and (max-width: 600px) {
+		display: block;
+		width: 100%;
+	}
+
 `;
 
 const MeData = styled.div`

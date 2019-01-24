@@ -22,7 +22,7 @@ const Nav = () => (
 								<a>Appointments</a>
 							</Link>
 							<Link href="/ur-request">
-								<a>Ur Requests</a>
+								<a>Requests</a>
 							</Link>
 							<Link href="/chats">
 								<a>Chats</a>

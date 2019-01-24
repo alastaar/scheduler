@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const DateStyles = styled.div`
+  font-family: 'Slabo 27px', serif;
   .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
   .react-datepicker__month-read-view--down-arrow,
   .react-datepicker__month-year-read-view--down-arrow {

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const CartStyles = styled.div`
   padding: 20px;
+  font-family: 'Slabo 27px', serif;
   position: relative;
   background: white;
   position: fixed;
@@ -41,6 +42,13 @@ const CartStyles = styled.div`
     padding: 0;
     list-style: none;
     overflow: scroll;
+  }
+  @media (max-width: 700px) {
+    width: 75%;
+    min-width: 0;
+  }
+  p{
+    font-weight: 700;
   }
 `;
 
