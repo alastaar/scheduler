@@ -546,6 +546,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ItemsList = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "Items__ItemsList",
   componentId: "tikday-0"
@@ -577,22 +578,24 @@ function (_Component) {
   _createClass(Items, [{
     key: "render",
     value: function render() {
+      var token =  true ? _config__WEBPACK_IMPORTED_MODULE_5__["devStripe"] : undefined;
+      console.log(token);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Center, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 41
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SearchField, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 42
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 43
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Query"], {
@@ -602,7 +605,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 45
         },
         __self: this
       }, function (_ref) {
@@ -612,21 +615,21 @@ function (_Component) {
         if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 49
           },
           __self: this
         }, " ... loading ");
         if (error) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 50
           },
           __self: this
         }, " ERROR: ", error.message);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemsList, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 51
           },
           __self: this
         }, data.users.filter(function (user) {
@@ -637,7 +640,7 @@ function (_Component) {
             key: user.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 49
+              lineNumber: 52
             },
             __self: this
           });
@@ -1699,7 +1702,7 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.h3.withConf
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
-/*! exports provided: endpoint, prodEndpoint, perPage */
+/*! exports provided: endpoint, prodEndpoint, perPage, prodStripe, devStripe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1707,10 +1710,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endpoint", function() { return endpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodEndpoint", function() { return prodEndpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "perPage", function() { return perPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodStripe", function() { return prodStripe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "devStripe", function() { return devStripe; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
 var prodEndpoint = "https://palazar-yoga-prod.herokuapp.com/";
 var perPage = 10;
+var prodStripe = "pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ";
+var devStripe = "pk_test_K3j8JU1o7WrtlpA5zY8bavrR";
 
 /***/ }),
 

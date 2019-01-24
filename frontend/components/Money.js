@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import Error from './ErrorMessage';
 import User, { CURRENT_USER_QUERY } from './User';
+import { prodStripe, devStripe } from '../config';
 
 const CREATE_ORDER_MUTATION = gql`
   mutation createOrder($token: String!) {
@@ -30,6 +31,7 @@ function totalItems(cart){
 }
 
 class Money extends React.Component {
+
   onToken = async (res, createOrder) =>  {
     NProgress.start();
     console.log(res.id);
@@ -48,6 +50,8 @@ class Money extends React.Component {
     })
   };
   render(){
+    const token = process.env.NODE_ENV === 'development' ? devStripe : prodStripe;
+    console.log(this.token);
     return(
       <User>
         {({ data: { me }}) => (
@@ -58,7 +62,7 @@ class Money extends React.Component {
                 name="Scratcher"
                 description={`${totalItems(me.cart)} appointment confirmation`}
                 image={me.cart.length && me.cart[0].request && me.cart[0].request.referenceImage}
-                stripeKey="pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ"
+                stripeKey={token}
                 currency="USD"
                 email={me.email}
                 token={res => this.onToken(res, createOrder) }

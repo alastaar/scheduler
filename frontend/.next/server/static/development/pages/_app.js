@@ -886,6 +886,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/calcTotalPrice */ "./lib/calcTotalPrice.js");
 /* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./User */ "./components/User.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../config */ "./config.js");
 
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/Money.js";
 
@@ -924,6 +925,7 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -1014,10 +1016,12 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var token =  true ? _config__WEBPACK_IMPORTED_MODULE_11__["devStripe"] : undefined;
+      console.log(this.token);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 56
         },
         __self: this
       }, function (_ref2) {
@@ -1029,7 +1033,7 @@ function (_React$Component) {
           }],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 58
           },
           __self: this
         }, function (createOrder) {
@@ -1038,7 +1042,7 @@ function (_React$Component) {
             name: "Scratcher",
             description: "".concat(totalItems(me.cart), " appointment confirmation"),
             image: me.cart.length && me.cart[0].request && me.cart[0].request.referenceImage,
-            stripeKey: "pk_test_K3j8JU1o7WrtlpA5zY8bavrR",
+            stripeKey: token,
             currency: "USD",
             email: me.email,
             token: function token(res) {
@@ -1046,7 +1050,7 @@ function (_React$Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 56
+              lineNumber: 60
             },
             __self: this
           }, _this2.props.children);
@@ -2074,7 +2078,7 @@ var Supreme = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.h3.withCo
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
-/*! exports provided: endpoint, prodEndpoint, perPage */
+/*! exports provided: endpoint, prodEndpoint, perPage, prodStripe, devStripe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2082,10 +2086,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endpoint", function() { return endpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodEndpoint", function() { return prodEndpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "perPage", function() { return perPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodStripe", function() { return prodStripe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "devStripe", function() { return devStripe; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
 var prodEndpoint = "https://palazar-yoga-prod.herokuapp.com/";
 var perPage = 10;
+var prodStripe = "pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ";
+var devStripe = "pk_test_K3j8JU1o7WrtlpA5zY8bavrR";
 
 /***/ }),
 
