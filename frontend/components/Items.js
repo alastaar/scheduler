@@ -35,8 +35,6 @@ const SearchField = styled.div`
 
 class Items extends Component {
   render() {
-    const token = process.env.NODE_ENV === 'development' ? devStripe : prodStripe;
-    console.log(token);
     return (
       <Center>
         <SearchField>

@@ -51,7 +51,6 @@ class Money extends React.Component {
   };
   render(){
     const token = process.env.NODE_ENV === 'development' ? devStripe : prodStripe;
-    console.log(this.token);
     return(
       <User>
         {({ data: { me }}) => (
