@@ -7,12 +7,6 @@ import Cart from './Cart';
 import Search from './Search';
 import User from './User';
 import Signout from './Signout';
-import ReactGA from 'react-ga';
-
-function initializeReactGA() {
-    ReactGA.initialize('UA-133185295-1');
-    ReactGA.pageview('/');
-}
 
 Router.onRouteChangeStart = () => {
   NProgress.start();

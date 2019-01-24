@@ -15,7 +15,12 @@ server.express.use(cookieParser());
 // TODO use express middleware to populate current user
 
 server.express.use((req, res, next) => {
-  const { token } = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNlcnZpY2UiOiJwYWxhemFyLXByb2RAcHJvZCIsInJvbGVzIjpbImFkbWluIl19LCJpYXQiOjE1NDgzNjE1NTcsImV4cCI6MTU0ODk2NjM1N30.QmxO9anjG5ze7Cw84g8qQ8CJWKV56pW7tXASoViJTv0";
+   let token;
+  if(process.env.NODE_ENV === 'development') {
+    token = req.cookies;
+  } else {
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNlcnZpY2UiOiJwYWxhemFyLXByb2RAcHJvZCIsInJvbGVzIjpbImFkbWluIl19LCJpYXQiOjE1NDgzNjE1NTcsImV4cCI6MTU0ODk2NjM1N30.QmxO9anjG5ze7Cw84g8qQ8CJWKV56pW7tXASoViJTv0";
+  }
   if(token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
     req.userId = userId;
