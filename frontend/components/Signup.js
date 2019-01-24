@@ -95,7 +95,7 @@ class Signup extends Component {
               </label>
               <p>By joining, you agree to Palazar’s <a href="/terms">Terms of Services</a> as well as to receive occasional emails from us.</p>
               <label htmlFor="artist">
-                <button type="submit" name="artist" value="yes" onClick={this.saveToState}>Service Sign Up!</button>
+                <button type="submit" name="artist" value="yes" onClick={this.saveToState}>Seller Sign Up!</button>
               </label>
               <label htmlFor="artist">
                 <button type="submit" name="artist" value="no" onClick={this.saveToState}>Customer Sign Up!</button>
