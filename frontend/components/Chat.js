@@ -34,7 +34,6 @@ class Chat extends Component {
       alert(err.message);
     });
 
-    console.log(chat);
     Router.push({
       pathname: '/chat',
       query: { id: chat.data.createChat.id }

@@ -50,15 +50,12 @@ class ApproveRequest extends Component {
 
   update = e => {
     this.setState({ approved: 'yes' });
-    console.log(this.props);
   };
 
   handleChange = e => {
     const { name, type, value, id } = e.target;
-    console.log(value)
     if(id == 'one'){
       const time  = document.querySelector('#timeOne').value;
-      console.log(time);
       this.setState({ dateOne: value, timeOne: time });
     }
     else if ( id === 'two' ) {
@@ -69,7 +66,6 @@ class ApproveRequest extends Component {
       const time  = document.querySelector('#timeThree').value;
       this.setState({ dateOne: value, timeOne: time });
     }
-    console.log(this.state);
   };
 
   convertTime = (time24) => {
@@ -124,7 +120,6 @@ class ApproveRequest extends Component {
                   <button onClick={async e => {
                         e.preventDefault;
                         const res = await approveRequest();
-                        console.log(res);
                       }
                     }
                   >

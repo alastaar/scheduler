@@ -116,7 +116,6 @@ class UpdateBankInfo extends Component {
       currency: 'usd',
     });
 
-    console.log(token);
 
     if (error) {
       // Inform the customer that there was an error.
@@ -131,7 +130,6 @@ class UpdateBankInfo extends Component {
         bankToken: token.id,
       },
     });
-    console.log("going to the backend");
   };
 
 
@@ -149,7 +147,6 @@ class UpdateBankInfo extends Component {
               >
                 {(updateBankInfo, { loading, error }) => (
                   <Form className="accountUpdate" onSubmit={ async e => {
-                    console.log(this.state);
                     await this.updateBankInfo(e, updateBankInfo);
                     Router.push({
                       pathname: '/me',

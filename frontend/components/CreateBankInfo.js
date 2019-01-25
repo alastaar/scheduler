@@ -115,7 +115,6 @@ class CreateBankInfo extends Component {
       currency: 'usd',
     });
 
-    console.log(token);
 
     if (error) {
       // Inform the customer that there was an error.
@@ -130,7 +129,6 @@ class CreateBankInfo extends Component {
         bankToken: token.id,
       },
     });
-    console.log("going to the backend");
   };
 
 
@@ -148,7 +146,6 @@ class CreateBankInfo extends Component {
               >
                 {(createBankInfo, { loading, error }) => (
                   <Form className="accountCreate" onSubmit={ async e => {
-                    console.log(this.state);
                     await this.createBankInfo(e, createBankInfo);
                     Router.push({
                       pathname: '/me',

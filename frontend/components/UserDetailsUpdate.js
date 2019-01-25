@@ -32,6 +32,7 @@ const UPDATE_USER_MUTATION = gql`
 
 class UserDetailsUpdate extends Component  {
   state = {
+    imageDone: true,
   };
   handleUserChange = e => {
     const { name, type, value } = e.target;
@@ -47,16 +48,21 @@ class UserDetailsUpdate extends Component  {
 
   updateUserInfo = async (e, updateUserInfoMutation) => {
     e.preventDefault();
-    console.log(this.state);
-    const res = await updateUserInfoMutation({
-      variables: {
-        ...this.state,
-      },
-    });
-    console.log("updated");
+    if(this.state.imageDone == true){
+      const res = await updateUserInfoMutation({
+        variables: {
+          ...this.state,
+        },
+      });
+    } else {
+      alert("Image has not uploaded yet. Please try resubmitting.")
+    }
   };
 
   uploadFile = async e => {
+    this.setState({
+      imageDone: false,
+    });
     console.log('uploading file ..... ');
     const files = e.target.files;
     const data = new FormData();
@@ -68,10 +74,10 @@ class UserDetailsUpdate extends Component  {
       body: data
     });
     const file = await res.json();
-    console.log(file);
     this.setState({
       profileImage: file.secure_url,
-      image: file.eager[0].secure_url
+      image: file.eager[0].secure_url,
+      imageDone: true,
     });
   }
 

@@ -46,7 +46,6 @@ class ChatList extends React.Component {
             {({ data: { chats }, loading, error }) => {
               if(loading) return <p>...loading</p>
               if(error) return <Error error={error} />
-              console.log(chats);
               return(
                 <div>
                   <OrderUl>

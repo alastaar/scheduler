@@ -1,5 +1,5 @@
-# endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://palazar-production-af1536f2c7.herokuapp.com/palazar-prod/prod
+endpoint: ${env:PRISMA_ENDPOINT}
+# endpoint: https://palazar-production-af1536f2c7.herokuapp.com/palazar-prod/prod
 datamodel: datamodel.prisma
 secret: ${env:PRISMA_SECRET}
 

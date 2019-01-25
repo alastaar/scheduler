@@ -91,7 +91,6 @@ class CalendarComponent extends Component {
                 if ( loading ) return <p> ... loading </p>;
                 if ( error ) return <p> ERROR: { error.message }</p>;
                 const request = data.request;
-                console.log(request);
                 return  <>
                   {request.email === me.email && (
                       <Link href={{pathname: '/request-item', query: { id: request.id },}}>

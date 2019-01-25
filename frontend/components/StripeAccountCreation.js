@@ -44,18 +44,15 @@ class StripeAccountCreation extends Component {
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
     this.setState({ name: nameVal.value, lastName: lastName.value, type: 'individual' });
-    console.log(this.props);
   };
 
   createStripeAccount = async (e, createStripeAccountMutation) => {
     e.preventDefault();
-    console.log(this.state);
     const res = await createStripeAccountMutation({
       variables: {
         ...this.state,
       },
     });
-    console.log("going to the backend");
   };
 
 
@@ -91,7 +88,6 @@ class StripeAccountCreation extends Component {
 
     if (res.token) {
       this.setState({ stripeToken: res.token.id });
-      console.log(this.state);
     }
   };
 
@@ -242,7 +238,7 @@ class StripeAccountCreation extends Component {
                         />
                       </label>
                       <p>By clicking Save, you agree to <a href="our-terms">our terms</a> and the <a href="https://stripe.com/us/connect-account/legal">Stripe Connected Account Agreement</a>.</p>
-                      <button type="submit">Sav{loading ? 'ing' : 'e'} Changes</button>
+                      <button type="submit">Sav{loading ? 'ing' : 'e'}</button>
                     </fieldset>
                   </Form>
                 )}

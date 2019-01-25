@@ -177,13 +177,11 @@ class UserBlackOutDates extends React.Component {
   handleBlackOutChange = (e) => {
     const addDate = e.target;
 
-    console.log(addDate);
 
     const index = addDate.id;
 
     const date = this.convertDate(addDate.value);
 
-    console.log(date);
     // take a copy of the current permissions
     let updatedDates = [...this.state.blackOutDates];
     // figure out if we need to remove or add this permission
@@ -199,7 +197,6 @@ class UserBlackOutDates extends React.Component {
 
   render() {
     const user = this.props.user;
-    console.log(this.state.blackOutDates);
     return (
       <Mutation
         mutation={UPDATE_BLACKOUT_MUTATION}

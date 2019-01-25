@@ -83,6 +83,7 @@ class RequestArtist extends Component {
     requestedId: this.props.id,
     referenceImage: '',
     approved: 'no',
+    imageDone: true,
   };
 
   currentDate = new Date();
@@ -193,22 +194,28 @@ class RequestArtist extends Component {
     const complexFour = await this.convertTimeSubmit(this.state.timeOne);
     const complexFive = await this.convertTimeSubmit(this.state.timeTwo);
     const complexSix = await this.convertTimeSubmit(this.state.timeThree);
-    const res = await createRequestMutation({
-      variables: {
-        ...this.state,
-        dateOne: complexOne,
-        dateTwo: complexTwo,
-        dateThree: complexThree,
-        timeOne: complexFour,
-        timeTwo: complexFive,
-        timeThree: complexSix,
-      },
-    });
-    console.log("going to the backend");
+    if(this.state.imageDone == true){
+      const res = await createRequestMutation({
+        variables: {
+          ...this.state,
+          dateOne: complexOne,
+          dateTwo: complexTwo,
+          dateThree: complexThree,
+          timeOne: complexFour,
+          timeTwo: complexFive,
+          timeThree: complexSix,
+        },
+      });
+    } else {
+      alert("Image has not uploaded yet. Please try resubmitting.")
+    }
   };
 
 
   uploadFile = async e => {
+    this.setState({
+      imageDone: false,
+    });
     console.log('uploading file ..... ');
     const files = e.target.files;
     const data = new FormData();
@@ -220,9 +227,9 @@ class RequestArtist extends Component {
       body: data
     });
     const file = await res.json();
-    console.log(file);
     this.setState({
       referenceImage: file.secure_url,
+      imageDone: true,
     });
   }
 

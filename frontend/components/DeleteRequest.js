@@ -16,7 +16,6 @@ class DeleteRequest extends Component {
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the items we want
     const data = cache.readQuery({ query: ALL_REQUESTS_QUERY });
-    console.log(data, payload);
     // 2. Filter the deleted itemout of the page
     data.requests = data.requests.filter(request => requests.id !== payload.data.deleteRequest.id);
     // 3. Put the items back!

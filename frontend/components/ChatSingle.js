@@ -130,7 +130,6 @@ class ChatSingle extends Component{
                     >
                       {(createChatMessage, { loading, error }) => (
                         <Form className="chatMessage" onSubmit={ async e => {
-                          console.log(this.state);
                           await this.createChatMessage(e, createChatMessage);
                         }}>
                           <label htmlFor="message">

@@ -26,7 +26,6 @@ class UserBlock extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(this.props);
     return(
       <Query query={ALL_USERS_QUERY}>
         {({ data, loading, error }) => (

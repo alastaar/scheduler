@@ -47,14 +47,11 @@ class RejectRequest extends Component {
 
   update = e => {
     this.setState({ approved: 'no' });
-    console.log(this.props);
   };
 
   handleChange = e => {
     const { name, type, value, id } = e.target;
-    console.log(value)
     this.setState({ rejectReason: value });
-    console.log(this.state);
   };
 
   convertTime = (time24) => {
@@ -101,13 +98,12 @@ class RejectRequest extends Component {
                   <label htmlFor="buttonOne">
                     <label> <input type="radio" name="reject" id="one" value="Need more times" onChange={this.handleChange}/>Need more times</label><br></br>
                     <label><input type="radio" name="reject"  id="two" value="Need more details" onChange={this.handleChange}/>Need more details</label><br></br>
-                    <label><input type="radio" name="reject"  id="three" value="Other"  onChange={this.handleChange}/>Other</label>&nbsp;
+                    <label><input type="radio" name="reject"  id="three" value="Other"  onChange={this.handleChange}/>Other</label><br></br>
                     <label><input type="text" name="rejectReasonOther" id="other" onChange={this.handleChange}/></label>
                   </label>
                   <button onClick={async e => {
                         e.preventDefault;
                         const res = await rejectRequests();
-                        console.log(res);
                       }
                     }
                   >

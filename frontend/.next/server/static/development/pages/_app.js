@@ -272,7 +272,7 @@ var Cart = function Cart() {
         lineNumber: 55
       },
       __self: this
-    }, " + 5% Fee "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    }, " + $2 Fee "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 57
@@ -983,8 +983,7 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 nprogress__WEBPACK_IMPORTED_MODULE_5___default.a.start();
-                console.log(res.id);
-                _context.next = 4;
+                _context.next = 3;
                 return createOrder({
                   variables: {
                     token: res.id
@@ -993,9 +992,8 @@ function (_React$Component) {
                   alert(err.message);
                 });
 
-              case 4:
+              case 3:
                 order = _context.sent;
-                console.log(order);
                 next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push({
                   pathname: '/order',
                   query: {
@@ -1003,7 +1001,7 @@ function (_React$Component) {
                   }
                 });
 
-              case 7:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -1028,7 +1026,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 53
         },
         __self: this
       }, function (_ref2) {
@@ -1040,7 +1038,7 @@ function (_React$Component) {
           }],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 57
+            lineNumber: 55
           },
           __self: this
         }, function (createOrder) {
@@ -1057,7 +1055,7 @@ function (_React$Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 59
+              lineNumber: 57
             },
             __self: this
           }, _this2.props.children);
@@ -1678,9 +1676,7 @@ function (_React$Component) {
                   loading: false
                 });
 
-                console.log(res);
-
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -1705,7 +1701,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["SearchStyles"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 58
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(downshift__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -1715,7 +1711,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 59
         },
         __self: this
       }, function (_ref2) {
@@ -1727,13 +1723,13 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 62
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["ApolloConsumer"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 63
           },
           __self: this
         }, function (client) {
@@ -1750,14 +1746,14 @@ function (_React$Component) {
           }), {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 66
+              lineNumber: 65
             },
             __self: this
           }));
         }), isOpen && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["DropDown"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 80
           },
           __self: this
         }, _this2.state.users.map(function (item, index) {
@@ -1768,7 +1764,7 @@ function (_React$Component) {
             highlighted: index === highlightedIndex,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 83
+              lineNumber: 82
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -1777,14 +1773,14 @@ function (_React$Component) {
             alt: "",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 86
+              lineNumber: 85
             },
             __self: this
           }), item.name, " ", item.lastName, " | Handle: ", item.instagramHandle);
         }), !_this2.state.users.length && !_this2.state.loading && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["DropDownItem"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 91
+            lineNumber: 90
           },
           __self: this
         }, "Nothing found for ", inputValue)));
@@ -2119,9 +2115,9 @@ function calcTotalPrice(cart) {
     if (!cartItem.request) return tally;
 
     if (cartItem.request.price == 0) {
-      return tally + cartItem.quantity * cartItem.request.price + cartItem.request.price + 200;
+      return tally + cartItem.quantity * cartItem.request.price + 200;
     } else {
-      return tally + cartItem.quantity * cartItem.request.price + cartItem.request.price * .05;
+      return tally + cartItem.quantity * cartItem.request.price + 200;
     }
   }, 0);
 }

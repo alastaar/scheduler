@@ -17,7 +17,6 @@ class DeleteUser extends Component {
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the items we want
     const data = cache.readQuery({ query: ALL_USERS_QUERY });
-    console.log(data, payload);
     // 2. Filter the deleted itemout of the page
     data.users = data.users.filter(user => user.id !== payload.data.deleteUser.id);
     // 3. Put the items back!

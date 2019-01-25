@@ -54,7 +54,6 @@ class CalendarList extends Component {
     var timeParts=time.split(':');
     var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
     var newDate = moment.utc(mydate).toDate()
-    console.log(newDate);
     return newDate;
   }
 
@@ -66,7 +65,6 @@ class CalendarList extends Component {
     var mydate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], timeParts[0], timeParts[1]);
     var newDate = moment.utc(mydate).toDate();
     var newDatePlusOne = moment(newDate).add(1, 'h').toDate();
-    console.log(newDatePlusOne);
     return newDatePlusOne;
   }
 

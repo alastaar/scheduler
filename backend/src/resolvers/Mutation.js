@@ -447,11 +447,20 @@ async approveRequests(parent, args, ctx, info) {
 
     delete updates.id;
 
+    const request = await ctx.db.query.request(
+    {
+      where: {
+        id: args.id,
+      },
+    }, `{ id name email user { id email }}`);
+
     const mailRes = await transport.sendMail({
       from: 'palazar@palazar.com',
-      to: args.user.email,
-      subject: 'Your Request has been approved',
-      html: makeANiceEmail(`Your appointment request has been approved!
+      to: request.email,
+      subject: 'Your Request has been Rejected',
+      html: makeANiceEmail(`Your appointment request has been rejected!
+      \n\n
+      Because ${args.rejectReason}
       \n\n
       <a href="${process.env
         .FRONTEND_URL}/request-item?id=${args.id}">Please go here to see why and update your request!</a>`),
@@ -635,8 +644,6 @@ async approveRequests(parent, args, ctx, info) {
       info
     );
 
-    console.log(requestedIds);
-    console.log(requestedId);
 
     const requested = await ctx.db.query.user(
         { where: { id: requestedId } },
@@ -648,7 +655,7 @@ async approveRequests(parent, args, ctx, info) {
 
     const fee = amount * .05;
 
-    if(amount = 2) {
+    if(amount == 2) {
       const charge = await stripe.charges.create({
         amount: amount,
         currency: 'USD',
@@ -668,7 +675,7 @@ async approveRequests(parent, args, ctx, info) {
         currency: 'USD',
         source: args.token,
         destination: requested.accId,
-        application_fee: fee,
+        application_fee: 200,
         },function(err, charge) {
             stripe.accounts.retrieve(
               requested.accId,

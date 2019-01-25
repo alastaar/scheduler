@@ -106,6 +106,7 @@ class RequestArtistUpdate extends Component {
     requestedId: this.props.id,
     referenceImage: '',
     approved: '',
+    imageDone: true,
   };
 
   currentDate = new Date();
@@ -208,7 +209,7 @@ class RequestArtistUpdate extends Component {
     this.setState({timeThree: e})
   }
 
-  createRequest = async (e, createRequestMutation) => {
+  createRequest = async (e, updateRequestMutation) => {
     e.preventDefault();
     const complexOne = await this.convertDateSubmit(this.state.dateOne);
     const complexTwo = await this.convertDateSubmit(this.state.dateTwo);
@@ -216,24 +217,31 @@ class RequestArtistUpdate extends Component {
     const complexFour = await this.convertTimeSubmit(this.state.timeOne);
     const complexFive = await this.convertTimeSubmit(this.state.timeTwo);
     const complexSix = await this.convertTimeSubmit(this.state.timeThree);
-    const res = await createRequestMutation({
-      variables: {
-        ...this.state,
-        dateOne: complexOne,
-        dateTwo: complexTwo,
-        dateThree: complexThree,
-        timeOne: complexFour,
-        timeTwo: complexFive,
-        timeThree: complexSix,
-      },
-    });
-    console.log("going to the backend");
+    if(this.state.imageDone == true){
+      const res = await updateRequestMutation({
+        variables: {
+          ...this.state,
+          dateOne: complexOne,
+          dateTwo: complexTwo,
+          dateThree: complexThree,
+          timeOne: complexFour,
+          timeTwo: complexFive,
+          timeThree: complexSix,
+        },
+      });
+    } else {
+      alert("Image has not uploaded yet. Please try resubmitting.")
+    }
   };
 
 
   uploadFile = async e => {
+    this.setState({
+      imageDone: false,
+    });
     console.log('uploading file ..... ');
     const files = e.target.files;
+    console.log(files);
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'sickfits');
@@ -243,9 +251,9 @@ class RequestArtistUpdate extends Component {
       body: data
     });
     const file = await res.json();
-    console.log(file);
     this.setState({
       referenceImage: file.secure_url,
+      imageDone: true,
     });
   }
 

@@ -52,7 +52,7 @@ const Cart = () => (
                   <p> + $2 Fee </p>
                 )}
                 {formatMoney(calcTotalPrice(me.cart)) !== "$2" && (
-                  <p> + 5% Fee </p>
+                  <p> + $2 Fee </p>
                 )}
                 <footer>
                   <p>{formatMoney(calcTotalPrice(me.cart))}</p>

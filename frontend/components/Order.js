@@ -64,7 +64,6 @@ class Order extends React.Component {
           if(error) return <Error error={error}/>
           if(loading) return <p> ... loading </p>
           const order = data.order;
-          console.log(order);
           return (
             <OrderStyles>
               <Head>
@@ -88,7 +87,7 @@ class Order extends React.Component {
                   <span>{ formatMoney(order.total + 200) }</span>
                 )}
                 {order.total !== 0 && (
-                  <span>{ formatMoney(order.total + (order.total * .05)) }</span>
+                  <span>{ formatMoney(order.total + 200) }</span>
                 )}
               </p>
               <p>
@@ -109,7 +108,7 @@ class Order extends React.Component {
                           <p>With a fee of $2</p>
                         )}
                         {request.price !== 0 && (
-                          <p>With a fee of %5</p>
+                          <p>With a fee of $2</p>
                         )}
                       </div>
                     </div>

@@ -9,6 +9,7 @@ import formatMoney from '../lib/formatMoney';
 
 
 const SingleItemStyles = styled.div`
+  font-family: 'Slabo 27px', serif;
   max-width: 1200px;
   margin: 2rem auto;
   display: grid;

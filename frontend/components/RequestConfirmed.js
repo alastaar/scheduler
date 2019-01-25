@@ -16,7 +16,6 @@ class RequestsConfirmed extends Component {
 
   render() {
     const { request } = this.props;
-    console.log(request);
     return (
       <ItemStyles>
         <>

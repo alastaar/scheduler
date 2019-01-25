@@ -50,7 +50,6 @@ class AutoComplete extends React.Component {
       users: res.data.users,
       loading: false,
     });
-    console.log(res);
   }, 350);
 
   render() {

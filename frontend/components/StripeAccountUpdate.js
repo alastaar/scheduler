@@ -49,13 +49,11 @@ class StripeAccountUpdate extends Component {
 
   updateStripeAccount = async (e, updateStripeAccountMutation) => {
     e.preventDefault();
-    console.log(this.state);
     const res = await updateStripeAccountMutation({
       variables: {
         ...this.state,
       },
     });
-    console.log("going to the backend");
   };
 
 
@@ -91,7 +89,6 @@ class StripeAccountUpdate extends Component {
 
     if (res.token) {
       this.setState({ stripeToken: res.token.id });
-      console.log(this.state);
     }
   };
 

@@ -32,7 +32,7 @@ const Form = styled.form`
     width: 100%;
     padding: 1.5rem;
     font-size: 12px;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     border-radius: 25px;
     &:focus {
       outline: 0;
@@ -42,13 +42,14 @@ const Form = styled.form`
   button,
   input[type='submit'] {
     width: auto;
-    background: ${props => props.theme.red};
+    background: ${props => props.theme.black};
     color: white;
     border: 0;
     font-size: 2rem;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    padding: 1.5rem 2.2rem;
     margin-top: 15px;
+    border-radius: 25px;
   }
   fieldset {
     border: 0;
