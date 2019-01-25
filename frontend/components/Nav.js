@@ -38,11 +38,11 @@ const Nav = () => (
 					)}
 					{ me && me.artist == 'no' && (
 						<>
-							<Link href="/orders">
-								<a>Appointments Status</a>
-							</Link>
 							<Link href="/ur-request">
-								<a>Ur Requests</a>
+								<a>Appointment Status</a>
+							</Link>
+							<Link href="/orders">
+								<a>Previous Orders</a>
 							</Link>
 							<Mutation mutation={TOGGLE_CART_MUTATION}>
 								{(toggleCart) => (

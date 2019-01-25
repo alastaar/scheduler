@@ -173,9 +173,6 @@ const Header = () => (
                 )}
                 { me && me.artist == 'no' && (
                   <>
-                    <Link href="/me">
-                      <a className="headerLink">Account</a>
-                    </Link>
                     <Signout />
                   </>
                 )}
