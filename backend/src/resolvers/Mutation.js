@@ -27,14 +27,12 @@ const Mutations = {
       info
     );
 
-    console.log(item);
 
     return item;
   },
 
   async createRequest(parent, args, ctx, info) {
 
-    console.log(args);
 
     const user = await ctx.db.query.user({ where: { id: args.requestedId } });
 
@@ -55,7 +53,6 @@ const Mutations = {
       }
     }, info);
 
-    console.log(request);
 
     if(request) {
       const mailRes = await transport.sendMail({
@@ -87,7 +84,6 @@ const Mutations = {
 
   async updateRequest(parent, args, ctx, info) {
 
-    console.log(args);
 
     const user = await ctx.db.query.user({ where: { id: args.requestedId } });
 
@@ -415,7 +411,6 @@ async approveRequests(parent, args, ctx, info) {
         },
       }, `{ id name user { id email }}`);
 
-    console.log(request);
     delete updates.id;
 
     const mailRes = await transport.sendMail({
@@ -493,7 +488,6 @@ async approveRequests(parent, args, ctx, info) {
     });
     // 3. Check if that item is already in their cart and increment by 1 if it is
     if (existingCartItem) {
-      console.log('This item is already in their cart');
       return ctx.db.mutation.updateCartItem(
         {
           where: { id: existingCartItem.id },
@@ -545,7 +539,6 @@ async approveRequests(parent, args, ctx, info) {
 
   async addBlackoutRanges(parent, args, ctx, info) {
     // 1. Make sure they are signed in
-    console.log(args);
     const { userId } = ctx.request;
     if (!userId) {
       throw new Error('You must be signed in soooon');
@@ -697,7 +690,6 @@ async approveRequests(parent, args, ctx, info) {
       return orderItem;
     });
 
-    console.log(charge);
     // 5. create the Order
     const order = await ctx.db.mutation.createOrder({
       data: {
@@ -760,7 +752,6 @@ async approveRequests(parent, args, ctx, info) {
 
     var token = args.stripeToken;
     var accountId = currentUser.accId;
-    console.log(currentUser);
     const account = await stripe.accounts.create({
       country: "US",
       type: "custom",
@@ -770,7 +761,6 @@ async approveRequests(parent, args, ctx, info) {
       accountId = acct.id;
     });
 
-    console.log(accountId);
 
     return ctx.db.mutation.updateUser(
       {
@@ -804,7 +794,6 @@ async approveRequests(parent, args, ctx, info) {
     );
     var accountId = currentUser.accId;
     var token = args.stripeToken;
-    console.log(token);
     const account = await stripe.accounts.update(
       accountId,
       {
@@ -843,12 +832,10 @@ async approveRequests(parent, args, ctx, info) {
 
     var accountId = currentUser.accId;
     var token = args.bankToken;
-    console.log(token);
     const account = await stripe.accounts.createExternalAccount(
       accountId,
       { external_account: token}).
       then(function(err, card) {
-          console.log(card);
       });
 
     return ctx.db.mutation.updateUser(
@@ -881,15 +868,12 @@ async approveRequests(parent, args, ctx, info) {
 
       var accountId = currentUser.accId;
       var token = args.bankToken;
-      console.log(token);
-      console.log(accountId);
       const account = await stripe.accounts.createExternalAccount(
         accountId,
         {
           external_account: token,
          }).
         then(function(err, card) {
-            console.log(card);
         });
 
 
@@ -928,14 +912,12 @@ async approveRequests(parent, args, ctx, info) {
 
     var i = 0;
     const date = new Date();
-    console.log(requestedId);
     // 1. find the item
     const requests = await ctx.db.query.requests(
       {
         requestedId,
       }, `{ id requestedId name lastName approved dateOne user { id }}`);
 
-    console.log(requests);
 
     requests.map(request => {
       if(request.approved == 'yes' || request.approved == 'no' ) {
@@ -948,7 +930,6 @@ async approveRequests(parent, args, ctx, info) {
 
     });
 
-    console.log(i);
 
      if(i >= 0) {
        throw new Error("You still have open requests, that must be finalized first!")
@@ -1033,7 +1014,6 @@ async approveRequests(parent, args, ctx, info) {
           },
         }, `{ email}`);
 
-      console.log(chats);
 
     if(chats) {
       return ctx.db.mutation.updateChat(

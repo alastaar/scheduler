@@ -24,8 +24,8 @@ class ChatMessages extends Component {
         {({ data: { me } }) => (
           <>
             { me && (
-                <RequestStyles style={{background: this.props.yes === "no" ? "#bad4ff" : "white"}, {textAlign: this.props.yes === "no" ? "right" : "left"}}>
-                  <p>{message}</p>
+                <RequestStyles style={{background: this.props.yes === "no" ? "#bad4ff" : "white"}}>
+                  <p style={{textAlign: this.props.yes === "no" ? "right" : "left"}}>{message}</p>
                 </RequestStyles>
             )}
           </>

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1099,9 +1099,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(BigButton, {
           disabled: loading,
           onClick: function onClick() {
-            _this2.chatThing(createChat).catch(function (err) {
-              return alert(err.message);
-            });
+            _this2.chatThing(createChat);
           },
           title: "Create Messafe",
           __source: {
@@ -6622,7 +6620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "devStripe", function() { return devStripe; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
-var prodEndpoint = "https://palazar-yoga-prod.herokuapp.com/";
+var prodEndpoint = "https://api.palazar.com/";
 var perPage = 10;
 var prodStripe = "pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ";
 var devStripe = "pk_test_K3j8JU1o7WrtlpA5zY8bavrR";
@@ -6723,7 +6721,7 @@ var Home = function Home(props) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 10:
 /*!******************************!*\
   !*** multi ./pages/chats.js ***!
   \******************************/

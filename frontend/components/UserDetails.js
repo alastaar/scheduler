@@ -84,7 +84,7 @@ const UserDetails = () => (
 								<h3>Bio: { me.bio }</h3>
 							</MeData>
 							<Results>
-								{ !me.stripeToken && (
+								{ !me.stripeToken && me.artist == "yes" && (
 									<>
 										<p>	&#10060; you are not approved to start taking requests</p>
 										<Link href={{
@@ -97,12 +97,12 @@ const UserDetails = () => (
 										</Link>
 									</>
 								)}
-								{ me.stripeToken && (
+								{ me.stripeToken && me.artist == "yes" && (
 									<>
 										<p>&#9989; you are approved to start taking requests</p>
 									</>
 								)}
-								{ !me.bankToken && (
+								{ !me.bankToken && me.artist == "yes" && (
 									<>
 										<p>	&#10060; you are not approved to start recieving payouts</p>
 										<Link href={{
@@ -115,7 +115,7 @@ const UserDetails = () => (
 										</Link>
 									</>
 								)}
-								{ me.bankToken && (
+								{ me.bankToken && me.artist == "yes" && (
 									<>
 										<p>&#9989; you are approved to start receiving payouts</p>
 									</>

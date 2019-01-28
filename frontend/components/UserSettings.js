@@ -64,7 +64,7 @@ const UserDetails = () => (
                     Update Account Info
                   </a>
                 </Link>
-                { !me.stripeToken && (
+                { !me.stripeToken && me.artist == "yes" && (
                   <>
 									<br></br>
                     <Link href={{
@@ -77,7 +77,7 @@ const UserDetails = () => (
                     </Link>
                   </>
                 )}
-								{ !me.bankToken && (
+								{ !me.bankToken && me.artist == "yes" && (
                   <>
 									<br></br>
 									<Link href={{
@@ -90,7 +90,7 @@ const UserDetails = () => (
 									</Link>
                   </>
 								)}
-                { me.stripeToken && (
+                { me.stripeToken && me.artist == "yes" && (
                     <>
                       <br></br>
                       <Link href={{
@@ -103,7 +103,7 @@ const UserDetails = () => (
                       </Link>
                     </>
                 )}
-								{ me.bankToken && (
+								{ me.bankToken && me.artist == "yes" && (
                   <>
                   <br></br>
 									<Link href={{
@@ -128,14 +128,18 @@ const UserDetails = () => (
 								</>
 								<>
 								<br></br>
-									<Link href={{
-										pathname: '/blackout',
-										query: { id: me.id },
-									}}>
-											<a className="userLink">
-												Update Black Out dates
-											</a>
-									</Link>
+								{ me.bankToken && me.artist == "yes" && (
+									<>
+										<Link href={{
+											pathname: '/blackout',
+											query: { id: me.id },
+										}}>
+												<a className="userLink">
+													Update Black Out dates
+												</a>
+										</Link>
+									</>
+								)}
 								</>
 								<br></br>
 								<DeleteUser id={me.id}>Delete Account</DeleteUser>

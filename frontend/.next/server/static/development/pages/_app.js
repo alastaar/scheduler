@@ -638,11 +638,11 @@ next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeError = function
 
 var Person = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h2.withConfig({
   displayName: "Header__Person",
-  componentId: "sc-2cpreo-0"
+  componentId: "sc-131voo4-0"
 })(["font-family:'Slabo 27px',serif;display:inline-block;font-size:15px;margin-left:15px;margin-right:15px;position:relative;z-index:2;margin-top:0;margin-bottom:0;font-weight:900;text-transform:uppercase;text-decoration:none;color:white;letter-spacing:1px;"]);
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h1.withConfig({
   displayName: "Header__Logo",
-  componentId: "sc-2cpreo-1"
+  componentId: "sc-131voo4-1"
 })(["font-family:'Slabo 27px',serif;font-size:4rem;background:", ";margin-left:2rem;position:relative;z-index:2;display:inline-flex;a{padding:0.5rem 1rem;background:", ";color:white;text-transform:uppercase;text-decoration:none;}@media ( max-width:2500px){margin:0;}@media ( max-width:720px){display:inline-block;width:100%;height:130px;width:95%;margin:0 auto;a{margin:0 auto;}}"], function (props) {
   return props.theme.black;
 }, function (props) {
@@ -650,11 +650,11 @@ var Logo = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.h1.withConfi
 });
 var LogoSec = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "Header__LogoSec",
-  componentId: "sc-2cpreo-2"
+  componentId: "sc-131voo4-2"
 })(["font-family:'Slabo 27px',serif;display:inline-block;margin-left:auto;a,button{padding:1rem 3rem;display:inline-flex;align-items:center;position:relative;text-transform:uppercase;font-size:15px;background:none;border:0;cursor:pointer;color:white;font-weight:800;@media (max-width:700px){}&:before{content:'';width:2px;height:100%;left:0;position:absolute;transform:skew(-20deg);top:0;bottom:0;}&:after{height:2px;background:#47BEE9;content:'';width:0;position:absolute;transform:translateX(-50%);transition:width 0.4s;transition-timing-function:cubic-bezier(1,-0.65,0,2.31);left:50%;margin-top:2rem;}&:hover,&:focus{outline:none;&:after{width:calc(100% - 60px);}}}@media ( max-width:720px){margin:0;font-size:13px;width:100%;vertical-align:top;h2{font-size:13px;}a{font-size:13px;padding:.5em 2em;}button{font-size:13px;}}"]);
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
-  componentId: "sc-2cpreo-3"
+  componentId: "sc-131voo4-3"
 })(["font-family:'Slabo 27px',serif;.bar{border-bottom:2px solid ", ";background:", ";display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:2500px){grid-template-columns:1fr;justify-content:center;}}"], function (props) {
   return props.theme.black;
 }, function (props) {
@@ -708,7 +708,7 @@ var Header = function Header() {
         lineNumber: 162
       },
       __self: this
-    }, me && me.artist == 'yes' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Person, {
+    }, me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Person, {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 165
@@ -733,36 +733,30 @@ var Header = function Header() {
         lineNumber: 170
       },
       __self: this
-    })), me && me.artist == 'no' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 176
-      },
-      __self: this
     })), !me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: "/signin",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 181
+        lineNumber: 176
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       className: "headerLink",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 182
+        lineNumber: 177
       },
       __self: this
     }, "SignIn")), "`"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 188
+        lineNumber: 183
       },
       __self: this
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 190
+        lineNumber: 185
       },
       __self: this
     }));
@@ -1213,11 +1207,24 @@ var Nav = function Nav() {
         lineNumber: 45
       },
       __self: this
-    }, "Previous Orders")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
-      mutation: _Cart__WEBPACK_IMPORTED_MODULE_3__["TOGGLE_CART_MUTATION"],
+    }, "Previous Orders")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/chats",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 47
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48
+      },
+      __self: this
+    }, "Chats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
+      mutation: _Cart__WEBPACK_IMPORTED_MODULE_3__["TOGGLE_CART_MUTATION"],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 50
       },
       __self: this
     }, function (toggleCart) {
@@ -1225,7 +1232,7 @@ var Nav = function Nav() {
         onClick: toggleCart,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 52
         },
         __self: this
       }, "Pay");
@@ -2093,7 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "devStripe", function() { return devStripe; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
-var prodEndpoint = "https://palazar-yoga-prod.herokuapp.com/";
+var prodEndpoint = "https://api.palazar.com/";
 var perPage = 10;
 var prodStripe = "pk_live_rEOt0HJLqQuzVcdyuJ8AppBZ";
 var devStripe = "pk_test_K3j8JU1o7WrtlpA5zY8bavrR";

@@ -44,10 +44,16 @@ class Signup extends Component {
             onSubmit={async e => {
               e.preventDefault();
               await signup();
+              if(this.state.approved === "yes") {
+                Router.push({
+                  pathname: '/me',
+                });
+              } else {
+                Router.push({
+                  pathname: '/',
+                });
+              }
               this.setState({ name: '', lastName: '', email: '', password: '', artist: '' });
-              Router.push({
-                pathname: '/me',
-              });
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>

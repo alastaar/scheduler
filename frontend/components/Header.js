@@ -160,7 +160,7 @@ const Header = () => (
     					<a>Palazar</a>
     				</Link>
             <LogoSec>
-                { me && me.artist == 'yes' && (
+                { me && (
                   <>
                     <Person> Hello, { me.name } </Person>
                     <Link href="/me">
@@ -169,11 +169,6 @@ const Header = () => (
 
                     <Signout />
 
-                  </>
-                )}
-                { me && me.artist == 'no' && (
-                  <>
-                    <Signout />
                   </>
                 )}
                 { !me && (

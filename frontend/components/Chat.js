@@ -59,7 +59,7 @@ class Chat extends Component {
       >
         {(createChat, {error, loading}) =>
           <BigButton disabled={loading}
-          onClick={() => {this.chatThing(createChat).catch(err => alert(err.message));}}
+          onClick={() => {this.chatThing(createChat)}}
           title="Create Messafe">{this.props.children}</BigButton>
         }
       </Mutation>
