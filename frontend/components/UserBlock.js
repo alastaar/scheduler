@@ -58,7 +58,6 @@ class UserBlock extends Component {
              <User>
                {({ data: { me } }) => (
                  <>
-                   { me && (
              <div className="buttonList">
                 <Link href={{
                   pathname: '/request',
@@ -69,7 +68,6 @@ class UserBlock extends Component {
                   </a>
                 </Link>
                </div>
-               )}
                </>
              )}
            </User>

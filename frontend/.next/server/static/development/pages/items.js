@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1491,11 +1491,11 @@ function (_Component) {
           __self: this
         }, function (_ref2) {
           var me = _ref2.data.me;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "buttonList",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 61
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -1507,13 +1507,13 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 62
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 67
+              lineNumber: 66
             },
             __self: this
           }, "Request Appointment"))));
@@ -1788,7 +1788,7 @@ var ItemPage = function ItemPage(props) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/items.js ***!
   \******************************/

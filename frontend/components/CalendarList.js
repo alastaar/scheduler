@@ -152,11 +152,9 @@ class CalendarList extends Component {
           <div className="gold"></div><span>Confirmed</span>
         </div>
         <Query query={ALL_REQUESTS_CALENDAR_QUERY}>
-          {({ data, loading, error }) => {
-            if(error) return <Error error={ error } />;
-            if(loading) return <p>loading..</p>;
-            if(!data.requests) return <p>No requests found </p>;
+          {({ data, loading, error }) => (
             <div style={{ height: 500 }}>
+              <Error error={error} />
               <BigCalendar
                 events={data.requests.filter(request => request.email === me.email && request.user !== null).map((request, index) => ({
                   title: this.convertTime(request.timeOne) + ' ' + this.convertName(request.user.name) + ' ' + this.convertName(request.user.email),
@@ -175,7 +173,7 @@ class CalendarList extends Component {
                 localizer={localizer}
               />
             </div>
-          }}
+          )}
         </Query>
         </CalendarStyles>
       )}

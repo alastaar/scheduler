@@ -6,6 +6,7 @@ import Router from 'next/router';
 import User, { CURRENT_USER_QUERY } from './User';
 import NProgress from 'nprogress';
 import Error from './ErrorMessage';
+import styled from 'styled-components';
 
 const CREATE_CHAT_MUTATION = gql`
   mutation createChat($vendor: String!, $client: String!) {
