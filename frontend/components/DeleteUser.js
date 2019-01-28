@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ALL_USERS_QUERY } from './Permissions';
 import SickButton from './styles/SickButton';
+import Error from './ErrorMessage';
 
 const DELETE_USER_MUTATION = gql`
   mutation DELETE_USER_MUTATION($id: ID!) {
@@ -34,8 +35,8 @@ class DeleteUser extends Component {
           <SickButton
             onClick={() => {
               if (confirm('Are you sure you want to delete this user?')) {
-                deleteUser().catch(err => {
-                  alert(err.message);
+                deleteUser().catch(error => {
+                  alert(error.message);
                 });
               }
             }}

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from './User';
+import Error from './ErrorMessage';
 
 const DELETE_BLACK_OUT_MUTATION = gql`
   mutation deleteBlackOutRanges($id: ID!){

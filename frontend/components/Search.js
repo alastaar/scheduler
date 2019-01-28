@@ -5,6 +5,7 @@ import { ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
+import Error from './ErrorMessage';
 
 const SEARCH_ARTISTS_QUERY = gql`
   query SEARCH_ARTISTS_QUERY($searchTerm: String!) {

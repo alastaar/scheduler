@@ -2,6 +2,7 @@ import Link from 'next/link';
 import User from './User';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
 
 const StyledBody = styled.div`
 	font-size: 2rem;

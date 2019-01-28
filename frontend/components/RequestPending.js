@@ -8,6 +8,7 @@ import formatMoney from '../lib/formatMoney';
 import ApproveRequest from './ApproveRequest';
 import RejectRequest from './RejectRequest';
 import DeleteRequest from './DeleteRequest';
+import Error from './ErrorMessage';
 
 class RequestsPending extends Component {
   static propTypes = {

@@ -8,6 +8,7 @@ import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 import AddToCart from './AddToCart';
 import Chat from './Chat';
+import Error from './ErrorMessage';
 
 class RequestsConfirmed extends Component {
   static propTypes = {

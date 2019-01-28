@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ALL_ITEMS_QUERY } from './Items';
+import Error from './ErrorMessage';
 
 const DELETE_ITEM_MUTATION = gql`
   mutation DELETE_ITEM_MUTATION($id: ID!) {
@@ -32,8 +33,8 @@ class DeleteItem extends Component {
           <button
             onClick={() => {
               if (confirm('Are you sure you want to delete this item?')) {
-                deleteItem().catch(err => {
-                  alert(err.message);
+                deleteItem().catch(error => {
+                  alert(error.message);
                 });
               }
             }}

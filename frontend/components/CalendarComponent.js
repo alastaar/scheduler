@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import User from './User';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Error from './ErrorMessage';
 
 const SINGLE_REQUESTS_CALENDAR_QUERY = gql`
   query SINGLE_REQUESTS_CALENDAR_QUERY($id: ID!) {
@@ -88,8 +89,9 @@ class CalendarComponent extends Component {
           <CalendarStyled>
             <Query query={SINGLE_REQUESTS_CALENDAR_QUERY}>
               { ({ data, error, loading }) => {
-                if ( loading ) return <p> ... loading </p>;
-                if ( error ) return <p> ERROR: { error.message }</p>;
+                if(error) return <Error error={ error } />;
+                if(loading) return <p>loading..</p>;
+                if(!data.requests) return <p>No requests found </p>;
                 const request = data.request;
                 return  <>
                   {request.email === me.email && (

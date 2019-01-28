@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { ALL_REQUESTS_QUERY } from './RequestList';
 import { SINGLE_REQUEST_QUERY } from './SingleRequest';
+import Error from './ErrorMessage';
 
 const APPROVE_REQUEST_MUTATION = gql`
   mutation APPROVE_REQUEST_MUTATION(
@@ -104,7 +105,7 @@ class ApproveRequest extends Component {
             }}
             >
               {({ error, loading, data }) => {
-                if(error) return <Error errror={ error } />;
+                if(error) return <Error error={ error } />;
                 if(loading) return <p>loading..</p>;
                 if(!data.request) return <p>No request found </p>
                 const request = data.request;

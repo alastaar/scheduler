@@ -6,7 +6,7 @@ import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteRequest from './DeleteRequest';
-
+import Error from './ErrorMessage';
 
 class RequesterPending extends Component {
   static propTypes = {

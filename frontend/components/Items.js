@@ -8,6 +8,7 @@ import { ALL_USERS_QUERY } from './Permissions';
 import UserBlock from './UserBlock';
 import Search from './Search';
 import { prodStripe, devStripe } from '../config';
+import Error from './ErrorMessage';
 
 
 
@@ -45,7 +46,7 @@ class Items extends Component {
         }}>
           { ({ data, error, loading }) => {
             if ( loading ) return <p> ... loading </p>;
-            if ( error ) return <p> ERROR: { error.message }</p>;
+            if ( error ) return <Error error={error} />;
             return <ItemsList>
               { data.users.filter(user => user.artist == 'yes' && user.stripeToken != null).map(user => <UserBlock user={user} key={ user.id }/>) }
             </ItemsList>;

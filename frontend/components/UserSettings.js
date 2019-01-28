@@ -3,6 +3,7 @@ import User from './User';
 import DeleteUser from './DeleteUser';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
 
 const StyledBody = styled.div`
 	width: 200px;

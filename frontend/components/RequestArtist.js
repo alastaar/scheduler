@@ -241,7 +241,7 @@ class RequestArtist extends Component {
         }}>
           { ({ data, error, loading }) => {
             if ( loading ) return <p> ... loading </p>;
-            if ( error ) return <p> ERROR: { error.message }</p>;
+            if ( error ) return <Error error={error} />;
             const user = data.gettingRequested;
             return (
               <Mutation

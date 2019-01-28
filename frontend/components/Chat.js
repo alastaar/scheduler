@@ -5,6 +5,7 @@ import { ALL_REQUESTS_QUERY } from './RequestList';
 import Router from 'next/router';
 import User, { CURRENT_USER_QUERY } from './User';
 import NProgress from 'nprogress';
+import Error from './ErrorMessage';
 
 const CREATE_CHAT_MUTATION = gql`
   mutation createChat($vendor: String!, $client: String!) {
@@ -13,6 +14,16 @@ const CREATE_CHAT_MUTATION = gql`
       vendor
       client
     }
+  }
+`;
+
+const BigButton = styled.button`
+  font-size: 3rem;
+  background: none;
+  border: 0;
+  &:hover {
+    color: ${props => props.theme.red };
+    cursor: pointer;
   }
 `;
 
@@ -45,11 +56,11 @@ class Chat extends Component {
       <Mutation
         mutation={CREATE_CHAT_MUTATION}
       >
-        {createChat => (
-          <button onClick={() => this.chatThing(createChat)}>
-            {this.props.children}
-          </button>
-        )}
+        {(createChat, {error, loading}) =>
+          <BigButton disabled={loading}
+          onClick={() => {this.chatThing(createChat).catch(err => alert(err.message));}}
+          title="Create Messafe">{this.props.children}</BigButton>
+        }
       </Mutation>
     );
   }

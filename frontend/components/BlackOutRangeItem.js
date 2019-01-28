@@ -3,6 +3,7 @@ import formatMoney from '../lib/formatMoney';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DeleteBlackoutRanges from './DeleteBlackoutRanges';
+import Error from './ErrorMessage';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;

@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { ALL_REQUESTS_QUERY } from './RequestList';
 import { SINGLE_REQUEST_QUERY } from './SingleRequest';
+import Error from './ErrorMessage';
 
 const REJECT_REQUEST_MUTATION = gql`
   mutation REJECT_REQUEST_MUTATION(

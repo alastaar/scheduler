@@ -1,7 +1,7 @@
-
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
+import Error from './ErrorMessage';
 
 const CURRENT_USER_QUERY = gql`
   query {

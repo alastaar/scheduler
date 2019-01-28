@@ -32,7 +32,7 @@ server.express.use( async (req, res, next) => {
 
   const user = await db.query.user(
     { where: { id: req.userId }},
-    '{ id, permissions, email, name }'
+    '{ id, email, name, lastName }'
   );
 
   req.user = user;

@@ -11,6 +11,7 @@ import AddToCart from './AddToCart';
 import Pay from './Pay';
 import DeleteRequest from './DeleteRequest';
 import Chat from './Chat';
+import Error from './ErrorMessage';
 
 class RequestNeedApproved extends Component {
   static propTypes = {

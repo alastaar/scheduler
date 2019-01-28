@@ -121,6 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/calcTotalPrice */ "./lib/calcTotalPrice.js");
 /* harmony import */ var _lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/formatMoney */ "./lib/formatMoney.js");
 /* harmony import */ var _Money__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Money */ "./components/Money.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/Cart.js";
 
 function _templateObject2() {
@@ -158,6 +159,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var LOCAL_STATE_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject());
 var TOGGLE_CART_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject2());
 /*esline-disable*/
@@ -168,7 +170,7 @@ var Composed = Object(react_adopt__WEBPACK_IMPORTED_MODULE_3__["adopt"])({
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_8__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 30
       },
       __self: this
     }, render);
@@ -179,7 +181,7 @@ var Composed = Object(react_adopt__WEBPACK_IMPORTED_MODULE_3__["adopt"])({
       mutation: TOGGLE_CART_MUTATION,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 31
       },
       __self: this
     }, render);
@@ -190,7 +192,7 @@ var Composed = Object(react_adopt__WEBPACK_IMPORTED_MODULE_3__["adopt"])({
       query: LOCAL_STATE_QUERY,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 32
       },
       __self: this
     }, render);
@@ -202,7 +204,7 @@ var Cart = function Cart() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Composed, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: this
   }, function (_ref4) {
@@ -215,13 +217,13 @@ var Cart = function Cart() {
       open: localState.data.cartOpen,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 43
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 44
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_CloseButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -229,25 +231,25 @@ var Cart = function Cart() {
       title: "close",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 45
       },
       __self: this
     }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_Supreme__WEBPACK_IMPORTED_MODULE_5__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 46
       },
       __self: this
     }, me.name, "'s Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 47
       },
       __self: this
     }, "You have ", me.cart.length, " appointment", me.cart.length === 1 ? '' : 's', " in your cart ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 49
       },
       __self: this
     }, me.cart.map(function (cartRequest) {
@@ -256,44 +258,44 @@ var Cart = function Cart() {
         cartRequest: cartRequest,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 50
         },
         __self: this
       });
     })), Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__["default"])(Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__["default"])(me.cart)) == "$2" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 53
       },
       __self: this
     }, " + $2 Fee "), Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__["default"])(Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__["default"])(me.cart)) !== "$2" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 56
       },
       __self: this
     }, " + $2 Fee "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 58
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 59
       },
       __self: this
     }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__["default"])(Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__["default"])(me.cart))), me.cart.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Money__WEBPACK_IMPORTED_MODULE_12__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 61
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_SickButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 62
       },
       __self: this
     }, "Confirm Appointment"))));
@@ -322,7 +324,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _RemoveFromCart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RemoveFromCart */ "./components/RemoveFromCart.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/CartItem.js";
+
 
 
 
@@ -340,27 +344,27 @@ var CartItem = function CartItem(_ref) {
   if (!cartRequest.request) react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CartItemStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 25
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 26
     },
     __self: this
   }, "This request has been cancelled"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveFromCart__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: cartRequest.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 27
     },
     __self: this
   }));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CartItemStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 30
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -369,39 +373,39 @@ var CartItem = function CartItem(_ref) {
     alt: cartRequest.request.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 31
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cart-item-details",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 33
     },
     __self: this
   }, cartRequest.request.name, " ", cartRequest.request.lastName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: this
   }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_1__["default"])(cartRequest.request.price * cartRequest.quantity), ' - ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: this
   }, cartRequest.quantity, " \xD7 ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_1__["default"])(cartRequest.request.price), " each"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveFromCart__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: cartRequest.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 42
     },
     __self: this
   }));
@@ -523,7 +527,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Cart */ "./components/Cart.js");
 /* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Search */ "./components/Search.js");
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./User */ "./components/User.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/Footer.js";
+
 
 
 
@@ -546,33 +552,33 @@ var Footer = function Footer() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FooterThing, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/terms",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: this
   }, "Terms & Conditions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 39
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 40
     },
     __self: this
   }, "About Palazar")));
@@ -727,50 +733,36 @@ var Header = function Header() {
         lineNumber: 170
       },
       __self: this
-    })), me && me.artist == 'no' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/me",
+    })), me && me.artist == 'no' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 176
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "headerLink",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 177
-      },
-      __self: this
-    }, "Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Signout__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 179
       },
       __self: this
     })), !me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: "/signin",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 184
+        lineNumber: 181
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       className: "headerLink",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 185
+        lineNumber: 182
       },
       __self: this
     }, "SignIn")), "`"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 191
+        lineNumber: 188
       },
       __self: this
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 193
+        lineNumber: 190
       },
       __self: this
     }));
@@ -1196,7 +1188,7 @@ var Nav = function Nav() {
         __self: this
       }, "Pay");
     })), me && me.artist == 'no' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/orders",
+      href: "/ur-request",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 41
@@ -1208,8 +1200,8 @@ var Nav = function Nav() {
         lineNumber: 42
       },
       __self: this
-    }, "Appointments Status")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/ur-request",
+    }, "Appointment Status")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/orders",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 44
@@ -1221,7 +1213,7 @@ var Nav = function Nav() {
         lineNumber: 45
       },
       __self: this
-    }, "Ur Requests")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
+    }, "Previous Orders")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
       mutation: _Cart__WEBPACK_IMPORTED_MODULE_3__["TOGGLE_CART_MUTATION"],
       __source: {
         fileName: _jsxFileName,
@@ -1403,6 +1395,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./User */ "./components/User.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/RemoveFromCart.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1436,6 +1429,7 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -1504,7 +1498,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 44
         },
         __self: this
       }, function (removeFromCart, _ref) {
@@ -1513,14 +1507,14 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BigButton, {
           disabled: loading,
           onClick: function onClick() {
-            removeFromCart().catch(function (err) {
-              return alert(err.message);
+            removeFromCart().catch(function (error) {
+              return alert(error.message);
             });
           },
           title: "Delete Item",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 53
           },
           __self: this
         }, "\xD7");
@@ -1563,6 +1557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash.debounce */ "lodash.debounce");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _styles_DropDown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/DropDown */ "./components/styles/DropDown.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/Search.js";
 
@@ -1603,6 +1598,7 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -1701,7 +1697,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["SearchStyles"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 59
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(downshift__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -1711,7 +1707,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 60
         },
         __self: this
       }, function (_ref2) {
@@ -1723,13 +1719,13 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 63
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["ApolloConsumer"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 64
           },
           __self: this
         }, function (client) {
@@ -1746,14 +1742,14 @@ function (_React$Component) {
           }), {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 65
+              lineNumber: 66
             },
             __self: this
           }));
         }), isOpen && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["DropDown"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 81
           },
           __self: this
         }, _this2.state.users.map(function (item, index) {
@@ -1764,7 +1760,7 @@ function (_React$Component) {
             highlighted: index === highlightedIndex,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 82
+              lineNumber: 83
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -1773,14 +1769,14 @@ function (_React$Component) {
             alt: "",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 85
+              lineNumber: 86
             },
             __self: this
           }), item.name, " ", item.lastName, " | Handle: ", item.instagramHandle);
         }), !_this2.state.users.length && !_this2.state.loading && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DropDown__WEBPACK_IMPORTED_MODULE_7__["DropDownItem"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 90
+            lineNumber: 91
           },
           __self: this
         }, "Nothing found for ", inputValue)));
@@ -1813,6 +1809,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./User */ "./components/User.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/Signout.js";
 
 function _templateObject() {
@@ -1832,6 +1829,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var SIGN_OUT_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject());
 
 var Signout = function Signout(props) {
@@ -1842,7 +1840,7 @@ var Signout = function Signout(props) {
     }],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 17
     },
     __self: this
   }, function (signout) {
@@ -1855,7 +1853,7 @@ var Signout = function Signout(props) {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 21
       },
       __self: this
     }, "Sign Out");
@@ -1884,6 +1882,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
 var _jsxFileName = "/Users/alistairmccormick/Documents/react/peve/sick-fits/frontend/components/User.js";
 
 
@@ -1900,6 +1899,7 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 

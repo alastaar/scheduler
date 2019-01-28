@@ -9,6 +9,7 @@ import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 import { ALL_USERS_QUERY } from './Permissions';
 import User from './User';
+import Error from './ErrorMessage';
 
 class UserBlock extends Component {
   static propTypes = {

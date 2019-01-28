@@ -9,6 +9,7 @@ import DeleteItem from './DeleteItem';
 import AddToCart from './AddToCart';
 import Chat from './Chat';
 import User from './User';
+import Error from './ErrorMessage';
 
 class ChatMessages extends Component {
   static propTypes = {

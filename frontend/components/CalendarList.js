@@ -11,6 +11,7 @@ import { Query } from 'react-apollo';
 import User from './User';
 import CalendarComponent from './CalendarComponent';
 import Router from 'next/router';
+import Error from './ErrorMessage';
 
 moment.locale("en");
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -151,7 +152,10 @@ class CalendarList extends Component {
           <div className="gold"></div><span>Confirmed</span>
         </div>
         <Query query={ALL_REQUESTS_CALENDAR_QUERY}>
-          {({ data, loading, error }) => (
+          {({ data, loading, error }) => {
+            if(error) return <Error error={ error } />;
+            if(loading) return <p>loading..</p>;
+            if(!data.requests) return <p>No requests found </p>;
             <div style={{ height: 500 }}>
               <BigCalendar
                 events={data.requests.filter(request => request.email === me.email && request.user !== null).map((request, index) => ({
@@ -171,7 +175,7 @@ class CalendarList extends Component {
                 localizer={localizer}
               />
             </div>
-          )}
+          }}
         </Query>
         </CalendarStyles>
       )}

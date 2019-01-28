@@ -132,19 +132,22 @@ class ChatSingle extends Component{
                         <Form className="chatMessage" onSubmit={ async e => {
                           await this.createChatMessage(e, createChatMessage);
                         }}>
-                          <label htmlFor="message">
-                            Send Message
-                            <input
-                              type="text"
-                              id="message"
-                              name="message"
-                              placeholder=" "
-                              required
-                              defaultValue=''
-                              onChange={this.handleMessageChange}
-                            />
-                          </label>
-                          <button type="submit">Send{loading ? 'ing' : ''}</button>
+                          <fieldset disabled={loading} aria-busy={loading}>
+                            <Error error={error} />
+                            <label htmlFor="message">
+                              Send Message
+                              <input
+                                type="text"
+                                id="message"
+                                name="message"
+                                placeholder=" "
+                                required
+                                defaultValue=''
+                                onChange={this.handleMessageChange}
+                              />
+                            </label>
+                            <button type="submit">Send{loading ? 'ing' : ''}</button>
+                          </fieldset>
                         </Form>
                       )}
                     </Mutation>

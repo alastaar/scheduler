@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ALL_REQUESTS_QUERY } from './RequestList';
+import Error from './ErrorMessage';
 
 const DELETE_REQUEST_MUTATION = gql`
   mutation DELETE_REQUEST_MUTATION($id: ID!) {
@@ -33,8 +34,8 @@ class DeleteRequest extends Component {
           <button
             onClick={() => {
               if (confirm('Are you sure you want to delete this request?')) {
-                deleteRequest().catch(err => {
-                  alert(err.message);
+                deleteRequest().catch(error => {
+                  alert(error.message);
                 });
               }
             }}

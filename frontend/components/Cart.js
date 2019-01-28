@@ -11,6 +11,7 @@ import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
 import Money from './Money';
+import Error from './ErrorMessage';
 
 const LOCAL_STATE_QUERY = gql`
   query {

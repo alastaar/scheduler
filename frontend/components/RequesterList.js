@@ -8,6 +8,7 @@ import Pagination from './Pagination';
 import { perPage } from '../config';
 import User from './User';
 import OrderListUser from './OrderListUser';
+import Error from './ErrorMessage';
 
 
 const ALL_REQUESTS_QUERY = gql`
@@ -64,7 +65,7 @@ class RequestList extends Component {
               }}>
                 { ({ data, error, loading }) => {
                   if ( loading ) return <p> ... loading </p>;
-                  if ( error ) return <p> ERROR: { error.message }</p>;
+                  if ( error ) return <Error error={error} />;
                   return <RequestsList>
                     { data.requests.filter(request => request.user.email === me.email && request.approved == 'no').map(request => <RequesterPending request={request} key={ request.id }/>) }
                   </RequestsList>;
@@ -76,7 +77,7 @@ class RequestList extends Component {
               }}>
                 { ({ data, error, loading }) => {
                   if ( loading ) return <p> ... loading </p>;
-                  if ( error ) return <p> ERROR: { error.message }</p>;
+                  if ( error ) return <Error error={error} />;
                   return <RequestsList>
                     { data.requests.filter(request => request.user.email === me.email && request.approved == 'yes').map(request =>
                       <RequestNeedApproved request={request} key={ request.id }/> ) }

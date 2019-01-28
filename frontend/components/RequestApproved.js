@@ -9,6 +9,7 @@ import DeleteRequest from './DeleteRequest';
 import AddToCart from './AddToCart';
 import Chat from './Chat';
 import RejectRequest from './RejectRequest';
+import Error from './ErrorMessage';
 
 class RequestsApproved extends Component {
   static propTypes = {

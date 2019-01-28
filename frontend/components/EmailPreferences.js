@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import User, { CURRENT_USER_QUERY } from './User';
 
+
 const UPDATE_PREFERENCES_MUTATION = gql`
   mutation updatePreferences($emailPreference: [EmailPreference], $userId: ID!) {
     updatePreferences(emailPreference: $emailPreference, userId: $userId) {

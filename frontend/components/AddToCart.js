@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from './User';
 import { TOGGLE_CART_MUTATION } from './Cart';
+import Error from './ErrorMessage';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation addToCart($id: ID!) {

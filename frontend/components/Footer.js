@@ -6,6 +6,7 @@ import NProgress from 'nprogress';
 import Cart from './Cart';
 import Search from './Search';
 import User from './User';
+import Error from './ErrorMessage';
 
 
 const FooterThing = styled.div`

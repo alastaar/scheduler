@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from './User';
+import Error from './ErrorMessage';
 
 const REMOVE_FROM_CART_MUTATION = gql`
   mutation removeFromCart($id: ID!){
@@ -50,7 +51,7 @@ class RemoveFromCart extends React.Component {
         {
           (removeFromCart, { loading, error }) =>
           <BigButton disabled={loading}
-            onClick={() => {removeFromCart().catch(err => alert(err.message));}}
+            onClick={() => {removeFromCart().catch(error => alert(error.message));}}
             title="Delete Item">&times;</BigButton>
         }
       </Mutation>
