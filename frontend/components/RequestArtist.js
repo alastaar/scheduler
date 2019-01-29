@@ -208,6 +208,9 @@ class RequestArtist extends Component {
       });
     } else {
       alert("Image has not uploaded yet. Please try resubmitting.")
+      this.setState({
+        imageDone: false,
+      });
     }
   };
 
@@ -227,10 +230,12 @@ class RequestArtist extends Component {
       body: data
     });
     const file = await res.json();
-    this.setState({
-      referenceImage: file.secure_url,
-      imageDone: true,
-    });
+    if(file) {
+      this.setState({
+        referenceImage: file.secure_url,
+        imageDone: true,
+      });
+    }
   }
 
 

@@ -11,27 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/request": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/items": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/signin": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/signup": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/me": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/": [
+    "/ur-request": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

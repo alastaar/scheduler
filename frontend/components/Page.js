@@ -27,12 +27,13 @@ const Inner = styled.div`
 	padding: 2rem;
 	margin-bottom: 40px;
 	overflow: scroll;
+	min-height: 100vh;
 `;
 
 injectGlobal`
 	@font-face {
-		font-family: 'radnika_next';
-		src: url('/static/radnikanext-medium-webfont.woff2') format ('woff2');
+		font-family: 'Titillium Web', sans-serif;
+		src: url('/static/TitilliumWeb-Regular.ttf') format ('ttf');
 		font-weight: normal;
 		font-style: normal;
 	}
@@ -48,7 +49,7 @@ injectGlobal`
 		margin: 0;
 		font-size: 1.5rem;
 		line-height: 2;
-		font-family: 'radnika_next';
+		font-family: 'Titillium Web', sans-serif;
 	}
 	a {
 		text-decoration: none;

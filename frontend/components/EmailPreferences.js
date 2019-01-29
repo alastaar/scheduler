@@ -25,9 +25,10 @@ const possiblePreferences = [
   'REQUESTCONFIRMED',
   'REQUESTREJECTED',
   'REQUESTDELETED',
-  'APPOINTMENTTOMORROW',
   'UPDATEDSTRIPEACCOUNT',
   'UPDATEDCARD',
+  'CREATECHAT',
+  'NEWCHATMESSAGE'
 ];
 
 const SickNastyButton = styled.button`
@@ -68,9 +69,10 @@ const EmailPreferences = props => (
                       <p>Email when the request has been confirmed and is all set</p>
                       <p>Email when the request has been rejected with the reason for rejection</p>
                       <p>Email when the request has been deleted</p>
-                      <p>Email that you have an appointment for tomorrow, and the time of the appointment</p>
                       <p>Email that you have updated your financial information</p>
                       <p>Email that you have updated your card for recieving payouts</p>
+                      <p>Email that a new chat has started</p>
+                      <p>Email that you received a new chat message</p>
                 </Table>
                 <UserPreferences user={me} key={me.id} />
               </div>

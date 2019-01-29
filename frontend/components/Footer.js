@@ -10,12 +10,9 @@ import Error from './ErrorMessage';
 
 
 const FooterThing = styled.div`
-  font-family: 'Slabo 27px', serif;
   display: inline-block;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 30px;
+  position: absolute;
+  margin-bottom: 0;
   width: 100%;
   overflow: hidden;
   font-size: 1.5rem;

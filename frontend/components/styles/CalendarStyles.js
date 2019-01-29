@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 
 const CalendarStyles = styled.div`
-  font-family: 'Slabo 27px', serif;
 
 .key{
   display: inline-block;

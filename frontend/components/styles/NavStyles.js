@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const NavStyles = styled.ul`
   margin: 0;
-  font-family: 'Slabo 27px', serif;
   padding: 0;
   display: flex;
   justify-self: end;

@@ -20,7 +20,6 @@ Router.onRouteChangeError = () => {
 };
 
 const Person = styled.h2`
-font-family: 'Slabo 27px', serif;
   display: inline-block;
   font-size: 15px;
   margin-left: 15px;
@@ -37,7 +36,6 @@ font-family: 'Slabo 27px', serif;
 `;
 
 const Logo = styled.h1`
-font-family: 'Slabo 27px', serif;
 	font-size: 4rem;
   background: ${ props => props.theme.black };
 	margin-left: 2rem;
@@ -68,7 +66,6 @@ font-family: 'Slabo 27px', serif;
 `;
 
 const LogoSec = styled.div`
-font-family: 'Slabo 27px', serif;
   display: inline-block;
   margin-left: auto;
   a,
@@ -135,7 +132,6 @@ font-family: 'Slabo 27px', serif;
 `;
 
 const StyledHeader = styled.header`
-font-family: 'Slabo 27px', serif;
   .bar {
     border-bottom: 2px solid ${props => props.theme.black};
     background: ${ props => props.theme.black };

@@ -8,7 +8,7 @@ type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String ): Item!
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
   deleteItem(id: ID!): Item!
-  signup(email: String!, password: String!, name: String!, lastName: String!, artist: String, permissions: [Permission]): User!
+  signup(email: String!, password: String!, name: String!, lastName: String!, artist: String, emailPreference: [EmailPreference], permissions: [Permission]): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
   requestReset(email: String!): SuccessMessage

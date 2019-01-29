@@ -8,7 +8,6 @@ const StyledBody = styled.div`
 	font-size: 2rem;
 	width: 100%;
   color: black;
-	font-family: 'Slabo 27px', serif;
   a {
 		border-radius: 25px;
     font-size: 2.5rem;

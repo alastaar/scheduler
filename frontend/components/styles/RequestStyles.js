@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Request = styled.div`
-font-family: 'Slabo 27px', serif;
   background: white;
   border: 1px solid ${props => props.theme.offWhite};
   box-shadow: ${props => props.theme.bs};

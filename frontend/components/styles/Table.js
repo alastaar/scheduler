@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Table = styled.table`
-font-family: 'Slabo 27px', serif;
   border-spacing: 0;
   width: auto;
   display: inline-block;

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const { transport, makeANiceEmail } = require('../mail');
-const { hasPermission } = require('../utils');
+const { hasPermission, hasPreference } = require('../utils');
 const stripe = require('../stripe');
 
 const Mutations = {
@@ -53,8 +53,17 @@ const Mutations = {
       }
     }, info);
 
+    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+      ['REQUESTCREATED'].includes(preference)
+    );
 
-    if(request) {
+    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+      ['REQUESTCREATED'].includes(preference)
+    );
+
+
+
+    if(request && hasPreference) {
       const mailRes = await transport.sendMail({
         from: 'palazar@palazar.com',
         to: user.email,
@@ -64,7 +73,9 @@ const Mutations = {
         <a href="${process.env
           .FRONTEND_URL}/request-item?id=${request.id}">Click Here to check it out</a>`),
       });
+    }
 
+    if(request && hasPreference2) {
       const mailRes1 = await transport.sendMail({
         from: 'palazar@palazar.com',
         to: user2.email,
@@ -153,6 +164,7 @@ const Mutations = {
           ...args,
           password,
           permissions: { set: ['USER'] },
+          emailPreference: { set: ['REQUESTCREATED', 'REQUESTAPPROVED', 'REQUESTCONFIRMED', 'REQUESTREJECTED', 'REQUESTDELETED', 'APPOINTMENTTOMORROW', 'UPDATEDSTRIPEACCOUNT', 'UPDATEDCARD', 'CREATECHAT', 'NEWCHATMESSAGE'] },
         },
       },
       info
@@ -409,19 +421,25 @@ async approveRequests(parent, args, ctx, info) {
         where: {
           id: args.id,
         },
-      }, `{ id name user { id email }}`);
+      }, `{ id name user { id email emailPreference }}`);
 
     delete updates.id;
 
-    const mailRes = await transport.sendMail({
-      from: 'palazar@palazar.com',
-      to: request.user.email,
-      subject: 'Your Request has been approved',
-      html: makeANiceEmail(`Your appointment request has been approved!
-      \n\n
-      <a href="${process.env
-        .FRONTEND_URL}/request-item?id=${args.id}">Please go here to pay for the deposit!</a>`),
-    });
+    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+      ['REQUESTAPPROVED'].includes(preference)
+    );
+
+    if(hasPreference){
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: request.user.email,
+        subject: 'Your Request has been approved',
+        html: makeANiceEmail(`Your appointment request has been approved!
+        \n\n
+        <a href="${process.env
+          .FRONTEND_URL}/request-item?id=${args.id}">Please go here to pay for the deposit!</a>`),
+      });
+    }
 
 
 
@@ -447,19 +465,25 @@ async approveRequests(parent, args, ctx, info) {
       where: {
         id: args.id,
       },
-    }, `{ id name email user { id email }}`);
+    }, `{ id name email user { id email emailPreference }}`);
 
-    const mailRes = await transport.sendMail({
-      from: 'palazar@palazar.com',
-      to: request.email,
-      subject: 'Your Request has been Rejected',
-      html: makeANiceEmail(`Your appointment request has been rejected!
-      \n\n
-      Because ${args.rejectReason}
-      \n\n
-      <a href="${process.env
-        .FRONTEND_URL}/request-item?id=${args.id}">Please go here to see why and update your request!</a>`),
-    });
+    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+      ['REQUESTREJECTED'].includes(preference)
+    );
+
+    if(hasPreference) {
+      const mailRes = await transport.sendMail({
+        from: 'palazar@palazar.com',
+        to: request.email,
+        subject: 'Your Request has been Rejected',
+        html: makeANiceEmail(`Your appointment request has been rejected!
+        \n\n
+        Because ${args.rejectReason}
+        \n\n
+        <a href="${process.env
+          .FRONTEND_URL}/request-item?id=${args.id}">Please go here to see why and update your request!</a>`),
+      });
+    }
 
 
     return ctx.db.mutation.updateRequest(
@@ -594,6 +618,7 @@ async approveRequests(parent, args, ctx, info) {
       name
       lastName
       email
+      emailPreference
       cart {
         id
         quantity
@@ -623,6 +648,7 @@ async approveRequests(parent, args, ctx, info) {
 
     const requestedId = requestedIds.request.requestedId;
 
+
     const anotherId = requestedIds.request.id;
 
     const requestUpdate = await ctx.db.mutation.updateRequest(
@@ -643,6 +669,7 @@ async approveRequests(parent, args, ctx, info) {
         `{
           email
           accId
+          emailPreference
           }`
       );
 
@@ -700,7 +727,15 @@ async approveRequests(parent, args, ctx, info) {
       },
     });
 
-    if(order) {
+    const hasPreference = ctx.request.requested.emailPreference.some(preference =>
+      ['REQUESTCONFIRMED'].includes(preference)
+    );
+
+    const hasPreference2 = ctx.request.user.emailPreference.some(preference =>
+      ['REQUESTCONFIRMED'].includes(preference)
+    );
+
+    if(order && hasPreference) {
       const mailRes = await transport.sendMail({
         from: 'palazar@palazar.com',
         to: requested.email,
@@ -710,10 +745,12 @@ async approveRequests(parent, args, ctx, info) {
         <a href="${process.env
           .FRONTEND_URL}/order?id=${order.id}">Check here to see the order information!</a>`),
       });
+    }
 
+    if(order && hasPreference2) {
       const mailRes1 = await transport.sendMail({
         from: 'palazar@palazar.com',
-        to: requestedId,
+        to: user.email,
         subject: 'Your appointment has been confirmed. Thanks for creating it and using Palazar.',
         html: makeANiceEmail(`Your appointment has been confirmed. Thanks for creating it and using Palazar.
         \n\n
@@ -1005,14 +1042,14 @@ async approveRequests(parent, args, ctx, info) {
           where: {
             id: args.vendor,
           },
-        }, `{ email}`);
+        }, `{ email emailPreference}`);
 
       const user2 = await ctx.db.query.user(
         {
           where: {
             id: args.client,
           },
-        }, `{ email}`);
+        }, `{ email emailPreference}`);
 
 
     if(chats) {
@@ -1036,7 +1073,16 @@ async approveRequests(parent, args, ctx, info) {
       info
     );
 
-    if(chat) {
+    const hasPreference = ctx.request.user1.emailPreference.some(preference =>
+      ['CREATECHAT'].includes(preference)
+    );
+
+    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+      ['CREATECHAT'].includes(preference)
+    );
+
+
+    if(chat && hasPreference) {
       const mailRes = await transport.sendMail({
         from: 'palazar@palazar.com',
         to: user1.email,
@@ -1045,13 +1091,16 @@ async approveRequests(parent, args, ctx, info) {
         <a href="${process.env
           .FRONTEND_URL}/chat?id=${chat.id}">See it here</a>`),
       });
+    }
+
+    if(chat && hasPreference2) {
 
       const mailRes1 = await transport.sendMail({
         from: 'palazar@palazar.com',
         to: user2.email,
-        subject: 'Your appointment has been confirmed. Thanks for creating it and using Palazar.',
+        subject: 'There is a new chat for you!',
         html: makeANiceEmail(`
-          <a href="${process.env
+        <a href="${process.env
           .FRONTEND_URL}/chat?id=${chat.id}">See it here</a>`),
       });
     }
@@ -1150,14 +1199,14 @@ async approveRequests(parent, args, ctx, info) {
         where: {
           id: chat1.vendor,
         },
-      }, `{ email}`);
+      }, `{ email emailPreference}`);
 
     const user2 = await ctx.db.query.user(
       {
         where: {
           id: chat1.client,
         },
-      }, `{ id email}`);
+      }, `{ id email emailPreference}`);
 
 
     const res1 = await ctx.db.mutation.updateChat(
@@ -1174,8 +1223,17 @@ async approveRequests(parent, args, ctx, info) {
       info
     );
 
+    const hasPreference = ctx.request.user1.emailPreference.some(preference =>
+      ['CREATECHAT'].includes(preference)
+    );
+
+    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+      ['NEWCHATMESSAGE'].includes(preference)
+    );
+
+
     if(res1) {
-      if(ctx.request.userId != user1.id) {
+      if(ctx.request.userId != user1.id && hasPreference) {
         const mailRes = await transport.sendMail({
           from: 'palazar@palazar.com',
           to: user2.email,
@@ -1189,17 +1247,19 @@ async approveRequests(parent, args, ctx, info) {
             .FRONTEND_URL}/chat?id=${args.chatId}">Click here to respond</a>`),
         });
       } else {
-        const mailRes = await transport.sendMail({
-          from: 'palazar@palazar.com',
-          to: user1.email,
-          subject: 'You have a new message!',
-          html: makeANiceEmail(`Below is a new message
-            \n\n
-            ${args.message}
-            \n\n
-            <a href="${process.env
-            .FRONTEND_URL}/chat?id=${args.chatId}">Click here to respond</a>`),
-        });
+        if( hasPreference2) {
+          const mailRes = await transport.sendMail({
+            from: 'palazar@palazar.com',
+            to: user1.email,
+            subject: 'You have a new message!',
+            html: makeANiceEmail(`Below is a new message
+              \n\n
+              ${args.message}
+              \n\n
+              <a href="${process.env
+              .FRONTEND_URL}/chat?id=${args.chatId}">Click here to respond</a>`),
+          });
+        }
       }
     }
 

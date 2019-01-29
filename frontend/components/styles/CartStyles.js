@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const CartStyles = styled.div`
   padding: 20px;
-  font-family: 'Slabo 27px', serif;
   position: relative;
   background: white;
   position: fixed;

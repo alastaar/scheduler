@@ -7,13 +7,14 @@ import { CURRENT_USER_QUERY } from './User';
 import Router from 'next/router';
 
 const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION($email: String!, $name: String!, $lastName: String!, $password: String!, $artist: String, $permissions: [Permission]) {
-    signup(email: $email, name: $name, lastName: $lastName, password: $password, artist: $artist, permissions: $permissions) {
+  mutation SIGNUP_MUTATION($email: String!, $name: String!, $lastName: String!, $password: String!, $artist: String, $emailPreference: [EmailPreference], $permissions: [Permission]) {
+    signup(email: $email, name: $name, lastName: $lastName, password: $password, artist: $artist, emailPreference: $emailPreference, permissions: $permissions) {
       id
       email
       name
       lastName
       artist
+      emailPreference
       permissions
     }
   }
@@ -26,11 +27,13 @@ class Signup extends Component {
     email: '',
     password: '',
     artist: '',
-    permissions: [],
+    emailPreference: [],
+    permissions: []
   };
   saveToState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   render() {
     return (
       <Mutation

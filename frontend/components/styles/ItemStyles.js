@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Item = styled.div`
   background: white;
-  font-family: 'Slabo 27px', serif;
   border: 1px solid ${props => props.theme.offWhite};
   box-shadow: ${props => props.theme.bs};
   position: relative;

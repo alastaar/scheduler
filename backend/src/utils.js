@@ -14,4 +14,21 @@ function hasPermission(user, permissionsNeeded) {
   }
 }
 
+function hasPreference(user, permissionsNeeded) {
+  const matchedPreferences = user.emailPreference.filter(preferenceTheyHave =>
+    preferenceNeeded.includes(preferenceTheyHave)
+  );
+  if (!matchedPreferences.length) {
+    throw new Error(`You do not have sufficient permissions
+
+      : ${preferenceNeeded}
+
+      You Have:
+
+      ${user.emailPreference}
+      `);
+  }
+}
+
+exports.hasPreference = hasPreference;
 exports.hasPermission = hasPermission;
