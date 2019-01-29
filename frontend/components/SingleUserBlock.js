@@ -18,8 +18,9 @@ const SingleItemStyles = styled.div`
   min-height: auto;
   padding-bottom: 50px;
   img{
-    width: 300px;
-    height: 300px;
+    object-fit: cover;
+    width: auto;
+    height: 450px;
     background-size: cover;
     display: block;
     border-radius: 150px;

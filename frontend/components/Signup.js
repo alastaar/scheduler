@@ -44,7 +44,7 @@ class Signup extends Component {
             onSubmit={async e => {
               e.preventDefault();
               await signup();
-              if(this.state.approved === "yes") {
+              if(this.state.artist == "yes") {
                 Router.push({
                   pathname: '/me',
                 });
