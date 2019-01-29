@@ -111,7 +111,7 @@ class UserDetailsUpdate extends Component  {
                           type="text"
                           id="nameVal"
                           name="nameVal"
-                          placeholder="name"
+                          placeholder=""
                           required
                           defaultValue={me.name}
                           onChange={this.handleUserChange}
@@ -123,7 +123,7 @@ class UserDetailsUpdate extends Component  {
                           type="text"
                           id="lastName"
                           name="lastName"
-                          placeholder="lastName"
+                          placeholder=""
                           required
                           defaultValue={me.lastName}
                           onChange={this.handleUserChange}
@@ -136,7 +136,7 @@ class UserDetailsUpdate extends Component  {
                           type="text"
                           id="email"
                           name="email"
-                          placeholder="email"
+                          placeholder=""
                           required
                           defaultValue={me.email}
                           onChange={this.handleUserChange}
@@ -152,7 +152,7 @@ class UserDetailsUpdate extends Component  {
                           data-number-stepfactor="100"
                           id="price"
                           name="price"
-                          placeholder="price"
+                          placeholder=""
                           required
                           defaultValue={ this.divideByHundred(me.price) }
                           onChange={this.handleUserChange}
@@ -170,12 +170,12 @@ class UserDetailsUpdate extends Component  {
                       </label>
 
                       <label htmlFor="instagramHandle">
-                        Instagram Handle
+                        Handle
                         <input
                           type="text"
                           id="instagramHandle"
                           name="instagramHandle"
-                          placeholder="Instagram Handle"
+                          placeholder=""
 
                           defaultValue={me.instagramHandle}
                           onChange={this.handleUserChange}
@@ -188,7 +188,7 @@ class UserDetailsUpdate extends Component  {
                         type="text"
                           id="shop"
                           name="shop"
-                          placeholder="Shop"
+                          placeholder=""
                           defaultValue={me.shop}
                           onChange={this.handleUserChange}
                         />

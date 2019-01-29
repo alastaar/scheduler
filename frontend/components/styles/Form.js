@@ -31,9 +31,8 @@ const Form = styled.form`
   select {
     width: 100%;
     padding: 1.5rem;
-    font-size: 12px;
+    font-size: 15px;
     border: 1px solid lightgrey;
-    border-radius: 25px;
     &:focus {
       outline: 0;
       border-color: ${props => props.theme.red};
@@ -49,7 +48,6 @@ const Form = styled.form`
     font-weight: 600;
     padding: 1.5rem 2.2rem;
     margin-top: 15px;
-    border-radius: 25px;
   }
   fieldset {
     border: 0;

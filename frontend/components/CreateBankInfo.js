@@ -165,7 +165,7 @@ class CreateBankInfo extends Component {
                                 type="text"
                                 id="addressLineOne"
                                 name="addressLineOne"
-                                placeholder="addressLineOne"
+                                placeholder=""
                                 required
                                 defaultValue={me.addressLineOne}
                                 onChange={this.handleUserChange}
@@ -177,7 +177,7 @@ class CreateBankInfo extends Component {
                                 type="text"
                                 id="addressLineTwo"
                                 name="addressLineTwo"
-                                placeholder="addressLineTwo"
+                                placeholder=""
 
                                 defaultValue={me.addressLineTwo}
                                 onChange={this.handleUserChange}
@@ -189,7 +189,7 @@ class CreateBankInfo extends Component {
                                 type="text"
                                 id="addressCity"
                                 name="addressCity"
-                                placeholder="addressCity"
+                                placeholder=""
                                 required
                                 defaultValue={me.addressCity}
                                 onChange={this.handleUserChange}
@@ -201,7 +201,7 @@ class CreateBankInfo extends Component {
                                 type="text"
                                 id="addressState"
                                 name="addressState"
-                                placeholder="addressState"
+                                placeholder=""
                                 required
                                 defaultValue={me.addressState}
                                 onChange={this.handleUserChange}
@@ -213,13 +213,14 @@ class CreateBankInfo extends Component {
                                 type="text"
                                 id="addressCountry"
                                 name="addressCountry"
-                                placeholder="addressCountry"
+                                placeholder=""
                                 required
                                 defaultValue={me.addressCountry}
                                 onChange={this.handleUserChange}
                               />
                             </label>
                             <br></br>
+                            <span>Debit Card</span>
                             <div id="card-element">
                             </div>
 

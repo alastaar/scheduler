@@ -142,51 +142,70 @@ class StripeAccountUpdate extends Component {
                         />
                       </label>
                       <label>
-                        <span>Date of Birth Day</span>
+                        <span>Date of Birth Day &nbsp;</span>
                         <input
-                          type="text"
+                          type="number"
+                          data-number-to-fixed="2"
+                          data-number-stepfactor="100"
+                          size={2}
+                          maxLength={2}
                           id="dobDay"
                           name="dobDay"
-                          placeholder="dobDay"
+                          placeholder=""
                           required
                           defaultValue={me.dobDay}
                           onChange={this.handleUserChange}
+                          style={{width: "80px"}}
                         />
                       </label>
                       <label>
-                        <span>Date of Birth Month</span>
+                        <span>Date of Birth Month &nbsp;</span>
                         <input
-                          type="text"
-                          id="dobMonth"
+                          type="number"
+                          data-number-to-fixed="2"
+                          data-number-stepfactor="100"
+                          size={2}
+                          maxLength={2}
                           name="dobMonth"
-                          placeholder="dobMonth"
+                          placeholder=""
                           required
                           defaultValue={me.dobMonth}
                           onChange={this.handleUserChange}
+                          style={{width: "80px"}}
                         />
                       </label>
                       <label>
-                        <span>Date of Birth Year</span>
+                        <span>Date of Birth Year &nbsp;</span>
                         <input
-                          type="text"
+                          type="number"
+                          data-number-to-fixed="2"
+                          data-number-stepfactor="100"
+                          size={4}
+                          maxLength={4}
                           id="dobYear"
                           name="dobYear"
-                          placeholder="dobYear"
+                          placeholder=""
                           required
                           defaultValue={me.dobYear}
                           onChange={this.handleUserChange}
+                          style={{width: "160px"}}
                         />
                       </label>
                       <label>
-                        <span>Social Security (last 4 digits)</span>
+                        <span>Social Security (last 4 digits) &nbsp;</span>
                         <input
-                          type="text"
+                          type="number"
+                          data-number-to-fixed="2"
+                          data-number-stepfactor="100"
+                          size={4}
+                          maxLength={4}
                           id="ssnLastFour"
                           name="ssnLastFour"
-                          placeholder="ssnLastFour"
+                          placeholder=""
                           required
                           defaultValue={me.ssnLastFour}
                           onChange={this.handleUserChange}
+                          style={{width: "160px"}}
                         />
                       </label>
 
@@ -196,7 +215,7 @@ class StripeAccountUpdate extends Component {
                           type="text"
                           id="addressLineOne"
                           name="addressLineOne"
-                          placeholder="addressLineOne"
+                          placeholder=""
                           required
                           defaultValue={me.addressLineOne}
                           onChange={this.handleUserChange}
@@ -208,7 +227,7 @@ class StripeAccountUpdate extends Component {
                           type="text"
                           id="addressCity"
                           name="addressCity"
-                          placeholder="addressCity"
+                          placeholder=""
                           required
                           defaultValue={me.addressCity}
                           onChange={this.handleUserChange}
@@ -220,7 +239,7 @@ class StripeAccountUpdate extends Component {
                           type="text"
                           id="addressState"
                           name="addressState"
-                          placeholder="addressState"
+                          placeholder=""
                           required
                           defaultValue={me.addressState}
                           onChange={this.handleUserChange}
@@ -232,7 +251,7 @@ class StripeAccountUpdate extends Component {
                           type="text"
                           id="addressPostalCode"
                           name="addressPostalCode"
-                          placeholder="addressPostalCode"
+                          placeholder=""
                           required
                           defaultValue={me.addressPostalCode}
                           onChange={this.handleUserChange}

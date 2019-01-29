@@ -72,7 +72,7 @@ const UserDetails = () => (
                       query: { id: me.id },
                     }}>
                         <a className="userLink">
-                          Create Payment Info
+                          Create Financial Info
                         </a>
                     </Link>
                   </>
@@ -85,7 +85,7 @@ const UserDetails = () => (
 										query: { id: me.id },
 									}}>
 											<a className="userLink">
-												Create Financial Info
+												Create Payment Info
 											</a>
 									</Link>
                   </>
@@ -98,7 +98,7 @@ const UserDetails = () => (
                         query: { id: me.id },
                       }}>
                           <a className="userLink">
-                            Update Payment Info
+                            Update Financial Info
                           </a>
                       </Link>
                     </>
@@ -111,7 +111,7 @@ const UserDetails = () => (
 										query: { id: me.id },
 									}}>
 											<a className="userLink">
-												Update Financial Info
+												Update Payment Info
 											</a>
 									</Link>
                   </>
