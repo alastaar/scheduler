@@ -41,9 +41,31 @@ const CREATE_REQUEST_MUTATION = gql`
   }
 `;
 
+const SINGLE_USER_QUERY = gql`
+  query SINGLE_USER_QUERY($id: ID!){
+    user(where: { id: $id }) {
+      id
+      email
+      name
+      lastName
+      instagramHandle
+      shop
+      price
+      profileImage
+      blackOut
+      blackOutRanges {
+        id
+        weekday
+        begin
+        end
+      }
+    }
+  }
+`;
+
 const REQUESTING_USER_QUERY = gql`
-  query {
-    gettingRequested {
+  query GETTING_REQUESTED($id: ID!) {
+    gettingRequested(where: { id: $id }) {
       id
       email
       name
@@ -240,14 +262,17 @@ class RequestArtist extends Component {
 
 
   render() {
+
     return(
-      <Query query={ REQUESTING_USER_QUERY } variables={{
-          id: this.props.id,
-        }}>
-          { ({ data, error, loading }) => {
-            if ( loading ) return <p> ... loading </p>;
-            if ( error ) return <Error error={error} />;
-            const user = data.gettingRequested;
+      <Query query={ SINGLE_USER_QUERY } variables={{
+        id: this.props.id,
+      }}
+      >
+        {({ error, loading, data }) => {
+          if(error) return <Error errror={ error } />;
+          if(loading) return <p>loading..</p>;
+          if(!data.user) return <p>No User found </p>
+          const user = data.user;
             return (
               <Mutation
                 mutation={CREATE_REQUEST_MUTATION}

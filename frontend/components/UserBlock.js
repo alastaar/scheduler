@@ -55,9 +55,7 @@ class UserBlock extends Component {
              {user.instagramHandle && (
                 <p> Handle: { user.instagramHandle }</p>
              )}
-             <User>
-               {({ data: { me } }) => (
-                 <>
+
              <div className="buttonList">
                 <Link href={{
                   pathname: '/request',
@@ -68,9 +66,7 @@ class UserBlock extends Component {
                   </a>
                 </Link>
                </div>
-               </>
-             )}
-           </User>
+
              </>
            }
         </ItemStyles>

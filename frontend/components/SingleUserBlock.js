@@ -90,7 +90,7 @@ class SingleUserBlock extends Component{
           <Something>
             <Link href={{
               pathname: '/request',
-              query: { id: user.id, name: user.name, lastName: user.lastName, email: user.email, price: user.price },
+              query: { id: user.id },
             }}>
               <a>
                 Request Appointment

@@ -1146,8 +1146,18 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  query GETTING_REQUESTED($id: ID!) {\n    gettingRequested(where: { id: $id }) {\n      id\n      email\n      name\n      lastName\n      instagramHandle\n      shop\n      price\n      profileImage\n      blackOut\n      blackOutRanges {\n        id\n        weekday\n        begin\n        end\n      }\n    }\n  }\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  query {\n    gettingRequested {\n      id\n      email\n      name\n      lastName\n      instagramHandle\n      shop\n      price\n      profileImage\n      blackOut\n      blackOutRanges {\n        id\n        weekday\n        begin\n        end\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query SINGLE_USER_QUERY($id: ID!){\n    user(where: { id: $id }) {\n      id\n      email\n      name\n      lastName\n      instagramHandle\n      shop\n      price\n      profileImage\n      blackOut\n      blackOutRanges {\n        id\n        weekday\n        begin\n        end\n      }\n    }\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -1181,7 +1191,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var CREATE_REQUEST_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject());
-var REQUESTING_USER_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject2());
+var SINGLE_USER_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject2());
+var REQUESTING_USER_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject3());
 var TimeDate = styled_components__WEBPACK_IMPORTED_MODULE_9___default.a.div.withConfig({
   displayName: "RequestArtist__TimeDate",
   componentId: "otcge5-0"
@@ -1477,41 +1488,48 @@ function (_Component) {
       var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Query"], {
-        query: REQUESTING_USER_QUERY,
+        query: SINGLE_USER_QUERY,
         variables: {
           id: this.props.id
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 244
+          lineNumber: 267
         },
         __self: this
       }, function (_ref3) {
-        var data = _ref3.data,
-            error = _ref3.error,
-            loading = _ref3.loading;
-        if (loading) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 248
-          },
-          __self: this
-        }, " ... loading ");
+        var error = _ref3.error,
+            loading = _ref3.loading,
+            data = _ref3.data;
         if (error) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          error: error,
+          errror: error,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 249
+            lineNumber: 272
           },
           __self: this
         });
-        var user = data.gettingRequested;
+        if (loading) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 273
+          },
+          __self: this
+        }, "loading..");
+        if (!data.user) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 274
+          },
+          __self: this
+        }, "No User found ");
+        var user = data.user;
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
           mutation: CREATE_REQUEST_MUTATION,
           variables: _this2.state,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 252
+            lineNumber: 277
           },
           __self: this
         }, function (createRequest, _ref4) {
@@ -1551,20 +1569,20 @@ function (_Component) {
             }(),
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 257
+              lineNumber: 282
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_7__["default"], {
             error: error,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 265
+              lineNumber: 290
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_styles_DateStyles__WEBPACK_IMPORTED_MODULE_4__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 266
+              lineNumber: 291
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("fieldset", {
@@ -1572,38 +1590,38 @@ function (_Component) {
             "aria-busy": loading,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 267
+              lineNumber: 292
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 268
+              lineNumber: 293
             },
             __self: this
           }, "Requesting ", user.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 269
+              lineNumber: 294
             },
             __self: this
           }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(user.price), " to book"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 270
+              lineNumber: 295
             },
             __self: this
           }, "First Available"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(TimeDate, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 271
+              lineNumber: 296
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "dateOne",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 272
+              lineNumber: 297
             },
             __self: this
           }, "Date: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1619,14 +1637,14 @@ function (_Component) {
             selected: _this2.state.dateOne,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 274
+              lineNumber: 299
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "timeOne",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 285
+              lineNumber: 310
             },
             __self: this
           }, "Time: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1642,26 +1660,26 @@ function (_Component) {
             selected: _this2.state.timeOne,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 287
+              lineNumber: 312
             },
             __self: this
           }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 301
+              lineNumber: 326
             },
             __self: this
           }, "Second Available"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(TimeDate, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 302
+              lineNumber: 327
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "dateTwo",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 303
+              lineNumber: 328
             },
             __self: this
           }, "Date: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1677,14 +1695,14 @@ function (_Component) {
             selected: _this2.state.dateTwo,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 305
+              lineNumber: 330
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "timeTwo",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 317
+              lineNumber: 342
             },
             __self: this
           }, "Time: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1701,26 +1719,26 @@ function (_Component) {
             selected: _this2.state.timeTwo,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 319
+              lineNumber: 344
             },
             __self: this
           }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 334
+              lineNumber: 359
             },
             __self: this
           }, "Third Available"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(TimeDate, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 335
+              lineNumber: 360
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "dateThree",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 336
+              lineNumber: 361
             },
             __self: this
           }, "Date: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1739,14 +1757,14 @@ function (_Component) {
             selected: _this2.state.dateThree,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 338
+              lineNumber: 363
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "timeThree",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 350
+              lineNumber: 375
             },
             __self: this
           }, "Time: \xA0", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_12___default.a, {
@@ -1765,14 +1783,14 @@ function (_Component) {
             selected: _this2.state.timeThree,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 352
+              lineNumber: 377
             },
             __self: this
           }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "details",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 368
+              lineNumber: 393
             },
             __self: this
           }, "Details", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
@@ -1785,14 +1803,14 @@ function (_Component) {
             onChange: _this2.handleInfoChange,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 370
+              lineNumber: 395
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "referenceImage",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 381
+              lineNumber: 406
             },
             __self: this
           }, "Reference Image", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -1803,7 +1821,7 @@ function (_Component) {
             onChange: _this2.uploadFile,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 383
+              lineNumber: 408
             },
             __self: this
           }), _this2.state.image && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -1811,14 +1829,14 @@ function (_Component) {
             alt: "upload preview",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 384
+              lineNumber: 409
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
             type: "submit",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 387
+              lineNumber: 412
             },
             __self: this
           }, "Submi", loading ? 'ing' : 't', " Appointment Request"))));
@@ -2905,41 +2923,32 @@ function (_Component) {
             lineNumber: 56
           },
           __self: this
-        }, " Handle: ", user.instagramHandle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }, " Handle: ", user.instagramHandle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "buttonList",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 59
           },
           __self: this
-        }, function (_ref2) {
-          var me = _ref2.data.me;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "buttonList",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 61
-            },
-            __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-            href: {
-              pathname: '/request',
-              query: {
-                id: user.id
-              }
-            },
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 62
-            },
-            __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 66
-            },
-            __self: this
-          }, "Request Appointment"))));
-        })));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          href: {
+            pathname: '/request',
+            query: {
+              id: user.id
+            }
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          },
+          __self: this
+        }, "Request Appointment")))));
       });
     }
   }]);

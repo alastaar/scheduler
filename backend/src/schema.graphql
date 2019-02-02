@@ -42,7 +42,7 @@ type Query {
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereInput): ItemConnection!
   me: User
-  gettingRequested: User
+  gettingRequested(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput): [User]!
   user(where: UserWhereUniqueInput!): User
   requests(where: RequestWhereInput, orderBy: RequestOrderByInput, skip: Int, first: Int): [Request]!
