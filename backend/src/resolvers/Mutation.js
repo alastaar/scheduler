@@ -953,9 +953,7 @@ async approveRequests(parent, args, ctx, info) {
     const request = await ctx.db.query.request({ where }, `{ id requestedId name lastName user { id }}`);
     // 2. Check if they own that item, or have the permissions
     const ownsRequest = request.requestedId === ctx.request.userId;
-    const hasPermissions = ctx.request.user.permissions.some(permission =>
-      ['ADMIN', 'ITEMDELETE'].includes(permission)
-    );
+
 
     if (!ownsRequest) {
       throw new Error("You don't have permission to do that!");
