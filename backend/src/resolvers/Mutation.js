@@ -33,10 +33,30 @@ const Mutations = {
 
   async createRequest(parent, args, ctx, info) {
 
+    const user = await ctx.db.query.user({ where: { id: args.requestedId  } },
+      `{
+        id
+        name
+        lastName
+        email
+        password
+        emailPreference
+        price
+      }`
+    );
 
-    const user = await ctx.db.query.user({ where: { id: args.requestedId } });
+    const user2 = await ctx.db.query.user({ where: { id: ctx.request.userId  } },
+      `{
+        id
+        name
+        lastName
+        email
+        password
+        emailPreference
+        price
+      }`
+    );
 
-    const user2 = await ctx.db.query.user({ where: { id: ctx.request.userId } });
 
     const request = await ctx.db.mutation.createRequest({
       data: {
@@ -53,11 +73,13 @@ const Mutations = {
       }
     }, info);
 
-    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+    console.log(user.emailPreference);
+
+    const hasPreference = user.emailPreference.some(preference =>
       ['REQUESTCREATED'].includes(preference)
     );
 
-    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+    const hasPreference2 = user2.emailPreference.some(preference =>
       ['REQUESTCREATED'].includes(preference)
     );
 
@@ -425,7 +447,7 @@ async approveRequests(parent, args, ctx, info) {
 
     delete updates.id;
 
-    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+    const hasPreference = request.user.emailPreference.some(preference =>
       ['REQUESTAPPROVED'].includes(preference)
     );
 
@@ -467,7 +489,7 @@ async approveRequests(parent, args, ctx, info) {
       },
     }, `{ id name email user { id email emailPreference }}`);
 
-    const hasPreference = ctx.request.user.emailPreference.some(preference =>
+    const hasPreference = request.user.emailPreference.some(preference =>
       ['REQUESTREJECTED'].includes(preference)
     );
 
@@ -727,11 +749,11 @@ async approveRequests(parent, args, ctx, info) {
       },
     });
 
-    const hasPreference = ctx.request.requested.emailPreference.some(preference =>
+    const hasPreference = requested.emailPreference.some(preference =>
       ['REQUESTCONFIRMED'].includes(preference)
     );
 
-    const hasPreference2 = ctx.request.user.emailPreference.some(preference =>
+    const hasPreference2 = user.emailPreference.some(preference =>
       ['REQUESTCONFIRMED'].includes(preference)
     );
 
@@ -1073,11 +1095,11 @@ async approveRequests(parent, args, ctx, info) {
       info
     );
 
-    const hasPreference = ctx.request.user1.emailPreference.some(preference =>
+    const hasPreference = user1.emailPreference.some(preference =>
       ['CREATECHAT'].includes(preference)
     );
 
-    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+    const hasPreference2 = user2.emailPreference.some(preference =>
       ['CREATECHAT'].includes(preference)
     );
 
@@ -1223,11 +1245,11 @@ async approveRequests(parent, args, ctx, info) {
       info
     );
 
-    const hasPreference = ctx.request.user1.emailPreference.some(preference =>
+    const hasPreference = user1.emailPreference.some(preference =>
       ['CREATECHAT'].includes(preference)
     );
 
-    const hasPreference2 = ctx.request.user2.emailPreference.some(preference =>
+    const hasPreference2 = user2.emailPreference.some(preference =>
       ['NEWCHATMESSAGE'].includes(preference)
     );
 
