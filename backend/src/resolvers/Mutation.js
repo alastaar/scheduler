@@ -954,8 +954,10 @@ async approveRequests(parent, args, ctx, info) {
     // 2. Check if they own that item, or have the permissions
     const ownsRequest = request.requestedId === ctx.request.userId;
 
+    const ownsRequest2 = request.user.id === ctx.request.userId;
 
-    if (!ownsRequest) {
+
+    if (!ownsRequest ) {
       throw new Error("You don't have permission to do that!");
     }
 
